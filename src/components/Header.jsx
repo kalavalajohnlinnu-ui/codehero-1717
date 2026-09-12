@@ -1,53 +1,47 @@
 import React, { useState } from 'react';
 import { 
   Flame, 
-  Sparkles, 
   RotateCcw, 
   Play, 
-  CheckCircle2, 
   Volume2, 
   VolumeX, 
   Smile, 
   Code2, 
-  Star,
-  BookOpen
+  BookOpen,
+  HelpCircle,
+  Zap,
+  Sword,
+  Search,
+  Timer,
+  Hammer,
+  Sparkles,
+  ExternalLink,
+  Award
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { soundService } from '../services/soundService';
+import { getLevelProgress } from '../services/gameEngine';
 
 export function Header({
   currentLanguageId,
   onSelectLanguage,
   completedByLanguage = {},
-  totalXP,
-  completedCount,
-  totalLessons,
-  streak,
-  isHeroMode,
+  totalXP = 0,
+  completedCount = 0,
+  totalLessons = 1,
+  streak = 1,
+  isHeroMode = true,
   onToggleHeroMode,
   onOpenCheatsheet,
   onOpenSandbox,
   onResetProgress,
-  wasmStatus
+  wasmStatus,
+  currentGameMode = 'lessons',
+  onSelectGameMode,
+  onOpenRoadmap
 }) {
   const [isMuted, setIsMuted] = useState(soundService.isMuted());
-
-  let level = "Apprentice Hero";
-  let stars = 1;
-  if (totalXP >= 600) {
-    level = "Code Wizard";
-    stars = 5;
-  } else if (totalXP >= 300) {
-    level = "Grandmaster";
-    stars = 4;
-  } else if (totalXP >= 100) {
-    level = "Hero Coder";
-    stars = 3;
-  } else if (totalXP >= 25) {
-    level = "Junior Coder";
-    stars = 2;
-  }
-
+  const prog = getLevelProgress(totalXP);
   const progressPercent = Math.min(100, Math.round((completedCount / (totalLessons || 1)) * 100));
 
   const handleToggleSound = () => {
@@ -56,162 +50,163 @@ export function Header({
     if (!muted) soundService.playClick();
   };
 
+  const modes = [
+    { id: 'lessons', label: 'Core Quests', icon: Zap, count: '631' },
+    { id: 'arena', label: 'Algorithm Arena', icon: Sword, count: '80' },
+    { id: 'bugs', label: 'Bug Detective', icon: Search, count: '40' },
+    { id: 'speed', label: 'Speed Sprint', icon: Timer, count: 'Live' },
+    { id: 'projects', label: 'Project Lab', icon: Hammer, count: '15' },
+    { id: 'oracle', label: 'Language Oracle & AI Hub', icon: Sparkles, count: 'Vault' }
+  ];
+
   return (
-    <header className="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md px-3 sm:px-4 py-2 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-        {/* Left: App Logo & Language Selector */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-emerald-400 via-sky-400 to-amber-300 p-0.5 shadow-lg shadow-emerald-500/20 flex items-center justify-center shrink-0">
-            <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-lg select-none">
-              👑
-            </div>
-          </div>
-          <div>
-            <h1 className="font-black tracking-tight text-white text-sm sm:text-base leading-none flex items-center gap-1.5">
-              <span>Code<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">Hero</span></span>
-              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/20 font-bold uppercase">
-                Universe
-              </span>
-            </h1>
-            <p className="text-[10px] text-slate-400 font-mono mt-0.5 hidden sm:block">
-              Zero to Hero in All Languages
-            </p>
-          </div>
-
-          {/* Language Selector Dropdown */}
-          <div className="ml-1 sm:ml-2">
-            <LanguageSelector
-              currentLanguageId={currentLanguageId}
-              onSelectLanguage={onSelectLanguage}
-              completedByLanguage={completedByLanguage}
-            />
-          </div>
-        </div>
-
-        {/* Center: Hero Telemetry (XP, Stars, Streak, Progress) */}
-        <div className="hidden xl:flex items-center gap-3 bg-slate-900/90 border border-slate-800 rounded-2xl px-3.5 py-1.5 shadow-sm">
-          <div className="flex items-center gap-1.5 pr-2.5 border-r border-slate-800">
-            <div className="flex items-center text-amber-400 text-xs font-bold">
-              {Array.from({ length: Math.min(stars, 3) }).map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400 -ml-0.5 first:ml-0" />
-              ))}
-            </div>
-            <div>
-              <div className="text-[9px] uppercase font-mono text-slate-400">Rank</div>
-              <div className="text-xs font-bold text-amber-300">{level}</div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1.5 pr-2.5 border-r border-slate-800">
-            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-            <div>
-              <div className="text-[9px] uppercase font-mono text-slate-400">Experience</div>
-              <div className="text-xs font-mono font-bold text-sky-300">{totalXP} XP</div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1.5 pr-2.5 border-r border-slate-800">
-            <Flame className="w-3.5 h-3.5 text-orange-500 animate-pulse" />
-            <div>
-              <div className="text-[9px] uppercase font-mono text-slate-400">Streak</div>
-              <div className="text-xs font-mono font-bold text-orange-400">{streak} Day{streak > 1 ? 's' : ''}</div>
-            </div>
-          </div>
-
+    <header className="border-b border-white/[0.08] bg-[#07090F]/95 backdrop-blur-xl sticky top-0 z-40 select-none">
+      {/* Top Utility Command Strip */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-5 py-2 flex items-center justify-between gap-3 border-b border-white/[0.04]">
+        {/* Left: Brand Identity & Active Language */}
+        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-            <div>
-              <div className="flex items-center justify-between gap-2 text-[9px] uppercase font-mono text-slate-400">
-                <span>Quests</span>
-                <span className="text-emerald-400 font-bold">{progressPercent}%</span>
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-600 p-[1px] shadow-sm">
+              <div className="w-full h-full bg-[#090C15] rounded-[11px] flex items-center justify-center text-sm font-black text-sky-400 font-mono">
+                CH
               </div>
-              <div className="w-16 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-0.5">
-                <div 
-                  className="h-full bg-gradient-to-r from-sky-400 to-emerald-400 rounded-full transition-all duration-500"
-                  style={{ width: `${progressPercent}%` }}
-                />
+            </div>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-xs sm:text-sm tracking-tight text-white font-mono">
+                  CODEHERO<span className="text-sky-400 font-normal">::2.0</span>
+                </span>
+                <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-bold hidden sm:inline">
+                  7 REALMS
+                </span>
               </div>
             </div>
           </div>
+
+          <div className="h-4 w-[1px] bg-white/10 hidden sm:block" />
+
+          {/* Language Selector */}
+          <LanguageSelector
+            currentLanguageId={currentLanguageId}
+            onSelectLanguage={onSelectLanguage}
+            completedByLanguage={completedByLanguage}
+          />
         </div>
 
-        {/* Right: Controls & Actions */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Mode Switcher */}
+        {/* Center: The Genuine Assessment / Top 1% Blueprint Pill */}
+        <div className="hidden lg:flex items-center gap-2">
           <button
             onClick={() => {
               soundService.playClick();
-              onToggleHeroMode();
+              onOpenRoadmap && onOpenRoadmap();
             }}
-            className={`
-              flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold rounded-xl border transition-all
-              ${isHeroMode 
-                ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300 shadow-sm' 
-                : 'bg-slate-900 border-slate-800 text-slate-300'
-              }
-            `}
-            title={isHeroMode ? "Switch to Pro Studio mode" : "Switch to Kid Hero mode"}
+            className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-amber-500/40 text-slate-300 transition-all group"
+            title="Click to view the genuine Top 1% Global Engineer Blueprint"
           >
-            {isHeroMode ? (
-              <>
-                <Smile className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="hidden sm:inline">Kid Hero</span>
-              </>
-            ) : (
-              <>
-                <Code2 className="w-3.5 h-3.5 text-sky-400" />
-                <span className="hidden sm:inline">Pro Mode</span>
-              </>
-            )}
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[11px] font-mono font-semibold">
+              FOUNDATION RATING: <span className="text-white font-bold">TOP 15%</span>
+            </span>
+            <span className="text-[10px] font-mono text-amber-400 group-hover:text-amber-300 font-bold flex items-center gap-0.5">
+              <span>[1% BLUEPRINT ↗]</span>
+            </span>
           </button>
+        </div>
 
-          {/* Sound Toggle */}
-          <button
-            onClick={handleToggleSound}
-            className="p-2 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl transition-colors"
-            title={isMuted ? "Turn sound on" : "Mute sound effects"}
-          >
-            {isMuted ? <VolumeX className="w-3.5 h-3.5 text-rose-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
-          </button>
+        {/* Right: XP Gauge, Streak & Tools */}
+        <div className="flex items-center gap-2 shrink-0">
+          {/* XP & Level Indicator */}
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+            <div className="text-right hidden sm:block">
+              <div className="text-[9px] font-mono text-slate-400 uppercase leading-none">
+                {prog.levelName}
+              </div>
+              <div className="text-xs font-mono font-bold text-sky-400 leading-none mt-0.5">
+                {totalXP.toLocaleString()} XP
+              </div>
+            </div>
 
-          {/* Sandbox Button */}
+            {/* Streak flame */}
+            <div className="flex items-center gap-1 pl-1.5 sm:border-l sm:border-white/10">
+              <span className="text-sm leading-none">🔥</span>
+              <span className="text-xs font-mono font-bold text-amber-400">{streak}</span>
+            </div>
+          </div>
+
+          {/* Sandbox */}
           <button
             onClick={() => {
               soundService.playClick();
               onOpenSandbox();
             }}
-            className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 rounded-xl transition-colors shadow-sm"
-            title="Freeform coding playground"
+            className="p-1.5 text-slate-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] rounded-xl transition-colors"
+            title="Open Freeform Sandbox"
           >
             <Play className="w-3.5 h-3.5 text-amber-400 fill-amber-400/20" />
-            <span className="hidden sm:inline">Sandbox</span>
           </button>
 
-          {/* Cheatsheet Button */}
+          {/* Audio toggle */}
+          <button
+            onClick={handleToggleSound}
+            className="p-1.5 text-slate-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] rounded-xl transition-colors"
+            title={isMuted ? "Unmute sound" : "Mute sound"}
+          >
+            {isMuted ? <VolumeX className="w-3.5 h-3.5 text-rose-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
+          </button>
+
+          {/* Hero / Pro Mode */}
           <button
             onClick={() => {
               soundService.playClick();
-              onOpenCheatsheet();
+              onToggleHeroMode();
             }}
-            className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 rounded-xl transition-colors shadow-sm"
-            title="Quick syntax reference"
+            className="p-1.5 text-slate-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] rounded-xl transition-colors"
+            title={isHeroMode ? "Pro Studio Mode" : "Kid Hero Mode"}
           >
-            <BookOpen className="w-3.5 h-3.5 text-sky-400" />
-            <span className="hidden sm:inline">Cheat Sheet</span>
+            {isHeroMode ? <Smile className="w-3.5 h-3.5 text-emerald-400" /> : <Code2 className="w-3.5 h-3.5 text-sky-400" />}
           </button>
+        </div>
+      </div>
 
-          {/* Reset progress */}
+      {/* Bottom Segmented Mode Switcher Strip (High-Craft Developer Tabs) */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-5 py-1.5 flex items-center justify-between gap-2 overflow-x-auto">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          {modes.map((mode) => {
+            const Icon = mode.icon;
+            const isActive = currentGameMode === mode.id;
+
+            return (
+              <button
+                key={mode.id}
+                onClick={() => {
+                  soundService.playClick();
+                  onSelectGameMode(mode.id);
+                }}
+                className={`
+                  flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 font-mono
+                  ${isActive 
+                    ? 'bg-white/10 text-white border border-white/20 shadow-sm shadow-black/50' 
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04] border border-transparent'
+                  }
+                `}
+              >
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-sky-400' : 'text-slate-400'}`} />
+                <span>{mode.label}</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-sky-500/20 text-sky-300' : 'bg-white/5 text-slate-500'}`}>
+                  {mode.count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Mobile Blueprint Button */}
+        <div className="lg:hidden shrink-0">
           <button
-            onClick={() => {
-              soundService.playClick();
-              if (window.confirm("Reset all quest progress and XP for this language?")) {
-                onResetProgress();
-              }
-            }}
-            className="p-2 text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition-colors"
-            title="Reset all progress"
+            onClick={() => onOpenRoadmap && onOpenRoadmap()}
+            className="text-[10px] font-mono text-amber-400 px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 font-bold"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
+            1% BLUEPRINT
           </button>
         </div>
       </div>

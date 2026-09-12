@@ -16,7 +16,6 @@ import { soundService } from './services/soundService';
 import { translatePythonError } from './services/errorTranslator';
 
 // Game Components
-import { XPBar } from './components/game/XPBar';
 import { getLevelProgress as getLevelInfo } from './services/gameEngine';
 import { ComboMeter } from './components/game/ComboMeter';
 import { LevelUpModal } from './components/game/LevelUpModal';
@@ -29,6 +28,8 @@ import { AlgorithmArena } from './components/game/AlgorithmArena';
 import { BugDetective } from './components/game/BugDetective';
 import { SpeedChallenge } from './components/game/SpeedChallenge';
 import { ProjectWorkshop } from './components/game/ProjectWorkshop';
+import { LanguageOracle } from './components/LanguageOracle';
+import { Top1PercentRoadmapModal } from './components/Top1PercentRoadmapModal';
 
 export default function App() {
   // 1. Language & State
@@ -50,6 +51,7 @@ export default function App() {
   // Modals state
   const [levelUpData, setLevelUpData] = useState(null);
   const [streakModalData, setStreakModalData] = useState(null);
+  const [isRoadmapOpen, setIsRoadmapOpen] = useState(false);
 
   // Active Language Configuration & Curriculum
   const activeLang = useMemo(() => getLanguageConfig(currentLanguageId), [currentLanguageId]);
@@ -299,6 +301,14 @@ export default function App() {
         return <SpeedChallenge currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
       case 'projects':
         return <ProjectWorkshop currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
+      case 'oracle':
+        return (
+          <LanguageOracle 
+            currentLanguageId={currentLanguageId} 
+            onSelectLanguage={handleSelectLanguage}
+            onOpenRoadmap={() => setIsRoadmapOpen(true)}
+          />
+        );
       case 'lessons':
       default:
         return (
@@ -363,9 +373,7 @@ export default function App() {
   };
 
   return (
-    <div className={`flex flex-col h-screen overflow-hidden font-sans ${isHeroMode ? 'bg-[#080B12] text-slate-100' : 'bg-slate-950 text-slate-100'}`}>
-      <XPBar xp={totalXP} streak={streak} onProfileClick={() => {}} />
-      
+    <div className={`flex flex-col h-screen overflow-hidden font-sans ${isHeroMode ? 'bg-[#06080F] text-slate-100' : 'bg-slate-950 text-slate-100'}`}>
       <Header
         currentLanguageId={currentLanguageId}
         onSelectLanguage={handleSelectLanguage}
@@ -380,21 +388,19 @@ export default function App() {
         onOpenSandbox={() => setIsSandboxOpen(true)}
         onResetProgress={() => storageService.resetLanguageProgress(currentLanguageId)}
         wasmStatus={wasmStatus}
+        currentGameMode={currentGameMode}
+        onSelectGameMode={setCurrentGameMode}
+        onOpenRoadmap={() => setIsRoadmapOpen(true)}
       />
-
-      {/* Insert Game Mode Selector Button near header */}
-      <div className="bg-slate-900 border-b border-slate-800 p-2 flex justify-center">
-        <button 
-          onClick={() => setIsGameModeSelectorOpen(true)}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-full font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] flex items-center gap-2"
-        >
-          ðŸŽ® GAME MODES
-        </button>
-      </div>
 
       {renderGameMode()}
 
       <ComboMeter combo={combo} />
+
+      <Top1PercentRoadmapModal 
+        isOpen={isRoadmapOpen}
+        onClose={() => setIsRoadmapOpen(false)}
+      />
 
       {!dailyRewardClaimed && (
         <DailyRewardModal onClaim={handleClaimDaily} onClose={() => setDailyRewardClaimed(true)} />
