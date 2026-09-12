@@ -198,7 +198,7 @@
         "duration": "5 min",
         "concept": "### strong, em, span\nUse <strong> to make text bold, like a superhero flexing! <em> makes it italic.",
         "task": "Make a word bold using strong.",
-        "starterCode": "<p>This is <strong>super</strong> cool!</p>",
+        "starterCode": "<!-- Quest: 2. Formatting Text -->\n<!-- TODO: Make a word bold using strong. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<p>This is <strong>super</strong> cool!</p>",
         "hints": [
           "Use strong",
@@ -1550,7 +1550,7 @@
         "duration": "7 min",
         "concept": "### Smooth Changes\nAnimate state changes with transition.",
         "task": "Add a transition for color.",
-        "starterCode": "<style>\n.btn { transition: color 0.3s ease; }\n</style>",
+        "starterCode": "<!-- Quest: 1. Transitions -->\n<!-- TODO: Add a transition for color. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.btn { transition: color 0.3s ease; }\n</style>",
         "hints": [
           "Use transition",
@@ -1574,7 +1574,7 @@
         "duration": "7 min",
         "concept": "### Translate & Scale\nMove and resize elements with transform.",
         "task": "Scale an element by 1.5.",
-        "starterCode": "<style>\n.box { transform: scale(1.5); }\n</style>",
+        "starterCode": "<!-- Quest: 2. Transforms -->\n<!-- TODO: Scale an element by 1.5. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { transform: scale(1.5); }\n</style>",
         "hints": [
           "Use transform",
@@ -1598,7 +1598,7 @@
         "duration": "7 min",
         "concept": "### Multiple Transforms\nChain transforms together.",
         "task": "Scale and rotate.",
-        "starterCode": "<style>\n.box { transform: scale(1.2) rotate(45deg); }\n</style>",
+        "starterCode": "<!-- Quest: 3. Combining Transforms -->\n<!-- TODO: Scale and rotate. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { transform: scale(1.2) rotate(45deg); }\n</style>",
         "hints": [
           "Chain space-separated",
@@ -1622,7 +1622,7 @@
         "duration": "7 min",
         "concept": "### Perspective\nAdd 3D depth to elements.",
         "task": "Use rotateX and perspective.",
-        "starterCode": "<style>\n.box { transform: perspective(500px) rotateX(45deg); }\n</style>",
+        "starterCode": "<!-- Quest: 4. 3D Transforms -->\n<!-- TODO: Use rotateX and perspective. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { transform: perspective(500px) rotateX(45deg); }\n</style>",
         "hints": [
           "Use perspective",
@@ -1654,7 +1654,7 @@
         "duration": "7 min",
         "concept": "### @keyframes\nDefine custom animations step-by-step.",
         "task": "Create a bounce animation.",
-        "starterCode": "<style>\n@keyframes bounce { 0% { top: 0; } 100% { top: 10px; } }\n</style>",
+        "starterCode": "<!-- Quest: 1. Keyframes -->\n<!-- TODO: Create a bounce animation. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n@keyframes bounce { 0% { top: 0; } 100% { top: 10px; } }\n</style>",
         "hints": [
           "Use @keyframes",
@@ -1678,7 +1678,7 @@
         "duration": "7 min",
         "concept": "### Applying Animations\nApply keyframes to an element.",
         "task": "Apply bounce animation.",
-        "starterCode": "<style>\n.box { animation: bounce 1s infinite; }\n</style>",
+        "starterCode": "<!-- Quest: 2. Animation Shorthand -->\n<!-- TODO: Apply bounce animation. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { animation: bounce 1s infinite; }\n</style>",
         "hints": [
           "Use animation",
@@ -1702,7 +1702,7 @@
         "duration": "7 min",
         "concept": "### Percentages\nAdd more steps using 50%, 75% etc.",
         "task": "Add a 50% step.",
-        "starterCode": "<style>\n@keyframes bounce { 0% {} 50% { top: 20px; } 100% {} }\n</style>",
+        "starterCode": "<!-- Quest: 3. Multi-step Animations -->\n<!-- TODO: Add a 50% step. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n@keyframes bounce { 0% {} 50% { top: 20px; } 100% {} }\n</style>",
         "hints": [
           "Use 50%",
@@ -1726,7 +1726,7 @@
         "duration": "7 min",
         "concept": "### will-change\nOptimize animations for smooth rendering.",
         "task": "Use will-change.",
-        "starterCode": "<style>\n.box { will-change: transform; }\n</style>",
+        "starterCode": "<!-- Quest: 4. Performance -->\n<!-- TODO: Use will-change. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { will-change: transform; }\n</style>",
         "hints": [
           "Use will-change",
@@ -1758,7 +1758,7 @@
         "duration": "7 min",
         "concept": "### Custom Shapes\nCut elements into shapes with clip-path.",
         "task": "Make a circle clip-path.",
-        "starterCode": "<style>\n.box { clip-path: circle(50%); }\n</style>",
+        "starterCode": "<!-- Quest: 1. Clip-path -->\n<!-- TODO: Make a circle clip-path. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { clip-path: circle(50%); }\n</style>",
         "hints": [
           "Use clip-path",
@@ -1782,7 +1782,7 @@
         "duration": "7 min",
         "concept": "### Visual Effects\nAdd blur or color shifts with filter.",
         "task": "Add a blur filter.",
-        "starterCode": "<style>\n.img { filter: blur(5px); }\n</style>",
+        "starterCode": "<!-- Quest: 2. Filter -->\n<!-- TODO: Add a blur filter. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.img { filter: blur(5px); }\n</style>",
         "hints": [
           "Use filter",
@@ -1806,7 +1806,7 @@
         "duration": "7 min",
         "concept": "### Glassmorphism\nBlur what's behind an element.",
         "task": "Add backdrop-filter.",
-        "starterCode": "<style>\n.box { backdrop-filter: blur(10px); }\n</style>",
+        "starterCode": "<!-- Quest: 3. Backdrop-filter -->\n<!-- TODO: Add backdrop-filter. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { backdrop-filter: blur(10px); }\n</style>",
         "hints": [
           "Use backdrop-filter",
@@ -1830,7 +1830,7 @@
         "duration": "7 min",
         "concept": "### Feature Detection\nCheck if a browser supports a feature.",
         "task": "Use @supports for grid.",
-        "starterCode": "<style>\n@supports (display: grid) { .box { display: grid; } }\n</style>",
+        "starterCode": "<!-- Quest: 4. @supports -->\n<!-- TODO: Use @supports for grid. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n@supports (display: grid) { .box { display: grid; } }\n</style>",
         "hints": [
           "Use @supports",
@@ -1862,7 +1862,7 @@
         "duration": "7 min",
         "concept": "### WCAG Contrast\nMake sure text is readable against its background.",
         "task": "Use high contrast colors.",
-        "starterCode": "<style>\n.text { color: black; background: white; }\n</style>",
+        "starterCode": "<!-- Quest: 1. Contrast -->\n<!-- TODO: Use high contrast colors. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.text { color: black; background: white; }\n</style>",
         "hints": [
           "Use dark color on light",
@@ -1886,7 +1886,7 @@
         "duration": "7 min",
         "concept": "### Screen Readers\nProvide extra context with aria-label.",
         "task": "Add aria-label to button.",
-        "starterCode": "<button aria-label=\"Close Menu\">X</button>",
+        "starterCode": "<!-- Quest: 2. ARIA Labels -->\n<!-- TODO: Add aria-label to button. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<button aria-label=\"Close Menu\">X</button>",
         "hints": [
           "Use aria-label",
@@ -1910,7 +1910,7 @@
         "duration": "7 min",
         "concept": "### Focus\nStyle the :focus state for keyboard users.",
         "task": "Add a focus outline.",
-        "starterCode": "<style>\nbutton:focus { outline: 2px solid blue; }\n</style>",
+        "starterCode": "<!-- Quest: 3. Keyboard Navigation -->\n<!-- TODO: Add a focus outline. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\nbutton:focus { outline: 2px solid blue; }\n</style>",
         "hints": [
           "Use :focus",
@@ -1934,7 +1934,7 @@
         "duration": "5 min",
         "concept": "### Describing Images\nAlways use meaningful alt text for images.",
         "task": "Add descriptive alt text.",
-        "starterCode": "<img src=\"dog.jpg\" alt=\"A brown dog running\">",
+        "starterCode": "<!-- Quest: 4. Alt Text -->\n<!-- TODO: Add descriptive alt text. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<img src=\"dog.jpg\" alt=\"A brown dog running\">",
         "hints": [
           "Use alt",
@@ -1966,7 +1966,7 @@
         "duration": "7 min",
         "concept": "### Block Element Modifier\nOrganize classes like .card__title--large.",
         "task": "Create a BEM class.",
-        "starterCode": "<div class=\"card__button--active\"></div>",
+        "starterCode": "<!-- Quest: 1. BEM Basics -->\n<!-- TODO: Create a BEM class. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<div class=\"card__button--active\"></div>",
         "hints": [
           "Use Block",
@@ -1990,7 +1990,7 @@
         "duration": "7 min",
         "concept": "### Reusability\nBuild independent, reusable CSS components.",
         "task": "Make a .btn component.",
-        "starterCode": "<style>\n.btn { padding: 10px; border-radius: 5px; }\n</style>",
+        "starterCode": "<!-- Quest: 2. Components -->\n<!-- TODO: Make a .btn component. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.btn { padding: 10px; border-radius: 5px; }\n</style>",
         "hints": [
           "Create class",
@@ -2014,7 +2014,7 @@
         "duration": "7 min",
         "concept": "### Utility First\nUse small classes that do one thing, like .mt-4.",
         "task": "Create a margin-top utility.",
-        "starterCode": "<style>\n.mt-4 { margin-top: 1rem; }\n</style>",
+        "starterCode": "<!-- Quest: 3. Utility Classes -->\n<!-- TODO: Create a margin-top utility. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.mt-4 { margin-top: 1rem; }\n</style>",
         "hints": [
           "Create class",
@@ -2046,7 +2046,7 @@
         "duration": "7 min",
         "concept": "### @container\nStyle elements based on container size, not viewport size.",
         "task": "Define a container.",
-        "starterCode": "<style>\n.wrap { container-type: inline-size; }\n</style>",
+        "starterCode": "<!-- Quest: 1. Container Queries -->\n<!-- TODO: Define a container. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.wrap { container-type: inline-size; }\n</style>",
         "hints": [
           "Use container-type",
@@ -2070,7 +2070,7 @@
         "duration": "7 min",
         "concept": "### Nesting\nWrite CSS selectors inside each other natively.",
         "task": "Nest a p inside .card.",
-        "starterCode": "<style>\n.card { & p { color: red; } }\n</style>",
+        "starterCode": "<!-- Quest: 2. CSS Nesting -->\n<!-- TODO: Nest a p inside .card. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.card { & p { color: red; } }\n</style>",
         "hints": [
           "Use &",
@@ -2094,7 +2094,7 @@
         "duration": "7 min",
         "concept": "### Parent Selector\nTarget an element if it contains a specific child.",
         "task": "Style div if it has an img.",
-        "starterCode": "<style>\ndiv:has(img) { border: 1px solid black; }\n</style>",
+        "starterCode": "<!-- Quest: 3. :has() Selector -->\n<!-- TODO: Style div if it has an img. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\ndiv:has(img) { border: 1px solid black; }\n</style>",
         "hints": [
           "Use :has",
@@ -2118,7 +2118,7 @@
         "duration": "7 min",
         "concept": "### Scroll-timeline\nAnimate based on scroll position.",
         "task": "Add animation-timeline.",
-        "starterCode": "<style>\n.box { animation-timeline: scroll(); }\n</style>",
+        "starterCode": "<!-- Quest: 4. Scroll Animations -->\n<!-- TODO: Add animation-timeline. -->\n<div class=\"container\">\n  \n</div>\n",
         "solution": "<style>\n.box { animation-timeline: scroll(); }\n</style>",
         "hints": [
           "Use animation-timeline",

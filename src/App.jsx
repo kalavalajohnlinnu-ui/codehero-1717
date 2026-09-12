@@ -30,6 +30,8 @@ import { SpeedChallenge } from './components/game/SpeedChallenge';
 import { ProjectWorkshop } from './components/game/ProjectWorkshop';
 import { LanguageOracle } from './components/LanguageOracle';
 import { Top1PercentRoadmapModal } from './components/Top1PercentRoadmapModal';
+import { DigitalNotesModal } from './components/DigitalNotesModal';
+import { CheckpointExamModal } from './components/CheckpointExamModal';
 
 export default function App() {
   // 1. Language & State
@@ -52,6 +54,8 @@ export default function App() {
   const [levelUpData, setLevelUpData] = useState(null);
   const [streakModalData, setStreakModalData] = useState(null);
   const [isRoadmapOpen, setIsRoadmapOpen] = useState(false);
+  const [isNotesOpen, setIsNotesOpen] = useState(false);
+  const [isExamOpen, setIsExamOpen] = useState(false);
 
   // Active Language Configuration & Curriculum
   const activeLang = useMemo(() => getLanguageConfig(currentLanguageId), [currentLanguageId]);
@@ -391,6 +395,8 @@ export default function App() {
         currentGameMode={currentGameMode}
         onSelectGameMode={setCurrentGameMode}
         onOpenRoadmap={() => setIsRoadmapOpen(true)}
+        onOpenNotes={() => setIsNotesOpen(true)}
+        onOpenExam={() => setIsExamOpen(true)}
       />
 
       {renderGameMode()}
@@ -400,6 +406,20 @@ export default function App() {
       <Top1PercentRoadmapModal 
         isOpen={isRoadmapOpen}
         onClose={() => setIsRoadmapOpen(false)}
+      />
+
+      <DigitalNotesModal
+        isOpen={isNotesOpen}
+        onClose={() => setIsNotesOpen(false)}
+        currentLanguageId={currentLanguageId}
+      />
+
+      <CheckpointExamModal
+        isOpen={isExamOpen}
+        onClose={() => setIsExamOpen(false)}
+        currentLanguageId={currentLanguageId}
+        pyodideInstance={pyodide}
+        onExamPassed={() => handleXPEarned(200)}
       />
 
       {!dailyRewardClaimed && (

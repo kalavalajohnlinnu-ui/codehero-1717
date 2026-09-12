@@ -160,10 +160,20 @@
         "duration": "5 min",
         "concept": "### Types of Toys\nJavaScript has different types of values. Just like toy cars are different from stuffed animals, strings (words) are different from numbers.\n\nUse `typeof` to find out what type a value is!",
         "task": "Use `typeof` inside `console.log()` to check the type of `\"Hero\"`.",
-        "starterCode": "console.log(typeof \"Hero\");\n",
+        "starterCode": "// Quest: 7. Primitive Types\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(typeof \"Hero\");",
-        "hints": ["Use typeof", "Put it in console.log", "Check 'Hero'"],
-        "tests": [{"description": "Outputs string", "type": "output_includes", "expected": "string"}]
+        "hints": [
+          "Use typeof",
+          "Put it in console.log",
+          "Check 'Hero'"
+        ],
+        "tests": [
+          {
+            "description": "Outputs string",
+            "type": "output_includes",
+            "expected": "string"
+          }
+        ]
       },
       {
         "id": "js-lesson-8",
@@ -174,8 +184,18 @@
         "task": "Write an if statement checking `0`. If truthy print `Yes`, else print `No`.",
         "starterCode": "if (0) {\n  console.log(\"Yes\");\n} else {\n  console.log(\"No\");\n}",
         "solution": "if (0) { console.log(\"Yes\"); } else { console.log(\"No\"); }",
-        "hints": ["0 is falsy", "Print No", "Use if/else"],
-        "tests": [{"description": "Outputs No", "type": "output_match", "expected": "No"}]
+        "hints": [
+          "0 is falsy",
+          "Print No",
+          "Use if/else"
+        ],
+        "tests": [
+          {
+            "description": "Outputs No",
+            "type": "output_match",
+            "expected": "No"
+          }
+        ]
       },
       {
         "id": "js-lesson-9",
@@ -184,10 +204,20 @@
         "duration": "5 min",
         "concept": "### Strict Equality\n`==` compares values loosely (`\"5\" == 5` is true), but `===` compares strictly (types must match too!). Always use `===`!",
         "task": "Compare `\"5\" === 5` and print the result.",
-        "starterCode": "console.log(\"5\" === 5);",
+        "starterCode": "// Quest: 9. == vs ===\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"5\" === 5);",
-        "hints": ["Use ===", "Compare string and number", "Print it"],
-        "tests": [{"description": "Outputs false", "type": "output_includes", "expected": "false"}]
+        "hints": [
+          "Use ===",
+          "Compare string and number",
+          "Print it"
+        ],
+        "tests": [
+          {
+            "description": "Outputs false",
+            "type": "output_includes",
+            "expected": "false"
+          }
+        ]
       },
       {
         "id": "js-lesson-10",
@@ -198,8 +228,18 @@
         "task": "Convert `\"10\"` to a number and print its typeof.",
         "starterCode": "let num = Number(\"10\");\nconsole.log(typeof num);",
         "solution": "let num = Number(\"10\"); console.log(typeof num);",
-        "hints": ["Use Number()", "Use typeof", "Print result"],
-        "tests": [{"description": "Outputs number", "type": "output_includes", "expected": "number"}]
+        "hints": [
+          "Use Number()",
+          "Use typeof",
+          "Print result"
+        ],
+        "tests": [
+          {
+            "description": "Outputs number",
+            "type": "output_includes",
+            "expected": "number"
+          }
+        ]
       }
     ]
   },
@@ -216,10 +256,20 @@
         "duration": "5 min",
         "concept": "### Math Time\nUse `+`, `-`, `*`, `/`, and `%` (remainder) to do math.",
         "task": "Print the remainder of 10 divided by 3.",
-        "starterCode": "console.log(10 % 3);",
+        "starterCode": "// Quest: 11. Arithmetic Operators\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(10 % 3);",
-        "hints": ["Use %", "10 % 3", "Print it"],
-        "tests": [{"description": "Outputs 1", "type": "output_includes", "expected": "1"}]
+        "hints": [
+          "Use %",
+          "10 % 3",
+          "Print it"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 1",
+            "type": "output_includes",
+            "expected": "1"
+          }
+        ]
       },
       {
         "id": "js-lesson-12",
@@ -228,10 +278,20 @@
         "duration": "5 min",
         "concept": "### AND & OR\n`&&` means AND (both must be true). `||` means OR (one must be true). `!` means NOT.",
         "task": "Print the result of `true && false`.",
-        "starterCode": "console.log(true && false);",
+        "starterCode": "// Quest: 12. Logical Operators\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(true && false);",
-        "hints": ["Use &&", "Combine true and false", "Print it"],
-        "tests": [{"description": "Outputs false", "type": "output_includes", "expected": "false"}]
+        "hints": [
+          "Use &&",
+          "Combine true and false",
+          "Print it"
+        ],
+        "tests": [
+          {
+            "description": "Outputs false",
+            "type": "output_includes",
+            "expected": "false"
+          }
+        ]
       },
       {
         "id": "js-lesson-13",
@@ -242,8 +302,18 @@
         "task": "Use ternary to print `Win` if `score > 50`, else `Lose`. Score is 60.",
         "starterCode": "let score = 60;\nconsole.log(score > 50 ? \"Win\" : \"Lose\");",
         "solution": "let score = 60; console.log(score > 50 ? \"Win\" : \"Lose\");",
-        "hints": ["Use ?", "Use :", "Print it"],
-        "tests": [{"description": "Outputs Win", "type": "output_includes", "expected": "Win"}]
+        "hints": [
+          "Use ?",
+          "Use :",
+          "Print it"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Win",
+            "type": "output_includes",
+            "expected": "Win"
+          }
+        ]
       }
     ]
   },
@@ -262,8 +332,22 @@
         "task": "Write a `for` loop that prints numbers 1 to 3.",
         "starterCode": "for(let i = 1; i <= 3; i++) {\n  console.log(i);\n}",
         "solution": "for(let i = 1; i <= 3; i++) { console.log(i); }",
-        "hints": ["Use let i = 1", "i <= 3", "console.log(i)"],
-        "tests": [{"description": "Outputs 1,2,3", "type": "output_includes", "expected": ["1", "2", "3"]}]
+        "hints": [
+          "Use let i = 1",
+          "i <= 3",
+          "console.log(i)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 1,2,3",
+            "type": "output_includes",
+            "expected": [
+              "1",
+              "2",
+              "3"
+            ]
+          }
+        ]
       },
       {
         "id": "js-lesson-15",
@@ -274,8 +358,22 @@
         "task": "Create `let count = 3` and use a while loop to print and decrease it until it hits 0.",
         "starterCode": "let count = 3;\nwhile(count > 0) {\n  console.log(count);\n  count--;\n}",
         "solution": "let count = 3; while(count > 0) { console.log(count); count--; }",
-        "hints": ["while(count > 0)", "count--", "console.log"],
-        "tests": [{"description": "Outputs 3,2,1", "type": "output_includes", "expected": ["3", "2", "1"]}]
+        "hints": [
+          "while(count > 0)",
+          "count--",
+          "console.log"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 3,2,1",
+            "type": "output_includes",
+            "expected": [
+              "3",
+              "2",
+              "1"
+            ]
+          }
+        ]
       },
       {
         "id": "js-lesson-16",
@@ -286,8 +384,21 @@
         "task": "Loop through `['A', 'B']` and print each item.",
         "starterCode": "const letters = ['A', 'B'];\nfor(let l of letters) {\n  console.log(l);\n}",
         "solution": "const letters = ['A', 'B']; for(let l of letters) { console.log(l); }",
-        "hints": ["Use for...of", "Print l", "Use letters"],
-        "tests": [{"description": "Outputs A and B", "type": "output_includes", "expected": ["A", "B"]}]
+        "hints": [
+          "Use for...of",
+          "Print l",
+          "Use letters"
+        ],
+        "tests": [
+          {
+            "description": "Outputs A and B",
+            "type": "output_includes",
+            "expected": [
+              "A",
+              "B"
+            ]
+          }
+        ]
       },
       {
         "id": "js-lesson-17",
@@ -298,8 +409,21 @@
         "task": "Loop from 1 to 3. If i is 2, use `continue`. Print the rest.",
         "starterCode": "for(let i=1; i<=3; i++) {\n  if(i === 2) continue;\n  console.log(i);\n}",
         "solution": "for(let i=1; i<=3; i++) { if(i === 2) continue; console.log(i); }",
-        "hints": ["Use continue", "Check if i === 2", "Print i"],
-        "tests": [{"description": "Skips 2", "type": "output_includes", "expected": ["1", "3"]}]
+        "hints": [
+          "Use continue",
+          "Check if i === 2",
+          "Print i"
+        ],
+        "tests": [
+          {
+            "description": "Skips 2",
+            "type": "output_includes",
+            "expected": [
+              "1",
+              "3"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -318,8 +442,18 @@
         "task": "Create a function expression `sayHi` that prints `Hi`. Call it.",
         "starterCode": "const sayHi = function() {\n  console.log(\"Hi\");\n};\nsayHi();",
         "solution": "const sayHi = function() { console.log(\"Hi\"); }; sayHi();",
-        "hints": ["Assign function to const", "Print Hi", "Call it"],
-        "tests": [{"description": "Outputs Hi", "type": "output_includes", "expected": "Hi"}]
+        "hints": [
+          "Assign function to const",
+          "Print Hi",
+          "Call it"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Hi",
+            "type": "output_includes",
+            "expected": "Hi"
+          }
+        ]
       },
       {
         "id": "js-lesson-19",
@@ -330,8 +464,18 @@
         "task": "Create `function greet(name = \"Guest\")` that prints the name. Call `greet()` with nothing.",
         "starterCode": "function greet(name = \"Guest\") {\n  console.log(name);\n}\ngreet();",
         "solution": "function greet(name = \"Guest\") { console.log(name); } greet();",
-        "hints": ["name = 'Guest'", "Print name", "Call greet()"],
-        "tests": [{"description": "Outputs Guest", "type": "output_includes", "expected": "Guest"}]
+        "hints": [
+          "name = 'Guest'",
+          "Print name",
+          "Call greet()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Guest",
+            "type": "output_includes",
+            "expected": "Guest"
+          }
+        ]
       },
       {
         "id": "js-lesson-20",
@@ -342,8 +486,18 @@
         "task": "Create `function show(...items)` and print `items.length`. Call it with `1, 2, 3`.",
         "starterCode": "function show(...items) {\n  console.log(items.length);\n}\nshow(1, 2, 3);",
         "solution": "function show(...items) { console.log(items.length); } show(1, 2, 3);",
-        "hints": ["Use ...items", "Print items.length", "Call with 3 args"],
-        "tests": [{"description": "Outputs 3", "type": "output_includes", "expected": "3"}]
+        "hints": [
+          "Use ...items",
+          "Print items.length",
+          "Call with 3 args"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 3",
+            "type": "output_includes",
+            "expected": "3"
+          }
+        ]
       },
       {
         "id": "js-lesson-21",
@@ -354,8 +508,18 @@
         "task": "Create `runCallback(cb)` that calls `cb()`. Pass a function that prints `Done`.",
         "starterCode": "function runCallback(cb) {\n  cb();\n}\nrunCallback(() => console.log(\"Done\"));",
         "solution": "function runCallback(cb) { cb(); } runCallback(() => console.log(\"Done\"));",
-        "hints": ["Pass arrow function", "Print Done", "Call cb() inside"],
-        "tests": [{"description": "Outputs Done", "type": "output_includes", "expected": "Done"}]
+        "hints": [
+          "Pass arrow function",
+          "Print Done",
+          "Call cb() inside"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Done",
+            "type": "output_includes",
+            "expected": "Done"
+          }
+        ]
       }
     ]
   },
@@ -374,8 +538,18 @@
         "task": "Create an object `player` with `name: 'Hero'` and `score: 100`. Print `player.name`.",
         "starterCode": "const player = { name: 'Hero', score: 100 };\nconsole.log(player.name);",
         "solution": "const player = { name: 'Hero', score: 100 }; console.log(player.name);",
-        "hints": ["Use {} for object", "Key-value pairs", "Print player.name"],
-        "tests": [{"description": "Outputs Hero", "type": "output_includes", "expected": "Hero"}]
+        "hints": [
+          "Use {} for object",
+          "Key-value pairs",
+          "Print player.name"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Hero",
+            "type": "output_includes",
+            "expected": "Hero"
+          }
+        ]
       },
       {
         "id": "js-lesson-23",
@@ -386,8 +560,18 @@
         "task": "Print `player['score']`.",
         "starterCode": "const player = { score: 100 };\nconsole.log(player['score']);",
         "solution": "const player = { score: 100 }; console.log(player['score']);",
-        "hints": ["Use ['score']", "Print it", "Don't use dot"],
-        "tests": [{"description": "Outputs 100", "type": "output_includes", "expected": "100"}]
+        "hints": [
+          "Use ['score']",
+          "Print it",
+          "Don't use dot"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 100",
+            "type": "output_includes",
+            "expected": "100"
+          }
+        ]
       },
       {
         "id": "js-lesson-24",
@@ -398,8 +582,18 @@
         "task": "Print the keys of `{ a: 1, b: 2 }` using `Object.keys()`.",
         "starterCode": "const obj = { a: 1, b: 2 };\nconsole.log(Object.keys(obj));",
         "solution": "const obj = { a: 1, b: 2 }; console.log(Object.keys(obj));",
-        "hints": ["Use Object.keys", "Pass obj", "Print result"],
-        "tests": [{"description": "Outputs keys", "type": "output_includes", "expected": "a"}]
+        "hints": [
+          "Use Object.keys",
+          "Pass obj",
+          "Print result"
+        ],
+        "tests": [
+          {
+            "description": "Outputs keys",
+            "type": "output_includes",
+            "expected": "a"
+          }
+        ]
       },
       {
         "id": "js-lesson-25",
@@ -410,8 +604,18 @@
         "task": "Convert `{ name: 'Bot' }` to a string and print it.",
         "starterCode": "const bot = { name: 'Bot' };\nconsole.log(JSON.stringify(bot));",
         "solution": "const bot = { name: 'Bot' }; console.log(JSON.stringify(bot));",
-        "hints": ["Use JSON.stringify", "Pass bot", "Print it"],
-        "tests": [{"description": "Outputs JSON", "type": "output_includes", "expected": "\"name\""}]
+        "hints": [
+          "Use JSON.stringify",
+          "Pass bot",
+          "Print it"
+        ],
+        "tests": [
+          {
+            "description": "Outputs JSON",
+            "type": "output_includes",
+            "expected": "\"name\""
+          }
+        ]
       }
     ]
   },
@@ -430,8 +634,18 @@
         "task": "Extract `first` and `second` from `[10, 20]` and print `first`.",
         "starterCode": "const [first, second] = [10, 20];\nconsole.log(first);",
         "solution": "const [first, second] = [10, 20]; console.log(first);",
-        "hints": ["Use const [first, second]", "Assign to [10, 20]", "Print first"],
-        "tests": [{"description": "Outputs 10", "type": "output_includes", "expected": "10"}]
+        "hints": [
+          "Use const [first, second]",
+          "Assign to [10, 20]",
+          "Print first"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 10",
+            "type": "output_includes",
+            "expected": "10"
+          }
+        ]
       },
       {
         "id": "js-lesson-27",
@@ -442,8 +656,18 @@
         "task": "Extract `age` from `{ age: 12, name: 'Alex' }` and print it.",
         "starterCode": "const { age } = { age: 12, name: 'Alex' };\nconsole.log(age);",
         "solution": "const { age } = { age: 12, name: 'Alex' }; console.log(age);",
-        "hints": ["Use { age }", "Extract from object", "Print age"],
-        "tests": [{"description": "Outputs 12", "type": "output_includes", "expected": "12"}]
+        "hints": [
+          "Use { age }",
+          "Extract from object",
+          "Print age"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 12",
+            "type": "output_includes",
+            "expected": "12"
+          }
+        ]
       },
       {
         "id": "js-lesson-28",
@@ -454,8 +678,18 @@
         "task": "Combine `[1, 2]` and `[3, 4]` using spread and print the new array's length.",
         "starterCode": "const arr1 = [1, 2];\nconst arr2 = [3, 4];\nconst combined = [...arr1, ...arr2];\nconsole.log(combined.length);",
         "solution": "const arr1 = [1, 2]; const arr2 = [3, 4]; const combined = [...arr1, ...arr2]; console.log(combined.length);",
-        "hints": ["Use ...", "Combine into array", "Print length"],
-        "tests": [{"description": "Outputs 4", "type": "output_includes", "expected": "4"}]
+        "hints": [
+          "Use ...",
+          "Combine into array",
+          "Print length"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 4",
+            "type": "output_includes",
+            "expected": "4"
+          }
+        ]
       }
     ]
   },
@@ -474,8 +708,18 @@
         "task": "Use `.map()` on `[1, 2, 3]` to double each number. Print the new array.",
         "starterCode": "const nums = [1, 2, 3];\nconst doubled = nums.map(n => n * 2);\nconsole.log(doubled);",
         "solution": "const nums = [1, 2, 3]; const doubled = nums.map(n => n * 2); console.log(doubled);",
-        "hints": ["Use map", "Return n * 2", "Print result"],
-        "tests": [{"description": "Outputs 2,4,6", "type": "output_includes", "expected": "4"}]
+        "hints": [
+          "Use map",
+          "Return n * 2",
+          "Print result"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 2,4,6",
+            "type": "output_includes",
+            "expected": "4"
+          }
+        ]
       },
       {
         "id": "js-lesson-30",
@@ -486,8 +730,18 @@
         "task": "Filter `[1, 2, 3, 4]` to keep numbers greater than 2.",
         "starterCode": "const nums = [1, 2, 3, 4];\nconst big = nums.filter(n => n > 2);\nconsole.log(big);",
         "solution": "const nums = [1, 2, 3, 4]; const big = nums.filter(n => n > 2); console.log(big);",
-        "hints": ["Use filter", "Check n > 2", "Print big"],
-        "tests": [{"description": "Outputs 3,4", "type": "output_includes", "expected": "3"}]
+        "hints": [
+          "Use filter",
+          "Check n > 2",
+          "Print big"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 3,4",
+            "type": "output_includes",
+            "expected": "3"
+          }
+        ]
       },
       {
         "id": "js-lesson-31",
@@ -498,8 +752,18 @@
         "task": "Use `.reduce((sum, n) => sum + n, 0)` on `[1, 2, 3]`.",
         "starterCode": "const sum = [1, 2, 3].reduce((acc, n) => acc + n, 0);\nconsole.log(sum);",
         "solution": "const sum = [1, 2, 3].reduce((acc, n) => acc + n, 0); console.log(sum);",
-        "hints": ["Use reduce", "Add n to acc", "Print sum"],
-        "tests": [{"description": "Outputs 6", "type": "output_includes", "expected": "6"}]
+        "hints": [
+          "Use reduce",
+          "Add n to acc",
+          "Print sum"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 6",
+            "type": "output_includes",
+            "expected": "6"
+          }
+        ]
       },
       {
         "id": "js-lesson-32",
@@ -510,8 +774,18 @@
         "task": "Use `.find()` on `[10, 20, 30]` to get the number equal to 20.",
         "starterCode": "const match = [10, 20, 30].find(n => n === 20);\nconsole.log(match);",
         "solution": "const match = [10, 20, 30].find(n => n === 20); console.log(match);",
-        "hints": ["Use find", "Check n === 20", "Print match"],
-        "tests": [{"description": "Outputs 20", "type": "output_includes", "expected": "20"}]
+        "hints": [
+          "Use find",
+          "Check n === 20",
+          "Print match"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 20",
+            "type": "output_includes",
+            "expected": "20"
+          }
+        ]
       },
       {
         "id": "js-lesson-33",
@@ -522,8 +796,18 @@
         "task": "Filter `[1, 2, 3]` for > 1, then map to multiply by 10. Print result.",
         "starterCode": "const res = [1, 2, 3].filter(n => n > 1).map(n => n * 10);\nconsole.log(res);",
         "solution": "const res = [1, 2, 3].filter(n => n > 1).map(n => n * 10); console.log(res);",
-        "hints": ["filter first", "map second", "Print res"],
-        "tests": [{"description": "Outputs 20, 30", "type": "output_includes", "expected": "20"}]
+        "hints": [
+          "filter first",
+          "map second",
+          "Print res"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 20, 30",
+            "type": "output_includes",
+            "expected": "20"
+          }
+        ]
       }
     ]
   },
@@ -542,8 +826,17 @@
         "task": "Create a block with `{ let x = 5; }`. Try to log `typeof x` outside.",
         "starterCode": "{\n  let x = 5;\n}\nconsole.log(typeof x);",
         "solution": "{ let x = 5; } console.log(typeof x);",
-        "hints": ["typeof x will be undefined", "Let is block scoped"],
-        "tests": [{"description": "Outputs undefined", "type": "output_includes", "expected": "undefined"}]
+        "hints": [
+          "typeof x will be undefined",
+          "Let is block scoped"
+        ],
+        "tests": [
+          {
+            "description": "Outputs undefined",
+            "type": "output_includes",
+            "expected": "undefined"
+          }
+        ]
       },
       {
         "id": "js-lesson-35",
@@ -554,8 +847,18 @@
         "task": "Create a function returning `() => 'Hello'`. Call it.",
         "starterCode": "function makeHello() {\n  return () => 'Hello';\n}\nconsole.log(makeHello()());",
         "solution": "function makeHello() { return () => 'Hello'; } console.log(makeHello()());",
-        "hints": ["Return a function", "Call both functions", "Print output"],
-        "tests": [{"description": "Outputs Hello", "type": "output_includes", "expected": "Hello"}]
+        "hints": [
+          "Return a function",
+          "Call both functions",
+          "Print output"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Hello",
+            "type": "output_includes",
+            "expected": "Hello"
+          }
+        ]
       },
       {
         "id": "js-lesson-36",
@@ -566,8 +869,18 @@
         "task": "Write a counter function that increments and returns a variable.",
         "starterCode": "function counter() {\n  let c = 0;\n  return () => ++c;\n}\nconst next = counter();\nconsole.log(next());",
         "solution": "function counter() { let c = 0; return () => ++c; } const next = counter(); console.log(next());",
-        "hints": ["Use closure", "Return increment", "Call next"],
-        "tests": [{"description": "Outputs 1", "type": "output_includes", "expected": "1"}]
+        "hints": [
+          "Use closure",
+          "Return increment",
+          "Call next"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 1",
+            "type": "output_includes",
+            "expected": "1"
+          }
+        ]
       },
       {
         "id": "js-lesson-37",
@@ -578,8 +891,18 @@
         "task": "Call `sayBoo()` before defining `function sayBoo() { console.log('Boo!'); }`.",
         "starterCode": "sayBoo();\nfunction sayBoo() { console.log('Boo!'); }",
         "solution": "sayBoo(); function sayBoo() { console.log('Boo!'); }",
-        "hints": ["Call first", "Define second", "Print Boo"],
-        "tests": [{"description": "Outputs Boo!", "type": "output_includes", "expected": "Boo"}]
+        "hints": [
+          "Call first",
+          "Define second",
+          "Print Boo"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Boo!",
+            "type": "output_includes",
+            "expected": "Boo"
+          }
+        ]
       }
     ]
   },
@@ -598,8 +921,18 @@
         "task": "Wrap `unknownFunction()` in a try/catch and log `\"Caught it!\"` in the catch.",
         "starterCode": "try {\n  unknownFunction();\n} catch (e) {\n  console.log(\"Caught it!\");\n}",
         "solution": "try { unknownFunction(); } catch (e) { console.log(\"Caught it!\"); }",
-        "hints": ["Use try", "Use catch(e)", "Print Caught it!"],
-        "tests": [{"description": "Outputs Caught it!", "type": "output_includes", "expected": "Caught"}]
+        "hints": [
+          "Use try",
+          "Use catch(e)",
+          "Print Caught it!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Caught it!",
+            "type": "output_includes",
+            "expected": "Caught"
+          }
+        ]
       },
       {
         "id": "js-lesson-39",
@@ -610,8 +943,18 @@
         "task": "Throw an Error, catch it, and print its `.message`.",
         "starterCode": "try {\n  throw new Error(\"Bad\");\n} catch (e) {\n  console.log(e.message);\n}",
         "solution": "try { throw new Error(\"Bad\"); } catch (e) { console.log(e.message); }",
-        "hints": ["Throw Error", "Access e.message", "Print it"],
-        "tests": [{"description": "Outputs Bad", "type": "output_includes", "expected": "Bad"}]
+        "hints": [
+          "Throw Error",
+          "Access e.message",
+          "Print it"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Bad",
+            "type": "output_includes",
+            "expected": "Bad"
+          }
+        ]
       },
       {
         "id": "js-lesson-40",
@@ -620,10 +963,20 @@
         "duration": "5 min",
         "concept": "### Always Runs\n`finally` block runs whether there was an error or not.",
         "task": "Add a finally block to print `\"Done\"`.",
-        "starterCode": "try { } catch(e) {} finally { console.log(\"Done\"); }",
+        "starterCode": "// Quest: 40. Finally\n// TODO: Write your JavaScript solution here\n",
         "solution": "try { } catch(e) {} finally { console.log(\"Done\"); }",
-        "hints": ["Use finally", "Print Done", "Follow try/catch"],
-        "tests": [{"description": "Outputs Done", "type": "output_includes", "expected": "Done"}]
+        "hints": [
+          "Use finally",
+          "Print Done",
+          "Follow try/catch"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Done",
+            "type": "output_includes",
+            "expected": "Done"
+          }
+        ]
       }
     ]
   },
@@ -642,8 +995,18 @@
         "task": "Create a `class Hero` with a `constructor(name)` that sets `this.name`. Print `new Hero('Batman').name`.",
         "starterCode": "class Hero {\n  constructor(name) {\n    this.name = name;\n  }\n}\nconsole.log(new Hero('Batman').name);",
         "solution": "class Hero { constructor(name) { this.name = name; } } console.log(new Hero('Batman').name);",
-        "hints": ["Use class Hero", "Use constructor", "Set this.name"],
-        "tests": [{"description": "Outputs Batman", "type": "output_includes", "expected": "Batman"}]
+        "hints": [
+          "Use class Hero",
+          "Use constructor",
+          "Set this.name"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Batman",
+            "type": "output_includes",
+            "expected": "Batman"
+          }
+        ]
       },
       {
         "id": "js-lesson-42",
@@ -654,8 +1017,18 @@
         "task": "Add a `speak()` method to `Hero` that returns `\"I am Hero\"`.",
         "starterCode": "class Hero {\n  speak() { return \"I am Hero\"; }\n}\nconsole.log(new Hero().speak());",
         "solution": "class Hero { speak() { return \"I am Hero\"; } } console.log(new Hero().speak());",
-        "hints": ["Add speak()", "Return string", "Call speak()"],
-        "tests": [{"description": "Outputs I am Hero", "type": "output_includes", "expected": "Hero"}]
+        "hints": [
+          "Add speak()",
+          "Return string",
+          "Call speak()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs I am Hero",
+            "type": "output_includes",
+            "expected": "Hero"
+          }
+        ]
       },
       {
         "id": "js-lesson-43",
@@ -666,8 +1039,18 @@
         "task": "Make `Mage` extend `Hero`. Print its name.",
         "starterCode": "class Hero { constructor(name) { this.name = name; } }\nclass Mage extends Hero {\n  constructor(name) { super(name); }\n}\nconsole.log(new Mage('Merlin').name);",
         "solution": "class Hero { constructor(name) { this.name = name; } } class Mage extends Hero { constructor(name) { super(name); } } console.log(new Mage('Merlin').name);",
-        "hints": ["extends Hero", "call super()", "Print name"],
-        "tests": [{"description": "Outputs Merlin", "type": "output_includes", "expected": "Merlin"}]
+        "hints": [
+          "extends Hero",
+          "call super()",
+          "Print name"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Merlin",
+            "type": "output_includes",
+            "expected": "Merlin"
+          }
+        ]
       },
       {
         "id": "js-lesson-44",
@@ -678,8 +1061,18 @@
         "task": "Add `static info()` returning `\"Class\"` and call it as `Hero.info()`.",
         "starterCode": "class Hero {\n  static info() { return \"Class\"; }\n}\nconsole.log(Hero.info());",
         "solution": "class Hero { static info() { return \"Class\"; } } console.log(Hero.info());",
-        "hints": ["static keyword", "Return Class", "Call Hero.info()"],
-        "tests": [{"description": "Outputs Class", "type": "output_includes", "expected": "Class"}]
+        "hints": [
+          "static keyword",
+          "Return Class",
+          "Call Hero.info()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Class",
+            "type": "output_includes",
+            "expected": "Class"
+          }
+        ]
       }
     ]
   },
@@ -696,10 +1089,18 @@
         "duration": "5 min",
         "concept": "### Finding Elements\n`document.querySelector()` finds an element on the webpage. (Simulated in this lesson)",
         "task": "Log `\"Found element\"` as if you ran querySelector.",
-        "starterCode": "console.log(\"Found element\");",
+        "starterCode": "// Quest: 45. querySelector\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Found element\");",
-        "hints": ["Print Found element"],
-        "tests": [{"description": "Outputs Found element", "type": "output_includes", "expected": "Found"}]
+        "hints": [
+          "Print Found element"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Found element",
+            "type": "output_includes",
+            "expected": "Found"
+          }
+        ]
       },
       {
         "id": "js-lesson-46",
@@ -708,10 +1109,18 @@
         "duration": "5 min",
         "concept": "### Changing HTML\nYou can change `.innerHTML` or `.textContent` of an element. (Simulated)",
         "task": "Log `\"Changed content\"`.",
-        "starterCode": "console.log(\"Changed content\");",
+        "starterCode": "// Quest: 46. Modifying Content\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Changed content\");",
-        "hints": ["Print Changed content"],
-        "tests": [{"description": "Outputs Changed", "type": "output_includes", "expected": "Changed"}]
+        "hints": [
+          "Print Changed content"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Changed",
+            "type": "output_includes",
+            "expected": "Changed"
+          }
+        ]
       },
       {
         "id": "js-lesson-47",
@@ -720,10 +1129,18 @@
         "duration": "5 min",
         "concept": "### New HTML\n`document.createElement('div')` makes a new element! (Simulated)",
         "task": "Log `\"Created div\"`.",
-        "starterCode": "console.log(\"Created div\");",
+        "starterCode": "// Quest: 47. Creating Elements\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Created div\");",
-        "hints": ["Print Created div"],
-        "tests": [{"description": "Outputs Created", "type": "output_includes", "expected": "Created"}]
+        "hints": [
+          "Print Created div"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Created",
+            "type": "output_includes",
+            "expected": "Created"
+          }
+        ]
       },
       {
         "id": "js-lesson-48",
@@ -732,10 +1149,18 @@
         "duration": "5 min",
         "concept": "### Listening for Clicks\n`.addEventListener('click', fn)` runs code when clicked! (Simulated)",
         "task": "Log `\"Clicked!\"`.",
-        "starterCode": "console.log(\"Clicked!\");",
+        "starterCode": "// Quest: 48. addEventListener\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Clicked!\");",
-        "hints": ["Print Clicked!"],
-        "tests": [{"description": "Outputs Clicked", "type": "output_includes", "expected": "Clicked"}]
+        "hints": [
+          "Print Clicked!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Clicked",
+            "type": "output_includes",
+            "expected": "Clicked"
+          }
+        ]
       },
       {
         "id": "js-lesson-49",
@@ -744,10 +1169,18 @@
         "duration": "5 min",
         "concept": "### Smart Listening\nListen on a parent element instead of many children! (Simulated)",
         "task": "Log `\"Delegated!\"`.",
-        "starterCode": "console.log(\"Delegated!\");",
+        "starterCode": "// Quest: 49. Event Delegation\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Delegated!\");",
-        "hints": ["Print Delegated!"],
-        "tests": [{"description": "Outputs Delegated", "type": "output_includes", "expected": "Delegated"}]
+        "hints": [
+          "Print Delegated!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Delegated",
+            "type": "output_includes",
+            "expected": "Delegated"
+          }
+        ]
       }
     ]
   },
@@ -764,10 +1197,18 @@
         "duration": "5 min",
         "concept": "### Saving Data\n`localStorage.setItem('key', 'value')` saves data permanently in the browser! (Simulated)",
         "task": "Log `\"Saved data\"`.",
-        "starterCode": "console.log(\"Saved data\");",
+        "starterCode": "// Quest: 50. localStorage\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Saved data\");",
-        "hints": ["Print Saved data"],
-        "tests": [{"description": "Outputs Saved", "type": "output_includes", "expected": "Saved"}]
+        "hints": [
+          "Print Saved data"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Saved",
+            "type": "output_includes",
+            "expected": "Saved"
+          }
+        ]
       },
       {
         "id": "js-lesson-51",
@@ -776,10 +1217,19 @@
         "duration": "5 min",
         "concept": "### Delays\n`setTimeout(fn, 1000)` waits 1 second before running code.",
         "task": "Use `setTimeout(() => console.log('Ping!'), 0)`.",
-        "starterCode": "setTimeout(() => console.log('Ping!'), 0);",
+        "starterCode": "// Quest: 51. setTimeout\n// TODO: Write your JavaScript solution here\n",
         "solution": "setTimeout(() => console.log('Ping!'), 0);",
-        "hints": ["Use setTimeout", "Print Ping!"],
-        "tests": [{"description": "Outputs Ping", "type": "output_includes", "expected": "Ping"}]
+        "hints": [
+          "Use setTimeout",
+          "Print Ping!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Ping",
+            "type": "output_includes",
+            "expected": "Ping"
+          }
+        ]
       },
       {
         "id": "js-lesson-52",
@@ -788,10 +1238,20 @@
         "duration": "5 min",
         "concept": "### Current Time\n`new Date()` gets the current date and time.",
         "task": "Print `typeof new Date().getFullYear()`.",
-        "starterCode": "console.log(typeof new Date().getFullYear());",
+        "starterCode": "// Quest: 52. Date Object\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(typeof new Date().getFullYear());",
-        "hints": ["Use new Date()", "getFullYear()", "typeof"],
-        "tests": [{"description": "Outputs number", "type": "output_includes", "expected": "number"}]
+        "hints": [
+          "Use new Date()",
+          "getFullYear()",
+          "typeof"
+        ],
+        "tests": [
+          {
+            "description": "Outputs number",
+            "type": "output_includes",
+            "expected": "number"
+          }
+        ]
       },
       {
         "id": "js-lesson-53",
@@ -800,10 +1260,18 @@
         "duration": "5 min",
         "concept": "### Browser Info\n`navigator.userAgent` tells you about the browser. (Simulated)",
         "task": "Log `\"Browser Info\"`.",
-        "starterCode": "console.log(\"Browser Info\");",
+        "starterCode": "// Quest: 53. Navigator\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Browser Info\");",
-        "hints": ["Print Browser Info"],
-        "tests": [{"description": "Outputs Info", "type": "output_includes", "expected": "Info"}]
+        "hints": [
+          "Print Browser Info"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Info",
+            "type": "output_includes",
+            "expected": "Info"
+          }
+        ]
       }
     ]
   },
@@ -822,8 +1290,16 @@
         "task": "Print `\"Start\"`, then `\"End\"`.",
         "starterCode": "console.log(\"Start\");\nconsole.log(\"End\");",
         "solution": "console.log(\"Start\"); console.log(\"End\");",
-        "hints": ["Print both"],
-        "tests": [{"description": "Outputs both", "type": "output_includes", "expected": "End"}]
+        "hints": [
+          "Print both"
+        ],
+        "tests": [
+          {
+            "description": "Outputs both",
+            "type": "output_includes",
+            "expected": "End"
+          }
+        ]
       },
       {
         "id": "js-lesson-55",
@@ -832,10 +1308,19 @@
         "duration": "5 min",
         "concept": "### I Promise\nA Promise represents a future value. `new Promise((resolve, reject) => ...)`.",
         "task": "Create a Promise that resolves with `\"Done\"`. Call `.then(console.log)` on it.",
-        "starterCode": "Promise.resolve(\"Done\").then(console.log);",
+        "starterCode": "// Quest: 55. Creating Promises\n// TODO: Write your JavaScript solution here\n",
         "solution": "Promise.resolve(\"Done\").then(console.log);",
-        "hints": ["Use Promise.resolve", ".then(console.log)"],
-        "tests": [{"description": "Outputs Done", "type": "output_includes", "expected": "Done"}]
+        "hints": [
+          "Use Promise.resolve",
+          ".then(console.log)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Done",
+            "type": "output_includes",
+            "expected": "Done"
+          }
+        ]
       },
       {
         "id": "js-lesson-56",
@@ -844,10 +1329,19 @@
         "duration": "5 min",
         "concept": "### Step by Step\nYou can return a value in a `.then()` and catch it in the next `.then()`.",
         "task": "Resolve `1`, then return `val + 1`, then print it.",
-        "starterCode": "Promise.resolve(1).then(v => v + 1).then(console.log);",
+        "starterCode": "// Quest: 56. Promise Chaining\n// TODO: Write your JavaScript solution here\n",
         "solution": "Promise.resolve(1).then(v => v + 1).then(console.log);",
-        "hints": ["v => v + 1", "then(console.log)"],
-        "tests": [{"description": "Outputs 2", "type": "output_includes", "expected": "2"}]
+        "hints": [
+          "v => v + 1",
+          "then(console.log)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 2",
+            "type": "output_includes",
+            "expected": "2"
+          }
+        ]
       },
       {
         "id": "js-lesson-57",
@@ -856,10 +1350,19 @@
         "duration": "5 min",
         "concept": "### Oops\nUse `.catch()` to handle Promise rejections.",
         "task": "Reject a Promise with `\"Error\"` and catch it, printing the message.",
-        "starterCode": "Promise.reject(\"Error\").catch(console.log);",
+        "starterCode": "// Quest: 57. Catching Errors\n// TODO: Write your JavaScript solution here\n",
         "solution": "Promise.reject(\"Error\").catch(console.log);",
-        "hints": ["Use Promise.reject", ".catch(console.log)"],
-        "tests": [{"description": "Outputs Error", "type": "output_includes", "expected": "Error"}]
+        "hints": [
+          "Use Promise.reject",
+          ".catch(console.log)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Error",
+            "type": "output_includes",
+            "expected": "Error"
+          }
+        ]
       }
     ]
   },
@@ -878,8 +1381,17 @@
         "task": "Create an async function that awaits `Promise.resolve('Awaited')` and logs it.",
         "starterCode": "(async () => {\n  let res = await Promise.resolve('Awaited');\n  console.log(res);\n})();",
         "solution": "(async () => { let res = await Promise.resolve('Awaited'); console.log(res); })();",
-        "hints": ["Use async/await", "Log result"],
-        "tests": [{"description": "Outputs Awaited", "type": "output_includes", "expected": "Awaited"}]
+        "hints": [
+          "Use async/await",
+          "Log result"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Awaited",
+            "type": "output_includes",
+            "expected": "Awaited"
+          }
+        ]
       },
       {
         "id": "js-lesson-59",
@@ -888,10 +1400,18 @@
         "duration": "5 min",
         "concept": "### Getting Data\n`fetch()` grabs data from the internet. (Simulated)",
         "task": "Log `\"Fetched!\"`.",
-        "starterCode": "console.log(\"Fetched!\");",
+        "starterCode": "// Quest: 59. Fetch API\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Fetched!\");",
-        "hints": ["Print Fetched!"],
-        "tests": [{"description": "Outputs Fetched", "type": "output_includes", "expected": "Fetched"}]
+        "hints": [
+          "Print Fetched!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Fetched",
+            "type": "output_includes",
+            "expected": "Fetched"
+          }
+        ]
       },
       {
         "id": "js-lesson-60",
@@ -902,8 +1422,17 @@
         "task": "Await `Promise.all([Promise.resolve(1), Promise.resolve(2)])` and print it.",
         "starterCode": "(async () => {\n  const res = await Promise.all([Promise.resolve(1), Promise.resolve(2)]);\n  console.log(res.length);\n})();",
         "solution": "(async () => { const res = await Promise.all([Promise.resolve(1), Promise.resolve(2)]); console.log(res.length); })();",
-        "hints": ["Use Promise.all", "Log length"],
-        "tests": [{"description": "Outputs 2", "type": "output_includes", "expected": "2"}]
+        "hints": [
+          "Use Promise.all",
+          "Log length"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 2",
+            "type": "output_includes",
+            "expected": "2"
+          }
+        ]
       },
       {
         "id": "js-lesson-61",
@@ -912,10 +1441,18 @@
         "duration": "5 min",
         "concept": "### The Winner\n`Promise.race()` takes an array of promises and resolves with the first one to finish.",
         "task": "Log `\"Raced!\"`.",
-        "starterCode": "console.log(\"Raced!\");",
+        "starterCode": "// Quest: 61. Promise.race\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Raced!\");",
-        "hints": ["Print Raced!"],
-        "tests": [{"description": "Outputs Raced", "type": "output_includes", "expected": "Raced"}]
+        "hints": [
+          "Print Raced!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Raced",
+            "type": "output_includes",
+            "expected": "Raced"
+          }
+        ]
       }
     ]
   },
@@ -932,10 +1469,18 @@
         "duration": "5 min",
         "concept": "### Sharing Code\n`export const x = 5;` lets other files use your variable. (Simulated)",
         "task": "Log `\"Exported\"`.",
-        "starterCode": "console.log(\"Exported\");",
+        "starterCode": "// Quest: 62. ES Modules Export\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Exported\");",
-        "hints": ["Print Exported"],
-        "tests": [{"description": "Outputs Exported", "type": "output_includes", "expected": "Exported"}]
+        "hints": [
+          "Print Exported"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Exported",
+            "type": "output_includes",
+            "expected": "Exported"
+          }
+        ]
       },
       {
         "id": "js-lesson-63",
@@ -944,10 +1489,18 @@
         "duration": "5 min",
         "concept": "### Using Code\n`import { x } from './file.js';` gets code from another file. (Simulated)",
         "task": "Log `\"Imported\"`.",
-        "starterCode": "console.log(\"Imported\");",
+        "starterCode": "// Quest: 63. ES Modules Import\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Imported\");",
-        "hints": ["Print Imported"],
-        "tests": [{"description": "Outputs Imported", "type": "output_includes", "expected": "Imported"}]
+        "hints": [
+          "Print Imported"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Imported",
+            "type": "output_includes",
+            "expected": "Imported"
+          }
+        ]
       },
       {
         "id": "js-lesson-64",
@@ -956,10 +1509,18 @@
         "duration": "5 min",
         "concept": "### Older Modules\nNode.js uses `require('module')`. (Simulated)",
         "task": "Log `\"Required\"`.",
-        "starterCode": "console.log(\"Required\");",
+        "starterCode": "// Quest: 64. CommonJS\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Required\");",
-        "hints": ["Print Required"],
-        "tests": [{"description": "Outputs Required", "type": "output_includes", "expected": "Required"}]
+        "hints": [
+          "Print Required"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Required",
+            "type": "output_includes",
+            "expected": "Required"
+          }
+        ]
       }
     ]
   },
@@ -976,10 +1537,19 @@
         "duration": "5 min",
         "concept": "### Pattern Matching\n`/hello/.test('hello world')` checks if 'hello' is in the string.",
         "task": "Test if `/abc/` is in `\"xabcy\"` and print the boolean result.",
-        "starterCode": "console.log(/abc/.test(\"xabcy\"));",
+        "starterCode": "// Quest: 65. RegExp test\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(/abc/.test(\"xabcy\"));",
-        "hints": ["Use /abc/.test", "Print result"],
-        "tests": [{"description": "Outputs true", "type": "output_includes", "expected": "true"}]
+        "hints": [
+          "Use /abc/.test",
+          "Print result"
+        ],
+        "tests": [
+          {
+            "description": "Outputs true",
+            "type": "output_includes",
+            "expected": "true"
+          }
+        ]
       },
       {
         "id": "js-lesson-66",
@@ -988,10 +1558,19 @@
         "duration": "5 min",
         "concept": "### Finding Matches\n`'hello'.match(/e/)` returns info about where the match happened.",
         "task": "Match `\"123\"` for digits using `/[0-9]+/` and log the first result `res[0]`.",
-        "starterCode": "console.log(\"abc123def\".match(/[0-9]+/)[0]);",
+        "starterCode": "// Quest: 66. String match\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"abc123def\".match(/[0-9]+/)[0]);",
-        "hints": ["Use match", "Print index 0"],
-        "tests": [{"description": "Outputs 123", "type": "output_includes", "expected": "123"}]
+        "hints": [
+          "Use match",
+          "Print index 0"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 123",
+            "type": "output_includes",
+            "expected": "123"
+          }
+        ]
       },
       {
         "id": "js-lesson-67",
@@ -1000,10 +1579,19 @@
         "duration": "5 min",
         "concept": "### Replacing\n`'cat'.replace(/a/, 'o')` returns 'cot'.",
         "task": "Replace 'bad' with 'good' in 'bad dog' and print.",
-        "starterCode": "console.log(\"bad dog\".replace(/bad/, \"good\"));",
+        "starterCode": "// Quest: 67. String replace\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"bad dog\".replace(/bad/, \"good\"));",
-        "hints": ["Use replace", "Print result"],
-        "tests": [{"description": "Outputs good", "type": "output_includes", "expected": "good"}]
+        "hints": [
+          "Use replace",
+          "Print result"
+        ],
+        "tests": [
+          {
+            "description": "Outputs good",
+            "type": "output_includes",
+            "expected": "good"
+          }
+        ]
       }
     ]
   },
@@ -1022,8 +1610,18 @@
         "task": "Create a `new Map()`, `.set('a', 1)`, and print `.get('a')`.",
         "starterCode": "const m = new Map();\nm.set('a', 1);\nconsole.log(m.get('a'));",
         "solution": "const m = new Map(); m.set('a', 1); console.log(m.get('a'));",
-        "hints": ["Use new Map", "set()", "get()"],
-        "tests": [{"description": "Outputs 1", "type": "output_includes", "expected": "1"}]
+        "hints": [
+          "Use new Map",
+          "set()",
+          "get()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 1",
+            "type": "output_includes",
+            "expected": "1"
+          }
+        ]
       },
       {
         "id": "js-lesson-69",
@@ -1034,8 +1632,17 @@
         "task": "Create a `new Set([1, 1, 2])` and print its `.size`.",
         "starterCode": "const s = new Set([1, 1, 2]);\nconsole.log(s.size);",
         "solution": "const s = new Set([1, 1, 2]); console.log(s.size);",
-        "hints": ["Use new Set", "Print size"],
-        "tests": [{"description": "Outputs 2", "type": "output_includes", "expected": "2"}]
+        "hints": [
+          "Use new Set",
+          "Print size"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 2",
+            "type": "output_includes",
+            "expected": "2"
+          }
+        ]
       },
       {
         "id": "js-lesson-70",
@@ -1044,10 +1651,18 @@
         "duration": "5 min",
         "concept": "### Hidden Keys\n`Symbol('desc')` creates a unique identifier, often used as hidden keys in objects.",
         "task": "Log `String(Symbol('hidden'))`.",
-        "starterCode": "console.log(String(Symbol('hidden')));",
+        "starterCode": "// Quest: 70. Symbols\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(String(Symbol('hidden')));",
-        "hints": ["Print Symbol"],
-        "tests": [{"description": "Outputs Symbol", "type": "output_includes", "expected": "Symbol"}]
+        "hints": [
+          "Print Symbol"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Symbol",
+            "type": "output_includes",
+            "expected": "Symbol"
+          }
+        ]
       },
       {
         "id": "js-lesson-71",
@@ -1056,10 +1671,18 @@
         "duration": "5 min",
         "concept": "### Stepping Through\nAn iterator allows you to step through data using `.next()`.",
         "task": "Log `\"Iterating\"`.",
-        "starterCode": "console.log(\"Iterating\");",
+        "starterCode": "// Quest: 71. Iterators\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Iterating\");",
-        "hints": ["Print Iterating"],
-        "tests": [{"description": "Outputs Iterating", "type": "output_includes", "expected": "Iterating"}]
+        "hints": [
+          "Print Iterating"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Iterating",
+            "type": "output_includes",
+            "expected": "Iterating"
+          }
+        ]
       }
     ]
   },
@@ -1078,8 +1701,17 @@
         "task": "Create a generator `function* gen() { yield 1; }` and print `gen().next().value`.",
         "starterCode": "function* gen() { yield 1; }\nconsole.log(gen().next().value);",
         "solution": "function* gen() { yield 1; } console.log(gen().next().value);",
-        "hints": ["Use yield", "next().value"],
-        "tests": [{"description": "Outputs 1", "type": "output_includes", "expected": "1"}]
+        "hints": [
+          "Use yield",
+          "next().value"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 1",
+            "type": "output_includes",
+            "expected": "1"
+          }
+        ]
       },
       {
         "id": "js-lesson-73",
@@ -1088,10 +1720,18 @@
         "duration": "5 min",
         "concept": "### Traps\nA `Proxy` lets you intercept and change how objects behave.",
         "task": "Log `\"Proxied\"`.",
-        "starterCode": "console.log(\"Proxied\");",
+        "starterCode": "// Quest: 73. Proxies\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Proxied\");",
-        "hints": ["Print Proxied"],
-        "tests": [{"description": "Outputs Proxied", "type": "output_includes", "expected": "Proxied"}]
+        "hints": [
+          "Print Proxied"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Proxied",
+            "type": "output_includes",
+            "expected": "Proxied"
+          }
+        ]
       },
       {
         "id": "js-lesson-74",
@@ -1100,10 +1740,18 @@
         "duration": "5 min",
         "concept": "### Mirrors\n`Reflect` provides methods to intercept JavaScript operations.",
         "task": "Log `\"Reflected\"`.",
-        "starterCode": "console.log(\"Reflected\");",
+        "starterCode": "// Quest: 74. Reflect\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Reflected\");",
-        "hints": ["Print Reflected"],
-        "tests": [{"description": "Outputs Reflected", "type": "output_includes", "expected": "Reflected"}]
+        "hints": [
+          "Print Reflected"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Reflected",
+            "type": "output_includes",
+            "expected": "Reflected"
+          }
+        ]
       }
     ]
   },
@@ -1122,8 +1770,16 @@
         "task": "Write `const add = (a, b) => a + b;` and print `add(2, 2)`.",
         "starterCode": "const add = (a, b) => a + b;\nconsole.log(add(2, 2));",
         "solution": "const add = (a, b) => a + b; console.log(add(2, 2));",
-        "hints": ["Return a + b"],
-        "tests": [{"description": "Outputs 4", "type": "output_includes", "expected": "4"}]
+        "hints": [
+          "Return a + b"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 4",
+            "type": "output_includes",
+            "expected": "4"
+          }
+        ]
       },
       {
         "id": "js-lesson-76",
@@ -1134,8 +1790,16 @@
         "task": "Print `add(2)(3)`.",
         "starterCode": "const add = a => b => a + b;\nconsole.log(add(2)(3));",
         "solution": "const add = a => b => a + b; console.log(add(2)(3));",
-        "hints": ["Call add(2)(3)"],
-        "tests": [{"description": "Outputs 5", "type": "output_includes", "expected": "5"}]
+        "hints": [
+          "Call add(2)(3)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 5",
+            "type": "output_includes",
+            "expected": "5"
+          }
+        ]
       },
       {
         "id": "js-lesson-77",
@@ -1144,10 +1808,18 @@
         "duration": "5 min",
         "concept": "### Piping\nComposition is combining multiple functions to create a new one.",
         "task": "Log `\"Composed\"`.",
-        "starterCode": "console.log(\"Composed\");",
+        "starterCode": "// Quest: 77. Composition\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Composed\");",
-        "hints": ["Print Composed"],
-        "tests": [{"description": "Outputs Composed", "type": "output_includes", "expected": "Composed"}]
+        "hints": [
+          "Print Composed"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Composed",
+            "type": "output_includes",
+            "expected": "Composed"
+          }
+        ]
       }
     ]
   },
@@ -1164,10 +1836,18 @@
         "duration": "5 min",
         "concept": "### Types (Simulated)\nIn TypeScript, you add `: type`. (Simulated in JS).",
         "task": "Log `\"Types\"`.",
-        "starterCode": "console.log(\"Types\");",
+        "starterCode": "// Quest: 78. Types\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Types\");",
-        "hints": ["Print Types"],
-        "tests": [{"description": "Outputs Types", "type": "output_includes", "expected": "Types"}]
+        "hints": [
+          "Print Types"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Types",
+            "type": "output_includes",
+            "expected": "Types"
+          }
+        ]
       },
       {
         "id": "js-lesson-79",
@@ -1176,10 +1856,18 @@
         "duration": "5 min",
         "concept": "### Interfaces (Simulated)",
         "task": "Log `\"Interfaces\"`.",
-        "starterCode": "console.log(\"Interfaces\");",
+        "starterCode": "// Quest: 79. Interfaces\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Interfaces\");",
-        "hints": ["Print Interfaces"],
-        "tests": [{"description": "Outputs Interfaces", "type": "output_includes", "expected": "Interfaces"}]
+        "hints": [
+          "Print Interfaces"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Interfaces",
+            "type": "output_includes",
+            "expected": "Interfaces"
+          }
+        ]
       },
       {
         "id": "js-lesson-80",
@@ -1188,10 +1876,18 @@
         "duration": "5 min",
         "concept": "### Unions (Simulated)",
         "task": "Log `\"Unions\"`.",
-        "starterCode": "console.log(\"Unions\");",
+        "starterCode": "// Quest: 80. Union Types\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Unions\");",
-        "hints": ["Print Unions"],
-        "tests": [{"description": "Outputs Unions", "type": "output_includes", "expected": "Unions"}]
+        "hints": [
+          "Print Unions"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Unions",
+            "type": "output_includes",
+            "expected": "Unions"
+          }
+        ]
       },
       {
         "id": "js-lesson-81",
@@ -1200,10 +1896,18 @@
         "duration": "5 min",
         "concept": "### Generics (Simulated)",
         "task": "Log `\"Generics\"`.",
-        "starterCode": "console.log(\"Generics\");",
+        "starterCode": "// Quest: 81. Generics\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Generics\");",
-        "hints": ["Print Generics"],
-        "tests": [{"description": "Outputs Generics", "type": "output_includes", "expected": "Generics"}]
+        "hints": [
+          "Print Generics"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Generics",
+            "type": "output_includes",
+            "expected": "Generics"
+          }
+        ]
       },
       {
         "id": "js-lesson-82",
@@ -1212,10 +1916,18 @@
         "duration": "5 min",
         "concept": "### Enums (Simulated)",
         "task": "Log `\"Enums\"`.",
-        "starterCode": "console.log(\"Enums\");",
+        "starterCode": "// Quest: 82. Enums\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Enums\");",
-        "hints": ["Print Enums"],
-        "tests": [{"description": "Outputs Enums", "type": "output_includes", "expected": "Enums"}]
+        "hints": [
+          "Print Enums"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Enums",
+            "type": "output_includes",
+            "expected": "Enums"
+          }
+        ]
       }
     ]
   },
@@ -1232,10 +1944,18 @@
         "duration": "5 min",
         "concept": "### Files (Simulated)",
         "task": "Log `\"Read File\"`.",
-        "starterCode": "console.log(\"Read File\");",
+        "starterCode": "// Quest: 83. fs Module\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Read File\");",
-        "hints": ["Print Read File"],
-        "tests": [{"description": "Outputs Read", "type": "output_includes", "expected": "Read"}]
+        "hints": [
+          "Print Read File"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Read",
+            "type": "output_includes",
+            "expected": "Read"
+          }
+        ]
       },
       {
         "id": "js-lesson-84",
@@ -1244,10 +1964,18 @@
         "duration": "5 min",
         "concept": "### Servers (Simulated)",
         "task": "Log `\"Server Running\"`.",
-        "starterCode": "console.log(\"Server Running\");",
+        "starterCode": "// Quest: 84. HTTP Server\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Server Running\");",
-        "hints": ["Print Server Running"],
-        "tests": [{"description": "Outputs Server", "type": "output_includes", "expected": "Server"}]
+        "hints": [
+          "Print Server Running"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Server",
+            "type": "output_includes",
+            "expected": "Server"
+          }
+        ]
       },
       {
         "id": "js-lesson-85",
@@ -1256,10 +1984,18 @@
         "duration": "5 min",
         "concept": "### Packages (Simulated)",
         "task": "Log `\"Installed Package\"`.",
-        "starterCode": "console.log(\"Installed Package\");",
+        "starterCode": "// Quest: 85. NPM\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Installed Package\");",
-        "hints": ["Print Installed"],
-        "tests": [{"description": "Outputs Installed", "type": "output_includes", "expected": "Installed"}]
+        "hints": [
+          "Print Installed"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Installed",
+            "type": "output_includes",
+            "expected": "Installed"
+          }
+        ]
       },
       {
         "id": "js-lesson-86",
@@ -1268,10 +2004,18 @@
         "duration": "5 min",
         "concept": "### Environment (Simulated)",
         "task": "Log `\"Process ENV\"`.",
-        "starterCode": "console.log(\"Process ENV\");",
+        "starterCode": "// Quest: 86. Process\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Process ENV\");",
-        "hints": ["Print Process ENV"],
-        "tests": [{"description": "Outputs Process", "type": "output_includes", "expected": "Process"}]
+        "hints": [
+          "Print Process ENV"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Process",
+            "type": "output_includes",
+            "expected": "Process"
+          }
+        ]
       }
     ]
   },
@@ -1288,10 +2032,18 @@
         "duration": "5 min",
         "concept": "### LIFO\nLast In, First Out.",
         "task": "Log `\"Popped Stack\"`.",
-        "starterCode": "console.log(\"Popped Stack\");",
+        "starterCode": "// Quest: 87. Stacks\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Popped Stack\");",
-        "hints": ["Print Popped Stack"],
-        "tests": [{"description": "Outputs Popped", "type": "output_includes", "expected": "Popped"}]
+        "hints": [
+          "Print Popped Stack"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Popped",
+            "type": "output_includes",
+            "expected": "Popped"
+          }
+        ]
       },
       {
         "id": "js-lesson-88",
@@ -1300,10 +2052,18 @@
         "duration": "5 min",
         "concept": "### FIFO\nFirst In, First Out.",
         "task": "Log `\"Dequeued\"`.",
-        "starterCode": "console.log(\"Dequeued\");",
+        "starterCode": "// Quest: 88. Queues\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Dequeued\");",
-        "hints": ["Print Dequeued"],
-        "tests": [{"description": "Outputs Dequeued", "type": "output_includes", "expected": "Dequeued"}]
+        "hints": [
+          "Print Dequeued"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Dequeued",
+            "type": "output_includes",
+            "expected": "Dequeued"
+          }
+        ]
       },
       {
         "id": "js-lesson-89",
@@ -1312,10 +2072,18 @@
         "duration": "5 min",
         "concept": "### Nodes\nNodes pointing to nodes.",
         "task": "Log `\"Linked\"`.",
-        "starterCode": "console.log(\"Linked\");",
+        "starterCode": "// Quest: 89. Linked Lists\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Linked\");",
-        "hints": ["Print Linked"],
-        "tests": [{"description": "Outputs Linked", "type": "output_includes", "expected": "Linked"}]
+        "hints": [
+          "Print Linked"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Linked",
+            "type": "output_includes",
+            "expected": "Linked"
+          }
+        ]
       },
       {
         "id": "js-lesson-90",
@@ -1324,10 +2092,18 @@
         "duration": "5 min",
         "concept": "### Key-Value Arrays\nSuper fast lookups.",
         "task": "Log `\"Hashed\"`.",
-        "starterCode": "console.log(\"Hashed\");",
+        "starterCode": "// Quest: 90. Hash Tables\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Hashed\");",
-        "hints": ["Print Hashed"],
-        "tests": [{"description": "Outputs Hashed", "type": "output_includes", "expected": "Hashed"}]
+        "hints": [
+          "Print Hashed"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Hashed",
+            "type": "output_includes",
+            "expected": "Hashed"
+          }
+        ]
       },
       {
         "id": "js-lesson-91",
@@ -1336,10 +2112,18 @@
         "duration": "5 min",
         "concept": "### Speed Check",
         "task": "Log `\"O(n)\"`.",
-        "starterCode": "console.log(\"O(n)\");",
+        "starterCode": "// Quest: 91. Big-O Notation\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"O(n)\");",
-        "hints": ["Print O(n)"],
-        "tests": [{"description": "Outputs O(n)", "type": "output_includes", "expected": "O(n)"}]
+        "hints": [
+          "Print O(n)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs O(n)",
+            "type": "output_includes",
+            "expected": "O(n)"
+          }
+        ]
       }
     ]
   },
@@ -1356,10 +2140,18 @@
         "duration": "5 min",
         "concept": "### Hiding Data",
         "task": "Log `\"Module\"`.",
-        "starterCode": "console.log(\"Module\");",
+        "starterCode": "// Quest: 92. Module Pattern\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Module\");",
-        "hints": ["Print Module"],
-        "tests": [{"description": "Outputs Module", "type": "output_includes", "expected": "Module"}]
+        "hints": [
+          "Print Module"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Module",
+            "type": "output_includes",
+            "expected": "Module"
+          }
+        ]
       },
       {
         "id": "js-lesson-93",
@@ -1368,10 +2160,18 @@
         "duration": "5 min",
         "concept": "### Subscribing",
         "task": "Log `\"Observed\"`.",
-        "starterCode": "console.log(\"Observed\");",
+        "starterCode": "// Quest: 93. Observer Pattern\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Observed\");",
-        "hints": ["Print Observed"],
-        "tests": [{"description": "Outputs Observed", "type": "output_includes", "expected": "Observed"}]
+        "hints": [
+          "Print Observed"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Observed",
+            "type": "output_includes",
+            "expected": "Observed"
+          }
+        ]
       },
       {
         "id": "js-lesson-94",
@@ -1380,10 +2180,18 @@
         "duration": "5 min",
         "concept": "### Creating Objects",
         "task": "Log `\"Factory\"`.",
-        "starterCode": "console.log(\"Factory\");",
+        "starterCode": "// Quest: 94. Factory Pattern\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Factory\");",
-        "hints": ["Print Factory"],
-        "tests": [{"description": "Outputs Factory", "type": "output_includes", "expected": "Factory"}]
+        "hints": [
+          "Print Factory"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Factory",
+            "type": "output_includes",
+            "expected": "Factory"
+          }
+        ]
       },
       {
         "id": "js-lesson-95",
@@ -1392,10 +2200,18 @@
         "duration": "5 min",
         "concept": "### Only One",
         "task": "Log `\"Singleton\"`.",
-        "starterCode": "console.log(\"Singleton\");",
+        "starterCode": "// Quest: 95. Singleton Pattern\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Singleton\");",
-        "hints": ["Print Singleton"],
-        "tests": [{"description": "Outputs Singleton", "type": "output_includes", "expected": "Singleton"}]
+        "hints": [
+          "Print Singleton"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Singleton",
+            "type": "output_includes",
+            "expected": "Singleton"
+          }
+        ]
       }
     ]
   },
@@ -1412,10 +2228,18 @@
         "duration": "15 min",
         "concept": "### Build a Quiz",
         "task": "Log `\"Quiz Done\"`.",
-        "starterCode": "console.log(\"Quiz Done\");",
+        "starterCode": "// Quest: 96. Quiz App\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Quiz Done\");",
-        "hints": ["Print Quiz Done"],
-        "tests": [{"description": "Outputs Quiz", "type": "output_includes", "expected": "Quiz"}]
+        "hints": [
+          "Print Quiz Done"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Quiz",
+            "type": "output_includes",
+            "expected": "Quiz"
+          }
+        ]
       },
       {
         "id": "js-lesson-97",
@@ -1424,10 +2248,18 @@
         "duration": "15 min",
         "concept": "### Build a Dashboard",
         "task": "Log `\"Weather Done\"`.",
-        "starterCode": "console.log(\"Weather Done\");",
+        "starterCode": "// Quest: 97. Weather Dashboard\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Weather Done\");",
-        "hints": ["Print Weather Done"],
-        "tests": [{"description": "Outputs Weather", "type": "output_includes", "expected": "Weather"}]
+        "hints": [
+          "Print Weather Done"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Weather",
+            "type": "output_includes",
+            "expected": "Weather"
+          }
+        ]
       },
       {
         "id": "js-lesson-98",
@@ -1436,10 +2268,18 @@
         "duration": "15 min",
         "concept": "### Build a Chat",
         "task": "Log `\"Chat Done\"`.",
-        "starterCode": "console.log(\"Chat Done\");",
+        "starterCode": "// Quest: 98. Chat Simulator\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Chat Done\");",
-        "hints": ["Print Chat Done"],
-        "tests": [{"description": "Outputs Chat", "type": "output_includes", "expected": "Chat"}]
+        "hints": [
+          "Print Chat Done"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Chat",
+            "type": "output_includes",
+            "expected": "Chat"
+          }
+        ]
       },
       {
         "id": "js-lesson-99",
@@ -1448,10 +2288,18 @@
         "duration": "15 min",
         "concept": "### Build a CRUD App",
         "task": "Log `\"Task Done\"`.",
-        "starterCode": "console.log(\"Task Done\");",
+        "starterCode": "// Quest: 99. Task Manager\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Task Done\");",
-        "hints": ["Print Task Done"],
-        "tests": [{"description": "Outputs Task", "type": "output_includes", "expected": "Task"}]
+        "hints": [
+          "Print Task Done"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Task",
+            "type": "output_includes",
+            "expected": "Task"
+          }
+        ]
       },
       {
         "id": "js-lesson-100",
@@ -1460,10 +2308,18 @@
         "duration": "15 min",
         "concept": "### Master Boss",
         "task": "Log `\"Notes Done\"`.",
-        "starterCode": "console.log(\"Notes Done\");",
+        "starterCode": "// Quest: 100. Full-Stack Note App\n// TODO: Write your JavaScript solution here\n",
         "solution": "console.log(\"Notes Done\");",
-        "hints": ["Print Notes Done"],
-        "tests": [{"description": "Outputs Notes", "type": "output_includes", "expected": "Notes"}]
+        "hints": [
+          "Print Notes Done"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Notes",
+            "type": "output_includes",
+            "expected": "Notes"
+          }
+        ]
       }
     ]
   }

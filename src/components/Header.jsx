@@ -38,7 +38,9 @@ export function Header({
   wasmStatus,
   currentGameMode = 'lessons',
   onSelectGameMode,
-  onOpenRoadmap
+  onOpenRoadmap,
+  onOpenNotes,
+  onOpenExam
 }) {
   const [isMuted, setIsMuted] = useState(soundService.isMuted());
   const prog = getLevelProgress(totalXP);
@@ -132,6 +134,32 @@ export function Header({
               <span className="text-xs font-mono font-bold text-amber-400">{streak}</span>
             </div>
           </div>
+
+          {/* Digital Notes */}
+          <button
+            onClick={() => {
+              soundService.playClick();
+              onOpenNotes && onOpenNotes();
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-medium text-slate-300 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] rounded-xl transition-colors"
+            title="Open & Download Digital Master Notes (.md)"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-sky-400" />
+            <span className="hidden md:inline">Notes</span>
+          </button>
+
+          {/* Checkpoint Exam */}
+          <button
+            onClick={() => {
+              soundService.playClick();
+              onOpenExam && onOpenExam();
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-bold text-amber-300 hover:text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-xl transition-colors"
+            title="Conduct Formal Checkpoint Examination & Earn Official Certificate"
+          >
+            <Award className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden md:inline">Exam</span>
+          </button>
 
           {/* Sandbox */}
           <button

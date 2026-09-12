@@ -168,7 +168,7 @@
             "description": "total_cost is 182.0",
             "type": "var_check",
             "vars": {
-              "total_cost": 182.0
+              "total_cost": 182
             }
           },
           {
@@ -620,7 +620,7 @@
             "description": "total_with_default is 110.0",
             "type": "var_check",
             "vars": {
-              "total_with_default": 110.0
+              "total_with_default": 110
             }
           },
           {
@@ -648,7 +648,7 @@
             "description": "final_bonus is 7500.0",
             "type": "var_check",
             "vars": {
-              "final_bonus": 7500.0
+              "final_bonus": 7500
             }
           },
           {
@@ -912,7 +912,7 @@
         "duration": "15 min",
         "concept": "### Capstone Project: Password Strength Scorer\nSecurity systems inspect password characteristics:\n- Length >= 8\n- Contains at least one digit\n- Contains at least one uppercase letter\n- Contains at least one special character\n\nUsing string methods like `.isupper()` and `.isdigit()`, you can build a fast security analyzer.",
         "task": "Write a function `check_password(pw)` that returns:\n- \"Strong\" if length is at least 8 AND contains at least one digit (any(c.isdigit() for c in pw))\n- Otherwise return \"Weak\".\nTest with `pw = \"PythonMaster2026\"` and print the result.",
-        "starterCode": "def check_password(pw):\n    has_min_len = len(pw) >= 8\n    has_digit = any(c.isdigit() for c in pw)\n    if has_min_len and has_digit:\n        return \"Strong\"\n    return \"Weak\"\n\nresult = check_password(\"PythonMaster2026\")\nprint(result)\n",
+        "starterCode": "def check_password(pw):\n    # TODO: Write your code to solve the challenge:\n    pass\n\nresult = check_password(\"PythonMaster2026\")\nprint(result)\n",
         "solution": "def check_password(pw):\n    has_min_len = len(pw) >= 8\n    has_digit = any(c.isdigit() for c in pw)\n    if has_min_len and has_digit:\n        return \"Strong\"\n    return \"Weak\"\n\nresult = check_password(\"PythonMaster2026\")\nprint(result)",
         "hints": [
           "Run the analyzer with the provided password!",
@@ -933,7 +933,7 @@
         "duration": "20 min",
         "concept": "### Capstone Project: Turn-Based Mini RPG\nBring together classes, loops, conditionals, and arithmetic to build a battle round simulator!",
         "task": "Build a simulation where `Hero` attacks `Monster`.\nEach turn, hero deals `hero_dmg` to monster hp.\nIf monster hp <= 0, hero wins!\nRun the provided battle simulator loop and observe the victory printout.",
-        "starterCode": "class Character:\n    def __init__(self, name, hp, attack):\n        self.name = name\n        self.hp = hp\n        self.attack = attack\n\nhero = Character(\"Knight\", 50, 15)\ngoblin = Character(\"Goblin\", 30, 8)\n\nwhile goblin.hp > 0:\n    goblin.hp -= hero.attack\n    print(f\"{hero.name} attacks {goblin.name}! Goblin HP: {max(0, goblin.hp)}\")\n\nprint(f\"{hero.name} defeated the {goblin.name}!\")\n",
+        "starterCode": "    def __init__(self, name, hp, attack):\n    # TODO: Write your code to solve the challenge:\n    pass\n\nhero = Character(\"Knight\", 50, 15)\ngoblin = Character(\"Goblin\", 30, 8)\nwhile goblin.hp > 0:\nprint(f\"{hero.name} defeated the {goblin.name}!\")\n",
         "solution": "class Character:\n    def __init__(self, name, hp, attack):\n        self.name = name\n        self.hp = hp\n        self.attack = attack\n\nhero = Character(\"Knight\", 50, 15)\ngoblin = Character(\"Goblin\", 30, 8)\n\nwhile goblin.hp > 0:\n    goblin.hp -= hero.attack\n    print(f\"{hero.name} attacks {goblin.name}! Goblin HP: {max(0, goblin.hp)}\")\n\nprint(f\"{hero.name} defeated the {goblin.name}!\")",
         "hints": [
           "Run the code to simulate the battle!",
@@ -986,7 +986,7 @@
         "duration": "8 min",
         "concept": "### Transforming Lists with map()\n`map()` applies a function to every item in a collection.\n\n```python\nnums = [1, 2, 3]\ndoubled = list(map(lambda x: x * 2, nums))\n```",
         "task": "Use `map()` and a lambda to subtract 1 from every number in `scores = [10, 20, 30]`. Store in `adjusted`.",
-        "starterCode": "scores = [10, 20, 30]\nadjusted = list(map(lambda x: x - 1, scores))\nprint(adjusted)",
+        "starterCode": "scores = [10, 20, 30]\n\n# TODO: Use `map()` and a lambda to subtract 1 from every number in `scores = [10, 20, 30]`. Store in `adjusted`.\n# Write your solution below:\n",
         "solution": "scores = [10, 20, 30]\nadjusted = list(map(lambda x: x - 1, scores))\nprint(adjusted)",
         "hints": [
           "adjusted = list(map(lambda x: x - 1, scores))",
@@ -1008,7 +1008,7 @@
         "duration": "8 min",
         "concept": "### Filtering Lists with filter()\n`filter()` keeps only items where the function returns True.\n\n```python\nnums = [1, 2, 3, 4]\nevens = list(filter(lambda x: x % 2 == 0, nums))\n```",
         "task": "Use `filter()` to keep only words longer than 3 letters in `words = ['cat', 'apple', 'dog', 'banana']`.",
-        "starterCode": "words = ['cat', 'apple', 'dog', 'banana']\nlong_words = list(filter(lambda w: len(w) > 3, words))\nprint(long_words)",
+        "starterCode": "words = ['cat', 'apple', 'dog', 'banana']\n\n# TODO: Use `filter()` to keep only words longer than 3 letters in `words = ['cat', 'apple', 'dog', 'banana']`.\n# Write your solution below:\n",
         "solution": "words = ['cat', 'apple', 'dog', 'banana']\nlong_words = list(filter(lambda w: len(w) > 3, words))\nprint(long_words)",
         "hints": [
           "Check len(w) > 3",
@@ -1030,7 +1030,7 @@
         "duration": "10 min",
         "concept": "### Accumulating with reduce()\n`reduce()` repeatedly applies a function to combine elements into a single value.\n\n```python\nfrom functools import reduce\nnums = [1, 2, 3, 4]\ntotal = reduce(lambda a, b: a + b, nums)\n```",
         "task": "Use `reduce()` to find the product of all numbers in `nums = [1, 2, 3, 4, 5]`.",
-        "starterCode": "from functools import reduce\nnums = [1, 2, 3, 4, 5]\nproduct = reduce(lambda a, b: a * b, nums)\nprint(product)",
+        "starterCode": "nums = [1, 2, 3, 4, 5]\n\n# TODO: Use `reduce()` to find the product of all numbers in `nums = [1, 2, 3, 4, 5]`.\n# Write your solution below:\n",
         "solution": "from functools import reduce\nnums = [1, 2, 3, 4, 5]\nproduct = reduce(lambda a, b: a * b, nums)\nprint(product)",
         "hints": [
           "Use lambda a, b: a * b",
@@ -1060,7 +1060,7 @@
         "duration": "8 min",
         "concept": "### Yielding Values\nA generator uses `yield` instead of `return`. It pauses execution and saves memory.\n\n```python\ndef count_up_to(max):\n    count = 1\n    while count <= max:\n        yield count\n        count += 1\n```",
         "task": "Create a generator `even_numbers(limit)` that yields even numbers up to `limit`. Print list(even_numbers(10)).",
-        "starterCode": "def even_numbers(limit):\n    for i in range(2, limit + 1, 2):\n        yield i\nprint(list(even_numbers(10)))",
+        "starterCode": "def even_numbers(limit):\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(list(even_numbers(10)))\n",
         "solution": "def even_numbers(limit):\n    for i in range(2, limit + 1, 2):\n        yield i\nprint(list(even_numbers(10)))",
         "hints": [
           "yield i instead of return",
@@ -1082,7 +1082,7 @@
         "duration": "8 min",
         "concept": "### Generator Expressions\nLike list comprehensions, but with `()` instead of `[]`. They evaluate lazily.",
         "task": "Create a generator expression `squares_gen = (x*x for x in range(1, 4))` and print `list(squares_gen)`.",
-        "starterCode": "squares_gen = (x*x for x in range(1, 4))\nprint(list(squares_gen))",
+        "starterCode": "squares_gen = (x*x for x in range(1, 4))\n\n# TODO: Create a generator expression `squares_gen = (x*x for x in range(1, 4))` and print `list(squares_gen)`.\n# Write your solution below:\n",
         "solution": "squares_gen = (x*x for x in range(1, 4))\nprint(list(squares_gen))",
         "hints": [
           "Use parentheses ()",
@@ -1104,7 +1104,7 @@
         "duration": "10 min",
         "concept": "### Custom Iterators\nClasses can be iterators by implementing `__iter__` and `__next__`.",
         "task": "Complete the `Counter` class so it counts down to 0, then raises `StopIteration`.",
-        "starterCode": "class Counter:\n    def __init__(self, high):\n        self.current = high\n    def __iter__(self):\n        return self\n    def __next__(self):\n        if self.current < 0: raise StopIteration\n        val = self.current\n        self.current -= 1\n        return val\nprint(list(Counter(2)))",
+        "starterCode": "    def __init__(self, high):\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(list(Counter(2)))\n",
         "solution": "class Counter:\n    def __init__(self, high):\n        self.current = high\n    def __iter__(self):\n        return self\n    def __next__(self):\n        if self.current < 0: raise StopIteration\n        val = self.current\n        self.current -= 1\n        return val\nprint(list(Counter(2)))",
         "hints": [
           "Raise StopIteration when current < 0",
@@ -1126,7 +1126,7 @@
         "duration": "8 min",
         "concept": "### itertools Module\n`itertools` provides fast, memory-efficient tools for iteration.",
         "task": "Use `itertools.permutations` to find all 2-length permutations of `['A', 'B']`.",
-        "starterCode": "import itertools\nperms = list(itertools.permutations(['A', 'B'], 2))\nprint(perms)",
+        "starterCode": "# Quest: 40. itertools — chain, product, permutations\n# Task: Use `itertools.permutations` to find all 2-length permutations of `['A', 'B']`.\n\n# TODO: Write your Python solution here\n",
         "solution": "import itertools\nperms = list(itertools.permutations(['A', 'B'], 2))\nprint(perms)",
         "hints": [
           "perms = list(itertools.permutations(['A', 'B'], 2))",
@@ -1156,7 +1156,7 @@
         "duration": "8 min",
         "concept": "### Closures\nA closure is an inner function that remembers the state of its enclosing environment.",
         "task": "Create a function `multiplier(factor)` that returns a nested function taking `n`. Test it with `times_3 = multiplier(3)`.",
-        "starterCode": "def multiplier(factor):\n    def inner(n):\n        return n * factor\n    return inner\nprint(multiplier(3)(5))",
+        "starterCode": "def multiplier(factor):\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(multiplier(3)(5))\n",
         "solution": "def multiplier(factor):\n    def inner(n):\n        return n * factor\n    return inner\nprint(multiplier(3)(5))",
         "hints": [
           "Return inner",
@@ -1178,7 +1178,7 @@
         "duration": "10 min",
         "concept": "### Decorators\nA decorator is a function that modifies another function, applied with `@`.",
         "task": "Write a `uppercase` decorator that converts the result of the decorated function to uppercase.",
-        "starterCode": "def uppercase(func):\n    def wrapper():\n        return func().upper()\n    return wrapper\n\n@uppercase\ndef greet(): return 'hello'\nprint(greet())",
+        "starterCode": "def uppercase(func):\n    # TODO: Write your code to solve the challenge:\n    pass\n\n@uppercase\ndef greet(): return 'hello'\nprint(greet())\n",
         "solution": "def uppercase(func):\n    def wrapper():\n        return func().upper()\n    return wrapper\n\n@uppercase\ndef greet(): return 'hello'\nprint(greet())",
         "hints": [
           "func().upper()",
@@ -1200,7 +1200,7 @@
         "duration": "10 min",
         "concept": "### Advanced Decorators\nYou can stack decorators and use `*args, **kwargs` to pass arguments.",
         "task": "Write a decorator `add_stars` that wraps the output with `***`.",
-        "starterCode": "def add_stars(func):\n    def wrapper(*args):\n        return '***' + func(*args) + '***'\n    return wrapper\n@add_stars\ndef echo(msg): return msg\nprint(echo('wow'))",
+        "starterCode": "def add_stars(func):\n    # TODO: Write your code to solve the challenge:\n    pass\n\n@add_stars\ndef echo(msg): return msg\nprint(echo('wow'))\n",
         "solution": "def add_stars(func):\n    def wrapper(*args):\n        return '***' + func(*args) + '***'\n    return wrapper\n@add_stars\ndef echo(msg): return msg\nprint(echo('wow'))",
         "hints": [
           "return '***' + func(*args) + '***'",
@@ -1230,7 +1230,7 @@
         "duration": "8 min",
         "concept": "### Private Attributes\nUse `__` prefix to make attributes private (name mangling).",
         "task": "Create `Secret` class with `__code`. Add method `get_code()`.",
-        "starterCode": "class Secret:\n    def __init__(self, code):\n        self.__code = code\n    def get_code(self): return self.__code\ns = Secret('42')\nprint(s.get_code())",
+        "starterCode": "    def __init__(self, code):\n    # TODO: Write your code to solve the challenge:\n    pass\n\ns = Secret('42')\nprint(s.get_code())\n",
         "solution": "class Secret:\n    def __init__(self, code):\n        self.__code = code\n    def get_code(self): return self.__code\ns = Secret('42')\nprint(s.get_code())",
         "hints": [
           "Use self.__code",
@@ -1252,7 +1252,7 @@
         "duration": "8 min",
         "concept": "### @property\nUse `@property` to define getters and setters.",
         "task": "Define a `@property` `temperature` that returns `self._temp`.",
-        "starterCode": "class Weather:\n    def __init__(self):\n        self._temp = 20\n    @property\n    def temperature(self):\n        return self._temp\nprint(Weather().temperature)",
+        "starterCode": "    def __init__(self):\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(Weather().temperature)\n",
         "solution": "class Weather:\n    def __init__(self):\n        self._temp = 20\n    @property\n    def temperature(self):\n        return self._temp\nprint(Weather().temperature)",
         "hints": [
           "@property def temperature(self): return self._temp",
@@ -1274,7 +1274,7 @@
         "duration": "10 min",
         "concept": "### Class and Static Methods\n`@classmethod` takes `cls`. `@staticmethod` takes neither `self` nor `cls`.",
         "task": "Create a class method `from_string(cls, s)` that parses a string.",
-        "starterCode": "class Date:\n    @classmethod\n    def from_string(cls, s):\n        return cls()\nprint(type(Date.from_string('2026')).__name__)",
+        "starterCode": "    def from_string(cls, s):\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(type(Date.from_string('2026')).__name__)\n",
         "solution": "class Date:\n    @classmethod\n    def from_string(cls, s):\n        return cls()\nprint(type(Date.from_string('2026')).__name__)",
         "hints": [
           "Return cls()",
@@ -1296,7 +1296,7 @@
         "duration": "8 min",
         "concept": "### Duck Typing\nIf it walks like a duck, it's a duck.",
         "task": "Create a function `make_sound(entity)` that calls `entity.sound()`.",
-        "starterCode": "class Dog: def sound(self): return 'woof'\ndef make_sound(entity): return entity.sound()\nprint(make_sound(Dog()))",
+        "starterCode": "def make_sound(entity): return entity.sound()\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(make_sound(Dog()))\n",
         "solution": "class Dog: def sound(self): return 'woof'\ndef make_sound(entity): return entity.sound()\nprint(make_sound(Dog()))",
         "hints": [
           "return entity.sound()",
@@ -1326,7 +1326,7 @@
         "duration": "8 min",
         "concept": "### __str__ and __repr__\nDefine how objects are printed and represented.",
         "task": "Implement `__str__` in `Book` returning 'Book: Title'.",
-        "starterCode": "class Book:\n    def __init__(self, title): self.title = title\n    def __str__(self): return f'Book: {self.title}'\nprint(Book('Python'))",
+        "starterCode": "    def __init__(self, title): self.title = title\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(Book('Python'))\n",
         "solution": "class Book:\n    def __init__(self, title): self.title = title\n    def __str__(self): return f'Book: {self.title}'\nprint(Book('Python'))",
         "hints": [
           "def __str__(self):",
@@ -1348,7 +1348,7 @@
         "duration": "10 min",
         "concept": "### Custom Collections\nImplement standard list behaviors in custom classes.",
         "task": "Implement `__len__` to return 5.",
-        "starterCode": "class Box:\n    def __len__(self): return 5\nprint(len(Box()))",
+        "starterCode": "    def __len__(self): return 5\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(len(Box()))\n",
         "solution": "class Box:\n    def __len__(self): return 5\nprint(len(Box()))",
         "hints": [
           "def __len__(self): return 5",
@@ -1370,7 +1370,7 @@
         "duration": "10 min",
         "concept": "### Operator Overloading\nUse `__add__` for `+`.",
         "task": "Implement `__add__` to add two `Vector`s together.",
-        "starterCode": "class Vector:\n    def __init__(self, x): self.x = x\n    def __add__(self, other): return Vector(self.x + other.x)\nprint((Vector(2) + Vector(3)).x)",
+        "starterCode": "    def __init__(self, x): self.x = x\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint((Vector(2) + Vector(3)).x)\n",
         "solution": "class Vector:\n    def __init__(self, x): self.x = x\n    def __add__(self, other): return Vector(self.x + other.x)\nprint((Vector(2) + Vector(3)).x)",
         "hints": [
           "def __add__(self, other):",
@@ -1392,7 +1392,7 @@
         "duration": "10 min",
         "concept": "### Context Managers\nUse `with` by defining `__enter__` and `__exit__`.",
         "task": "Implement `__enter__` and `__exit__`. Print 'entering' and 'exiting'.",
-        "starterCode": "class CM:\n    def __enter__(self): print('entering')\n    def __exit__(self, *args): print('exiting')\nwith CM(): print('inside')",
+        "starterCode": "    def __enter__(self): print('entering')\n    # TODO: Write your code to solve the challenge:\n    pass\n\nwith CM(): print('inside')\n",
         "solution": "class CM:\n    def __enter__(self): print('entering')\n    def __exit__(self, *args): print('exiting')\nwith CM(): print('inside')",
         "hints": [
           "Print entering in enter, exiting in exit",
@@ -1426,7 +1426,7 @@
         "duration": "8 min",
         "concept": "### Abstract Base Classes\nUse `ABC` and `@abstractmethod` to enforce method implementation.",
         "task": "Create an abstract method `process`.",
-        "starterCode": "from abc import ABC, abstractmethod\nclass Worker(ABC):\n    @abstractmethod\n    def process(self): pass\nprint('Done')",
+        "starterCode": "    def process(self): pass\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint('Done')\n",
         "solution": "from abc import ABC, abstractmethod\nclass Worker(ABC):\n    @abstractmethod\n    def process(self): pass\nprint('Done')",
         "hints": [
           "@abstractmethod on process",
@@ -1448,7 +1448,7 @@
         "duration": "10 min",
         "concept": "### ABC Hierarchies\nSubclasses must implement abstract methods.",
         "task": "Subclass `Shape` (with abstract `area()`) into `Square`.",
-        "starterCode": "from abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self): pass\nclass Square(Shape):\n    def area(self): return 4\nprint(Square().area())",
+        "starterCode": "    def area(self): pass\n    # TODO: Write your code to solve the challenge:\n    pass\n\nclass Square(Shape):\nprint(Square().area())\n",
         "solution": "from abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self): pass\nclass Square(Shape):\n    def area(self): return 4\nprint(Square().area())",
         "hints": [
           "Implement area() in Square",
@@ -1470,7 +1470,7 @@
         "duration": "10 min",
         "concept": "### Protocols\n`typing.Protocol` allows structural subtyping checking.",
         "task": "Define a Protocol `Drawable` with `draw()`.",
-        "starterCode": "from typing import Protocol\nclass Drawable(Protocol):\n    def draw(self): pass\nprint('Drawable defined')",
+        "starterCode": "    def draw(self): pass\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint('Drawable defined')\n",
         "solution": "from typing import Protocol\nclass Drawable(Protocol):\n    def draw(self): pass\nprint('Drawable defined')",
         "hints": [
           "Inherit from Protocol",
@@ -1500,7 +1500,7 @@
         "duration": "10 min",
         "concept": "### File I/O\nUse `with open()` to automatically handle closing files. Since we are in a simulated browser, we'll simulate output.",
         "task": "Simulate reading from a file by using `import io`. `f = io.StringIO('hello')`. Print `f.read()`.",
-        "starterCode": "import io\nf = io.StringIO('hello')\nprint(f.read())",
+        "starterCode": "f = io.StringIO('hello')\n\n# TODO: Simulate reading from a file by using `import io`. `f = io.StringIO('hello')`. Print `f.read()`.\n# Write your solution below:\n",
         "solution": "import io\nf = io.StringIO('hello')\nprint(f.read())",
         "hints": [
           "Use f.read()",
@@ -1522,7 +1522,7 @@
         "duration": "10 min",
         "concept": "### CSV files\nUse the `csv` module.",
         "task": "Simulate reading CSV using `csv.reader` on an `io.StringIO` object.",
-        "starterCode": "import csv, io\nf = io.StringIO('A,B\\n1,2')\nreader = csv.reader(f)\nfor row in reader: print(','.join(row))",
+        "starterCode": "f = io.StringIO('A,B\\n1,2')\nreader = csv.reader(f)\n\n# TODO: Simulate reading CSV using `csv.reader` on an `io.StringIO` object.\n# Write your solution below:\n",
         "solution": "import csv, io\nf = io.StringIO('A,B\\n1,2')\nreader = csv.reader(f)\nfor row in reader: print(','.join(row))",
         "hints": [
           "Iterate and print rows",
@@ -1547,7 +1547,7 @@
         "duration": "10 min",
         "concept": "### JSON\n`json.dumps` stringifies, `json.loads` parses.",
         "task": "Parse `{\"x\": 1}` using `json.loads` and print the `x` value.",
-        "starterCode": "import json\nd = json.loads('{\"x\": 1}')\nprint(d['x'])",
+        "starterCode": "d = json.loads('{\"x\": 1}')\n\n# TODO: Parse `{\"x\": 1}` using `json.loads` and print the `x` value.\n# Write your solution below:\n",
         "solution": "import json\nd = json.loads('{\"x\": 1}')\nprint(d['x'])",
         "hints": [
           "json.loads",
@@ -1569,7 +1569,7 @@
         "duration": "8 min",
         "concept": "### pathlib\n`pathlib.Path` makes path joining and checking easy.",
         "task": "Create a `Path('folder') / 'file.txt'` and print it.",
-        "starterCode": "from pathlib import Path\np = Path('folder') / 'file.txt'\nprint(p.as_posix())",
+        "starterCode": "p = Path('folder') / 'file.txt'\n\n# TODO: Create a `Path('folder') / 'file.txt'` and print it.\n# Write your solution below:\n",
         "solution": "from pathlib import Path\np = Path('folder') / 'file.txt'\nprint(p.as_posix())",
         "hints": [
           "Use / for paths",
@@ -1599,7 +1599,7 @@
         "duration": "5 min",
         "concept": "### Math Module\nUse `math.sqrt`, `math.pi`, etc.",
         "task": "Import `math` and print `math.sqrt(16)`.",
-        "starterCode": "import math\nprint(math.sqrt(16))",
+        "starterCode": "# Quest: 59. math module\n# Task: Import `math` and print `math.sqrt(16)`.\n\n# TODO: Write your Python solution here\n",
         "solution": "import math\nprint(math.sqrt(16))",
         "hints": [
           "math.sqrt",
@@ -1621,7 +1621,7 @@
         "duration": "5 min",
         "concept": "### Random Module\nUse `random.randint`, `random.choice`.",
         "task": "Set `random.seed(1)`. Print `random.randint(1, 10)`.",
-        "starterCode": "import random\nrandom.seed(1)\nprint(random.randint(1, 10))",
+        "starterCode": "# Quest: 60. random module\n# Task: Set `random.seed(1)`. Print `random.randint(1, 10)`.\n\n# TODO: Write your Python solution here\n",
         "solution": "import random\nrandom.seed(1)\nprint(random.randint(1, 10))",
         "hints": [
           "random.seed(1)",
@@ -1643,7 +1643,7 @@
         "duration": "8 min",
         "concept": "### Datetime\nManage dates and times.",
         "task": "Import `datetime`. Print `datetime.date(2026, 1, 1).year`.",
-        "starterCode": "import datetime\nprint(datetime.date(2026, 1, 1).year)",
+        "starterCode": "# Quest: 61. datetime\n# Task: Import `datetime`. Print `datetime.date(2026, 1, 1).year`.\n\n# TODO: Write your Python solution here\n",
         "solution": "import datetime\nprint(datetime.date(2026, 1, 1).year)",
         "hints": [
           "datetime.date().year",
@@ -1665,7 +1665,7 @@
         "duration": "10 min",
         "concept": "### Collections\nUse `Counter` to count items.",
         "task": "Use `collections.Counter` to count `['a', 'a', 'b']`. Print the count of 'a'.",
-        "starterCode": "import collections\nc = collections.Counter(['a', 'a', 'b'])\nprint(c['a'])",
+        "starterCode": "c = collections.Counter(['a', 'a', 'b'])\n\n# TODO: Use `collections.Counter` to count `['a', 'a', 'b']`. Print the count of 'a'.\n# Write your solution below:\n",
         "solution": "import collections\nc = collections.Counter(['a', 'a', 'b'])\nprint(c['a'])",
         "hints": [
           "c['a']",
@@ -1687,7 +1687,7 @@
         "duration": "8 min",
         "concept": "### Functools Cache\nUse `@lru_cache` to memoize functions.",
         "task": "Decorate `f(x)` with `@lru_cache`. It should return `x * 2`.",
-        "starterCode": "from functools import lru_cache\n@lru_cache\ndef f(x): return x * 2\nprint(f(5))",
+        "starterCode": "def f(x): return x * 2\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(f(5))\n",
         "solution": "from functools import lru_cache\n@lru_cache\ndef f(x): return x * 2\nprint(f(5))",
         "hints": [
           "@lru_cache",
@@ -1717,7 +1717,7 @@
         "duration": "8 min",
         "concept": "### Basic Regex\nUse `re.findall` to find all matches.",
         "task": "Find all digits in 'A1 B2' using `re.findall(r'\\d', ...)`.",
-        "starterCode": "import re\nprint(re.findall(r'\\d', 'A1 B2'))",
+        "starterCode": "# Quest: 64. Pattern Matching Basics — re.search(), re.findall()\n# Task: Find all digits in 'A1 B2' using `re.findall(r'\\d', ...)`.\n\n# TODO: Write your Python solution here\n",
         "solution": "import re\nprint(re.findall(r'\\d', 'A1 B2'))",
         "hints": [
           "r'\\d'",
@@ -1739,7 +1739,7 @@
         "duration": "10 min",
         "concept": "### Quantifiers\n`+` means 1 or more, `*` means 0 or more.",
         "task": "Find words with at least one 'a' using `re.findall(r'\\w*a\\w*', 'cat dog apple')`.",
-        "starterCode": "import re\nprint(re.findall(r'\\w*a\\w*', 'cat dog apple'))",
+        "starterCode": "# Quest: 65. Character Classes, Quantifiers, Anchors\n# Task: Find words with at least one 'a' using `re.findall(r'\\w*a\\w*', 'cat dog apple')`.\n\n# TODO: Write your Python solution here\n",
         "solution": "import re\nprint(re.findall(r'\\w*a\\w*', 'cat dog apple'))",
         "hints": [
           "r'\\w*a\\w*'",
@@ -1761,7 +1761,7 @@
         "duration": "10 min",
         "concept": "### Groups\nUse parentheses to capture groups.",
         "task": "Extract the domain from 'email@gmail.com' using `re.search(r'@(.*)', ...)`.",
-        "starterCode": "import re\nm = re.search(r'@(.*)', 'email@gmail.com')\nprint(m.group(1))",
+        "starterCode": "m = re.search(r'@(.*)', 'email@gmail.com')\n\n# TODO: Extract the domain from 'email@gmail.com' using `re.search(r'@(.*)', ...)`.\n# Write your solution below:\n",
         "solution": "import re\nm = re.search(r'@(.*)', 'email@gmail.com')\nprint(m.group(1))",
         "hints": [
           "m.group(1)",
@@ -1783,7 +1783,7 @@
         "duration": "8 min",
         "concept": "### Replace\nUse `re.sub` to replace patterns.",
         "task": "Replace all digits in 'A1 B2' with 'X'.",
-        "starterCode": "import re\nprint(re.sub(r'\\d', 'X', 'A1 B2'))",
+        "starterCode": "# Quest: 67. re.sub() — Search & Replace\n# Task: Replace all digits in 'A1 B2' with 'X'.\n\n# TODO: Write your Python solution here\n",
         "solution": "import re\nprint(re.sub(r'\\d', 'X', 'A1 B2'))",
         "hints": [
           "re.sub(r'\\d', 'X', string)",
@@ -1813,7 +1813,7 @@
         "duration": "8 min",
         "concept": "### Type Hints\nAdd hints like `def f(x: int) -> str:`.",
         "task": "Define `def double(x: int) -> int:` that returns `x * 2`. Print `double(4)`.",
-        "starterCode": "def double(x: int) -> int:\n    return x * 2\nprint(double(4))",
+        "starterCode": "def double(x: int) -> int:\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(double(4))\n",
         "solution": "def double(x: int) -> int:\n    return x * 2\nprint(double(4))",
         "hints": [
           "def double(x: int) -> int:",
@@ -1835,7 +1835,7 @@
         "duration": "8 min",
         "concept": "### Typing module\nUse `Union[int, str]` or `int | str`.",
         "task": "Import `Union` from `typing`. Define `x: Union[int, str] = 'hello'` and print it.",
-        "starterCode": "from typing import Union\nx: Union[int, str] = 'hello'\nprint(x)",
+        "starterCode": "x: Union[int, str] = 'hello'\n\n# TODO: Import `Union` from `typing`. Define `x: Union[int, str] = 'hello'` and print it.\n# Write your solution below:\n",
         "solution": "from typing import Union\nx: Union[int, str] = 'hello'\nprint(x)",
         "hints": [
           "Union[int, str]",
@@ -1857,7 +1857,7 @@
         "duration": "8 min",
         "concept": "### Dataclasses\n`@dataclass` auto-generates `__init__` and `__repr__`.",
         "task": "Create a dataclass `Point` with `x: int` and `y: int`. Print `Point(1, 2)`.",
-        "starterCode": "from dataclasses import dataclass\n@dataclass\nclass Point:\n    x: int\n    y: int\nprint(Point(1, 2))",
+        "starterCode": "class Point:\n    def __init__(self):\n        # TODO: Initialize attributes here\n        pass\n",
         "solution": "from dataclasses import dataclass\n@dataclass\nclass Point:\n    x: int\n    y: int\nprint(Point(1, 2))",
         "hints": [
           "@dataclass",
@@ -1879,7 +1879,7 @@
         "duration": "10 min",
         "concept": "### match / case\nIntroduced in Python 3.10.",
         "task": "Write a `match` on `status = 200`. Case `200`: print 'OK'.",
-        "starterCode": "status = 200\nmatch status:\n    case 200: print('OK')\n    case _: print('Unknown')",
+        "starterCode": "status = 200\n\n# TODO: Write a `match` on `status = 200`. Case `200`: print 'OK'.\n# Write your solution below:\n",
         "solution": "status = 200\nmatch status:\n    case 200: print('OK')\n    case _: print('Unknown')",
         "hints": [
           "match status:\ncase 200:",
@@ -1909,7 +1909,7 @@
         "duration": "5 min",
         "concept": "### Imports\nUse `import` and `as`.",
         "task": "Import `sys` and print `sys.version_info`.",
-        "starterCode": "import sys\nprint(sys.__name__)",
+        "starterCode": "# Quest: 72. import, from import, as aliases\n# Task: Import `sys` and print `sys.version_info`.\n\n# TODO: Write your Python solution here\n",
         "solution": "import sys\nprint(sys.__name__)",
         "hints": [
           "import sys",
@@ -1931,7 +1931,7 @@
         "duration": "8 min",
         "concept": "### Modules\nA Python file is a module.",
         "task": "Simulate by defining a function and acting like it's imported.",
-        "starterCode": "def mod_func(): return 'loaded'\nprint(mod_func())",
+        "starterCode": "def mod_func(): return 'loaded'\n    # TODO: Write your code to solve the challenge:\n    pass\n\nprint(mod_func())\n",
         "solution": "def mod_func(): return 'loaded'\nprint(mod_func())",
         "hints": [
           "Call mod_func()",
@@ -1952,7 +1952,7 @@
         "duration": "8 min",
         "concept": "### Environments\nVirtual envs isolate packages.",
         "task": "Print 'Virtualenv created'.",
-        "starterCode": "print('Virtualenv created')",
+        "starterCode": "# Quest: 74. pip, venv, requirements.txt\n# Task: Print 'Virtualenv created'.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('Virtualenv created')",
         "hints": [
           "print",
@@ -1981,7 +1981,7 @@
         "duration": "8 min",
         "concept": "### assert\n`assert` checks if a condition is true, otherwise raises AssertionError.",
         "task": "Assert that `1 + 1 == 2`. Print 'Passed'.",
-        "starterCode": "assert 1 + 1 == 2\nprint('Passed')",
+        "starterCode": "assert 1 + 1 == 2\n\n# TODO: Assert that `1 + 1 == 2`. Print 'Passed'.\n# Write your solution below:\n",
         "solution": "assert 1 + 1 == 2\nprint('Passed')",
         "hints": [
           "assert 1 + 1 == 2",
@@ -2002,7 +2002,7 @@
         "duration": "10 min",
         "concept": "### unittest\nThe built-in testing framework.",
         "task": "Import unittest. Simulate a test passing.",
-        "starterCode": "import unittest\nprint('Test Passed')",
+        "starterCode": "# Quest: 76. Unit Testing with unittest\n# Task: Import unittest. Simulate a test passing.\n\n# TODO: Write your Python solution here\n",
         "solution": "import unittest\nprint('Test Passed')",
         "hints": [
           "Print Test Passed",
@@ -2023,7 +2023,7 @@
         "duration": "10 min",
         "concept": "### pytest\nA popular third-party testing framework.",
         "task": "Print 'pytest is great'.",
-        "starterCode": "print('pytest is great')",
+        "starterCode": "# Quest: 77. Testing with pytest\n# Task: Print 'pytest is great'.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('pytest is great')",
         "hints": [
           "print",
@@ -2044,7 +2044,7 @@
         "duration": "8 min",
         "concept": "### logging\nUse `logging.warning()` etc.",
         "task": "Import `logging` and print 'Warning logged'.",
-        "starterCode": "import logging\nprint('Warning logged')",
+        "starterCode": "# Quest: 78. logging module\n# Task: Import `logging` and print 'Warning logged'.\n\n# TODO: Write your Python solution here\n",
         "solution": "import logging\nprint('Warning logged')",
         "hints": [
           "print",
@@ -2073,7 +2073,7 @@
         "duration": "10 min",
         "concept": "### Threading\nRun code in separate threads.",
         "task": "Simulate starting a thread.",
-        "starterCode": "print('Thread started')",
+        "starterCode": "# Quest: 79. threading\n# Task: Simulate starting a thread.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('Thread started')",
         "hints": [
           "print",
@@ -2094,7 +2094,7 @@
         "duration": "10 min",
         "concept": "### Multiprocessing\nUse multiple CPU cores.",
         "task": "Simulate a process.",
-        "starterCode": "print('Process started')",
+        "starterCode": "# Quest: 80. multiprocessing\n# Task: Simulate a process.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('Process started')",
         "hints": [
           "print",
@@ -2115,7 +2115,7 @@
         "duration": "10 min",
         "concept": "### Asyncio\nUse `async def` and `await`.",
         "task": "Simulate an async function.",
-        "starterCode": "print('Async resolved')",
+        "starterCode": "# Quest: 81. asyncio basics — async def, await\n# Task: Simulate an async function.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('Async resolved')",
         "hints": [
           "print",
@@ -2136,7 +2136,7 @@
         "duration": "10 min",
         "concept": "### Advanced Asyncio\nRun multiple coroutines.",
         "task": "Simulate `gather`.",
-        "starterCode": "print('Gathered tasks')",
+        "starterCode": "# Quest: 82. asyncio advanced — gather(), create_task()\n# Task: Simulate `gather`.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('Gathered tasks')",
         "hints": [
           "print",
@@ -2165,7 +2165,7 @@
         "duration": "15 min",
         "concept": "### Final Capstone 1\nBuild a CLI to-do app.",
         "task": "Print 'To-Do App completed'.",
-        "starterCode": "print('To-Do App completed')",
+        "starterCode": "# Quest: 83. Capstone: File-Based To-Do App\n# Task: Print 'To-Do App completed'.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('To-Do App completed')",
         "hints": [
           "print",
@@ -2186,7 +2186,7 @@
         "duration": "15 min",
         "concept": "### Final Capstone 2\nSimulate web scraping.",
         "task": "Print 'Scraping done'.",
-        "starterCode": "print('Scraping done')",
+        "starterCode": "# Quest: 84. Capstone: Web Scraper Simulator\n# Task: Print 'Scraping done'.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('Scraping done')",
         "hints": [
           "print",
@@ -2207,7 +2207,7 @@
         "duration": "15 min",
         "concept": "### Final Capstone 3\nBuild a tiny DB engine.",
         "task": "Print 'DB Engine running'.",
-        "starterCode": "print('DB Engine running')",
+        "starterCode": "# Quest: 85. Capstone: Mini Database Engine\n# Task: Print 'DB Engine running'.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('DB Engine running')",
         "hints": [
           "print",
@@ -2228,7 +2228,7 @@
         "duration": "15 min",
         "concept": "### Final Capstone 4\nUse match/case for a bot.",
         "task": "Print 'Chat Bot answering'.",
-        "starterCode": "print('Chat Bot answering')",
+        "starterCode": "# Quest: 86. Capstone: Chat Bot with Pattern Matching\n# Task: Print 'Chat Bot answering'.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('Chat Bot answering')",
         "hints": [
           "print",
@@ -2249,7 +2249,7 @@
         "duration": "20 min",
         "concept": "### FINAL BOSS\nBuild a massive library system.",
         "task": "Print 'YOU WIN! Python Master!'.",
-        "starterCode": "print('YOU WIN! Python Master!')",
+        "starterCode": "# Quest: 87. FINAL BOSS: Multi-Module Library System\n# Task: Print 'YOU WIN! Python Master!'.\n\n# TODO: Write your Python solution here\n",
         "solution": "print('YOU WIN! Python Master!')",
         "hints": [
           "print YOU WIN! Python Master!",
