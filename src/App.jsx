@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { LANGUAGES, getLanguageConfig } from './data/languages/registry';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
@@ -15,12 +15,41 @@ import { storageService } from './services/storageService';
 import { soundService } from './services/soundService';
 import { translatePythonError } from './services/errorTranslator';
 
+// Game Components
+import { XPBar } from './components/game/XPBar';
+import { getLevelProgress as getLevelInfo } from './services/gameEngine';
+import { ComboMeter } from './components/game/ComboMeter';
+import { LevelUpModal } from './components/game/LevelUpModal';
+import { TrophyToast } from './components/game/TrophyToast';
+import { DailyRewardModal } from './components/game/DailyRewardModal';
+import { BonusRoundPopup } from './components/game/BonusRoundPopup';
+import { StreakModal } from './components/game/StreakModal';
+import { GameModeSelector } from './components/game/GameModeSelector';
+import { AlgorithmArena } from './components/game/AlgorithmArena';
+import { BugDetective } from './components/game/BugDetective';
+import { SpeedChallenge } from './components/game/SpeedChallenge';
+import { ProjectWorkshop } from './components/game/ProjectWorkshop';
+
 export default function App() {
   // 1. Language & State
   const [currentLanguageId, setCurrentLanguageId] = useState('python');
   const [completedByLanguage, setCompletedByLanguage] = useState({});
   const [totalXP, setTotalXP] = useState(0);
   const [streak, setStreak] = useState(1);
+
+  // Game State
+  const [combo, setCombo] = useState(0);
+  const [bonusRoundActive, setBonusRoundActive] = useState(false);
+  const [bonusMultiplier, setBonusMultiplier] = useState(1);
+  const [pendingAchievements, setPendingAchievements] = useState([]);
+  const [dailyRewardClaimed, setDailyRewardClaimed] = useState(true); // default true, check in effect
+  const [currentGameMode, setCurrentGameMode] = useState('lessons'); // 'lessons' | 'arena' | 'bugs' | 'speed' | 'projects'
+  const [isGameModeSelectorOpen, setIsGameModeSelectorOpen] = useState(false);
+  const [lessonsCompletedSession, setLessonsCompletedSession] = useState(0);
+  
+  // Modals state
+  const [levelUpData, setLevelUpData] = useState(null);
+  const [streakModalData, setStreakModalData] = useState(null);
 
   // Active Language Configuration & Curriculum
   const activeLang = useMemo(() => getLanguageConfig(currentLanguageId), [currentLanguageId]);
@@ -42,15 +71,15 @@ export default function App() {
   const [outputResult, setOutputResult] = useState(null);
   const [testResults, setTestResults] = useState(null);
 
-  // Pyodide Runtime State (for Python)
+  // Pyodide Runtime State
   const [pyodide, setPyodide] = useState(null);
-  const [wasmStatus, setWasmStatus] = useState('Initializing Multi-Language Engine...');
+  const [wasmStatus, setWasmStatus] = useState('Initializing Engine...');
 
-  // Mascot Companion State
+  // Mascot
   const [pythieMood, setPythieMood] = useState('idle');
   const [pythieSpeech, setPythieSpeech] = useState(null);
 
-  // Modals & Sidebar Toggles
+  // Modals & Sidebar
   const [isCheatsheetOpen, setIsCheatsheetOpen] = useState(false);
   const [isSandboxOpen, setIsSandboxOpen] = useState(false);
   const [isCelebrationOpen, setIsCelebrationOpen] = useState(false);
@@ -60,12 +89,23 @@ export default function App() {
 
   const completedLessonsInLang = completedByLanguage[currentLanguageId] || [];
 
-  // Initial Load: Restore State & Initialize Engines
+  // Initial Load
   useEffect(() => {
     const savedState = storageService.loadState();
     setTotalXP(savedState.totalXP || 0);
     setCompletedByLanguage(savedState.completedByLanguage || {});
     setStreak(savedState.streak || 1);
+
+    const today = new Date().toISOString().split('T')[0];
+    const lastClaim = localStorage.getItem('lastDailyClaim');
+    if (lastClaim !== today) {
+      setDailyRewardClaimed(false);
+    }
+
+    // Check streak milestones
+    if (savedState.streak > 1 && [3, 7, 14, 30, 50, 100].includes(savedState.streak) && lastClaim !== today) {
+        setStreakModalData({ days: savedState.streak, bonus: savedState.streak * 100 });
+    }
 
     const initialLangId = savedState.currentLanguageId || 'python';
     setCurrentLanguageId(initialLangId);
@@ -79,7 +119,6 @@ export default function App() {
     const initialCode = storageService.getLessonDraft(targetLessonId, targetLessonObj.starterCode);
     setCurrentCode(initialCode);
 
-    // Initialize Pyodide WebAssembly for Python
     initPyodide((status) => {
       setWasmStatus(status);
     }).then((instance) => {
@@ -94,17 +133,75 @@ export default function App() {
     });
   }, []);
 
-  // Switch Programming Language Realm
+  const checkAchievements = useCallback((action, state) => {
+    // Simple achievement check system
+    const unlockedStr = localStorage.getItem('achievements') || '[]';
+    const unlocked = JSON.parse(unlockedStr);
+    const newAchievements = [];
+
+    const unlock = (id, name, desc, icon) => {
+      if (!unlocked.includes(id)) {
+        unlocked.push(id);
+        newAchievements.push({ id, name, description: desc, icon });
+      }
+    };
+
+    if (action === 'xp_gain') {
+      if (state.totalXP >= 1000) unlock('xp_1k', 'XP Hoarder', 'Reach 1,000 XP', 'ðŸ’°');
+      if (state.totalXP >= 10000) unlock('xp_10k', 'XP Millionaire', 'Reach 10,000 XP', 'ðŸ’Ž');
+    }
+
+    if (action === 'combo') {
+      if (state.combo >= 3) unlock('combo_3', 'Heating Up', 'Reach a 3x Combo', 'ðŸ”¥');
+      if (state.combo >= 10) unlock('combo_10', 'Unstoppable', 'Reach a 10x Combo', 'â˜„ï¸');
+    }
+
+    if (newAchievements.length > 0) {
+      localStorage.setItem('achievements', JSON.stringify(unlocked));
+      setPendingAchievements(prev => [...prev, ...newAchievements]);
+    }
+  }, []);
+
+  const handleXPEarned = (amount) => {
+    const finalAmount = amount * bonusMultiplier * (Math.min(Math.floor(combo/2)+1, 5) || 1);
+    
+    setTotalXP(prev => {
+      const oldLevel = getLevelInfo(prev).level;
+      const nextXP = prev + finalAmount;
+      const newLevel = getLevelInfo(nextXP).level;
+      
+      if (newLevel > oldLevel) {
+        setLevelUpData({ level: newLevel, name: getLevelInfo(nextXP).name });
+      }
+      
+      checkAchievements('xp_gain', { totalXP: nextXP });
+      
+      // Save state
+      const state = storageService.loadState();
+      state.totalXP = nextXP;
+      storageService.saveState(state);
+      
+      return nextXP;
+    });
+    
+    soundService.playSuccess();
+    setRecentXpAward(finalAmount);
+  };
+
+  const handleClaimDaily = (amount) => {
+    handleXPEarned(amount);
+    const today = new Date().toISOString().split('T')[0];
+    localStorage.setItem('lastDailyClaim', today);
+    setDailyRewardClaimed(true);
+  };
+
   const handleSelectLanguage = (newLangId) => {
     if (newLangId === currentLanguageId) return;
-
     soundService.playClick();
-    // Save draft of current lesson before switching
     storageService.saveLessonDraft(currentLessonId, currentCode);
     storageService.saveCurrentLessonId(currentLanguageId, currentLessonId);
 
     setCurrentLanguageId(newLangId);
-
     const targetConfig = getLanguageConfig(newLangId);
     const newLessons = targetConfig.curriculum.flatMap(m => m.lessons);
     const targetLessonId = storageService.getCurrentLessonId(newLangId, newLessons[0].id);
@@ -117,161 +214,158 @@ export default function App() {
     setOutputResult(null);
     setTestResults(null);
     setPythieMood('idle');
-    setPythieSpeech(`Welcome to the ${targetConfig.name} Realm! I'm ${targetConfig.mascotName}, let's master ${targetConfig.name}! 🌟`);
+    setPythieSpeech('Welcome to the ' + targetConfig.name + ' Realm!');
 
     const state = storageService.loadState();
     state.currentLanguageId = newLangId;
     storageService.saveState(state);
   };
 
-  // Switch Lesson within Active Language
   const handleSelectLesson = (lessonId) => {
     soundService.playClick();
     storageService.saveLessonDraft(currentLessonId, currentCode);
-
     setCurrentLessonId(lessonId);
     const newLesson = allLessons.find(l => l.id === lessonId);
     if (newLesson) {
-      const codeForLesson = storageService.getLessonDraft(lessonId, newLesson.starterCode);
-      setCurrentCode(codeForLesson);
+      setCurrentCode(storageService.getLessonDraft(lessonId, newLesson.starterCode));
     }
     setOutputResult(null);
     setTestResults(null);
     setPythieMood('idle');
-    setPythieSpeech(`Ready for Quest: ${newLesson?.title}! Let's do this!`);
-
     storageService.saveCurrentLessonId(currentLanguageId, lessonId);
   };
 
-  // Update Active Code
-  const handleCodeChange = (newCode) => {
-    setCurrentCode(newCode);
-    storageService.saveLessonDraft(currentLessonId, newCode);
-    if (pythieMood === 'detective') {
-      setPythieMood('idle');
-      setPythieSpeech("That's the spirit! Editing code to solve the clue!");
-    }
-  };
-
-  // Run & Test Code
   const handleRunCode = async () => {
     setIsRunning(true);
     setPythieMood('thinking');
-    setPythieSpeech(`Evaluating your ${activeLang.name} code... reading instructions...`);
-
+    
     try {
       const execResult = await runMultiLanguageCode(currentCode, currentLanguageId, pyodide);
       setOutputResult(execResult);
 
       if (execResult.error) {
-        // Engine error or syntax exception
         soundService.playFail();
         setPythieMood('detective');
-        setPythieSpeech(`Uh oh! ${activeLang.name} stumbled! Detective ${activeLang.mascotName} is on the case! 🔍`);
+        setCombo(0);
         setIsDetectiveOpen(true);
       } else if (currentLesson && currentLesson.tests) {
-        // Evaluate quest test assertions
-        const testEval = evaluateMultiLanguageLessonTests(
-          execResult, 
-          currentLesson.tests, 
-          currentCode, 
-          currentLanguageId
-        );
+        const testEval = evaluateMultiLanguageLessonTests(execResult, currentLesson.tests, currentCode, currentLanguageId);
         setTestResults(testEval);
 
         if (testEval.allPassed) {
-          // All tests passed!
-          soundService.playSuccess();
+          const newCombo = combo + 1;
+          setCombo(newCombo);
+          checkAchievements('combo', { combo: newCombo });
+          
           setPythieMood('celebrating');
-          setPythieSpeech(`WOOHOO! Quest complete! You're becoming a true ${activeLang.name} Hero! ⭐⭐⭐`);
-
-          const xpAward = 25;
-          setRecentXpAward(xpAward);
-          const completionResult = storageService.markLessonComplete(currentLanguageId, currentLesson.id, xpAward);
-          setTotalXP(completionResult.newXP);
+          
+          const completionResult = storageService.markLessonComplete(currentLanguageId, currentLesson.id, 0); // We handle XP manually below
           setCompletedByLanguage(completionResult.completedByLanguage);
 
           if (completionResult.isNewCompletion) {
+            handleXPEarned(25);
+            setLessonsCompletedSession(prev => {
+              const count = prev + 1;
+              if (count % 5 === 0) setBonusRoundActive(true);
+              return count;
+            });
             setTimeout(() => {
-              soundService.playFanfare();
               setIsCelebrationOpen(true);
             }, 400);
           }
         } else {
-          // Output or assertions did not match
           soundService.playFail();
           setPythieMood('detective');
-          setPythieSpeech(`Almost there! The code ran, but the quest was looking for something specific. Let's inspect the clue! 🔍`);
+          setCombo(0);
           setIsDetectiveOpen(true);
         }
       }
     } catch (err) {
       soundService.playFail();
-      setOutputResult({
-        success: false,
-        stdout: "",
-        stderr: "",
-        error: String(err),
-        variables: [],
-        durationMs: 0
-      });
-      setPythieMood('detective');
+      setCombo(0);
       setIsDetectiveOpen(true);
     } finally {
       setIsRunning(false);
     }
   };
 
-  // Reset Lesson to Starter Code
-  const handleResetCode = () => {
-    if (currentLesson) {
-      setCurrentCode(currentLesson.starterCode);
-      storageService.saveLessonDraft(currentLesson.id, currentLesson.starterCode);
-      setOutputResult(null);
-      setTestResults(null);
-      setPythieMood('idle');
-      setPythieSpeech("Clean slate! Ready to write fresh code!");
+  const renderGameMode = () => {
+    switch (currentGameMode) {
+      case 'arena':
+        return <AlgorithmArena currentLanguageId={currentLanguageId} xp={totalXP} combo={combo} onXPEarned={handleXPEarned} onComboChange={setCombo} />;
+      case 'bugs':
+        return <BugDetective currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
+      case 'speed':
+        return <SpeedChallenge currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
+      case 'projects':
+        return <ProjectWorkshop currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
+      case 'lessons':
+      default:
+        return (
+          <div className="flex flex-1 overflow-hidden relative">
+            <Sidebar
+              curriculum={activeCurriculum}
+              currentLessonId={currentLessonId}
+              completedLessons={completedLessonsInLang}
+              onSelectLesson={handleSelectLesson}
+              isOpenMobile={isMobileSidebarOpen}
+              onCloseMobile={() => setIsMobileSidebarOpen(false)}
+            />
+            <main className="flex-1 flex flex-col lg:flex-row overflow-hidden bg-slate-900/20">
+              <div className="w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-800/80 flex flex-col overflow-hidden h-1/2 lg:h-full bg-slate-950/40">
+                <LessonView
+                  lesson={currentLesson}
+                  onApplySolution={(c) => { setCurrentCode(c); setCombo(0); }}
+                  onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
+                  onNextLesson={() => {
+                    const currentIndex = allLessons.findIndex(l => l.id === currentLessonId);
+                    if (currentIndex >= 0 && currentIndex < allLessons.length - 1) handleSelectLesson(allLessons[currentIndex + 1].id);
+                  }}
+                  isComplete={completedLessonsInLang.includes(currentLessonId)}
+                  isHeroMode={isHeroMode}
+                  pythieMood={pythieMood}
+                  pythieSpeech={pythieSpeech}
+                  mascotName={activeLang.mascotName}
+                  mascotType={activeLang.mascotType}
+                  mascotTitle={activeLang.mascotTitle}
+                />
+              </div>
+              <div className="w-full lg:w-7/12 flex flex-col p-2.5 sm:p-4 gap-2.5 sm:gap-3 overflow-hidden h-1/2 lg:h-full bg-slate-950/60">
+                <div className="flex-1 min-h-[220px] overflow-hidden">
+                  <CodeEditor
+                    code={currentCode}
+                    onChange={setCurrentCode}
+                    onRun={handleRunCode}
+                    onReset={() => setCurrentCode(currentLesson.starterCode)}
+                    isRunning={isRunning}
+                    wasmStatus={wasmStatus}
+                    isHeroMode={isHeroMode}
+                    language={currentLanguageId}
+                  />
+                </div>
+                <div className="shrink-0">
+                  <OutputConsole
+                    outputResult={outputResult}
+                    testResults={testResults}
+                    onClearConsole={() => { setOutputResult(null); setTestResults(null); }}
+                    onOpenDetective={() => setIsDetectiveOpen(true)}
+                    isTestingMode={true}
+                    isHeroMode={isHeroMode}
+                    currentLanguageId={currentLanguageId}
+                    mascotName={activeLang.mascotName}
+                  />
+                </div>
+              </div>
+            </main>
+          </div>
+        );
     }
   };
-
-  // Apply Auto Fix Solution
-  const handleApplySolution = (solutionCode) => {
-    setCurrentCode(solutionCode);
-    storageService.saveLessonDraft(currentLessonId, solutionCode);
-    setPythieMood('idle');
-    setPythieSpeech("Magic solution applied! Now click 'Run & Test' to see it pass! ✨");
-  };
-
-  // Advance to Next Lesson
-  const handleNextLesson = () => {
-    const currentIndex = allLessons.findIndex(l => l.id === currentLessonId);
-    if (currentIndex >= 0 && currentIndex < allLessons.length - 1) {
-      handleSelectLesson(allLessons[currentIndex + 1].id);
-    }
-  };
-
-  // Reset Progress for Current Language
-  const handleResetProgress = () => {
-    storageService.resetLanguageProgress(currentLanguageId);
-    setCompletedByLanguage(prev => ({
-      ...prev,
-      [currentLanguageId]: []
-    }));
-    setCurrentLessonId(allLessons[0].id);
-    setCurrentCode(allLessons[0].starterCode);
-    setOutputResult(null);
-    setTestResults(null);
-    setPythieMood('idle');
-    setPythieSpeech(`All ${activeLang.name} quests reset. A brand new adventure begins!`);
-  };
-
-  const errorDetails = outputResult?.error && currentLanguageId === 'python'
-    ? translatePythonError(outputResult.error)
-    : null;
 
   return (
     <div className={`flex flex-col h-screen overflow-hidden font-sans ${isHeroMode ? 'bg-[#080B12] text-slate-100' : 'bg-slate-950 text-slate-100'}`}>
-      {/* Top Header */}
+      <XPBar xp={totalXP} streak={streak} onProfileClick={() => {}} />
+      
       <Header
         currentLanguageId={currentLanguageId}
         onSelectLanguage={handleSelectLanguage}
@@ -284,120 +378,84 @@ export default function App() {
         onToggleHeroMode={() => setIsHeroMode(!isHeroMode)}
         onOpenCheatsheet={() => setIsCheatsheetOpen(true)}
         onOpenSandbox={() => setIsSandboxOpen(true)}
-        onResetProgress={handleResetProgress}
+        onResetProgress={() => storageService.resetLanguageProgress(currentLanguageId)}
         wasmStatus={wasmStatus}
       />
 
-      {/* Main Workspace Layout */}
-      <div className="flex flex-1 overflow-hidden relative">
-        {/* Left Navigation Sidebar */}
-        <Sidebar
-          curriculum={activeCurriculum}
-          currentLessonId={currentLessonId}
-          completedLessons={completedLessonsInLang}
-          onSelectLesson={handleSelectLesson}
-          isOpenMobile={isMobileSidebarOpen}
-          onCloseMobile={() => setIsMobileSidebarOpen(false)}
-        />
-
-        {/* Center & Right Workspace: Lesson Guide + Code Studio */}
-        <main className="flex-1 flex flex-col lg:flex-row overflow-hidden bg-slate-900/20">
-          {/* Lesson Guide (Instructions, Theory, Mascot, Hints) */}
-          <div className="w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-800/80 flex flex-col overflow-hidden h-1/2 lg:h-full bg-slate-950/40">
-            <LessonView
-              lesson={currentLesson}
-              onApplySolution={handleApplySolution}
-              onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
-              onNextLesson={handleNextLesson}
-              isComplete={completedLessonsInLang.includes(currentLessonId)}
-              isHeroMode={isHeroMode}
-              pythieMood={pythieMood}
-              pythieSpeech={pythieSpeech}
-              mascotName={activeLang.mascotName}
-              mascotType={activeLang.mascotType}
-              mascotTitle={activeLang.mascotTitle}
-            />
-          </div>
-
-          {/* Code Studio (Editor + Output Console) */}
-          <div className="w-full lg:w-7/12 flex flex-col p-2.5 sm:p-4 gap-2.5 sm:gap-3 overflow-hidden h-1/2 lg:h-full bg-slate-950/60">
-            {/* Code Editor */}
-            <div className="flex-1 min-h-[220px] overflow-hidden">
-              <CodeEditor
-                code={currentCode}
-                onChange={handleCodeChange}
-                onRun={handleRunCode}
-                onReset={handleResetCode}
-                isRunning={isRunning}
-                wasmStatus={wasmStatus}
-                isHeroMode={isHeroMode}
-                language={currentLanguageId}
-              />
-            </div>
-
-            {/* Output Console / Memory Jars / Test Results */}
-            <div className="shrink-0">
-              <OutputConsole
-                outputResult={outputResult}
-                testResults={testResults}
-                onClearConsole={() => {
-                  setOutputResult(null);
-                  setTestResults(null);
-                  setPythieMood('idle');
-                }}
-                onOpenDetective={() => setIsDetectiveOpen(true)}
-                isTestingMode={true}
-                isHeroMode={isHeroMode}
-                currentLanguageId={currentLanguageId}
-                mascotName={activeLang.mascotName}
-              />
-            </div>
-          </div>
-        </main>
+      {/* Insert Game Mode Selector Button near header */}
+      <div className="bg-slate-900 border-b border-slate-800 p-2 flex justify-center">
+        <button 
+          onClick={() => setIsGameModeSelectorOpen(true)}
+          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-full font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] flex items-center gap-2"
+        >
+          ðŸŽ® GAME MODES
+        </button>
       </div>
 
-      {/* Detective Why Did It Fail Inspector Modal */}
+      {renderGameMode()}
+
+      <ComboMeter combo={combo} />
+
+      {!dailyRewardClaimed && (
+        <DailyRewardModal onClaim={handleClaimDaily} onClose={() => setDailyRewardClaimed(true)} />
+      )}
+
+      {levelUpData && (
+        <LevelUpModal newLevel={levelUpData.level} levelName={levelUpData.name} onClose={() => setLevelUpData(null)} />
+      )}
+
+      <TrophyToast 
+        achievements={pendingAchievements} 
+        onDismiss={() => setPendingAchievements(prev => prev.slice(1))} 
+      />
+
+      {bonusRoundActive && (
+        <BonusRoundPopup 
+          onAccept={() => { setBonusMultiplier(3); setBonusRoundActive(false); }}
+          onSkip={() => { setBonusMultiplier(1); setBonusRoundActive(false); }}
+        />
+      )}
+
+      {streakModalData && (
+        <StreakModal 
+          streakDays={streakModalData.days} 
+          bonusXP={streakModalData.bonus} 
+          onClose={() => {
+            handleXPEarned(streakModalData.bonus);
+            setStreakModalData(null);
+          }} 
+        />
+      )}
+
+      {isGameModeSelectorOpen && (
+        <GameModeSelector 
+          currentXP={totalXP}
+          onSelectMode={(mode) => {
+            setCurrentGameMode(mode);
+            setIsGameModeSelectorOpen(false);
+          }}
+          onClose={() => setIsGameModeSelectorOpen(false)}
+        />
+      )}
+
       <DetectiveFailModal
         isOpen={isDetectiveOpen}
         onClose={() => setIsDetectiveOpen(false)}
         lesson={currentLesson}
         failedTests={testResults?.results || []}
         rawError={outputResult?.error}
-        errorDetails={errorDetails}
-        onApplySolution={handleApplySolution}
+        errorDetails={null}
+        onApplySolution={setCurrentCode}
         languageName={activeLang.name}
         mascotName={activeLang.mascotName}
         mascotType={activeLang.mascotType}
       />
 
-      {/* Interactive Cheatsheet Modal */}
-      <CheatsheetModal
-        isOpen={isCheatsheetOpen}
-        onClose={() => setIsCheatsheetOpen(false)}
-        currentLanguageId={currentLanguageId}
-        languageName={activeLang.name}
-      />
-
-      {/* Freeform Sandbox Playground Modal */}
-      <SandboxModal
-        isOpen={isSandboxOpen}
-        onClose={() => setIsSandboxOpen(false)}
-        sandboxCode={storageService.getSandboxCode(currentLanguageId)}
-        onSaveSandboxCode={(langId, code) => storageService.saveSandboxCode(langId, code)}
-        pyodideInstance={pyodide}
-        currentLanguageId={currentLanguageId}
-        languageName={activeLang.name}
-        mascotName={activeLang.mascotName}
-      />
-
-      {/* Challenge Completed Celebration Modal */}
-      <CelebrationModal
-        isOpen={isCelebrationOpen}
-        lessonTitle={currentLesson?.title || 'Challenge'}
-        xpGained={recentXpAward}
-        onNextLesson={handleNextLesson}
-        onClose={() => setIsCelebrationOpen(false)}
-      />
+      <CheatsheetModal isOpen={isCheatsheetOpen} onClose={() => setIsCheatsheetOpen(false)} currentLanguageId={currentLanguageId} languageName={activeLang.name} />
+      <SandboxModal isOpen={isSandboxOpen} onClose={() => setIsSandboxOpen(false)} sandboxCode="" onSaveSandboxCode={() => {}} pyodideInstance={pyodide} currentLanguageId={currentLanguageId} languageName={activeLang.name} mascotName={activeLang.mascotName} />
+      <CelebrationModal isOpen={isCelebrationOpen} lessonTitle={currentLesson?.title || 'Challenge'} xpGained={recentXpAward} onNextLesson={() => {}} onClose={() => setIsCelebrationOpen(false)} />
     </div>
   );
 }
+
+

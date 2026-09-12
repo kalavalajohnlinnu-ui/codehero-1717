@@ -1,0 +1,1343 @@
+[
+  {
+    "id": "project-1",
+    "language": "python",
+    "title": "🧮 Magic Calculator",
+    "description": "Build a Magic Calculator!",
+    "difficulty": "beginner",
+    "totalXP": 300,
+    "estimatedTime": "30 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Magic Calculator",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Magic Calculator",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Magic Calculator",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Magic Calculator",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Magic Calculator",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 6,
+        "title": "Step 6",
+        "description": "Complete step 6 of Magic Calculator",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-2",
+    "language": "python",
+    "title": "🧮 Number Guessing Game",
+    "description": "Build a Number Guessing Game!",
+    "difficulty": "beginner",
+    "totalXP": 250,
+    "estimatedTime": "25 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Number Guessing Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Number Guessing Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Number Guessing Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Number Guessing Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Number Guessing Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-3",
+    "language": "python",
+    "title": "🧮 Word Counter",
+    "description": "Build a Word Counter!",
+    "difficulty": "beginner",
+    "totalXP": 250,
+    "estimatedTime": "25 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Word Counter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Word Counter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Word Counter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Word Counter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Word Counter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-4",
+    "language": "python",
+    "title": "🧮 To-Do List",
+    "description": "Build a To-Do List!",
+    "difficulty": "beginner",
+    "totalXP": 350,
+    "estimatedTime": "35 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of To-Do List",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of To-Do List",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of To-Do List",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of To-Do List",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of To-Do List",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 6,
+        "title": "Step 6",
+        "description": "Complete step 6 of To-Do List",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 7,
+        "title": "Step 7",
+        "description": "Complete step 7 of To-Do List",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-5",
+    "language": "python",
+    "title": "🧮 Quiz Game",
+    "description": "Build a Quiz Game!",
+    "difficulty": "beginner",
+    "totalXP": 300,
+    "estimatedTime": "30 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Quiz Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Quiz Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Quiz Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Quiz Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Quiz Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 6,
+        "title": "Step 6",
+        "description": "Complete step 6 of Quiz Game",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-6",
+    "language": "javascript",
+    "title": "🧮 Temperature Converter",
+    "description": "Build a Temperature Converter!",
+    "difficulty": "beginner",
+    "totalXP": 250,
+    "estimatedTime": "25 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Temperature Converter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Temperature Converter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Temperature Converter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Temperature Converter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Temperature Converter",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-7",
+    "language": "javascript",
+    "title": "🧮 Countdown Timer",
+    "description": "Build a Countdown Timer!",
+    "difficulty": "beginner",
+    "totalXP": 250,
+    "estimatedTime": "25 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Countdown Timer",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Countdown Timer",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Countdown Timer",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Countdown Timer",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Countdown Timer",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-8",
+    "language": "javascript",
+    "title": "🧮 Shopping Cart",
+    "description": "Build a Shopping Cart!",
+    "difficulty": "beginner",
+    "totalXP": 350,
+    "estimatedTime": "35 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Shopping Cart",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Shopping Cart",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Shopping Cart",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Shopping Cart",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Shopping Cart",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 6,
+        "title": "Step 6",
+        "description": "Complete step 6 of Shopping Cart",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 7,
+        "title": "Step 7",
+        "description": "Complete step 7 of Shopping Cart",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-9",
+    "language": "html",
+    "title": "🧮 Color Picker",
+    "description": "Build a Color Picker!",
+    "difficulty": "beginner",
+    "totalXP": 250,
+    "estimatedTime": "25 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Color Picker",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Color Picker",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Color Picker",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Color Picker",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Color Picker",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-10",
+    "language": "html",
+    "title": "🧮 Animated Button",
+    "description": "Build a Animated Button!",
+    "difficulty": "beginner",
+    "totalXP": 200,
+    "estimatedTime": "20 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Animated Button",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Animated Button",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Animated Button",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Animated Button",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-11",
+    "language": "html",
+    "title": "🧮 Profile Card",
+    "description": "Build a Profile Card!",
+    "difficulty": "beginner",
+    "totalXP": 300,
+    "estimatedTime": "30 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Profile Card",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Profile Card",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Profile Card",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Profile Card",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Profile Card",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 6,
+        "title": "Step 6",
+        "description": "Complete step 6 of Profile Card",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-12",
+    "language": "sql",
+    "title": "🧮 Student Database",
+    "description": "Build a Student Database!",
+    "difficulty": "beginner",
+    "totalXP": 250,
+    "estimatedTime": "25 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Student Database",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Student Database",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Student Database",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Student Database",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Student Database",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-13",
+    "language": "sql",
+    "title": "🧮 Product Inventory",
+    "description": "Build a Product Inventory!",
+    "difficulty": "beginner",
+    "totalXP": 300,
+    "estimatedTime": "30 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Product Inventory",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Product Inventory",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Product Inventory",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Product Inventory",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Product Inventory",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 6,
+        "title": "Step 6",
+        "description": "Complete step 6 of Product Inventory",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-14",
+    "language": "java",
+    "title": "🧮 Contact Book",
+    "description": "Build a Contact Book!",
+    "difficulty": "beginner",
+    "totalXP": 350,
+    "estimatedTime": "35 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Contact Book",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Contact Book",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Contact Book",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Contact Book",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Contact Book",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 6,
+        "title": "Step 6",
+        "description": "Complete step 6 of Contact Book",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 7,
+        "title": "Step 7",
+        "description": "Complete step 7 of Contact Book",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "project-15",
+    "language": "rust",
+    "title": "🧮 Number Patterns",
+    "description": "Build a Number Patterns!",
+    "difficulty": "beginner",
+    "totalXP": 250,
+    "estimatedTime": "25 min",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Step 1",
+        "description": "Complete step 1 of Number Patterns",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 2,
+        "title": "Step 2",
+        "description": "Complete step 2 of Number Patterns",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 3,
+        "title": "Step 3",
+        "description": "Complete step 3 of Number Patterns",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 4,
+        "title": "Step 4",
+        "description": "Complete step 4 of Number Patterns",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "stepNumber": 5,
+        "title": "Step 5",
+        "description": "Complete step 5 of Number Patterns",
+        "starterCode": "# starter",
+        "solution": "# solution",
+        "xpReward": 50,
+        "tests": [
+          {
+            "type": "output_includes",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  }
+]

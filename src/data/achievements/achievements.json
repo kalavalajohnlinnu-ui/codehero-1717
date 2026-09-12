@@ -1,0 +1,602 @@
+[
+  {
+    "id": "ach-1",
+    "icon": "🎯",
+    "name": "Lessons Completed Level 1",
+    "description": "Reach 10 in lessons completed",
+    "trigger": "lessons_completed",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-2",
+    "icon": "🎯",
+    "name": "Lessons Completed Level 2",
+    "description": "Reach 20 in lessons completed",
+    "trigger": "lessons_completed",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-3",
+    "icon": "🎯",
+    "name": "Lessons Completed Level 3",
+    "description": "Reach 30 in lessons completed",
+    "trigger": "lessons_completed",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-4",
+    "icon": "🎯",
+    "name": "Lessons Completed Level 4",
+    "description": "Reach 40 in lessons completed",
+    "trigger": "lessons_completed",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-5",
+    "icon": "🎯",
+    "name": "Lessons Completed Level 5",
+    "description": "Reach 50 in lessons completed",
+    "trigger": "lessons_completed",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-6",
+    "icon": "🎯",
+    "name": "Lessons Completed Level 6",
+    "description": "Reach 60 in lessons completed",
+    "trigger": "lessons_completed",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-7",
+    "icon": "🎯",
+    "name": "Xp Earned Level 1",
+    "description": "Reach 10 in xp earned",
+    "trigger": "xp_earned",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-8",
+    "icon": "🎯",
+    "name": "Xp Earned Level 2",
+    "description": "Reach 20 in xp earned",
+    "trigger": "xp_earned",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-9",
+    "icon": "🎯",
+    "name": "Xp Earned Level 3",
+    "description": "Reach 30 in xp earned",
+    "trigger": "xp_earned",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-10",
+    "icon": "🎯",
+    "name": "Xp Earned Level 4",
+    "description": "Reach 40 in xp earned",
+    "trigger": "xp_earned",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-11",
+    "icon": "🎯",
+    "name": "Xp Earned Level 5",
+    "description": "Reach 50 in xp earned",
+    "trigger": "xp_earned",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-12",
+    "icon": "🎯",
+    "name": "Xp Earned Level 6",
+    "description": "Reach 60 in xp earned",
+    "trigger": "xp_earned",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-13",
+    "icon": "🎯",
+    "name": "Streak Days Level 1",
+    "description": "Reach 10 in streak days",
+    "trigger": "streak_days",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-14",
+    "icon": "🎯",
+    "name": "Streak Days Level 2",
+    "description": "Reach 20 in streak days",
+    "trigger": "streak_days",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-15",
+    "icon": "🎯",
+    "name": "Streak Days Level 3",
+    "description": "Reach 30 in streak days",
+    "trigger": "streak_days",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-16",
+    "icon": "🎯",
+    "name": "Streak Days Level 4",
+    "description": "Reach 40 in streak days",
+    "trigger": "streak_days",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-17",
+    "icon": "🎯",
+    "name": "Streak Days Level 5",
+    "description": "Reach 50 in streak days",
+    "trigger": "streak_days",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-18",
+    "icon": "🎯",
+    "name": "Streak Days Level 6",
+    "description": "Reach 60 in streak days",
+    "trigger": "streak_days",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-19",
+    "icon": "🎯",
+    "name": "Bugs Fixed Level 1",
+    "description": "Reach 10 in bugs fixed",
+    "trigger": "bugs_fixed",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-20",
+    "icon": "🎯",
+    "name": "Bugs Fixed Level 2",
+    "description": "Reach 20 in bugs fixed",
+    "trigger": "bugs_fixed",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-21",
+    "icon": "🎯",
+    "name": "Bugs Fixed Level 3",
+    "description": "Reach 30 in bugs fixed",
+    "trigger": "bugs_fixed",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-22",
+    "icon": "🎯",
+    "name": "Bugs Fixed Level 4",
+    "description": "Reach 40 in bugs fixed",
+    "trigger": "bugs_fixed",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-23",
+    "icon": "🎯",
+    "name": "Bugs Fixed Level 5",
+    "description": "Reach 50 in bugs fixed",
+    "trigger": "bugs_fixed",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-24",
+    "icon": "🎯",
+    "name": "Bugs Fixed Level 6",
+    "description": "Reach 60 in bugs fixed",
+    "trigger": "bugs_fixed",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-25",
+    "icon": "🎯",
+    "name": "Speed Challenges Level 1",
+    "description": "Reach 10 in speed challenges",
+    "trigger": "speed_challenges",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-26",
+    "icon": "🎯",
+    "name": "Speed Challenges Level 2",
+    "description": "Reach 20 in speed challenges",
+    "trigger": "speed_challenges",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-27",
+    "icon": "🎯",
+    "name": "Speed Challenges Level 3",
+    "description": "Reach 30 in speed challenges",
+    "trigger": "speed_challenges",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-28",
+    "icon": "🎯",
+    "name": "Speed Challenges Level 4",
+    "description": "Reach 40 in speed challenges",
+    "trigger": "speed_challenges",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-29",
+    "icon": "🎯",
+    "name": "Speed Challenges Level 5",
+    "description": "Reach 50 in speed challenges",
+    "trigger": "speed_challenges",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-30",
+    "icon": "🎯",
+    "name": "Speed Challenges Level 6",
+    "description": "Reach 60 in speed challenges",
+    "trigger": "speed_challenges",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-31",
+    "icon": "🎯",
+    "name": "Algo Solved Level 1",
+    "description": "Reach 10 in algo solved",
+    "trigger": "algo_solved",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-32",
+    "icon": "🎯",
+    "name": "Algo Solved Level 2",
+    "description": "Reach 20 in algo solved",
+    "trigger": "algo_solved",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-33",
+    "icon": "🎯",
+    "name": "Algo Solved Level 3",
+    "description": "Reach 30 in algo solved",
+    "trigger": "algo_solved",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-34",
+    "icon": "🎯",
+    "name": "Algo Solved Level 4",
+    "description": "Reach 40 in algo solved",
+    "trigger": "algo_solved",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-35",
+    "icon": "🎯",
+    "name": "Algo Solved Level 5",
+    "description": "Reach 50 in algo solved",
+    "trigger": "algo_solved",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-36",
+    "icon": "🎯",
+    "name": "Algo Solved Level 6",
+    "description": "Reach 60 in algo solved",
+    "trigger": "algo_solved",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-37",
+    "icon": "🎯",
+    "name": "Projects Completed Level 1",
+    "description": "Reach 10 in projects completed",
+    "trigger": "projects_completed",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-38",
+    "icon": "🎯",
+    "name": "Projects Completed Level 2",
+    "description": "Reach 20 in projects completed",
+    "trigger": "projects_completed",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-39",
+    "icon": "🎯",
+    "name": "Projects Completed Level 3",
+    "description": "Reach 30 in projects completed",
+    "trigger": "projects_completed",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-40",
+    "icon": "🎯",
+    "name": "Projects Completed Level 4",
+    "description": "Reach 40 in projects completed",
+    "trigger": "projects_completed",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-41",
+    "icon": "🎯",
+    "name": "Projects Completed Level 5",
+    "description": "Reach 50 in projects completed",
+    "trigger": "projects_completed",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-42",
+    "icon": "🎯",
+    "name": "Projects Completed Level 6",
+    "description": "Reach 60 in projects completed",
+    "trigger": "projects_completed",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-43",
+    "icon": "🎯",
+    "name": "Languages Tried Level 1",
+    "description": "Reach 10 in languages tried",
+    "trigger": "languages_tried",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-44",
+    "icon": "🎯",
+    "name": "Languages Tried Level 2",
+    "description": "Reach 20 in languages tried",
+    "trigger": "languages_tried",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-45",
+    "icon": "🎯",
+    "name": "Languages Tried Level 3",
+    "description": "Reach 30 in languages tried",
+    "trigger": "languages_tried",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-46",
+    "icon": "🎯",
+    "name": "Languages Tried Level 4",
+    "description": "Reach 40 in languages tried",
+    "trigger": "languages_tried",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-47",
+    "icon": "🎯",
+    "name": "Languages Tried Level 5",
+    "description": "Reach 50 in languages tried",
+    "trigger": "languages_tried",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-48",
+    "icon": "🎯",
+    "name": "Languages Tried Level 6",
+    "description": "Reach 60 in languages tried",
+    "trigger": "languages_tried",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-49",
+    "icon": "🎯",
+    "name": "Hints Skipped Level 1",
+    "description": "Reach 10 in hints skipped",
+    "trigger": "hints_skipped",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-50",
+    "icon": "🎯",
+    "name": "Hints Skipped Level 2",
+    "description": "Reach 20 in hints skipped",
+    "trigger": "hints_skipped",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-51",
+    "icon": "🎯",
+    "name": "Hints Skipped Level 3",
+    "description": "Reach 30 in hints skipped",
+    "trigger": "hints_skipped",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-52",
+    "icon": "🎯",
+    "name": "Hints Skipped Level 4",
+    "description": "Reach 40 in hints skipped",
+    "trigger": "hints_skipped",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-53",
+    "icon": "🎯",
+    "name": "Hints Skipped Level 5",
+    "description": "Reach 50 in hints skipped",
+    "trigger": "hints_skipped",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-54",
+    "icon": "🎯",
+    "name": "Hints Skipped Level 6",
+    "description": "Reach 60 in hints skipped",
+    "trigger": "hints_skipped",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-55",
+    "icon": "🎯",
+    "name": "Perfect Lessons Level 1",
+    "description": "Reach 10 in perfect lessons",
+    "trigger": "perfect_lessons",
+    "threshold": 10,
+    "xpBonus": 50,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-56",
+    "icon": "🎯",
+    "name": "Perfect Lessons Level 2",
+    "description": "Reach 20 in perfect lessons",
+    "trigger": "perfect_lessons",
+    "threshold": 20,
+    "xpBonus": 100,
+    "rarity": "common"
+  },
+  {
+    "id": "ach-57",
+    "icon": "🎯",
+    "name": "Perfect Lessons Level 3",
+    "description": "Reach 30 in perfect lessons",
+    "trigger": "perfect_lessons",
+    "threshold": 30,
+    "xpBonus": 150,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-58",
+    "icon": "🎯",
+    "name": "Perfect Lessons Level 4",
+    "description": "Reach 40 in perfect lessons",
+    "trigger": "perfect_lessons",
+    "threshold": 40,
+    "xpBonus": 200,
+    "rarity": "rare"
+  },
+  {
+    "id": "ach-59",
+    "icon": "🎯",
+    "name": "Perfect Lessons Level 5",
+    "description": "Reach 50 in perfect lessons",
+    "trigger": "perfect_lessons",
+    "threshold": 50,
+    "xpBonus": 250,
+    "rarity": "epic"
+  },
+  {
+    "id": "ach-60",
+    "icon": "🎯",
+    "name": "Perfect Lessons Level 6",
+    "description": "Reach 60 in perfect lessons",
+    "trigger": "perfect_lessons",
+    "threshold": 60,
+    "xpBonus": 300,
+    "rarity": "epic"
+  }
+]

@@ -16,7 +16,7 @@ console.log("=== JavaScript Sandbox Ready ⚡ ===");
 
 const heroes = ["Aria", "Leo", "Kael"];
 heroes.forEach((hero, index) => {
-  console.log(\`Hero #\${index + 1}: \${hero}\`);
+  console.log("Hero #" + (index + 1) + ": " + hero);
 });
 `,
   html: `<!-- HTML & CSS Live Studio -->

@@ -1,0 +1,2242 @@
+[
+  {
+    "id": "algo-py-1",
+    "language": "python",
+    "title": "Arrays Challenge 1",
+    "category": "Arrays",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-2",
+    "language": "python",
+    "title": "Arrays Challenge 2",
+    "category": "Arrays",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-3",
+    "language": "python",
+    "title": "Arrays Challenge 3",
+    "category": "Arrays",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-4",
+    "language": "python",
+    "title": "Arrays Challenge 4",
+    "category": "Arrays",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-5",
+    "language": "python",
+    "title": "Arrays Challenge 5",
+    "category": "Arrays",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-6",
+    "language": "python",
+    "title": "Arrays Challenge 6",
+    "category": "Arrays",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-7",
+    "language": "python",
+    "title": "Arrays Challenge 7",
+    "category": "Arrays",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-8",
+    "language": "python",
+    "title": "Arrays Challenge 8",
+    "category": "Arrays",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-9",
+    "language": "python",
+    "title": "Arrays Challenge 9",
+    "category": "Arrays",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-10",
+    "language": "python",
+    "title": "Arrays Challenge 10",
+    "category": "Arrays",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-11",
+    "language": "python",
+    "title": "Arrays Challenge 11",
+    "category": "Arrays",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-12",
+    "language": "python",
+    "title": "Arrays Challenge 12",
+    "category": "Arrays",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-13",
+    "language": "python",
+    "title": "Arrays Challenge 13",
+    "category": "Arrays",
+    "difficulty": "legendary",
+    "xpReward": 200,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-14",
+    "language": "python",
+    "title": "Arrays Challenge 14",
+    "category": "Arrays",
+    "difficulty": "legendary",
+    "xpReward": 200,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-15",
+    "language": "python",
+    "title": "Arrays Challenge 15",
+    "category": "Arrays",
+    "difficulty": "legendary",
+    "xpReward": 200,
+    "description": "A fun Arrays adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-16",
+    "language": "python",
+    "title": "Strings Challenge 1",
+    "category": "Strings",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-17",
+    "language": "python",
+    "title": "Strings Challenge 2",
+    "category": "Strings",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-18",
+    "language": "python",
+    "title": "Strings Challenge 3",
+    "category": "Strings",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-19",
+    "language": "python",
+    "title": "Strings Challenge 4",
+    "category": "Strings",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-20",
+    "language": "python",
+    "title": "Strings Challenge 5",
+    "category": "Strings",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-21",
+    "language": "python",
+    "title": "Strings Challenge 6",
+    "category": "Strings",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-22",
+    "language": "python",
+    "title": "Strings Challenge 7",
+    "category": "Strings",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-23",
+    "language": "python",
+    "title": "Strings Challenge 8",
+    "category": "Strings",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-24",
+    "language": "python",
+    "title": "Strings Challenge 9",
+    "category": "Strings",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-25",
+    "language": "python",
+    "title": "Strings Challenge 10",
+    "category": "Strings",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-26",
+    "language": "python",
+    "title": "Strings Challenge 11",
+    "category": "Strings",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-27",
+    "language": "python",
+    "title": "Strings Challenge 12",
+    "category": "Strings",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-28",
+    "language": "python",
+    "title": "Strings Challenge 13",
+    "category": "Strings",
+    "difficulty": "legendary",
+    "xpReward": 200,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-29",
+    "language": "python",
+    "title": "Strings Challenge 14",
+    "category": "Strings",
+    "difficulty": "legendary",
+    "xpReward": 200,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-30",
+    "language": "python",
+    "title": "Strings Challenge 15",
+    "category": "Strings",
+    "difficulty": "legendary",
+    "xpReward": 200,
+    "description": "A fun Strings adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-31",
+    "language": "python",
+    "title": "Loops & Math Challenge 1",
+    "category": "Loops & Math",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-32",
+    "language": "python",
+    "title": "Loops & Math Challenge 2",
+    "category": "Loops & Math",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-33",
+    "language": "python",
+    "title": "Loops & Math Challenge 3",
+    "category": "Loops & Math",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-34",
+    "language": "python",
+    "title": "Loops & Math Challenge 4",
+    "category": "Loops & Math",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-35",
+    "language": "python",
+    "title": "Loops & Math Challenge 5",
+    "category": "Loops & Math",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-36",
+    "language": "python",
+    "title": "Loops & Math Challenge 6",
+    "category": "Loops & Math",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-37",
+    "language": "python",
+    "title": "Loops & Math Challenge 7",
+    "category": "Loops & Math",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-38",
+    "language": "python",
+    "title": "Loops & Math Challenge 8",
+    "category": "Loops & Math",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-39",
+    "language": "python",
+    "title": "Loops & Math Challenge 9",
+    "category": "Loops & Math",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-40",
+    "language": "python",
+    "title": "Loops & Math Challenge 10",
+    "category": "Loops & Math",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Loops & Math adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-41",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 1",
+    "category": "Functions & Recursion",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-42",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 2",
+    "category": "Functions & Recursion",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-43",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 3",
+    "category": "Functions & Recursion",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-44",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 4",
+    "category": "Functions & Recursion",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-45",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 5",
+    "category": "Functions & Recursion",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-46",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 6",
+    "category": "Functions & Recursion",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-47",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 7",
+    "category": "Functions & Recursion",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-48",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 8",
+    "category": "Functions & Recursion",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-49",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 9",
+    "category": "Functions & Recursion",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-50",
+    "language": "python",
+    "title": "Functions & Recursion Challenge 10",
+    "category": "Functions & Recursion",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Functions & Recursion adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-51",
+    "language": "python",
+    "title": "Sorting Challenge 1",
+    "category": "Sorting",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-52",
+    "language": "python",
+    "title": "Sorting Challenge 2",
+    "category": "Sorting",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-53",
+    "language": "python",
+    "title": "Sorting Challenge 3",
+    "category": "Sorting",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-54",
+    "language": "python",
+    "title": "Sorting Challenge 4",
+    "category": "Sorting",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-55",
+    "language": "python",
+    "title": "Sorting Challenge 5",
+    "category": "Sorting",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-56",
+    "language": "python",
+    "title": "Sorting Challenge 6",
+    "category": "Sorting",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-57",
+    "language": "python",
+    "title": "Sorting Challenge 7",
+    "category": "Sorting",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-58",
+    "language": "python",
+    "title": "Sorting Challenge 8",
+    "category": "Sorting",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-59",
+    "language": "python",
+    "title": "Sorting Challenge 9",
+    "category": "Sorting",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-60",
+    "language": "python",
+    "title": "Sorting Challenge 10",
+    "category": "Sorting",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Sorting adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-61",
+    "language": "python",
+    "title": "Data Structures Challenge 1",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-62",
+    "language": "python",
+    "title": "Data Structures Challenge 2",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-63",
+    "language": "python",
+    "title": "Data Structures Challenge 3",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-64",
+    "language": "python",
+    "title": "Data Structures Challenge 4",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-65",
+    "language": "python",
+    "title": "Data Structures Challenge 5",
+    "category": "Data Structures",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-66",
+    "language": "python",
+    "title": "Data Structures Challenge 6",
+    "category": "Data Structures",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-67",
+    "language": "python",
+    "title": "Data Structures Challenge 7",
+    "category": "Data Structures",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-68",
+    "language": "python",
+    "title": "Data Structures Challenge 8",
+    "category": "Data Structures",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-69",
+    "language": "python",
+    "title": "Data Structures Challenge 9",
+    "category": "Data Structures",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-70",
+    "language": "python",
+    "title": "Data Structures Challenge 10",
+    "category": "Data Structures",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun Data Structures adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-71",
+    "language": "python",
+    "title": "OOP Challenges Challenge 1",
+    "category": "OOP Challenges",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-72",
+    "language": "python",
+    "title": "OOP Challenges Challenge 2",
+    "category": "OOP Challenges",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-73",
+    "language": "python",
+    "title": "OOP Challenges Challenge 3",
+    "category": "OOP Challenges",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-74",
+    "language": "python",
+    "title": "OOP Challenges Challenge 4",
+    "category": "OOP Challenges",
+    "difficulty": "easy",
+    "xpReward": 25,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-75",
+    "language": "python",
+    "title": "OOP Challenges Challenge 5",
+    "category": "OOP Challenges",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-76",
+    "language": "python",
+    "title": "OOP Challenges Challenge 6",
+    "category": "OOP Challenges",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-77",
+    "language": "python",
+    "title": "OOP Challenges Challenge 7",
+    "category": "OOP Challenges",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-78",
+    "language": "python",
+    "title": "OOP Challenges Challenge 8",
+    "category": "OOP Challenges",
+    "difficulty": "medium",
+    "xpReward": 50,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-79",
+    "language": "python",
+    "title": "OOP Challenges Challenge 9",
+    "category": "OOP Challenges",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  },
+  {
+    "id": "algo-py-80",
+    "language": "python",
+    "title": "OOP Challenges Challenge 10",
+    "category": "OOP Challenges",
+    "difficulty": "hard",
+    "xpReward": 100,
+    "description": "A fun OOP Challenges adventure! Solve this to unlock the next level.",
+    "examples": [
+      {
+        "input": "[1, 2, 3]",
+        "output": "True"
+      }
+    ],
+    "starterCode": "# Your code here\ndef solve(data):\n    pass",
+    "solution": "def solve(data):\n    return True",
+    "hints": [
+      "Think about the base case!",
+      "Can you use a loop?"
+    ],
+    "tests": [
+      {
+        "input": "[1, 2, 3]",
+        "expected": "True",
+        "type": "output_match"
+      }
+    ]
+  }
+]

@@ -55,9 +55,9 @@ export function translatePythonError(rawError) {
     const varName = match ? match[1] : "variable";
     return {
       type: "NameError",
-      title: `Undefined Name: '${varName}'`,
-      explanation: `Python encountered \`${varName}\`, but doesn't know what it is. It hasn't been created yet, or was spelled differently.`,
-      fix: `1. Check spelling and capitalization (Python is case-sensitive: \`Print\` is NOT \`print\`).\\n2. Make sure you defined \`${varName} = ...\` BEFORE using it.\\n3. If it was meant to be text, did you forget quotes: \`\"${varName}\"\`?`
+      title: "Undefined Name: '" + varName + "'",
+      explanation: "Python encountered '" + varName + "', but doesn't know what it is. It hasn't been created yet, or was spelled differently.",
+      fix: "1. Check spelling and capitalization (Python is case-sensitive: 'Print' is NOT 'print').\n2. Make sure you defined " + varName + " = ... BEFORE using it.\n3. If it was meant to be text, did you forget quotes: \"" + varName + "\"?"
     };
   }
 
@@ -105,9 +105,9 @@ export function translatePythonError(rawError) {
     const keyName = match ? match[1] : "key";
     return {
       type: "KeyError",
-      title: `Key Not Found: '${keyName}'`,
-      explanation: `You tried to access dictionary key \`'${keyName}'\`, but it does not exist in the dictionary.`,
-      fix: `Use \`dict.get('${keyName}', default_value)\` to safely retrieve values with a fallback, or check with \`if '${keyName}' in my_dict:\`.`
+      title: "Key Not Found: '" + keyName + "'",
+      explanation: "You tried to access dictionary key '" + keyName + "', but it does not exist in the dictionary.",
+      fix: "Use dict.get('" + keyName + "', default_value) to safely retrieve values with a fallback, or check with: if '" + keyName + "' in my_dict:"
     };
   }
 

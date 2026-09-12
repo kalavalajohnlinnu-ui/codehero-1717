@@ -1,0 +1,762 @@
+[
+  {
+    "id": "bug-py-1",
+    "language": "python",
+    "caseTitle": "Case #1: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-2",
+    "language": "python",
+    "caseTitle": "Case #2: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-3",
+    "language": "python",
+    "caseTitle": "Case #3: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-4",
+    "language": "python",
+    "caseTitle": "Case #4: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-5",
+    "language": "python",
+    "caseTitle": "Case #5: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-6",
+    "language": "python",
+    "caseTitle": "Case #6: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-7",
+    "language": "python",
+    "caseTitle": "Case #7: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-8",
+    "language": "python",
+    "caseTitle": "Case #8: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-9",
+    "language": "python",
+    "caseTitle": "Case #9: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-10",
+    "language": "python",
+    "caseTitle": "Case #10: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-11",
+    "language": "python",
+    "caseTitle": "Case #11: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-12",
+    "language": "python",
+    "caseTitle": "Case #12: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-13",
+    "language": "python",
+    "caseTitle": "Case #13: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-14",
+    "language": "python",
+    "caseTitle": "Case #14: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-15",
+    "language": "python",
+    "caseTitle": "Case #15: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-16",
+    "language": "python",
+    "caseTitle": "Case #16: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-17",
+    "language": "python",
+    "caseTitle": "Case #17: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-18",
+    "language": "python",
+    "caseTitle": "Case #18: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-19",
+    "language": "python",
+    "caseTitle": "Case #19: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-py-20",
+    "language": "python",
+    "caseTitle": "Case #20: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "def add(a, b):\n    result = a - b\n    return result\n",
+    "fixedCode": "def add(a, b):\n    result = a + b\n    return result\n",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-21",
+    "language": "javascript",
+    "caseTitle": "Case #21: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-22",
+    "language": "javascript",
+    "caseTitle": "Case #22: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-23",
+    "language": "javascript",
+    "caseTitle": "Case #23: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-24",
+    "language": "javascript",
+    "caseTitle": "Case #24: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-25",
+    "language": "javascript",
+    "caseTitle": "Case #25: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-26",
+    "language": "javascript",
+    "caseTitle": "Case #26: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-27",
+    "language": "javascript",
+    "caseTitle": "Case #27: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-28",
+    "language": "javascript",
+    "caseTitle": "Case #28: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-29",
+    "language": "javascript",
+    "caseTitle": "Case #29: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-30",
+    "language": "javascript",
+    "caseTitle": "Case #30: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-31",
+    "language": "javascript",
+    "caseTitle": "Case #31: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-32",
+    "language": "javascript",
+    "caseTitle": "Case #32: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-33",
+    "language": "javascript",
+    "caseTitle": "Case #33: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-34",
+    "language": "javascript",
+    "caseTitle": "Case #34: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-35",
+    "language": "javascript",
+    "caseTitle": "Case #35: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-36",
+    "language": "javascript",
+    "caseTitle": "Case #36: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-37",
+    "language": "javascript",
+    "caseTitle": "Case #37: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-38",
+    "language": "javascript",
+    "caseTitle": "Case #38: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-39",
+    "language": "javascript",
+    "caseTitle": "Case #39: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  },
+  {
+    "id": "bug-ja-40",
+    "language": "javascript",
+    "caseTitle": "Case #40: The Buggy Code",
+    "description": "Help Detective Debug fix this code!",
+    "brokenCode": "function add(a, b) {\n  let result = a - b;\n  return result;\n}",
+    "fixedCode": "function add(a, b) {\n  let result = a + b;\n  return result;\n}",
+    "bugDescription": "Wrong operator used",
+    "hints": [
+      "Check the math operator",
+      "Should be addition"
+    ],
+    "tests": [
+      {
+        "type": "output_match",
+        "expected": "7"
+      }
+    ]
+  }
+]

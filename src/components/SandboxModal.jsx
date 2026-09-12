@@ -41,20 +41,7 @@ for i, num in enumerate(fib_10, start=1):
   javascript: [
     {
       name: "Hero Inventory Level Up",
-      code: `const party = [
-  { name: "Aria", role: "Mage", power: 85 },
-  { name: "Leo", role: "Knight", power: 92 },
-  { name: "Kael", role: "Rogue", power: 78 }
-];
-
-console.log("=== Party Members ===");
-party.forEach(hero => {
-  console.log(\`\${hero.name} the \${hero.role} (Power: \${hero.power})\`);
-});
-
-const strongest = party.reduce((max, h) => h.power > max.power ? h : max, party[0]);
-console.log(\`\\nChampion: \${strongest.name}!\`);
-`
+      code: 'const party = [\n  { name: "Aria", role: "Mage", power: 85 },\n  { name: "Leo", role: "Knight", power: 92 },\n  { name: "Kael", role: "Rogue", power: 78 }\n];\n\nconsole.log("=== Party Members ===");\nparty.forEach(hero => {\n  console.log(hero.name + " the " + hero.role + " (Power: " + hero.power + ")");\n});\n\nconst strongest = party.reduce((max, h) => h.power > max.power ? h : max, party[0]);\nconsole.log("Champion: " + strongest.name + "!");'
     }
   ],
   html: [

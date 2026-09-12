@@ -1,31 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    background-color: #080C14;
+    background-color: #060810;
     color: #F1F5F9;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 }
 
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-::-webkit-scrollbar-track {
-  background: #0B0F19;
-}
-::-webkit-scrollbar-thumb {
-  background: #1E293B;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+/* ============================================================
+   COSMIC BACKGROUND — animated star field
+   ============================================================ */
+.cosmic-bg {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(56,189,248,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(34,197,94,0.03) 0%, transparent 50%),
+    #060810;
 }
 
-/* Code editor styles */
+/* ============================================================
+   SCROLLBAR — slim neon
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #0a0d18; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #38bdf8, #a855f7); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #7dd3fc, #c084fc); }
+
+/* ============================================================
+   FONTS
+   ============================================================ */
+.font-game { font-family: 'Orbitron', monospace; }
 .code-editor-textarea {
   tab-size: 4;
   -moz-tab-size: 4;
@@ -33,10 +47,523 @@
   line-height: 1.6;
 }
 
-/* Subtle glow */
-.glow-border-blue {
-  box-shadow: 0 0 15px -2px rgba(56, 189, 248, 0.2);
+/* ============================================================
+   XP BAR — game progress bar
+   ============================================================ */
+.xp-bar-track {
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
 }
-.glow-border-gold {
-  box-shadow: 0 0 15px -2px rgba(250, 204, 21, 0.2);
+.xp-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #f472b6);
+  background-size: 200% 100%;
+  animation: xp-shimmer 2s linear infinite;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+.xp-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 30px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5));
+  animation: xp-shine 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   GLOW EFFECTS
+   ============================================================ */
+.glow-blue  { box-shadow: 0 0 20px rgba(56,189,248,0.35),  0 0 40px rgba(56,189,248,0.15); }
+.glow-gold  { box-shadow: 0 0 20px rgba(250,204,21,0.35),  0 0 40px rgba(250,204,21,0.15); }
+.glow-purple{ box-shadow: 0 0 20px rgba(168,85,247,0.35),  0 0 40px rgba(168,85,247,0.15); }
+.glow-green { box-shadow: 0 0 20px rgba(34,197,94,0.35),   0 0 40px rgba(34,197,94,0.15); }
+.glow-red   { box-shadow: 0 0 20px rgba(239,68,68,0.35),   0 0 40px rgba(239,68,68,0.15); }
+
+.glow-border-blue   { border: 1px solid rgba(56,189,248,0.4);  box-shadow: 0 0 15px rgba(56,189,248,0.2); }
+.glow-border-gold   { border: 1px solid rgba(250,204,21,0.4);  box-shadow: 0 0 15px rgba(250,204,21,0.2); }
+.glow-border-purple { border: 1px solid rgba(168,85,247,0.4); box-shadow: 0 0 15px rgba(168,85,247,0.2); }
+.glow-border-green  { border: 1px solid rgba(34,197,94,0.4);  box-shadow: 0 0 15px rgba(34,197,94,0.2); }
+
+/* ============================================================
+   GLASSMORPHISM CARDS
+   ============================================================ */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+.glass-card-hover {
+  transition: all 0.25s ease;
+}
+.glass-card-hover:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   GAME CARDS — mode selector
+   ============================================================ */
+.game-mode-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  position: relative;
+  overflow: hidden;
+}
+.game-mode-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, currentColor, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.game-mode-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.3);
+}
+.game-mode-card:hover::before { opacity: 0.05; }
+.game-mode-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+/* ============================================================
+   BUTTONS — game style
+   ============================================================ */
+.btn-game {
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 10px 20px;
+  transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn-game::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+  pointer-events: none;
+}
+.btn-game:hover { transform: scale(1.05); }
+.btn-game:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  color: white;
+  box-shadow: 0 4px 20px rgba(56,189,248,0.4);
+}
+.btn-primary:hover { box-shadow: 0 6px 28px rgba(56,189,248,0.6); }
+
+.btn-success {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  box-shadow: 0 4px 20px rgba(34,197,94,0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 4px 20px rgba(239,68,68,0.4);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #1a0a00;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+}
+
+/* ============================================================
+   DIFFICULTY BADGES
+   ============================================================ */
+.badge-easy       { background: rgba(34,197,94,0.2);  color: #4ade80;  border: 1px solid rgba(34,197,94,0.4); }
+.badge-medium     { background: rgba(245,158,11,0.2); color: #fbbf24;  border: 1px solid rgba(245,158,11,0.4); }
+.badge-hard       { background: rgba(239,68,68,0.2);  color: #f87171;  border: 1px solid rgba(239,68,68,0.4); }
+.badge-legendary  { background: rgba(168,85,247,0.2); color: #c084fc;  border: 1px solid rgba(168,85,247,0.4); }
+
+.diff-badge {
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   COMBO METER
+   ============================================================ */
+.combo-meter {
+  background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.2));
+  border: 1px solid rgba(245,158,11,0.5);
+  border-radius: 99px;
+  animation: combo-pulse 0.8s ease-in-out infinite alternate;
+}
+@keyframes combo-pulse {
+  from { box-shadow: 0 0 10px rgba(245,158,11,0.4); }
+  to   { box-shadow: 0 0 25px rgba(245,158,11,0.8), 0 0 50px rgba(239,68,68,0.3); }
+}
+
+/* ============================================================
+   STREAK FLAME
+   ============================================================ */
+.streak-fire {
+  animation: streak-bounce 0.6s ease-in-out infinite alternate;
+  display: inline-block;
+}
+@keyframes streak-bounce {
+  from { transform: scale(1) rotate(-5deg); }
+  to   { transform: scale(1.15) rotate(5deg); }
+}
+
+/* ============================================================
+   TROPHY TOAST — slide in from top-right
+   ============================================================ */
+.trophy-toast-enter {
+  animation: trophy-slide-in 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+.trophy-toast-exit {
+  animation: trophy-slide-out 0.4s ease-in forwards;
+}
+@keyframes trophy-slide-in {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+@keyframes trophy-slide-out {
+  from { transform: translateX(0);   opacity: 1; }
+  to   { transform: translateX(120%); opacity: 0; }
+}
+.trophy-toast-shimmer {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b, #d97706);
+  background-size: 300% 100%;
+  animation: shimmer-border 2s linear infinite;
+  border-radius: 16px;
+  padding: 2px;
+}
+@keyframes shimmer-border {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ============================================================
+   LEVEL UP MODAL — particle explosion
+   ============================================================ */
+.levelup-text {
+  font-family: 'Orbitron', monospace;
+  background: linear-gradient(135deg, #fbbf24, #f472b6, #a855f7, #38bdf8);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rainbow-shift 2s linear infinite;
+}
+@keyframes rainbow-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.levelup-scale {
+  animation: levelup-pop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+@keyframes levelup-pop {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  70%  { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ============================================================
+   PARTICLE — floating XP numbers
+   ============================================================ */
+.xp-float {
+  position: fixed;
+  pointer-events: none;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #fbbf24;
+  text-shadow: 0 0 10px rgba(251,191,36,0.8);
+  z-index: 9999;
+  animation: xp-rise 1.2s ease-out forwards;
+}
+@keyframes xp-rise {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-80px) scale(1.3); opacity: 0; }
+}
+
+/* ============================================================
+   SCREEN SHAKE — on wrong answer
+   ============================================================ */
+.shake {
+  animation: screen-shake 0.4s ease-in-out;
+}
+@keyframes screen-shake {
+  0%, 100% { transform: translateX(0); }
+  15%  { transform: translateX(-8px); }
+  30%  { transform: translateX(8px); }
+  45%  { transform: translateX(-6px); }
+  60%  { transform: translateX(6px); }
+  75%  { transform: translateX(-4px); }
+  90%  { transform: translateX(4px); }
+}
+
+/* ============================================================
+   SUCCESS FLASH — on correct answer
+   ============================================================ */
+.success-flash {
+  animation: success-glow 0.5s ease-out;
+}
+@keyframes success-glow {
+  0%   { box-shadow: 0 0 0 rgba(34,197,94,0); }
+  50%  { box-shadow: 0 0 40px rgba(34,197,94,0.6), inset 0 0 40px rgba(34,197,94,0.1); }
+  100% { box-shadow: 0 0 0 rgba(34,197,94,0); }
+}
+
+/* ============================================================
+   CONFETTI PARTICLE
+   ============================================================ */
+.confetti-particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 9998;
+  animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotateZ(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
+}
+
+/* ============================================================
+   STAR FIELD — animated background
+   ============================================================ */
+.star {
+  position: fixed;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  animation: twinkle linear infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 0.8; transform: scale(1.5); }
+}
+
+/* ============================================================
+   BOSS BATTLE
+   ============================================================ */
+.boss-health-bar {
+  height: 20px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  transition: width 0.8s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 0 20px rgba(239,68,68,0.6);
+  position: relative;
+  overflow: hidden;
+}
+.boss-health-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: boss-hp-shine 2s linear infinite;
+}
+@keyframes boss-hp-shine {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+.boss-taunt {
+  animation: boss-bounce 0.3s ease-in-out;
+}
+@keyframes boss-bounce {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05) rotate(1deg); }
+}
+
+/* ============================================================
+   TIMER — heartbeat when low
+   ============================================================ */
+.timer-critical {
+  color: #ef4444;
+  animation: heartbeat 0.5s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25%       { transform: scale(1.08); }
+  75%       { transform: scale(0.95); }
+}
+
+/* ============================================================
+   BUG DETECTIVE MODE
+   ============================================================ */
+.bug-crime-scene {
+  background: linear-gradient(135deg, rgba(239,68,68,0.05), rgba(220,38,38,0.02));
+  border: 1px solid rgba(239,68,68,0.25);
+}
+.bug-highlight {
+  background: rgba(239,68,68,0.2);
+  border-left: 3px solid #ef4444;
+  animation: bug-pulse 1.5s ease-in-out infinite;
+}
+@keyframes bug-pulse {
+  0%, 100% { background: rgba(239,68,68,0.15); }
+  50%       { background: rgba(239,68,68,0.3); }
+}
+
+/* ============================================================
+   PROJECT WORKSHOP — step progress
+   ============================================================ */
+.step-complete {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  animation: step-pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes step-pop {
+  0%   { transform: scale(0.8); }
+  60%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ============================================================
+   ALGORITHM ARENA
+   ============================================================ */
+.algo-problem-card {
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.05));
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 16px;
+}
+
+/* ============================================================
+   BONUS ROUND POPUP
+   ============================================================ */
+.bonus-popup {
+  animation: bonus-entrance 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 40px rgba(245,158,11,0.5), 0 0 80px rgba(245,158,11,0.2);
+}
+@keyframes bonus-entrance {
+  0%   { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+  80%  { transform: scale(1.05) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.bonus-flash-border {
+  animation: bonus-flash 0.3s linear infinite alternate;
+}
+@keyframes bonus-flash {
+  from { border-color: #f59e0b; box-shadow: 0 0 20px rgba(245,158,11,0.5); }
+  to   { border-color: #ef4444; box-shadow: 0 0 20px rgba(239,68,68,0.5); }
+}
+
+/* ============================================================
+   DAILY REWARD CHEST
+   ============================================================ */
+.chest-glow {
+  animation: chest-hover 2s ease-in-out infinite;
+  cursor: pointer;
+}
+@keyframes chest-hover {
+  0%, 100% { transform: translateY(0)   scale(1); filter: drop-shadow(0 0 10px rgba(245,158,11,0.4)); }
+  50%       { transform: translateY(-6px) scale(1.03); filter: drop-shadow(0 0 25px rgba(245,158,11,0.8)); }
+}
+.chest-open {
+  animation: chest-burst 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+@keyframes chest-burst {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.2) rotate(-5deg); }
+  60%  { transform: scale(0.9) rotate(3deg); }
+  100% { transform: scale(1.1) rotate(0deg); }
+}
+
+/* ============================================================
+   SHARED ANIMATIONS
+   ============================================================ */
+@keyframes xp-shimmer {
+  0%   { background-position: 200% 0%; }
+  100% { background-position: -200% 0%; }
+}
+@keyframes xp-shine {
+  0%, 100% { opacity: 0; right: -30px; }
+  50%       { opacity: 1; right: 100%; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fade-in-up  { animation: fade-in-up 0.4s ease-out forwards; }
+.animate-fade-in     { animation: fade-in 0.3s ease-out forwards; }
+.animate-scale-in    { animation: scale-in 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.animate-spin-slow   { animation: spin-slow 8s linear infinite; }
+
+/* ============================================================
+   LESSON VIEW — gamified
+   ============================================================ */
+.lesson-concept-card {
+  background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(168,85,247,0.04));
+  border: 1px solid rgba(56,189,248,0.2);
+  border-radius: 16px;
+}
+.lesson-task-card {
+  background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(245,158,11,0.03));
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 12px;
+}
+.lesson-hint-card {
+  background: rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: 10px;
+  animation: fade-in-up 0.3s ease-out;
+}
+
+/* ============================================================
+   CODE EDITOR
+   ============================================================ */
+.code-editor-wrapper {
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.code-line-numbers {
+  color: rgba(148,163,184,0.4);
+  user-select: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  padding: 0 8px;
+  text-align: right;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .xp-bar-fill::after { display: none; }
+  .game-mode-card:hover { transform: none; }
 }
