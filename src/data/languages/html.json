@@ -80,5 +80,2189 @@
         ]
       }
     ]
+  },
+  {
+    "id": "html-mod-2",
+    "title": "HTML Document Structure",
+    "icon": "Structure",
+    "description": "Learn the foundation of every HTML page.",
+    "lessons": [
+      {
+        "id": "html-lesson-4",
+        "title": "1. DOCTYPE",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### DOCTYPE\nEvery HTML page needs a DOCTYPE. Think of it like a nametag telling the browser what language we are speaking!",
+        "task": "Add a <!DOCTYPE html> tag.",
+        "starterCode": "<!-- Add doctype -->\n<html></html>",
+        "solution": "<!DOCTYPE html>\n<html></html>",
+        "hints": [
+          "Add <!DOCTYPE html>",
+          "Put it at the very top",
+          "Make sure it has the !"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<!DOCTYPE html>'",
+            "type": "output_includes",
+            "expected": [
+              "<!DOCTYPE html>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-5",
+        "title": "2. html/head/body",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### The HTML Skeleton\nAn HTML file is like a human body. The <head> is the brain (hidden thoughts), and the <body> is what you can see!",
+        "task": "Create an html tag with head and body inside.",
+        "starterCode": "<html>\n<!-- add head and body -->\n</html>",
+        "solution": "<html>\n<head></head>\n<body></body>\n</html>",
+        "hints": [
+          "Add <head></head>",
+          "Add <body></body>",
+          "Put both inside <html>"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<head>'",
+            "type": "output_includes",
+            "expected": [
+              "<head>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-6",
+        "title": "3. title/meta, link/script",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Title and Links\nThe <title> is what shows up on the browser tab! We can also link other files like CSS or JavaScript.",
+        "task": "Add a title saying 'My Webpage'.",
+        "starterCode": "<head>\n  <!-- Add title here -->\n</head>",
+        "solution": "<head>\n  <title>My Webpage</title>\n</head>",
+        "hints": [
+          "Add <title> tags",
+          "Write My Webpage inside",
+          "Put it inside head"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<title>My Webpage</title>'",
+            "type": "output_includes",
+            "expected": [
+              "<title>My Webpage</title>"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-3",
+    "title": "Text & Inline Elements",
+    "icon": "Text",
+    "description": "Master the text elements.",
+    "lessons": [
+      {
+        "id": "html-lesson-7",
+        "title": "1. Headings & Paragraphs",
+        "badge": "Text",
+        "duration": "5 min",
+        "concept": "### h1-h6 and p\nHeadings are like chapter titles in a book. h1 is the biggest, h6 is the smallest.",
+        "task": "Add an h1 and an h2.",
+        "starterCode": "<!-- add headings -->",
+        "solution": "<h1>Big</h1>\n<h2>Smaller</h2>",
+        "hints": [
+          "Add h1",
+          "Add h2",
+          "Make sure to close them"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<h1>'",
+            "type": "output_includes",
+            "expected": [
+              "<h1>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-8",
+        "title": "2. Formatting Text",
+        "badge": "Text",
+        "duration": "5 min",
+        "concept": "### strong, em, span\nUse <strong> to make text bold, like a superhero flexing! <em> makes it italic.",
+        "task": "Make a word bold using strong.",
+        "starterCode": "<p>This is <strong>super</strong> cool!</p>",
+        "solution": "<p>This is <strong>super</strong> cool!</p>",
+        "hints": [
+          "Use strong",
+          "Wrap the word",
+          "Close the tag"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<strong>'",
+            "type": "output_includes",
+            "expected": [
+              "<strong>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-9",
+        "title": "3. Anchor Tags",
+        "badge": "Links",
+        "duration": "7 min",
+        "concept": "### Links\nAnchor tags <a> let you travel to other pages! Like magical portals.",
+        "task": "Create a link to https://google.com.",
+        "starterCode": "<!-- Add link -->",
+        "solution": "<a href=\"https://google.com\">Google</a>",
+        "hints": [
+          "Use a tag",
+          "Add href attribute",
+          "Set to google"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'href=\"https://google.com\"'",
+            "type": "output_includes",
+            "expected": [
+              "href=\"https://google.com\""
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-10",
+        "title": "4. HTML Entities",
+        "badge": "Symbols",
+        "duration": "5 min",
+        "concept": "### Special Characters\nNeed a copyright symbol? Use HTML entities like &copy;!",
+        "task": "Add a copyright entity.",
+        "starterCode": "<p>Copyright </p>",
+        "solution": "<p>Copyright &copy;</p>",
+        "hints": [
+          "Use &copy;",
+          "Put it in the paragraph",
+          "Don't forget the semicolon"
+        ],
+        "tests": [
+          {
+            "description": "Contains '&copy;'",
+            "type": "output_includes",
+            "expected": [
+              "&copy;"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-4",
+    "title": "Lists & Tables",
+    "icon": "Table",
+    "description": "Organize data effectively.",
+    "lessons": [
+      {
+        "id": "html-lesson-11",
+        "title": "1. Lists",
+        "badge": "Lists",
+        "duration": "5 min",
+        "concept": "### ul, ol, li\nNeed a shopping list? Use <ul> for bullets and <ol> for numbers. <li> is for each item.",
+        "task": "Make a ul with two li items.",
+        "starterCode": "<ul>\n</ul>",
+        "solution": "<ul>\n<li>Apples</li>\n<li>Bananas</li>\n</ul>",
+        "hints": [
+          "Add li",
+          "Add another li",
+          "Put inside ul"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<li>'",
+            "type": "output_includes",
+            "expected": [
+              "<li>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-12",
+        "title": "2. Data Tables",
+        "badge": "Tables",
+        "duration": "10 min",
+        "concept": "### tables\nTables are like Excel sheets. thead is the header, tbody is the body, tr is a row, th is a header cell, td is a data cell.",
+        "task": "Create a table with one row.",
+        "starterCode": "<table>\n</table>",
+        "solution": "<table><tr><td>Data</td></tr></table>",
+        "hints": [
+          "Add tr",
+          "Add td inside tr",
+          "Put inside table"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<tr>'",
+            "type": "output_includes",
+            "expected": [
+              "<tr>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-13",
+        "title": "3. Table Styling",
+        "badge": "Tables",
+        "duration": "7 min",
+        "concept": "### Table Borders\nTables look invisible by default. Let's add CSS to show borders!",
+        "task": "Add a style attribute to table for border: 1px solid black.",
+        "starterCode": "<table></table>",
+        "solution": "<table style=\"border: 1px solid black;\"></table>",
+        "hints": [
+          "Add style attribute",
+          "Set border",
+          "Use 1px solid black"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'border: 1px solid black'",
+            "type": "output_includes",
+            "expected": [
+              "border: 1px solid black"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-5",
+    "title": "Images & Media",
+    "icon": "Image",
+    "description": "Bring your pages to life.",
+    "lessons": [
+      {
+        "id": "html-lesson-14",
+        "title": "1. Images",
+        "badge": "Media",
+        "duration": "5 min",
+        "concept": "### img src/alt\nWant to show a picture? Use the <img> tag! Remember to use 'alt' text for screen readers.",
+        "task": "Add an img tag with src 'cat.jpg'.",
+        "starterCode": "<!-- add img -->",
+        "solution": "<img src=\"cat.jpg\" alt=\"A cute cat\" />",
+        "hints": [
+          "Use img tag",
+          "Add src",
+          "Add alt"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'src=\"cat.jpg\"'",
+            "type": "output_includes",
+            "expected": [
+              "src=\"cat.jpg\""
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-15",
+        "title": "2. Figure",
+        "badge": "Media",
+        "duration": "7 min",
+        "concept": "### figure and figcaption\nGroup an image and its caption together like a museum display!",
+        "task": "Use figure and figcaption.",
+        "starterCode": "<figure>\n</figure>",
+        "solution": "<figure>\n<img src=\"art.jpg\">\n<figcaption>Art</figcaption>\n</figure>",
+        "hints": [
+          "Use figure",
+          "Add img",
+          "Add figcaption"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<figcaption>'",
+            "type": "output_includes",
+            "expected": [
+              "<figcaption>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-16",
+        "title": "3. Audio & Video",
+        "badge": "Media",
+        "duration": "10 min",
+        "concept": "### Playing Media\nEmbed music or movies right in your page using <audio> and <video> tags.",
+        "task": "Add a video tag.",
+        "starterCode": "<!-- add video -->",
+        "solution": "<video src=\"movie.mp4\" controls></video>",
+        "hints": [
+          "Use video tag",
+          "Add src",
+          "Add controls attribute"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<video'",
+            "type": "output_includes",
+            "expected": [
+              "<video"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-6",
+    "title": "Forms & User Input",
+    "icon": "Forms",
+    "description": "Collect data from users.",
+    "lessons": [
+      {
+        "id": "html-lesson-17",
+        "title": "1. Forms",
+        "badge": "Forms",
+        "duration": "7 min",
+        "concept": "### form/input/label\nForms let users send data! Like filling out a survey.",
+        "task": "Add a form with an input.",
+        "starterCode": "<form>\n</form>",
+        "solution": "<form>\n<input type=\"text\">\n</form>",
+        "hints": [
+          "Use form tag",
+          "Add input",
+          "Set type text"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<input'",
+            "type": "output_includes",
+            "expected": [
+              "<input"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-18",
+        "title": "2. Input Types",
+        "badge": "Forms",
+        "duration": "7 min",
+        "concept": "### Types of Inputs\nInputs can be passwords, dates, or checkboxes!",
+        "task": "Add a password input.",
+        "starterCode": "<!-- add password input -->",
+        "solution": "<input type=\"password\">",
+        "hints": [
+          "Use input",
+          "Set type",
+          "Use password"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'type=\"password\"'",
+            "type": "output_includes",
+            "expected": [
+              "type=\"password\""
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-19",
+        "title": "3. Textarea & Select",
+        "badge": "Forms",
+        "duration": "7 min",
+        "concept": "### Long Text & Dropdowns\nNeed more space? Use textarea. Need choices? Use select and option.",
+        "task": "Add a textarea.",
+        "starterCode": "<!-- add textarea -->",
+        "solution": "<textarea></textarea>",
+        "hints": [
+          "Use textarea",
+          "Open and close",
+          "Check spelling"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<textarea>'",
+            "type": "output_includes",
+            "expected": [
+              "<textarea>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-20",
+        "title": "4. Form Validation",
+        "badge": "Forms",
+        "duration": "7 min",
+        "concept": "### Required Fields\nMake sure users don't skip questions by adding the 'required' attribute.",
+        "task": "Make the input required.",
+        "starterCode": "<input type=\"text\">",
+        "solution": "<input type=\"text\" required>",
+        "hints": [
+          "Add required",
+          "Inside input",
+          "No value needed"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'required'",
+            "type": "output_includes",
+            "expected": [
+              "required"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-21",
+        "title": "5. Buttons",
+        "badge": "Forms",
+        "duration": "5 min",
+        "concept": "### Button Types\nButtons can submit forms or just be clickable.",
+        "task": "Add a submit button.",
+        "starterCode": "<!-- add button -->",
+        "solution": "<button type=\"submit\">Submit</button>",
+        "hints": [
+          "Use button",
+          "Set type submit",
+          "Add text"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'type=\"submit\"'",
+            "type": "output_includes",
+            "expected": [
+              "type=\"submit\""
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-7",
+    "title": "Semantic HTML5",
+    "icon": "Semantics",
+    "description": "Write meaningful HTML.",
+    "lessons": [
+      {
+        "id": "html-lesson-22",
+        "title": "1. Header, Main, Footer",
+        "badge": "Semantics",
+        "duration": "5 min",
+        "concept": "### Semantic HTML\nUse tags that describe the content! header for the top, main for the middle, footer for the bottom.",
+        "task": "Add a main tag.",
+        "starterCode": "<!-- add main -->",
+        "solution": "<main>Content</main>",
+        "hints": [
+          "Use main tag",
+          "Open tag",
+          "Close tag"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<main>'",
+            "type": "output_includes",
+            "expected": [
+              "<main>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-23",
+        "title": "2. Section & Article",
+        "badge": "Semantics",
+        "duration": "5 min",
+        "concept": "### Grouping Content\nUse section for distinct parts, and article for self-contained content like a blog post.",
+        "task": "Add an article tag.",
+        "starterCode": "<!-- add article -->",
+        "solution": "<article>Blog</article>",
+        "hints": [
+          "Use article",
+          "Wrap content",
+          "Check spelling"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<article>'",
+            "type": "output_includes",
+            "expected": [
+              "<article>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-24",
+        "title": "3. Details & Dialog",
+        "badge": "Semantics",
+        "duration": "7 min",
+        "concept": "### Interactive Semantics\nDetails creates a collapsible section, dialog creates a popup!",
+        "task": "Add details and summary.",
+        "starterCode": "<details>\n</details>",
+        "solution": "<details>\n<summary>Click Me</summary>\n<p>Hidden text!</p>\n</details>",
+        "hints": [
+          "Use details",
+          "Add summary",
+          "Add content"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<summary>'",
+            "type": "output_includes",
+            "expected": [
+              "<summary>"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-25",
+        "title": "4. Why Semantics Matter",
+        "badge": "Semantics",
+        "duration": "5 min",
+        "concept": "### Screen Readers & SEO\nSemantic HTML helps search engines and screen readers understand your page.",
+        "task": "Replace div with nav.",
+        "starterCode": "<div>Links</div>",
+        "solution": "<nav>Links</nav>",
+        "hints": [
+          "Change div to nav",
+          "Update closing tag",
+          "Keep content"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<nav>'",
+            "type": "output_includes",
+            "expected": [
+              "<nav>"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-8",
+    "title": "CSS Selectors & Specificity",
+    "icon": "CSS",
+    "description": "Target elements precisely.",
+    "lessons": [
+      {
+        "id": "html-lesson-26",
+        "title": "1. Selectors",
+        "badge": "CSS",
+        "duration": "7 min",
+        "concept": "### Selectors\nUse CSS to target elements, classes (.), or IDs (#).",
+        "task": "Target the class .box.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { color: red; }\n</style>",
+        "hints": [
+          "Use .box",
+          "Add curly braces",
+          "Set color"
+        ],
+        "tests": [
+          {
+            "description": "Contains '.box'",
+            "type": "output_includes",
+            "expected": [
+              ".box"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-27",
+        "title": "2. Combinators",
+        "badge": "CSS",
+        "duration": "7 min",
+        "concept": "### Combinators\nTarget elements inside other elements using space, >, +, or ~.",
+        "task": "Target p inside div.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\ndiv p { color: blue; }\n</style>",
+        "hints": [
+          "Use div p",
+          "Add style",
+          "Set color"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'div p'",
+            "type": "output_includes",
+            "expected": [
+              "div p"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-28",
+        "title": "3. Pseudo-classes",
+        "badge": "CSS",
+        "duration": "7 min",
+        "concept": "### Pseudo-classes\nTarget state like :hover when the mouse is over an element.",
+        "task": "Add a :hover effect to a.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\na:hover { color: red; }\n</style>",
+        "hints": [
+          "Use a:hover",
+          "Add style",
+          "Set color"
+        ],
+        "tests": [
+          {
+            "description": "Contains ':hover'",
+            "type": "output_includes",
+            "expected": [
+              ":hover"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-29",
+        "title": "4. Pseudo-elements",
+        "badge": "CSS",
+        "duration": "7 min",
+        "concept": "### Pseudo-elements\nTarget parts of an element like ::before or ::first-line.",
+        "task": "Use ::first-letter.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\np::first-letter { font-size: 2em; }\n</style>",
+        "hints": [
+          "Use p::first-letter",
+          "Add style",
+          "Set size"
+        ],
+        "tests": [
+          {
+            "description": "Contains '::first-letter'",
+            "type": "output_includes",
+            "expected": [
+              "::first-letter"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-9",
+    "title": "The CSS Box Model",
+    "icon": "Box Model",
+    "description": "Control layout and spacing.",
+    "lessons": [
+      {
+        "id": "html-lesson-30",
+        "title": "1. Box Model Basics",
+        "badge": "Box Model",
+        "duration": "7 min",
+        "concept": "### Padding, Border, Margin\nEvery element is a box. Padding is inside, border is the edge, margin is outside.",
+        "task": "Add padding and margin.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { padding: 10px; margin: 10px; }\n</style>",
+        "hints": [
+          "Target .box",
+          "Add padding",
+          "Add margin"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'padding: 10px'",
+            "type": "output_includes",
+            "expected": [
+              "padding: 10px"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-31",
+        "title": "2. Box-sizing",
+        "badge": "Box Model",
+        "duration": "7 min",
+        "concept": "### border-box\nMake sizing easier by using box-sizing: border-box!",
+        "task": "Set box-sizing.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n* { box-sizing: border-box; }\n</style>",
+        "hints": [
+          "Target *",
+          "Use box-sizing",
+          "Set border-box"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'box-sizing: border-box'",
+            "type": "output_includes",
+            "expected": [
+              "box-sizing: border-box"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-32",
+        "title": "3. Display Property",
+        "badge": "Box Model",
+        "duration": "7 min",
+        "concept": "### Block vs Inline\nBlock takes full width, inline only takes what it needs.",
+        "task": "Set display: inline-block.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { display: inline-block; }\n</style>",
+        "hints": [
+          "Target .box",
+          "Use display",
+          "Set inline-block"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'inline-block'",
+            "type": "output_includes",
+            "expected": [
+              "inline-block"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-33",
+        "title": "4. Overflow",
+        "badge": "Box Model",
+        "duration": "7 min",
+        "concept": "### Overflow\nWhat happens when content is too big? Use overflow: hidden or scroll.",
+        "task": "Set overflow: hidden.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { overflow: hidden; }\n</style>",
+        "hints": [
+          "Target .box",
+          "Use overflow",
+          "Set hidden"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'overflow: hidden'",
+            "type": "output_includes",
+            "expected": [
+              "overflow: hidden"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-10",
+    "title": "Colors, Backgrounds & Typography",
+    "icon": "Design",
+    "description": "Make it look beautiful.",
+    "lessons": [
+      {
+        "id": "html-lesson-34",
+        "title": "1. Colors",
+        "badge": "Design",
+        "duration": "5 min",
+        "concept": "### Hex & RGB\nUse hex codes like #ff0000 or rgb(255,0,0) for colors.",
+        "task": "Set color to hex red.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\np { color: #ff0000; }\n</style>",
+        "hints": [
+          "Target p",
+          "Use color",
+          "Use #ff0000"
+        ],
+        "tests": [
+          {
+            "description": "Contains '#ff0000'",
+            "type": "output_includes",
+            "expected": [
+              "#ff0000"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-35",
+        "title": "2. Backgrounds",
+        "badge": "Design",
+        "duration": "7 min",
+        "concept": "### Gradients\nMake cool backgrounds with linear-gradient!",
+        "task": "Set a background gradient.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { background: linear-gradient(red, blue); }\n</style>",
+        "hints": [
+          "Use background",
+          "Use linear-gradient",
+          "Add colors"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'linear-gradient'",
+            "type": "output_includes",
+            "expected": [
+              "linear-gradient"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-36",
+        "title": "3. Typography",
+        "badge": "Design",
+        "duration": "5 min",
+        "concept": "### Fonts\nChange the font-family, font-size, and font-weight.",
+        "task": "Make font bold.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\np { font-weight: bold; }\n</style>",
+        "hints": [
+          "Target p",
+          "Use font-weight",
+          "Set bold"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'font-weight: bold'",
+            "type": "output_includes",
+            "expected": [
+              "font-weight: bold"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-37",
+        "title": "4. Google Fonts",
+        "badge": "Design",
+        "duration": "7 min",
+        "concept": "### Web Fonts\nImport custom fonts using @import or <link>.",
+        "task": "Import a font.",
+        "starterCode": "<!-- import font -->",
+        "solution": "<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">\n<style>\np { font-family: 'Roboto'; }\n</style>",
+        "hints": [
+          "Use link",
+          "Set href",
+          "Use font-family"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'font-family: 'Roboto''",
+            "type": "output_includes",
+            "expected": [
+              "font-family: 'Roboto'"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-11",
+    "title": "CSS Flexbox Layout",
+    "icon": "Layout",
+    "description": "Master flexible layouts.",
+    "lessons": [
+      {
+        "id": "html-lesson-38",
+        "title": "1. Display Flex",
+        "badge": "Flexbox",
+        "duration": "5 min",
+        "concept": "### Flexbox\nFlexbox makes laying out items in a row or column super easy!",
+        "task": "Set display: flex.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { display: flex; }\n</style>",
+        "hints": [
+          "Target .container",
+          "Use display",
+          "Set flex"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'display: flex'",
+            "type": "output_includes",
+            "expected": [
+              "display: flex"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-39",
+        "title": "2. Direction & Wrap",
+        "badge": "Flexbox",
+        "duration": "7 min",
+        "concept": "### Rows and Columns\nChange direction with flex-direction.",
+        "task": "Set flex-direction to column.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { flex-direction: column; }\n</style>",
+        "hints": [
+          "Use flex-direction",
+          "Set column",
+          "Add to container"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'flex-direction: column'",
+            "type": "output_includes",
+            "expected": [
+              "flex-direction: column"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-40",
+        "title": "3. Justify Content",
+        "badge": "Flexbox",
+        "duration": "7 min",
+        "concept": "### Align Main Axis\nSpace items out with justify-content.",
+        "task": "Set justify-content to center.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { justify-content: center; }\n</style>",
+        "hints": [
+          "Use justify-content",
+          "Set center",
+          "Add to container"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'justify-content: center'",
+            "type": "output_includes",
+            "expected": [
+              "justify-content: center"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-41",
+        "title": "4. Align Items",
+        "badge": "Flexbox",
+        "duration": "7 min",
+        "concept": "### Align Cross Axis\nCenter items vertically with align-items.",
+        "task": "Set align-items to center.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { align-items: center; }\n</style>",
+        "hints": [
+          "Use align-items",
+          "Set center",
+          "Add to container"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'align-items: center'",
+            "type": "output_includes",
+            "expected": [
+              "align-items: center"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-42",
+        "title": "5. Flex Sizing",
+        "badge": "Flexbox",
+        "duration": "7 min",
+        "concept": "### Grow and Shrink\nMake items fill space with flex-grow.",
+        "task": "Set flex-grow to 1.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.item { flex-grow: 1; }\n</style>",
+        "hints": [
+          "Target .item",
+          "Use flex-grow",
+          "Set 1"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'flex-grow: 1'",
+            "type": "output_includes",
+            "expected": [
+              "flex-grow: 1"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-12",
+    "title": "CSS Grid Layout",
+    "icon": "Layout",
+    "description": "Master 2D layouts.",
+    "lessons": [
+      {
+        "id": "html-lesson-43",
+        "title": "1. Display Grid",
+        "badge": "Grid",
+        "duration": "5 min",
+        "concept": "### CSS Grid\nGrid is for 2D layouts! Rows and columns.",
+        "task": "Set display: grid.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { display: grid; }\n</style>",
+        "hints": [
+          "Target container",
+          "Use display",
+          "Set grid"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'display: grid'",
+            "type": "output_includes",
+            "expected": [
+              "display: grid"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-44",
+        "title": "2. Templates",
+        "badge": "Grid",
+        "duration": "7 min",
+        "concept": "### Columns and Rows\nDefine tracks with grid-template-columns.",
+        "task": "Set columns to 1fr 1fr.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { grid-template-columns: 1fr 1fr; }\n</style>",
+        "hints": [
+          "Use grid-template-columns",
+          "Set 1fr 1fr",
+          "Add to container"
+        ],
+        "tests": [
+          {
+            "description": "Contains '1fr 1fr'",
+            "type": "output_includes",
+            "expected": [
+              "1fr 1fr"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-45",
+        "title": "3. Grid Span",
+        "badge": "Grid",
+        "duration": "7 min",
+        "concept": "### Spanning\nMake an item take up multiple columns.",
+        "task": "Set grid-column to span 2.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.item { grid-column: span 2; }\n</style>",
+        "hints": [
+          "Target .item",
+          "Use grid-column",
+          "Set span 2"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'span 2'",
+            "type": "output_includes",
+            "expected": [
+              "span 2"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-46",
+        "title": "4. Template Areas",
+        "badge": "Grid",
+        "duration": "7 min",
+        "concept": "### Areas\nName your grid areas for easy layouts.",
+        "task": "Define grid-template-areas.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { grid-template-areas: 'header header' 'main sidebar'; }\n</style>",
+        "hints": [
+          "Use grid-template-areas",
+          "Define strings",
+          "Add to container"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'grid-template-areas'",
+            "type": "output_includes",
+            "expected": [
+              "grid-template-areas"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-47",
+        "title": "5. Advanced Grid",
+        "badge": "Grid",
+        "duration": "7 min",
+        "concept": "### Auto-fit\nUse auto-fit and minmax for responsive grids.",
+        "task": "Use repeat and minmax.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }\n</style>",
+        "hints": [
+          "Use repeat",
+          "Use auto-fit",
+          "Use minmax"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'minmax'",
+            "type": "output_includes",
+            "expected": [
+              "minmax"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-13",
+    "title": "Positioning & Stacking",
+    "icon": "Positioning",
+    "description": "Control elements precisely.",
+    "lessons": [
+      {
+        "id": "html-lesson-48",
+        "title": "1. Positioning",
+        "badge": "Positioning",
+        "duration": "5 min",
+        "concept": "### Position\nMove things around with position: relative, absolute, or fixed.",
+        "task": "Set position relative.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { position: relative; top: 10px; }\n</style>",
+        "hints": [
+          "Target box",
+          "Use position relative",
+          "Use top"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'position: relative'",
+            "type": "output_includes",
+            "expected": [
+              "position: relative"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-49",
+        "title": "2. Absolute & Fixed",
+        "badge": "Positioning",
+        "duration": "7 min",
+        "concept": "### Absolute\nAbsolute positions relative to the nearest positioned ancestor.",
+        "task": "Set position absolute.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { position: absolute; left: 0; }\n</style>",
+        "hints": [
+          "Use absolute",
+          "Set left 0",
+          "Target box"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'position: absolute'",
+            "type": "output_includes",
+            "expected": [
+              "position: absolute"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-50",
+        "title": "3. Z-Index",
+        "badge": "Positioning",
+        "duration": "5 min",
+        "concept": "### Stacking\nControl what's on top with z-index.",
+        "task": "Set z-index to 10.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.box { z-index: 10; }\n</style>",
+        "hints": [
+          "Target box",
+          "Use z-index",
+          "Set 10"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'z-index: 10'",
+            "type": "output_includes",
+            "expected": [
+              "z-index: 10"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-51",
+        "title": "4. Sticky",
+        "badge": "Positioning",
+        "duration": "7 min",
+        "concept": "### Sticky headers\nMake headers stick to the top when scrolling.",
+        "task": "Set position sticky.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.header { position: sticky; top: 0; }\n</style>",
+        "hints": [
+          "Use position sticky",
+          "Set top 0",
+          "Target header"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'position: sticky'",
+            "type": "output_includes",
+            "expected": [
+              "position: sticky"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-14",
+    "title": "Responsive Web Design",
+    "icon": "Responsive",
+    "description": "Make it look good everywhere.",
+    "lessons": [
+      {
+        "id": "html-lesson-52",
+        "title": "1. Viewport Meta",
+        "badge": "Responsive",
+        "duration": "5 min",
+        "concept": "### Mobile Support\nThe viewport meta tag is essential for mobile design.",
+        "task": "Add the viewport meta tag.",
+        "starterCode": "<head>\n</head>",
+        "solution": "<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n</head>",
+        "hints": [
+          "Add meta",
+          "Set name viewport",
+          "Set content"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'viewport'",
+            "type": "output_includes",
+            "expected": [
+              "viewport"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-53",
+        "title": "2. Media Queries",
+        "badge": "Responsive",
+        "duration": "7 min",
+        "concept": "### Breakpoints\nChange styles based on screen size with @media.",
+        "task": "Add a media query for max-width 600px.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n@media (max-width: 600px) { body { background: red; } }\n</style>",
+        "hints": [
+          "Use @media",
+          "Set max-width",
+          "Add styles"
+        ],
+        "tests": [
+          {
+            "description": "Contains '@media'",
+            "type": "output_includes",
+            "expected": [
+              "@media"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-54",
+        "title": "3. Fluid Units",
+        "badge": "Responsive",
+        "duration": "7 min",
+        "concept": "### rem, vw, vh\nUse relative units for responsive text and sizing.",
+        "task": "Set height to 100vh.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\n.hero { height: 100vh; }\n</style>",
+        "hints": [
+          "Target hero",
+          "Use height",
+          "Set 100vh"
+        ],
+        "tests": [
+          {
+            "description": "Contains '100vh'",
+            "type": "output_includes",
+            "expected": [
+              "100vh"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-55",
+        "title": "4. Clamp & Min/Max",
+        "badge": "Responsive",
+        "duration": "7 min",
+        "concept": "### clamp()\nSet a minimum, preferred, and maximum size.",
+        "task": "Use clamp for font-size.",
+        "starterCode": "<style>\n</style>",
+        "solution": "<style>\nh1 { font-size: clamp(1rem, 5vw, 3rem); }\n</style>",
+        "hints": [
+          "Use clamp",
+          "Set values",
+          "Target h1"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'clamp'",
+            "type": "output_includes",
+            "expected": [
+              "clamp"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-56",
+        "title": "5. Responsive Images",
+        "badge": "Responsive",
+        "duration": "7 min",
+        "concept": "### srcset\nServe different images for different screens.",
+        "task": "Add a responsive image.",
+        "starterCode": "<!-- add img -->",
+        "solution": "<img src=\"small.jpg\" srcset=\"large.jpg 1024w, small.jpg 600w\" alt=\"img\">",
+        "hints": [
+          "Use srcset",
+          "Add sizes",
+          "Add alt"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'srcset='",
+            "type": "output_includes",
+            "expected": [
+              "srcset="
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-15",
+    "title": "CSS Variables",
+    "icon": "CSS",
+    "description": "Write smarter CSS.",
+    "lessons": [
+      {
+        "id": "html-lesson-57",
+        "title": "1. Declaring Variables",
+        "badge": "CSS",
+        "duration": "5 min",
+        "concept": "### Custom Properties\nStore colors in variables using --name.",
+        "task": "Declare a variable --main-color.",
+        "starterCode": "<style>\n:root {\n}\n</style>",
+        "solution": "<style>\n:root { --main-color: blue; }\n</style>",
+        "hints": [
+          "Use --main-color",
+          "Set to blue",
+          "Put in :root"
+        ],
+        "tests": [
+          {
+            "description": "Contains '--main-color'",
+            "type": "output_includes",
+            "expected": [
+              "--main-color"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-58",
+        "title": "2. Using var()",
+        "badge": "CSS",
+        "duration": "5 min",
+        "concept": "### Using Variables\nUse the var() function to apply your variables.",
+        "task": "Use the --main-color variable.",
+        "starterCode": "<style>\np {\n}\n</style>",
+        "solution": "<style>\np { color: var(--main-color); }\n</style>",
+        "hints": [
+          "Use var()",
+          "Pass --main-color",
+          "Set color"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'var(--main-color)'",
+            "type": "output_includes",
+            "expected": [
+              "var(--main-color)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-59",
+        "title": "3. Theming",
+        "badge": "CSS",
+        "duration": "7 min",
+        "concept": "### Dark Mode\nChange variable values in media queries for dark mode.",
+        "task": "Change --main-color in dark mode.",
+        "starterCode": "<style>\n@media (prefers-color-scheme: dark) {\n}\n</style>",
+        "solution": "<style>\n@media (prefers-color-scheme: dark) { :root { --main-color: black; } }\n</style>",
+        "hints": [
+          "Target :root",
+          "Change --main-color",
+          "Put inside media query"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'prefers-color-scheme: dark'",
+            "type": "output_includes",
+            "expected": [
+              "prefers-color-scheme: dark"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-16",
+    "title": "Transitions & Transforms",
+    "icon": "Animations",
+    "description": "Add motion.",
+    "lessons": [
+      {
+        "id": "html-lesson-60",
+        "title": "1. Transitions",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### Smooth Changes\nAnimate state changes with transition.",
+        "task": "Add a transition for color.",
+        "starterCode": "<style>\n.btn { transition: color 0.3s ease; }\n</style>",
+        "solution": "<style>\n.btn { transition: color 0.3s ease; }\n</style>",
+        "hints": [
+          "Use transition",
+          "Set property",
+          "Set duration"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'transition: color'",
+            "type": "output_includes",
+            "expected": [
+              "transition: color"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-61",
+        "title": "2. Transforms",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### Translate & Scale\nMove and resize elements with transform.",
+        "task": "Scale an element by 1.5.",
+        "starterCode": "<style>\n.box { transform: scale(1.5); }\n</style>",
+        "solution": "<style>\n.box { transform: scale(1.5); }\n</style>",
+        "hints": [
+          "Use transform",
+          "Use scale",
+          "Set 1.5"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'scale(1.5)'",
+            "type": "output_includes",
+            "expected": [
+              "scale(1.5)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-62",
+        "title": "3. Combining Transforms",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### Multiple Transforms\nChain transforms together.",
+        "task": "Scale and rotate.",
+        "starterCode": "<style>\n.box { transform: scale(1.2) rotate(45deg); }\n</style>",
+        "solution": "<style>\n.box { transform: scale(1.2) rotate(45deg); }\n</style>",
+        "hints": [
+          "Chain space-separated",
+          "Use scale",
+          "Use rotate"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'rotate(45deg)'",
+            "type": "output_includes",
+            "expected": [
+              "rotate(45deg)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-63",
+        "title": "4. 3D Transforms",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### Perspective\nAdd 3D depth to elements.",
+        "task": "Use rotateX and perspective.",
+        "starterCode": "<style>\n.box { transform: perspective(500px) rotateX(45deg); }\n</style>",
+        "solution": "<style>\n.box { transform: perspective(500px) rotateX(45deg); }\n</style>",
+        "hints": [
+          "Use perspective",
+          "Use rotateX",
+          "Add px and deg"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'perspective'",
+            "type": "output_includes",
+            "expected": [
+              "perspective"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-17",
+    "title": "CSS Animations",
+    "icon": "Animations",
+    "description": "Create complex motion.",
+    "lessons": [
+      {
+        "id": "html-lesson-64",
+        "title": "1. Keyframes",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### @keyframes\nDefine custom animations step-by-step.",
+        "task": "Create a bounce animation.",
+        "starterCode": "<style>\n@keyframes bounce { 0% { top: 0; } 100% { top: 10px; } }\n</style>",
+        "solution": "<style>\n@keyframes bounce { 0% { top: 0; } 100% { top: 10px; } }\n</style>",
+        "hints": [
+          "Use @keyframes",
+          "Name it bounce",
+          "Add 0% and 100%"
+        ],
+        "tests": [
+          {
+            "description": "Contains '@keyframes bounce'",
+            "type": "output_includes",
+            "expected": [
+              "@keyframes bounce"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-65",
+        "title": "2. Animation Shorthand",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### Applying Animations\nApply keyframes to an element.",
+        "task": "Apply bounce animation.",
+        "starterCode": "<style>\n.box { animation: bounce 1s infinite; }\n</style>",
+        "solution": "<style>\n.box { animation: bounce 1s infinite; }\n</style>",
+        "hints": [
+          "Use animation",
+          "Set name",
+          "Set duration"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'animation: bounce'",
+            "type": "output_includes",
+            "expected": [
+              "animation: bounce"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-66",
+        "title": "3. Multi-step Animations",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### Percentages\nAdd more steps using 50%, 75% etc.",
+        "task": "Add a 50% step.",
+        "starterCode": "<style>\n@keyframes bounce { 0% {} 50% { top: 20px; } 100% {} }\n</style>",
+        "solution": "<style>\n@keyframes bounce { 0% {} 50% { top: 20px; } 100% {} }\n</style>",
+        "hints": [
+          "Use 50%",
+          "Add styles",
+          "Inside keyframes"
+        ],
+        "tests": [
+          {
+            "description": "Contains '50%'",
+            "type": "output_includes",
+            "expected": [
+              "50%"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-67",
+        "title": "4. Performance",
+        "badge": "Animations",
+        "duration": "7 min",
+        "concept": "### will-change\nOptimize animations for smooth rendering.",
+        "task": "Use will-change.",
+        "starterCode": "<style>\n.box { will-change: transform; }\n</style>",
+        "solution": "<style>\n.box { will-change: transform; }\n</style>",
+        "hints": [
+          "Use will-change",
+          "Set to transform",
+          "Target box"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'will-change: transform'",
+            "type": "output_includes",
+            "expected": [
+              "will-change: transform"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-18",
+    "title": "Advanced CSS",
+    "icon": "Advanced",
+    "description": "Push CSS to the limits.",
+    "lessons": [
+      {
+        "id": "html-lesson-68",
+        "title": "1. Clip-path",
+        "badge": "Advanced",
+        "duration": "7 min",
+        "concept": "### Custom Shapes\nCut elements into shapes with clip-path.",
+        "task": "Make a circle clip-path.",
+        "starterCode": "<style>\n.box { clip-path: circle(50%); }\n</style>",
+        "solution": "<style>\n.box { clip-path: circle(50%); }\n</style>",
+        "hints": [
+          "Use clip-path",
+          "Use circle",
+          "Set 50%"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'clip-path: circle'",
+            "type": "output_includes",
+            "expected": [
+              "clip-path: circle"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-69",
+        "title": "2. Filter",
+        "badge": "Advanced",
+        "duration": "7 min",
+        "concept": "### Visual Effects\nAdd blur or color shifts with filter.",
+        "task": "Add a blur filter.",
+        "starterCode": "<style>\n.img { filter: blur(5px); }\n</style>",
+        "solution": "<style>\n.img { filter: blur(5px); }\n</style>",
+        "hints": [
+          "Use filter",
+          "Use blur",
+          "Set px"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'filter: blur'",
+            "type": "output_includes",
+            "expected": [
+              "filter: blur"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-70",
+        "title": "3. Backdrop-filter",
+        "badge": "Advanced",
+        "duration": "7 min",
+        "concept": "### Glassmorphism\nBlur what's behind an element.",
+        "task": "Add backdrop-filter.",
+        "starterCode": "<style>\n.box { backdrop-filter: blur(10px); }\n</style>",
+        "solution": "<style>\n.box { backdrop-filter: blur(10px); }\n</style>",
+        "hints": [
+          "Use backdrop-filter",
+          "Use blur",
+          "Target box"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'backdrop-filter: blur'",
+            "type": "output_includes",
+            "expected": [
+              "backdrop-filter: blur"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-71",
+        "title": "4. @supports",
+        "badge": "Advanced",
+        "duration": "7 min",
+        "concept": "### Feature Detection\nCheck if a browser supports a feature.",
+        "task": "Use @supports for grid.",
+        "starterCode": "<style>\n@supports (display: grid) { .box { display: grid; } }\n</style>",
+        "solution": "<style>\n@supports (display: grid) { .box { display: grid; } }\n</style>",
+        "hints": [
+          "Use @supports",
+          "Check display: grid",
+          "Add styles"
+        ],
+        "tests": [
+          {
+            "description": "Contains '@supports'",
+            "type": "output_includes",
+            "expected": [
+              "@supports"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-19",
+    "title": "Accessibility",
+    "icon": "Accessibility",
+    "description": "Make web for everyone.",
+    "lessons": [
+      {
+        "id": "html-lesson-72",
+        "title": "1. Contrast",
+        "badge": "Accessibility",
+        "duration": "7 min",
+        "concept": "### WCAG Contrast\nMake sure text is readable against its background.",
+        "task": "Use high contrast colors.",
+        "starterCode": "<style>\n.text { color: black; background: white; }\n</style>",
+        "solution": "<style>\n.text { color: black; background: white; }\n</style>",
+        "hints": [
+          "Use dark color on light",
+          "Use light color on dark",
+          "Check contrast"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'color: black'",
+            "type": "output_includes",
+            "expected": [
+              "color: black"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-73",
+        "title": "2. ARIA Labels",
+        "badge": "Accessibility",
+        "duration": "7 min",
+        "concept": "### Screen Readers\nProvide extra context with aria-label.",
+        "task": "Add aria-label to button.",
+        "starterCode": "<button aria-label=\"Close Menu\">X</button>",
+        "solution": "<button aria-label=\"Close Menu\">X</button>",
+        "hints": [
+          "Use aria-label",
+          "Describe action",
+          "Add to button"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'aria-label='",
+            "type": "output_includes",
+            "expected": [
+              "aria-label="
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-74",
+        "title": "3. Keyboard Navigation",
+        "badge": "Accessibility",
+        "duration": "7 min",
+        "concept": "### Focus\nStyle the :focus state for keyboard users.",
+        "task": "Add a focus outline.",
+        "starterCode": "<style>\nbutton:focus { outline: 2px solid blue; }\n</style>",
+        "solution": "<style>\nbutton:focus { outline: 2px solid blue; }\n</style>",
+        "hints": [
+          "Use :focus",
+          "Add outline",
+          "Target button"
+        ],
+        "tests": [
+          {
+            "description": "Contains ':focus'",
+            "type": "output_includes",
+            "expected": [
+              ":focus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-75",
+        "title": "4. Alt Text",
+        "badge": "Accessibility",
+        "duration": "5 min",
+        "concept": "### Describing Images\nAlways use meaningful alt text for images.",
+        "task": "Add descriptive alt text.",
+        "starterCode": "<img src=\"dog.jpg\" alt=\"A brown dog running\">",
+        "solution": "<img src=\"dog.jpg\" alt=\"A brown dog running\">",
+        "hints": [
+          "Use alt",
+          "Describe image",
+          "Add to img"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'alt='",
+            "type": "output_includes",
+            "expected": [
+              "alt="
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-20",
+    "title": "CSS Architecture",
+    "icon": "Architecture",
+    "description": "Organize your code.",
+    "lessons": [
+      {
+        "id": "html-lesson-76",
+        "title": "1. BEM Basics",
+        "badge": "Architecture",
+        "duration": "7 min",
+        "concept": "### Block Element Modifier\nOrganize classes like .card__title--large.",
+        "task": "Create a BEM class.",
+        "starterCode": "<div class=\"card__button--active\"></div>",
+        "solution": "<div class=\"card__button--active\"></div>",
+        "hints": [
+          "Use Block",
+          "Use Element",
+          "Use Modifier"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'card__button--active'",
+            "type": "output_includes",
+            "expected": [
+              "card__button--active"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-77",
+        "title": "2. Components",
+        "badge": "Architecture",
+        "duration": "7 min",
+        "concept": "### Reusability\nBuild independent, reusable CSS components.",
+        "task": "Make a .btn component.",
+        "starterCode": "<style>\n.btn { padding: 10px; border-radius: 5px; }\n</style>",
+        "solution": "<style>\n.btn { padding: 10px; border-radius: 5px; }\n</style>",
+        "hints": [
+          "Create class",
+          "Add styles",
+          "Make reusable"
+        ],
+        "tests": [
+          {
+            "description": "Contains '.btn'",
+            "type": "output_includes",
+            "expected": [
+              ".btn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-78",
+        "title": "3. Utility Classes",
+        "badge": "Architecture",
+        "duration": "7 min",
+        "concept": "### Utility First\nUse small classes that do one thing, like .mt-4.",
+        "task": "Create a margin-top utility.",
+        "starterCode": "<style>\n.mt-4 { margin-top: 1rem; }\n</style>",
+        "solution": "<style>\n.mt-4 { margin-top: 1rem; }\n</style>",
+        "hints": [
+          "Create class",
+          "Add margin-top",
+          "Use rem"
+        ],
+        "tests": [
+          {
+            "description": "Contains '.mt-4'",
+            "type": "output_includes",
+            "expected": [
+              ".mt-4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-21",
+    "title": "Modern CSS Features",
+    "icon": "Modern CSS",
+    "description": "Use cutting-edge CSS.",
+    "lessons": [
+      {
+        "id": "html-lesson-79",
+        "title": "1. Container Queries",
+        "badge": "Modern CSS",
+        "duration": "7 min",
+        "concept": "### @container\nStyle elements based on container size, not viewport size.",
+        "task": "Define a container.",
+        "starterCode": "<style>\n.wrap { container-type: inline-size; }\n</style>",
+        "solution": "<style>\n.wrap { container-type: inline-size; }\n</style>",
+        "hints": [
+          "Use container-type",
+          "Set inline-size",
+          "Target wrap"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'container-type'",
+            "type": "output_includes",
+            "expected": [
+              "container-type"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-80",
+        "title": "2. CSS Nesting",
+        "badge": "Modern CSS",
+        "duration": "7 min",
+        "concept": "### Nesting\nWrite CSS selectors inside each other natively.",
+        "task": "Nest a p inside .card.",
+        "starterCode": "<style>\n.card { & p { color: red; } }\n</style>",
+        "solution": "<style>\n.card { & p { color: red; } }\n</style>",
+        "hints": [
+          "Use &",
+          "Target p",
+          "Inside .card"
+        ],
+        "tests": [
+          {
+            "description": "Contains '& p'",
+            "type": "output_includes",
+            "expected": [
+              "& p"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-81",
+        "title": "3. :has() Selector",
+        "badge": "Modern CSS",
+        "duration": "7 min",
+        "concept": "### Parent Selector\nTarget an element if it contains a specific child.",
+        "task": "Style div if it has an img.",
+        "starterCode": "<style>\ndiv:has(img) { border: 1px solid black; }\n</style>",
+        "solution": "<style>\ndiv:has(img) { border: 1px solid black; }\n</style>",
+        "hints": [
+          "Use :has",
+          "Target img",
+          "Inside div"
+        ],
+        "tests": [
+          {
+            "description": "Contains ':has(img)'",
+            "type": "output_includes",
+            "expected": [
+              ":has(img)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-82",
+        "title": "4. Scroll Animations",
+        "badge": "Modern CSS",
+        "duration": "7 min",
+        "concept": "### Scroll-timeline\nAnimate based on scroll position.",
+        "task": "Add animation-timeline.",
+        "starterCode": "<style>\n.box { animation-timeline: scroll(); }\n</style>",
+        "solution": "<style>\n.box { animation-timeline: scroll(); }\n</style>",
+        "hints": [
+          "Use animation-timeline",
+          "Use scroll()",
+          "Target box"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'animation-timeline: scroll()'",
+            "type": "output_includes",
+            "expected": [
+              "animation-timeline: scroll()"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-mod-22",
+    "title": "Boss Battle Capstones",
+    "icon": "Boss Battle",
+    "description": "Prove your mastery.",
+    "lessons": [
+      {
+        "id": "html-lesson-83",
+        "title": "1. Portfolio Landing",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Capstone 1\nBuild a complete hero section for a portfolio.",
+        "task": "Build the hero section.",
+        "starterCode": "<!-- build hero -->\n<header class=\"hero\"><h1>My Portfolio</h1></header>",
+        "solution": "<header class=\"hero\"><h1>My Portfolio</h1></header>",
+        "hints": [
+          "Use header",
+          "Add h1",
+          "Add styles"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<header'",
+            "type": "output_includes",
+            "expected": [
+              "<header"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-84",
+        "title": "2. Card Gallery",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Capstone 2\nBuild a responsive grid of animated cards.",
+        "task": "Build the gallery.",
+        "starterCode": "<!-- build gallery -->\n<div class=\"gallery\" style=\"display: grid;\"></div>",
+        "solution": "<div class=\"gallery\" style=\"display: grid;\"></div>",
+        "hints": [
+          "Use grid",
+          "Add cards",
+          "Add animations"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'display: grid'",
+            "type": "output_includes",
+            "expected": [
+              "display: grid"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-85",
+        "title": "3. Dashboard Layout",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Capstone 3\nBuild a complex dashboard using CSS Grid.",
+        "task": "Build the dashboard.",
+        "starterCode": "<!-- build dashboard -->\n<div class=\"dashboard\" style=\"display: grid; grid-template-areas: 'nav main';\"></div>",
+        "solution": "<div class=\"dashboard\" style=\"display: grid; grid-template-areas: 'nav main';\"></div>",
+        "hints": [
+          "Use grid-template-areas",
+          "Define areas",
+          "Build structure"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'grid-template-areas'",
+            "type": "output_includes",
+            "expected": [
+              "grid-template-areas"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-86",
+        "title": "4. Dark Mode Toggle",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Capstone 4\nImplement a fully working dark/light theme system.",
+        "task": "Implement themes.",
+        "starterCode": "<!-- implement themes -->\n<style>:root { --bg: white; } [data-theme=\"dark\"] { --bg: black; }</style>",
+        "solution": "<style>:root { --bg: white; } [data-theme=\"dark\"] { --bg: black; }</style>",
+        "hints": [
+          "Use CSS variables",
+          "Add data attribute",
+          "Change colors"
+        ],
+        "tests": [
+          {
+            "description": "Contains '[data-theme=\"dark\"]'",
+            "type": "output_includes",
+            "expected": [
+              "[data-theme=\"dark\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-87",
+        "title": "5. Complete Blog",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Capstone 5\nBring everything together in a complete blog site layout.",
+        "task": "Build the blog.",
+        "starterCode": "<!-- build blog -->\n<main class=\"blog\"><article>Post</article></main>",
+        "solution": "<main class=\"blog\"><article>Post</article></main>",
+        "hints": [
+          "Use semantic HTML",
+          "Add layout",
+          "Add styles"
+        ],
+        "tests": [
+          {
+            "description": "Contains '<article>'",
+            "type": "output_includes",
+            "expected": [
+              "<article>"
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

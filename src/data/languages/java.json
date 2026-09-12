@@ -1,25 +1,27 @@
 [
   {
     "id": "java-mod-1",
-    "title": "Realm 1: The Blueprint Kingdom",
+    "title": "Module 1: The Blueprint Kingdom",
     "icon": "Box",
     "description": "Master Java classes, strong typing, and object-oriented architecture.",
     "lessons": [
       {
         "id": "java-lesson-1",
         "title": "1. Hello, Java!",
-        "badge": "OOP Enterprise",
+        "badge": "Core",
         "duration": "6 min",
-        "concept": "### Welcome to Java! ☕\nJava is one of the most reliable languages in the world. It runs on billions of devices, Minecraft, and Android!\n\nIn Java, everything lives inside a class:\n\n```java\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello from Java!\");\n    }\n}\n```",
-        "task": "Print `Welcome to Java Hero!` using `System.out.println(\"Welcome to Java Hero!\");`.",
+        "concept": "### Welcome to Java! \u2615\nJava is like a factory. Every piece of code belongs to a blueprint called a `class`.\n\n```java\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello!\");\n    }\n}\n```",
+        "task": "Print `Welcome to Java Hero!`.",
         "starterCode": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n",
         "solution": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Welcome to Java Hero!\");\n    }\n}",
         "hints": [
-          "Change 'Hello, World!' to 'Welcome to Java Hero!'"
+          "Change text inside quotes",
+          "Use System.out.println",
+          "Add semicolon"
         ],
         "tests": [
           {
-            "description": "Prints 'Welcome to Java Hero!'",
+            "description": "Prints welcome",
             "type": "output_match",
             "expected": "Welcome to Java Hero!"
           }
@@ -28,20 +30,2282 @@
       {
         "id": "java-lesson-2",
         "title": "2. Variables & Arithmetic",
-        "badge": "Types",
+        "badge": "Core",
         "duration": "7 min",
-        "concept": "### Data Types in Java\nJava is strictly typed:\n- `int score = 500;`\n- `double price = 19.99;`\n- `String name = \"Alex\";`\n\n```java\nint a = 20;\nint b = 30;\nSystem.out.println(a + b); // 50\n```",
-        "task": "Given `int attack = 15;` and `int bonus = 10;`, compute `int totalAttack = attack + bonus;` and print `totalAttack`.",
-        "starterCode": "public class Main {\n    public static void main(String[] args) {\n        int attack = 15;\n        int bonus = 10;\n        int totalAttack = attack + bonus;\n        System.out.println(totalAttack);\n    }\n}\n",
-        "solution": "public class Main {\n    public static void main(String[] args) {\n        int attack = 15;\n        int bonus = 10;\n        int totalAttack = attack + bonus;\n        System.out.println(totalAttack);\n    }\n}",
+        "concept": "### Data Types in Java\nThink of variables like labeled boxes. A box labeled `int` only holds whole numbers!\n\n```java\nint a = 20;\nint b = 30;\nSystem.out.println(a + b);\n```",
+        "task": "Print the sum of 15 and 10.",
+        "starterCode": "public class Main {\n    public static void main(String[] args) {\n        int attack = 15;\n        int bonus = 10;\n        System.out.println(0);\n    }\n}\n",
+        "solution": "public class Main {\n    public static void main(String[] args) {\n        int attack = 15;\n        int bonus = 10;\n        System.out.println(attack + bonus);\n    }\n}",
         "hints": [
-          "Run the code to print 25!"
+          "Add attack and bonus",
+          "Put them in println",
+          "Run code"
         ],
         "tests": [
           {
             "description": "Outputs 25",
             "type": "output_match",
             "expected": "25"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-2",
+    "title": "Module 2: Primitive Types & Type System",
+    "icon": "Code",
+    "description": "Master Primitive Types & Type System in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-3",
+        "title": "1. Primitives",
+        "badge": "Types",
+        "duration": "10 min",
+        "concept": "### Primitives\\nLet's learn about Primitives in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Primitives Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Primitives Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Primitives Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-4",
+        "title": "2. Wrapper Classes",
+        "badge": "Types",
+        "duration": "10 min",
+        "concept": "### Wrapper Classes\\nLet's learn about Wrapper Classes in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Wrapper Classes Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Wrapper Classes Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Wrapper Classes Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-5",
+        "title": "3. Type Casting",
+        "badge": "Types",
+        "duration": "10 min",
+        "concept": "### Type Casting\\nLet's learn about Type Casting in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Type Casting Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Type Casting Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Type Casting Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-6",
+        "title": "4. Final/Var",
+        "badge": "Types",
+        "duration": "10 min",
+        "concept": "### Final/Var\\nLet's learn about Final/Var in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Final/Var Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Final/Var Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Final/Var Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-3",
+    "title": "Module 3: Operators & Input",
+    "icon": "Code",
+    "description": "Master Operators & Input in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-7",
+        "title": "1. Arithmetic & Relational",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Arithmetic & Relational\\nLet's learn about Arithmetic & Relational in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Arithmetic & Relational Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Arithmetic & Relational Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Arithmetic & Relational Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-8",
+        "title": "2. Scanner Input",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Scanner Input\\nLet's learn about Scanner Input in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Scanner Input Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Scanner Input Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Scanner Input Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-9",
+        "title": "3. Math Class",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Math Class\\nLet's learn about Math Class in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Math Class Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Math Class Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Math Class Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-4",
+    "title": "Module 4: Conditionals",
+    "icon": "Code",
+    "description": "Master Conditionals in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-10",
+        "title": "1. If/Else",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### If/Else\\nLet's learn about If/Else in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'If/Else Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"If/Else Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "If/Else Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-11",
+        "title": "2. Switch",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Switch\\nLet's learn about Switch in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Switch Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Switch Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Switch Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-12",
+        "title": "3. Ternary",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Ternary\\nLet's learn about Ternary in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Ternary Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Ternary Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Ternary Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-5",
+    "title": "Module 5: Loops",
+    "icon": "Code",
+    "description": "Master Loops in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-13",
+        "title": "1. For Loop",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### For Loop\\nLet's learn about For Loop in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'For Loop Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"For Loop Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "For Loop Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-14",
+        "title": "2. While Loop",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### While Loop\\nLet's learn about While Loop in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'While Loop Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"While Loop Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "While Loop Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-15",
+        "title": "3. Enhanced For",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### Enhanced For\\nLet's learn about Enhanced For in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Enhanced For Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Enhanced For Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Enhanced For Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-16",
+        "title": "4. Break & Continue",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### Break & Continue\\nLet's learn about Break & Continue in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Break & Continue Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Break & Continue Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Break & Continue Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-6",
+    "title": "Module 6: Strings Deep Dive",
+    "icon": "Code",
+    "description": "Master Strings Deep Dive in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-17",
+        "title": "1. String Immutability",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### String Immutability\\nLet's learn about String Immutability in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'String Immutability Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"String Immutability Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "String Immutability Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-18",
+        "title": "2. String Methods",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### String Methods\\nLet's learn about String Methods in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'String Methods Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"String Methods Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "String Methods Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-19",
+        "title": "3. Equals vs ==",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### Equals vs ==\\nLet's learn about Equals vs == in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Equals vs == Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Equals vs == Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Equals vs == Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-20",
+        "title": "4. StringBuilder",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### StringBuilder\\nLet's learn about StringBuilder in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'StringBuilder Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"StringBuilder Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "StringBuilder Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-7",
+    "title": "Module 7: Arrays",
+    "icon": "Code",
+    "description": "Master Arrays in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-21",
+        "title": "1. 1D Arrays",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### 1D Arrays\\nLet's learn about 1D Arrays in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out '1D Arrays Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"1D Arrays Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "1D Arrays Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-22",
+        "title": "2. Multidimensional",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### Multidimensional\\nLet's learn about Multidimensional in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Multidimensional Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Multidimensional Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Multidimensional Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-23",
+        "title": "3. Arrays Utility",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### Arrays Utility\\nLet's learn about Arrays Utility in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Arrays Utility Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Arrays Utility Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Arrays Utility Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-8",
+    "title": "Module 8: Methods",
+    "icon": "Code",
+    "description": "Master Methods in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-24",
+        "title": "1. Defining Methods",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### Defining Methods\\nLet's learn about Defining Methods in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Defining Methods Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Defining Methods Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Defining Methods Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-25",
+        "title": "2. Overloading",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### Overloading\\nLet's learn about Overloading in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Overloading Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Overloading Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Overloading Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-26",
+        "title": "3. Static vs Instance",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### Static vs Instance\\nLet's learn about Static vs Instance in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Static vs Instance Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Static vs Instance Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Static vs Instance Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-27",
+        "title": "4. Recursion",
+        "badge": "Core",
+        "duration": "10 min",
+        "concept": "### Recursion\\nLet's learn about Recursion in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Recursion Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Recursion Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Recursion Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-9",
+    "title": "Module 9: OOP Part 1 Classes & Objects",
+    "icon": "Code",
+    "description": "Master OOP Part 1 Classes & Objects in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-28",
+        "title": "1. Classes & Objects",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Classes & Objects\\nLet's learn about Classes & Objects in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Classes & Objects Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Classes & Objects Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Classes & Objects Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-29",
+        "title": "2. Constructors",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Constructors\\nLet's learn about Constructors in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Constructors Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Constructors Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Constructors Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-30",
+        "title": "3. Access Modifiers",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Access Modifiers\\nLet's learn about Access Modifiers in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Access Modifiers Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Access Modifiers Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Access Modifiers Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-31",
+        "title": "4. Encapsulation",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Encapsulation\\nLet's learn about Encapsulation in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Encapsulation Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Encapsulation Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Encapsulation Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-10",
+    "title": "Module 10: OOP Part 2 Inheritance",
+    "icon": "Code",
+    "description": "Master OOP Part 2 Inheritance in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-32",
+        "title": "1. Extends",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Extends\\nLet's learn about Extends in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Extends Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Extends Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Extends Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-33",
+        "title": "2. Super",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Super\\nLet's learn about Super in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Super Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Super Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Super Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-34",
+        "title": "3. Override",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Override\\nLet's learn about Override in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Override Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Override Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Override Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-35",
+        "title": "4. Object Class",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Object Class\\nLet's learn about Object Class in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Object Class Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Object Class Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Object Class Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-11",
+    "title": "Module 11: OOP Part 3 Polymorphism",
+    "icon": "Code",
+    "description": "Master OOP Part 3 Polymorphism in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-36",
+        "title": "1. Polymorphism",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Polymorphism\\nLet's learn about Polymorphism in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Polymorphism Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Polymorphism Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Polymorphism Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-37",
+        "title": "2. Abstract Classes",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Abstract Classes\\nLet's learn about Abstract Classes in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Abstract Classes Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Abstract Classes Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Abstract Classes Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-38",
+        "title": "3. Interfaces",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Interfaces\\nLet's learn about Interfaces in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Interfaces Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Interfaces Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Interfaces Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-39",
+        "title": "4. Default Methods",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Default Methods\\nLet's learn about Default Methods in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Default Methods Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Default Methods Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Default Methods Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-12",
+    "title": "Module 12: OOP Part 4 Advanced",
+    "icon": "Code",
+    "description": "Master OOP Part 4 Advanced in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-40",
+        "title": "1. Instanceof",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Instanceof\\nLet's learn about Instanceof in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Instanceof Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Instanceof Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Instanceof Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-41",
+        "title": "2. Inner Classes",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Inner Classes\\nLet's learn about Inner Classes in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Inner Classes Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Inner Classes Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Inner Classes Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-42",
+        "title": "3. Records",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Records\\nLet's learn about Records in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Records Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Records Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Records Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-43",
+        "title": "4. Sealed Classes",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Sealed Classes\\nLet's learn about Sealed Classes in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Sealed Classes Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Sealed Classes Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Sealed Classes Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-13",
+    "title": "Module 13: Exception Handling",
+    "icon": "Code",
+    "description": "Master Exception Handling in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-44",
+        "title": "1. Try/Catch",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Try/Catch\\nLet's learn about Try/Catch in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Try/Catch Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Try/Catch Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Try/Catch Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-45",
+        "title": "2. Checked/Unchecked",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Checked/Unchecked\\nLet's learn about Checked/Unchecked in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Checked/Unchecked Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Checked/Unchecked Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Checked/Unchecked Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-46",
+        "title": "3. Throw/Throws",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Throw/Throws\\nLet's learn about Throw/Throws in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Throw/Throws Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Throw/Throws Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Throw/Throws Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-47",
+        "title": "4. Custom Exceptions",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Custom Exceptions\\nLet's learn about Custom Exceptions in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Custom Exceptions Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Custom Exceptions Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Custom Exceptions Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-14",
+    "title": "Module 14: Collections Part 1",
+    "icon": "Code",
+    "description": "Master Collections Part 1 in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-48",
+        "title": "1. ArrayList",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### ArrayList\\nLet's learn about ArrayList in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'ArrayList Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"ArrayList Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "ArrayList Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-49",
+        "title": "2. LinkedList",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### LinkedList\\nLet's learn about LinkedList in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'LinkedList Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"LinkedList Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "LinkedList Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-50",
+        "title": "3. HashSet",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### HashSet\\nLet's learn about HashSet in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'HashSet Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"HashSet Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "HashSet Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-51",
+        "title": "4. TreeSet",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### TreeSet\\nLet's learn about TreeSet in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'TreeSet Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"TreeSet Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "TreeSet Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-15",
+    "title": "Module 15: Collections Part 2",
+    "icon": "Code",
+    "description": "Master Collections Part 2 in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-52",
+        "title": "1. HashMap",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### HashMap\\nLet's learn about HashMap in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'HashMap Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"HashMap Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "HashMap Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-53",
+        "title": "2. TreeMap",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### TreeMap\\nLet's learn about TreeMap in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'TreeMap Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"TreeMap Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "TreeMap Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-54",
+        "title": "3. Queue",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### Queue\\nLet's learn about Queue in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Queue Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Queue Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Queue Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-55",
+        "title": "4. Collections Utility",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### Collections Utility\\nLet's learn about Collections Utility in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Collections Utility Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Collections Utility Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Collections Utility Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-16",
+    "title": "Module 16: Generics",
+    "icon": "Code",
+    "description": "Master Generics in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-56",
+        "title": "1. Why Generics",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Why Generics\\nLet's learn about Why Generics in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Why Generics Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Why Generics Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Why Generics Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-57",
+        "title": "2. Generic Classes",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Generic Classes\\nLet's learn about Generic Classes in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Generic Classes Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Generic Classes Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Generic Classes Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-58",
+        "title": "3. Generic Methods",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Generic Methods\\nLet's learn about Generic Methods in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Generic Methods Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Generic Methods Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Generic Methods Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-59",
+        "title": "4. Wildcards",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Wildcards\\nLet's learn about Wildcards in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Wildcards Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Wildcards Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Wildcards Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-17",
+    "title": "Module 17: Lambda & Functional Interfaces",
+    "icon": "Code",
+    "description": "Master Lambda & Functional Interfaces in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-60",
+        "title": "1. Functional Interfaces",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Functional Interfaces\\nLet's learn about Functional Interfaces in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Functional Interfaces Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Functional Interfaces Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Functional Interfaces Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-61",
+        "title": "2. Lambdas",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Lambdas\\nLet's learn about Lambdas in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Lambdas Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Lambdas Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Lambdas Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-62",
+        "title": "3. Method References",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Method References\\nLet's learn about Method References in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Method References Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Method References Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Method References Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-63",
+        "title": "4. Comparator",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Comparator\\nLet's learn about Comparator in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Comparator Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Comparator Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Comparator Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-18",
+    "title": "Module 18: Streams API",
+    "icon": "Code",
+    "description": "Master Streams API in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-64",
+        "title": "1. Creating Streams",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Creating Streams\\nLet's learn about Creating Streams in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Creating Streams Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Creating Streams Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Creating Streams Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-65",
+        "title": "2. Filter",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Filter\\nLet's learn about Filter in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Filter Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Filter Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Filter Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-66",
+        "title": "3. Map",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Map\\nLet's learn about Map in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Map Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Map Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Map Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-67",
+        "title": "4. Reduce",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Reduce\\nLet's learn about Reduce in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Reduce Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Reduce Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Reduce Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-68",
+        "title": "5. Collect",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Collect\\nLet's learn about Collect in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Collect Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Collect Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Collect Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-19",
+    "title": "Module 19: Optional & Null Safety",
+    "icon": "Code",
+    "description": "Master Optional & Null Safety in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-69",
+        "title": "1. Optional",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Optional\\nLet's learn about Optional in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Optional Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Optional Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Optional Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-70",
+        "title": "2. isPresent",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### isPresent\\nLet's learn about isPresent in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'isPresent Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"isPresent Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "isPresent Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-71",
+        "title": "3. Chaining",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Chaining\\nLet's learn about Chaining in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Chaining Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Chaining Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Chaining Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-20",
+    "title": "Module 20: File I/O",
+    "icon": "Code",
+    "description": "Master File I/O in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-72",
+        "title": "1. Scanner Reading",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Scanner Reading\\nLet's learn about Scanner Reading in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Scanner Reading Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Scanner Reading Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Scanner Reading Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-73",
+        "title": "2. Buffered I/O",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Buffered I/O\\nLet's learn about Buffered I/O in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Buffered I/O Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Buffered I/O Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Buffered I/O Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-74",
+        "title": "3. NIO Paths",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### NIO Paths\\nLet's learn about NIO Paths in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'NIO Paths Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"NIO Paths Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "NIO Paths Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-75",
+        "title": "4. Try-With-Resources",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Try-With-Resources\\nLet's learn about Try-With-Resources in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Try-With-Resources Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Try-With-Resources Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Try-With-Resources Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-21",
+    "title": "Module 21: Concurrency",
+    "icon": "Code",
+    "description": "Master Concurrency in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-76",
+        "title": "1. Threads",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Threads\\nLet's learn about Threads in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Threads Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Threads Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Threads Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-77",
+        "title": "2. Synchronized",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Synchronized\\nLet's learn about Synchronized in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Synchronized Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Synchronized Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Synchronized Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-78",
+        "title": "3. ExecutorService",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### ExecutorService\\nLet's learn about ExecutorService in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'ExecutorService Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"ExecutorService Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "ExecutorService Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-79",
+        "title": "4. CompletableFuture",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### CompletableFuture\\nLet's learn about CompletableFuture in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'CompletableFuture Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"CompletableFuture Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "CompletableFuture Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-22",
+    "title": "Module 22: Data Structures",
+    "icon": "Code",
+    "description": "Master Data Structures in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-80",
+        "title": "1. Stack",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### Stack\\nLet's learn about Stack in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Stack Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Stack Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Stack Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-81",
+        "title": "2. Queue",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### Queue\\nLet's learn about Queue in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Queue Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Queue Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Queue Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-82",
+        "title": "3. Linked List",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### Linked List\\nLet's learn about Linked List in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Linked List Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Linked List Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Linked List Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-83",
+        "title": "4. BST",
+        "badge": "Data",
+        "duration": "10 min",
+        "concept": "### BST\\nLet's learn about BST in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'BST Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"BST Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "BST Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-23",
+    "title": "Module 23: Algorithms",
+    "icon": "Code",
+    "description": "Master Algorithms in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-84",
+        "title": "1. Bubble Sort",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Bubble Sort\\nLet's learn about Bubble Sort in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Bubble Sort Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Bubble Sort Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Bubble Sort Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-85",
+        "title": "2. Merge Sort",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Merge Sort\\nLet's learn about Merge Sort in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Merge Sort Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Merge Sort Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Merge Sort Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-86",
+        "title": "3. Binary Search",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Binary Search\\nLet's learn about Binary Search in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Binary Search Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Binary Search Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Binary Search Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-87",
+        "title": "4. Big-O",
+        "badge": "Logic",
+        "duration": "10 min",
+        "concept": "### Big-O\\nLet's learn about Big-O in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Big-O Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Big-O Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Big-O Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-24",
+    "title": "Module 24: Design Patterns",
+    "icon": "Code",
+    "description": "Master Design Patterns in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-88",
+        "title": "1. Singleton",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Singleton\\nLet's learn about Singleton in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Singleton Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Singleton Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Singleton Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-89",
+        "title": "2. Factory",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Factory\\nLet's learn about Factory in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Factory Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Factory Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Factory Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-90",
+        "title": "3. Observer",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Observer\\nLet's learn about Observer in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Observer Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Observer Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Observer Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-91",
+        "title": "4. Strategy",
+        "badge": "Advanced",
+        "duration": "10 min",
+        "concept": "### Strategy\\nLet's learn about Strategy in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Strategy Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Strategy Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Strategy Complete!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "java-mod-25",
+    "title": "Module 25: Boss Battle Capstones",
+    "icon": "Code",
+    "description": "Master Boss Battle Capstones in Java.",
+    "lessons": [
+      {
+        "id": "java-lesson-92",
+        "title": "1. Student Manager",
+        "badge": "Boss Battle",
+        "duration": "10 min",
+        "concept": "### Student Manager\\nLet's learn about Student Manager in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Student Manager Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Student Manager Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Student Manager Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-93",
+        "title": "2. Bank System",
+        "badge": "Boss Battle",
+        "duration": "10 min",
+        "concept": "### Bank System\\nLet's learn about Bank System in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Bank System Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Bank System Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Bank System Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-94",
+        "title": "3. Inventory",
+        "badge": "Boss Battle",
+        "duration": "10 min",
+        "concept": "### Inventory\\nLet's learn about Inventory in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Inventory Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Inventory Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Inventory Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-95",
+        "title": "4. Download Sim",
+        "badge": "Boss Battle",
+        "duration": "10 min",
+        "concept": "### Download Sim\\nLet's learn about Download Sim in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Download Sim Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Download Sim Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Download Sim Complete!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-96",
+        "title": "5. Library System",
+        "badge": "Boss Battle",
+        "duration": "10 min",
+        "concept": "### Library System\\nLet's learn about Library System in Java! Think of it like a toy box where you organize your toys perfectly.",
+        "task": "Print out 'Library System Complete!'",
+        "starterCode": "public class Main {\\n    public static void main(String[] args) {\\n        // code\\n    }\\n}",
+        "solution": "public class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Library System Complete!\");\\n    }\\n}",
+        "hints": [
+          "Use System.out.println",
+          "Check spelling",
+          "Add semicolon at the end"
+        ],
+        "tests": [
+          {
+            "description": "Correct output",
+            "type": "output_includes",
+            "expected": "Library System Complete!"
           }
         ]
       }

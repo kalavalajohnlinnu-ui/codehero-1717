@@ -10,12 +10,14 @@
         "title": "1. Hello, C!",
         "badge": "Core Systems",
         "duration": "6 min",
-        "concept": "### Welcome to C! ⚙️\nC is the mother of modern programming languages. Windows, macOS, Linux, and 3D game engines are built on C!\n\n```c\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello from C!\\n\");\n    return 0;\n}\n```",
+        "concept": "### Welcome to C! \u2699\ufe0f\nC is the mother of modern programming languages. Windows, macOS, Linux, and 3D game engines are built on C!\n\n```c\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello from C!\\n\");\n    return 0;\n}\n```",
         "task": "Modify the printf statement to print `Welcome to C Hero!\\n`.",
         "starterCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n",
         "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Welcome to C Hero!\\n\");\n    return 0;\n}",
         "hints": [
-          "Change 'Hello, World!' to 'Welcome to C Hero!'"
+          "Change 'Hello, World!' to 'Welcome to C Hero!'",
+          "Check spelling",
+          "Check punctuation"
         ],
         "tests": [
           {
@@ -37,7 +39,9 @@
         "starterCode": "#include <stdio.h>\n\nint main() {\n    int speed = 88;\n    printf(\"Speed: %d\\n\", speed);\n    return 0;\n}\n",
         "solution": "#include <stdio.h>\n\nint main() {\n    int speed = 88;\n    printf(\"Speed: %d\\n\", speed);\n    return 0;\n}",
         "hints": [
-          "The code is ready to test! Click Run Spell to verify!"
+          "The code is ready to test!",
+          "Click Run Spell to verify!",
+          "Make sure speed is 88"
         ],
         "tests": [
           {
@@ -45,6 +49,2350 @@
             "type": "output_includes",
             "expected": [
               "Speed: 88"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-2",
+    "title": "Realm 2: Data Types & Format Specifiers",
+    "icon": "Cpu",
+    "description": "Master Data Types & Format Specifiers like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-3",
+        "title": "1. Int/Float/Double/Char",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### int/float/double/char\nThink of int/float/double/char like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for int/float/double/char\n#include <stdio.h>\nint main() {\n    printf(\"Learning int/float/double/char!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: int/float/double/char'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: int/float/double/char\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: int/float/double/char'",
+            "type": "output_includes",
+            "expected": [
+              "Success: int/float/double/char"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-4",
+        "title": "2. Short/Long/Unsigned/Sizeof",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### short/long/unsigned/sizeof\nThink of short/long/unsigned/sizeof like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for short/long/unsigned/sizeof\n#include <stdio.h>\nint main() {\n    printf(\"Learning short/long/unsigned/sizeof!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: short/long/unsigned/sizeof'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: short/long/unsigned/sizeof\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: short/long/unsigned/sizeof'",
+            "type": "output_includes",
+            "expected": [
+              "Success: short/long/unsigned/sizeof"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-5",
+        "title": "3. Format Specifiers %D %F %C %S %P",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### format specifiers %d %f %c %s %p\nThink of format specifiers %d %f %c %s %p like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for format specifiers %d %f %c %s %p\n#include <stdio.h>\nint main() {\n    printf(\"Learning format specifiers %d %f %c %s %p!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: format specifiers %d %f %c %s %p'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: format specifiers %d %f %c %s %p\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: format specifiers %d %f %c %s %p'",
+            "type": "output_includes",
+            "expected": [
+              "Success: format specifiers %d %f %c %s %p"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-6",
+        "title": "4. Type Casting",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### type casting\nThink of type casting like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for type casting\n#include <stdio.h>\nint main() {\n    printf(\"Learning type casting!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: type casting'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: type casting\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: type casting'",
+            "type": "output_includes",
+            "expected": [
+              "Success: type casting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-3",
+    "title": "Realm 3: Input with scanf",
+    "icon": "Cpu",
+    "description": "Master Input with scanf like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-7",
+        "title": "1. Scanf() Reading Numbers",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### scanf() reading numbers\nThink of scanf() reading numbers like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for scanf() reading numbers\n#include <stdio.h>\nint main() {\n    printf(\"Learning scanf() reading numbers!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: scanf() reading numbers'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: scanf() reading numbers\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: scanf() reading numbers'",
+            "type": "output_includes",
+            "expected": [
+              "Success: scanf() reading numbers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-8",
+        "title": "2. Fgets() Reading Strings",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### fgets() reading strings\nThink of fgets() reading strings like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for fgets() reading strings\n#include <stdio.h>\nint main() {\n    printf(\"Learning fgets() reading strings!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: fgets() reading strings'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: fgets() reading strings\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: fgets() reading strings'",
+            "type": "output_includes",
+            "expected": [
+              "Success: fgets() reading strings"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-9",
+        "title": "3. Printf Formatting Deep Dive",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### printf formatting deep dive\nThink of printf formatting deep dive like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for printf formatting deep dive\n#include <stdio.h>\nint main() {\n    printf(\"Learning printf formatting deep dive!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: printf formatting deep dive'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: printf formatting deep dive\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: printf formatting deep dive'",
+            "type": "output_includes",
+            "expected": [
+              "Success: printf formatting deep dive"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-4",
+    "title": "Realm 4: Operators",
+    "icon": "Cpu",
+    "description": "Master Operators like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-10",
+        "title": "1. Arithmetic +/-/*/% Increment/Decrement",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Arithmetic +/-/*/% increment/decrement\nThink of Arithmetic +/-/*/% increment/decrement like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Arithmetic +/-/*/% increment/decrement\n#include <stdio.h>\nint main() {\n    printf(\"Learning Arithmetic +/-/*/% increment/decrement!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Arithmetic +/-/*/% increment/decrement'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Arithmetic +/-/*/% increment/decrement\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Arithmetic +/-/*/% increment/decrement'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Arithmetic +/-/*/% increment/decrement"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-11",
+        "title": "2. Relational & Logical",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### relational & logical\nThink of relational & logical like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for relational & logical\n#include <stdio.h>\nint main() {\n    printf(\"Learning relational & logical!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: relational & logical'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: relational & logical\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: relational & logical'",
+            "type": "output_includes",
+            "expected": [
+              "Success: relational & logical"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-12",
+        "title": "3. Bitwise & | ^ ~ << >>",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### bitwise & | ^ ~ << >>\nThink of bitwise & | ^ ~ << >> like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for bitwise & | ^ ~ << >>\n#include <stdio.h>\nint main() {\n    printf(\"Learning bitwise & | ^ ~ << >>!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: bitwise & | ^ ~ << >>'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: bitwise & | ^ ~ << >>\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: bitwise & | ^ ~ << >>'",
+            "type": "output_includes",
+            "expected": [
+              "Success: bitwise & | ^ ~ << >>"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-5",
+    "title": "Realm 5: Conditionals",
+    "icon": "Cpu",
+    "description": "Master Conditionals like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-13",
+        "title": "1. If/Else If/Else",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### if/else if/else\nThink of if/else if/else like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for if/else if/else\n#include <stdio.h>\nint main() {\n    printf(\"Learning if/else if/else!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: if/else if/else'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: if/else if/else\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: if/else if/else'",
+            "type": "output_includes",
+            "expected": [
+              "Success: if/else if/else"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-14",
+        "title": "2. Switch/Case/Default",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### switch/case/default\nThink of switch/case/default like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for switch/case/default\n#include <stdio.h>\nint main() {\n    printf(\"Learning switch/case/default!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: switch/case/default'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: switch/case/default\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: switch/case/default'",
+            "type": "output_includes",
+            "expected": [
+              "Success: switch/case/default"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-15",
+        "title": "3. Ternary ? :",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### ternary ? :\nThink of ternary ? : like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for ternary ? :\n#include <stdio.h>\nint main() {\n    printf(\"Learning ternary ? :!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: ternary ? :'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: ternary ? :\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: ternary ? :'",
+            "type": "output_includes",
+            "expected": [
+              "Success: ternary ? :"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-6",
+    "title": "Realm 6: Loops",
+    "icon": "Cpu",
+    "description": "Master Loops like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-16",
+        "title": "1. For Loop",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### for loop\nThink of for loop like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for for loop\n#include <stdio.h>\nint main() {\n    printf(\"Learning for loop!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: for loop'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: for loop\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: for loop'",
+            "type": "output_includes",
+            "expected": [
+              "Success: for loop"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-17",
+        "title": "2. While Loop",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### while loop\nThink of while loop like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for while loop\n#include <stdio.h>\nint main() {\n    printf(\"Learning while loop!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: while loop'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: while loop\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: while loop'",
+            "type": "output_includes",
+            "expected": [
+              "Success: while loop"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-18",
+        "title": "3. Do...While",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### do...while\nThink of do...while like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for do...while\n#include <stdio.h>\nint main() {\n    printf(\"Learning do...while!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: do...while'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: do...while\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: do...while'",
+            "type": "output_includes",
+            "expected": [
+              "Success: do...while"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-19",
+        "title": "4. Break/Continue/Nested Loops",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### break/continue/nested loops\nThink of break/continue/nested loops like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for break/continue/nested loops\n#include <stdio.h>\nint main() {\n    printf(\"Learning break/continue/nested loops!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: break/continue/nested loops'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: break/continue/nested loops\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: break/continue/nested loops'",
+            "type": "output_includes",
+            "expected": [
+              "Success: break/continue/nested loops"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-7",
+    "title": "Realm 7: Functions",
+    "icon": "Cpu",
+    "description": "Master Functions like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-20",
+        "title": "1. Function Definition/Return/Params",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Function definition/return/params\nThink of Function definition/return/params like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Function definition/return/params\n#include <stdio.h>\nint main() {\n    printf(\"Learning Function definition/return/params!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Function definition/return/params'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Function definition/return/params\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Function definition/return/params'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Function definition/return/params"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-21",
+        "title": "2. Pass By Value",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### pass by value\nThink of pass by value like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for pass by value\n#include <stdio.h>\nint main() {\n    printf(\"Learning pass by value!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: pass by value'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: pass by value\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: pass by value'",
+            "type": "output_includes",
+            "expected": [
+              "Success: pass by value"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-22",
+        "title": "3. Prototypes/Headers",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### prototypes/headers\nThink of prototypes/headers like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for prototypes/headers\n#include <stdio.h>\nint main() {\n    printf(\"Learning prototypes/headers!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: prototypes/headers'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: prototypes/headers\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: prototypes/headers'",
+            "type": "output_includes",
+            "expected": [
+              "Success: prototypes/headers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-23",
+        "title": "4. Recursion",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### recursion\nThink of recursion like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for recursion\n#include <stdio.h>\nint main() {\n    printf(\"Learning recursion!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: recursion'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: recursion\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: recursion'",
+            "type": "output_includes",
+            "expected": [
+              "Success: recursion"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-8",
+    "title": "Realm 8: Arrays",
+    "icon": "Cpu",
+    "description": "Master Arrays like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-24",
+        "title": "1. 1D Arrays",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### 1D arrays\nThink of 1D arrays like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for 1D arrays\n#include <stdio.h>\nint main() {\n    printf(\"Learning 1D arrays!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: 1D arrays'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: 1D arrays\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: 1D arrays'",
+            "type": "output_includes",
+            "expected": [
+              "Success: 1D arrays"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-25",
+        "title": "2. Iterating/Bounds/Buffer Overflow",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### iterating/bounds/buffer overflow\nThink of iterating/bounds/buffer overflow like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for iterating/bounds/buffer overflow\n#include <stdio.h>\nint main() {\n    printf(\"Learning iterating/bounds/buffer overflow!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: iterating/bounds/buffer overflow'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: iterating/bounds/buffer overflow\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: iterating/bounds/buffer overflow'",
+            "type": "output_includes",
+            "expected": [
+              "Success: iterating/bounds/buffer overflow"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-26",
+        "title": "3. 2D Arrays",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### 2D arrays\nThink of 2D arrays like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for 2D arrays\n#include <stdio.h>\nint main() {\n    printf(\"Learning 2D arrays!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: 2D arrays'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: 2D arrays\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: 2D arrays'",
+            "type": "output_includes",
+            "expected": [
+              "Success: 2D arrays"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-27",
+        "title": "4. Passing Arrays To Functions",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### passing arrays to functions\nThink of passing arrays to functions like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for passing arrays to functions\n#include <stdio.h>\nint main() {\n    printf(\"Learning passing arrays to functions!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: passing arrays to functions'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: passing arrays to functions\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: passing arrays to functions'",
+            "type": "output_includes",
+            "expected": [
+              "Success: passing arrays to functions"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-9",
+    "title": "Realm 9: Strings in C",
+    "icon": "Cpu",
+    "description": "Master Strings in C like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-28",
+        "title": "1. Char Arrays/Null Terminator",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### char arrays/null terminator\nThink of char arrays/null terminator like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for char arrays/null terminator\n#include <stdio.h>\nint main() {\n    printf(\"Learning char arrays/null terminator!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: char arrays/null terminator'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: char arrays/null terminator\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: char arrays/null terminator'",
+            "type": "output_includes",
+            "expected": [
+              "Success: char arrays/null terminator"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-29",
+        "title": "2. Strlen/Strcpy/Strncpy",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### strlen/strcpy/strncpy\nThink of strlen/strcpy/strncpy like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for strlen/strcpy/strncpy\n#include <stdio.h>\nint main() {\n    printf(\"Learning strlen/strcpy/strncpy!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: strlen/strcpy/strncpy'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: strlen/strcpy/strncpy\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: strlen/strcpy/strncpy'",
+            "type": "output_includes",
+            "expected": [
+              "Success: strlen/strcpy/strncpy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-30",
+        "title": "3. Strcmp/Strcat/Strstr",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### strcmp/strcat/strstr\nThink of strcmp/strcat/strstr like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for strcmp/strcat/strstr\n#include <stdio.h>\nint main() {\n    printf(\"Learning strcmp/strcat/strstr!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: strcmp/strcat/strstr'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: strcmp/strcat/strstr\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: strcmp/strcat/strstr'",
+            "type": "output_includes",
+            "expected": [
+              "Success: strcmp/strcat/strstr"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-31",
+        "title": "4. String Input Pitfalls",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### string input pitfalls\nThink of string input pitfalls like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for string input pitfalls\n#include <stdio.h>\nint main() {\n    printf(\"Learning string input pitfalls!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: string input pitfalls'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: string input pitfalls\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: string input pitfalls'",
+            "type": "output_includes",
+            "expected": [
+              "Success: string input pitfalls"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-10",
+    "title": "Realm 10: Pointers Part 1",
+    "icon": "Cpu",
+    "description": "Master Pointers Part 1 like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-32",
+        "title": "1. Memory Addresses &",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Memory addresses &\nThink of Memory addresses & like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Memory addresses &\n#include <stdio.h>\nint main() {\n    printf(\"Learning Memory addresses &!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Memory addresses &'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Memory addresses &\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Memory addresses &'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Memory addresses &"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-33",
+        "title": "2. Pointer Variables * Dereferencing",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### pointer variables * dereferencing\nThink of pointer variables * dereferencing like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for pointer variables * dereferencing\n#include <stdio.h>\nint main() {\n    printf(\"Learning pointer variables * dereferencing!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: pointer variables * dereferencing'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: pointer variables * dereferencing\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: pointer variables * dereferencing'",
+            "type": "output_includes",
+            "expected": [
+              "Success: pointer variables * dereferencing"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-34",
+        "title": "3. Pointer Arithmetic",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### pointer arithmetic\nThink of pointer arithmetic like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for pointer arithmetic\n#include <stdio.h>\nint main() {\n    printf(\"Learning pointer arithmetic!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: pointer arithmetic'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: pointer arithmetic\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: pointer arithmetic'",
+            "type": "output_includes",
+            "expected": [
+              "Success: pointer arithmetic"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-35",
+        "title": "4. Pointers And Arrays",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### pointers and arrays\nThink of pointers and arrays like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for pointers and arrays\n#include <stdio.h>\nint main() {\n    printf(\"Learning pointers and arrays!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: pointers and arrays'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: pointers and arrays\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: pointers and arrays'",
+            "type": "output_includes",
+            "expected": [
+              "Success: pointers and arrays"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-36",
+        "title": "5. Passing Pointers To Functions",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### passing pointers to functions\nThink of passing pointers to functions like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for passing pointers to functions\n#include <stdio.h>\nint main() {\n    printf(\"Learning passing pointers to functions!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: passing pointers to functions'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: passing pointers to functions\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: passing pointers to functions'",
+            "type": "output_includes",
+            "expected": [
+              "Success: passing pointers to functions"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-11",
+    "title": "Realm 11: Pointers Part 2",
+    "icon": "Cpu",
+    "description": "Master Pointers Part 2 like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-37",
+        "title": "1. Pointer To Pointer **",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Pointer to pointer **\nThink of Pointer to pointer ** like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Pointer to pointer **\n#include <stdio.h>\nint main() {\n    printf(\"Learning Pointer to pointer **!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Pointer to pointer **'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Pointer to pointer **\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Pointer to pointer **'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Pointer to pointer **"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-38",
+        "title": "2. Void *",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### void *\nThink of void * like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for void *\n#include <stdio.h>\nint main() {\n    printf(\"Learning void *!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: void *'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: void *\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: void *'",
+            "type": "output_includes",
+            "expected": [
+              "Success: void *"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-39",
+        "title": "3. Function Pointers",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### function pointers\nThink of function pointers like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for function pointers\n#include <stdio.h>\nint main() {\n    printf(\"Learning function pointers!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: function pointers'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: function pointers\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: function pointers'",
+            "type": "output_includes",
+            "expected": [
+              "Success: function pointers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-40",
+        "title": "4. Const With Pointers",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### const with pointers\nThink of const with pointers like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for const with pointers\n#include <stdio.h>\nint main() {\n    printf(\"Learning const with pointers!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: const with pointers'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: const with pointers\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: const with pointers'",
+            "type": "output_includes",
+            "expected": [
+              "Success: const with pointers"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-12",
+    "title": "Realm 12: Dynamic Memory",
+    "icon": "Cpu",
+    "description": "Master Dynamic Memory like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-41",
+        "title": "1. Stack Vs Heap",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Stack vs Heap\nThink of Stack vs Heap like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Stack vs Heap\n#include <stdio.h>\nint main() {\n    printf(\"Learning Stack vs Heap!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Stack vs Heap'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Stack vs Heap\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Stack vs Heap'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Stack vs Heap"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-42",
+        "title": "2. Malloc()/Free()",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### malloc()/free()\nThink of malloc()/free() like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for malloc()/free()\n#include <stdio.h>\nint main() {\n    printf(\"Learning malloc()/free()!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: malloc()/free()'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: malloc()/free()\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: malloc()/free()'",
+            "type": "output_includes",
+            "expected": [
+              "Success: malloc()/free()"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-43",
+        "title": "3. Calloc()/Realloc()",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### calloc()/realloc()\nThink of calloc()/realloc() like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for calloc()/realloc()\n#include <stdio.h>\nint main() {\n    printf(\"Learning calloc()/realloc()!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: calloc()/realloc()'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: calloc()/realloc()\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: calloc()/realloc()'",
+            "type": "output_includes",
+            "expected": [
+              "Success: calloc()/realloc()"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-44",
+        "title": "4. Memory Leaks/Dangling Pointers",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### memory leaks/dangling pointers\nThink of memory leaks/dangling pointers like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for memory leaks/dangling pointers\n#include <stdio.h>\nint main() {\n    printf(\"Learning memory leaks/dangling pointers!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: memory leaks/dangling pointers'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: memory leaks/dangling pointers\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: memory leaks/dangling pointers'",
+            "type": "output_includes",
+            "expected": [
+              "Success: memory leaks/dangling pointers"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-13",
+    "title": "Realm 13: Structs",
+    "icon": "Cpu",
+    "description": "Master Structs like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-45",
+        "title": "1. Struct Definitions",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### struct definitions\nThink of struct definitions like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for struct definitions\n#include <stdio.h>\nint main() {\n    printf(\"Learning struct definitions!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: struct definitions'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: struct definitions\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: struct definitions'",
+            "type": "output_includes",
+            "expected": [
+              "Success: struct definitions"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-46",
+        "title": "2. Dot Operator",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### dot operator\nThink of dot operator like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for dot operator\n#include <stdio.h>\nint main() {\n    printf(\"Learning dot operator!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: dot operator'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: dot operator\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: dot operator'",
+            "type": "output_includes",
+            "expected": [
+              "Success: dot operator"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-47",
+        "title": "3. Struct Pointers/Arrow ->",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### struct pointers/arrow ->\nThink of struct pointers/arrow -> like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for struct pointers/arrow ->\n#include <stdio.h>\nint main() {\n    printf(\"Learning struct pointers/arrow ->!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: struct pointers/arrow ->'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: struct pointers/arrow ->\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: struct pointers/arrow ->'",
+            "type": "output_includes",
+            "expected": [
+              "Success: struct pointers/arrow ->"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-48",
+        "title": "4. Typedef",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### typedef\nThink of typedef like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for typedef\n#include <stdio.h>\nint main() {\n    printf(\"Learning typedef!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: typedef'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: typedef\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: typedef'",
+            "type": "output_includes",
+            "expected": [
+              "Success: typedef"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-14",
+    "title": "Realm 14: Unions, Enums & Bit Fields",
+    "icon": "Cpu",
+    "description": "Master Unions, Enums & Bit Fields like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-49",
+        "title": "1. Union",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### union\nThink of union like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for union\n#include <stdio.h>\nint main() {\n    printf(\"Learning union!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: union'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: union\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: union'",
+            "type": "output_includes",
+            "expected": [
+              "Success: union"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-50",
+        "title": "2. Enum",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### enum\nThink of enum like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for enum\n#include <stdio.h>\nint main() {\n    printf(\"Learning enum!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: enum'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: enum\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: enum'",
+            "type": "output_includes",
+            "expected": [
+              "Success: enum"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-51",
+        "title": "3. Bit Fields",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### bit fields\nThink of bit fields like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for bit fields\n#include <stdio.h>\nint main() {\n    printf(\"Learning bit fields!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: bit fields'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: bit fields\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: bit fields'",
+            "type": "output_includes",
+            "expected": [
+              "Success: bit fields"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-15",
+    "title": "Realm 15: File I/O",
+    "icon": "Cpu",
+    "description": "Master File I/O like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-52",
+        "title": "1. Fopen/Fclose",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### fopen/fclose\nThink of fopen/fclose like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for fopen/fclose\n#include <stdio.h>\nint main() {\n    printf(\"Learning fopen/fclose!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: fopen/fclose'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: fopen/fclose\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: fopen/fclose'",
+            "type": "output_includes",
+            "expected": [
+              "Success: fopen/fclose"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-53",
+        "title": "2. Fprintf/Fscanf",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### fprintf/fscanf\nThink of fprintf/fscanf like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for fprintf/fscanf\n#include <stdio.h>\nint main() {\n    printf(\"Learning fprintf/fscanf!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: fprintf/fscanf'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: fprintf/fscanf\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: fprintf/fscanf'",
+            "type": "output_includes",
+            "expected": [
+              "Success: fprintf/fscanf"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-54",
+        "title": "3. Fgets/Fputs",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### fgets/fputs\nThink of fgets/fputs like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for fgets/fputs\n#include <stdio.h>\nint main() {\n    printf(\"Learning fgets/fputs!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: fgets/fputs'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: fgets/fputs\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: fgets/fputs'",
+            "type": "output_includes",
+            "expected": [
+              "Success: fgets/fputs"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-55",
+        "title": "4. Binary Fread/Fwrite/Fseek",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### binary fread/fwrite/fseek\nThink of binary fread/fwrite/fseek like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for binary fread/fwrite/fseek\n#include <stdio.h>\nint main() {\n    printf(\"Learning binary fread/fwrite/fseek!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: binary fread/fwrite/fseek'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: binary fread/fwrite/fseek\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: binary fread/fwrite/fseek'",
+            "type": "output_includes",
+            "expected": [
+              "Success: binary fread/fwrite/fseek"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-16",
+    "title": "Realm 16: Preprocessor & Macros",
+    "icon": "Cpu",
+    "description": "Master Preprocessor & Macros like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-56",
+        "title": "1. #Include/#Define",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### #include/#define\nThink of #include/#define like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for #include/#define\n#include <stdio.h>\nint main() {\n    printf(\"Learning #include/#define!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: #include/#define'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: #include/#define\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: #include/#define'",
+            "type": "output_includes",
+            "expected": [
+              "Success: #include/#define"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-57",
+        "title": "2. Macro Functions",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### macro functions\nThink of macro functions like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for macro functions\n#include <stdio.h>\nint main() {\n    printf(\"Learning macro functions!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: macro functions'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: macro functions\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: macro functions'",
+            "type": "output_includes",
+            "expected": [
+              "Success: macro functions"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-58",
+        "title": "3. #Ifdef/#Ifndef/Include Guards",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### #ifdef/#ifndef/include guards\nThink of #ifdef/#ifndef/include guards like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for #ifdef/#ifndef/include guards\n#include <stdio.h>\nint main() {\n    printf(\"Learning #ifdef/#ifndef/include guards!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: #ifdef/#ifndef/include guards'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: #ifdef/#ifndef/include guards\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: #ifdef/#ifndef/include guards'",
+            "type": "output_includes",
+            "expected": [
+              "Success: #ifdef/#ifndef/include guards"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-17",
+    "title": "Realm 17: Multi-File Projects",
+    "icon": "Cpu",
+    "description": "Master Multi-File Projects like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-59",
+        "title": "1. Header Files .H",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Header files .h\nThink of Header files .h like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Header files .h\n#include <stdio.h>\nint main() {\n    printf(\"Learning Header files .h!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Header files .h'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Header files .h\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Header files .h'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Header files .h"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-60",
+        "title": "2. Separate Compilation/Extern",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### separate compilation/extern\nThink of separate compilation/extern like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for separate compilation/extern\n#include <stdio.h>\nint main() {\n    printf(\"Learning separate compilation/extern!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: separate compilation/extern'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: separate compilation/extern\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: separate compilation/extern'",
+            "type": "output_includes",
+            "expected": [
+              "Success: separate compilation/extern"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-61",
+        "title": "3. Static Keyword",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### static keyword\nThink of static keyword like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for static keyword\n#include <stdio.h>\nint main() {\n    printf(\"Learning static keyword!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: static keyword'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: static keyword\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: static keyword'",
+            "type": "output_includes",
+            "expected": [
+              "Success: static keyword"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-18",
+    "title": "Realm 18: Data Structures in C",
+    "icon": "Cpu",
+    "description": "Master Data Structures in C like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-62",
+        "title": "1. Singly Linked List",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Singly linked list\nThink of Singly linked list like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Singly linked list\n#include <stdio.h>\nint main() {\n    printf(\"Learning Singly linked list!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Singly linked list'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Singly linked list\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Singly linked list'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Singly linked list"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-63",
+        "title": "2. Doubly Linked/Circular",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### doubly linked/circular\nThink of doubly linked/circular like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for doubly linked/circular\n#include <stdio.h>\nint main() {\n    printf(\"Learning doubly linked/circular!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: doubly linked/circular'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: doubly linked/circular\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: doubly linked/circular'",
+            "type": "output_includes",
+            "expected": [
+              "Success: doubly linked/circular"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-64",
+        "title": "3. Stacks",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### stacks\nThink of stacks like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for stacks\n#include <stdio.h>\nint main() {\n    printf(\"Learning stacks!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: stacks'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: stacks\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: stacks'",
+            "type": "output_includes",
+            "expected": [
+              "Success: stacks"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-65",
+        "title": "4. Queues",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### queues\nThink of queues like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for queues\n#include <stdio.h>\nint main() {\n    printf(\"Learning queues!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: queues'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: queues\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: queues'",
+            "type": "output_includes",
+            "expected": [
+              "Success: queues"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-66",
+        "title": "5. Hash Tables",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### hash tables\nThink of hash tables like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for hash tables\n#include <stdio.h>\nint main() {\n    printf(\"Learning hash tables!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: hash tables'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: hash tables\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: hash tables'",
+            "type": "output_includes",
+            "expected": [
+              "Success: hash tables"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-19",
+    "title": "Realm 19: Algorithms in C",
+    "icon": "Cpu",
+    "description": "Master Algorithms in C like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-67",
+        "title": "1. Bubble/Selection/Insertion Sort",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Bubble/selection/insertion sort\nThink of Bubble/selection/insertion sort like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Bubble/selection/insertion sort\n#include <stdio.h>\nint main() {\n    printf(\"Learning Bubble/selection/insertion sort!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Bubble/selection/insertion sort'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Bubble/selection/insertion sort\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Bubble/selection/insertion sort'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Bubble/selection/insertion sort"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-68",
+        "title": "2. Merge/Quick Sort",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### merge/quick sort\nThink of merge/quick sort like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for merge/quick sort\n#include <stdio.h>\nint main() {\n    printf(\"Learning merge/quick sort!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: merge/quick sort'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: merge/quick sort\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: merge/quick sort'",
+            "type": "output_includes",
+            "expected": [
+              "Success: merge/quick sort"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-69",
+        "title": "3. Linear/Binary Search",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### linear/binary search\nThink of linear/binary search like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for linear/binary search\n#include <stdio.h>\nint main() {\n    printf(\"Learning linear/binary search!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: linear/binary search'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: linear/binary search\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: linear/binary search'",
+            "type": "output_includes",
+            "expected": [
+              "Success: linear/binary search"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-70",
+        "title": "4. Big-O Notation",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Big-O notation\nThink of Big-O notation like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Big-O notation\n#include <stdio.h>\nint main() {\n    printf(\"Learning Big-O notation!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Big-O notation'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Big-O notation\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Big-O notation'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Big-O notation"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-20",
+    "title": "Realm 20: C++ Basics",
+    "icon": "Cpu",
+    "description": "Master C++ Basics like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-71",
+        "title": "1. Cout/Cin",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### cout/cin\nThink of cout/cin like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for cout/cin\n#include <stdio.h>\nint main() {\n    printf(\"Learning cout/cin!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: cout/cin'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: cout/cin\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: cout/cin'",
+            "type": "output_includes",
+            "expected": [
+              "Success: cout/cin"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-72",
+        "title": "2. Std::String",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### std::string\nThink of std::string like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for std::string\n#include <stdio.h>\nint main() {\n    printf(\"Learning std::string!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: std::string'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: std::string\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: std::string'",
+            "type": "output_includes",
+            "expected": [
+              "Success: std::string"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-73",
+        "title": "3. References Int&",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### references int&\nThink of references int& like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for references int&\n#include <stdio.h>\nint main() {\n    printf(\"Learning references int&!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: references int&'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: references int&\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: references int&'",
+            "type": "output_includes",
+            "expected": [
+              "Success: references int&"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-74",
+        "title": "4. New/Delete",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### new/delete\nThink of new/delete like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for new/delete\n#include <stdio.h>\nint main() {\n    printf(\"Learning new/delete!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: new/delete'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: new/delete\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: new/delete'",
+            "type": "output_includes",
+            "expected": [
+              "Success: new/delete"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-21",
+    "title": "Realm 21: C++ OOP",
+    "icon": "Cpu",
+    "description": "Master C++ OOP like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-75",
+        "title": "1. Classes/Public/Private/Constructors",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Classes/public/private/constructors\nThink of Classes/public/private/constructors like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Classes/public/private/constructors\n#include <stdio.h>\nint main() {\n    printf(\"Learning Classes/public/private/constructors!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Classes/public/private/constructors'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Classes/public/private/constructors\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Classes/public/private/constructors'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Classes/public/private/constructors"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-76",
+        "title": "2. Destructors/Raii",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### destructors/RAII\nThink of destructors/RAII like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for destructors/RAII\n#include <stdio.h>\nint main() {\n    printf(\"Learning destructors/RAII!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: destructors/RAII'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: destructors/RAII\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: destructors/RAII'",
+            "type": "output_includes",
+            "expected": [
+              "Success: destructors/RAII"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-77",
+        "title": "3. Inheritance",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### inheritance\nThink of inheritance like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for inheritance\n#include <stdio.h>\nint main() {\n    printf(\"Learning inheritance!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: inheritance'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: inheritance\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: inheritance'",
+            "type": "output_includes",
+            "expected": [
+              "Success: inheritance"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-78",
+        "title": "4. Virtual/Polymorphism",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### virtual/polymorphism\nThink of virtual/polymorphism like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for virtual/polymorphism\n#include <stdio.h>\nint main() {\n    printf(\"Learning virtual/polymorphism!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: virtual/polymorphism'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: virtual/polymorphism\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: virtual/polymorphism'",
+            "type": "output_includes",
+            "expected": [
+              "Success: virtual/polymorphism"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-79",
+        "title": "5. Abstract Classes Pure Virtual",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### abstract classes pure virtual\nThink of abstract classes pure virtual like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for abstract classes pure virtual\n#include <stdio.h>\nint main() {\n    printf(\"Learning abstract classes pure virtual!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: abstract classes pure virtual'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: abstract classes pure virtual\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: abstract classes pure virtual'",
+            "type": "output_includes",
+            "expected": [
+              "Success: abstract classes pure virtual"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-22",
+    "title": "Realm 22: C++ STL",
+    "icon": "Cpu",
+    "description": "Master C++ STL like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-80",
+        "title": "1. Vector",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### vector\nThink of vector like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for vector\n#include <stdio.h>\nint main() {\n    printf(\"Learning vector!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: vector'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: vector\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: vector'",
+            "type": "output_includes",
+            "expected": [
+              "Success: vector"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-81",
+        "title": "2. Map/Unordered_Map",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### map/unordered_map\nThink of map/unordered_map like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for map/unordered_map\n#include <stdio.h>\nint main() {\n    printf(\"Learning map/unordered_map!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: map/unordered_map'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: map/unordered_map\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: map/unordered_map'",
+            "type": "output_includes",
+            "expected": [
+              "Success: map/unordered_map"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-82",
+        "title": "3. Set",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### set\nThink of set like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for set\n#include <stdio.h>\nint main() {\n    printf(\"Learning set!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: set'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: set\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: set'",
+            "type": "output_includes",
+            "expected": [
+              "Success: set"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-83",
+        "title": "4. Algorithm Sort/Find/Count/Transform",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### algorithm sort/find/count/transform\nThink of algorithm sort/find/count/transform like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for algorithm sort/find/count/transform\n#include <stdio.h>\nint main() {\n    printf(\"Learning algorithm sort/find/count/transform!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: algorithm sort/find/count/transform'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: algorithm sort/find/count/transform\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: algorithm sort/find/count/transform'",
+            "type": "output_includes",
+            "expected": [
+              "Success: algorithm sort/find/count/transform"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-23",
+    "title": "Realm 23: C++ Modern Features",
+    "icon": "Cpu",
+    "description": "Master C++ Modern Features like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-84",
+        "title": "1. Templates",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Templates\nThink of Templates like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Templates\n#include <stdio.h>\nint main() {\n    printf(\"Learning Templates!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Templates'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Templates\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Templates'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Templates"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-85",
+        "title": "2. Smart Pointers Unique_Ptr/Shared_Ptr",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### smart pointers unique_ptr/shared_ptr\nThink of smart pointers unique_ptr/shared_ptr like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for smart pointers unique_ptr/shared_ptr\n#include <stdio.h>\nint main() {\n    printf(\"Learning smart pointers unique_ptr/shared_ptr!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: smart pointers unique_ptr/shared_ptr'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: smart pointers unique_ptr/shared_ptr\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: smart pointers unique_ptr/shared_ptr'",
+            "type": "output_includes",
+            "expected": [
+              "Success: smart pointers unique_ptr/shared_ptr"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-86",
+        "title": "3. Lambdas",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### lambdas\nThink of lambdas like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for lambdas\n#include <stdio.h>\nint main() {\n    printf(\"Learning lambdas!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: lambdas'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: lambdas\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: lambdas'",
+            "type": "output_includes",
+            "expected": [
+              "Success: lambdas"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-87",
+        "title": "4. Range-For/Auto/Nullptr",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### range-for/auto/nullptr\nThink of range-for/auto/nullptr like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for range-for/auto/nullptr\n#include <stdio.h>\nint main() {\n    printf(\"Learning range-for/auto/nullptr!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: range-for/auto/nullptr'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: range-for/auto/nullptr\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: range-for/auto/nullptr'",
+            "type": "output_includes",
+            "expected": [
+              "Success: range-for/auto/nullptr"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c-mod-24",
+    "title": "Realm 24: Boss Battle Capstones",
+    "icon": "Cpu",
+    "description": "Master Boss Battle Capstones like a pro coder!",
+    "lessons": [
+      {
+        "id": "c-lesson-88",
+        "title": "1. Memory-Safe String Library",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Memory-Safe String Library\nThink of Memory-Safe String Library like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Memory-Safe String Library\n#include <stdio.h>\nint main() {\n    printf(\"Learning Memory-Safe String Library!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Memory-Safe String Library'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Memory-Safe String Library\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Memory-Safe String Library'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Memory-Safe String Library"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-89",
+        "title": "2. Student Database With File I/O",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Student Database with File I/O\nThink of Student Database with File I/O like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Student Database with File I/O\n#include <stdio.h>\nint main() {\n    printf(\"Learning Student Database with File I/O!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Student Database with File I/O'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Student Database with File I/O\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Student Database with File I/O'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Student Database with File I/O"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-90",
+        "title": "3. Linked List Toolkit",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Linked List Toolkit\nThink of Linked List Toolkit like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Linked List Toolkit\n#include <stdio.h>\nint main() {\n    printf(\"Learning Linked List Toolkit!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Linked List Toolkit'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Linked List Toolkit\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Linked List Toolkit'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Linked List Toolkit"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-91",
+        "title": "4. Shell Command Parser",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Shell Command Parser\nThink of Shell Command Parser like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Shell Command Parser\n#include <stdio.h>\nint main() {\n    printf(\"Learning Shell Command Parser!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Shell Command Parser'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Shell Command Parser\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Shell Command Parser'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Shell Command Parser"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-92",
+        "title": "5. Mini Game Engine C++",
+        "badge": "Logic",
+        "duration": "7 min",
+        "concept": "### Mini Game Engine C++\nThink of Mini Game Engine C++ like a magic box where you can store your toys! It helps you manage your data. Remember, we use `printf` to show it on screen.\n\n```c\n// Example for Mini Game Engine C++\n#include <stdio.h>\nint main() {\n    printf(\"Learning Mini Game Engine C++!\\n\");\n    return 0;\n}\n```",
+        "task": "Write a C program that prints exactly 'Success: Mini Game Engine C++'.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Print the success message here\n    \n    return 0;\n}",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Success: Mini Game Engine C++\\n\");\n    return 0;\n}",
+        "hints": [
+          "Use printf function.",
+          "Don't forget the semicolon.",
+          "Make sure the text matches exactly."
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Success: Mini Game Engine C++'",
+            "type": "output_includes",
+            "expected": [
+              "Success: Mini Game Engine C++"
             ]
           }
         ]

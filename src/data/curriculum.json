@@ -950,5 +950,1319 @@
         ]
       }
     ]
+  },
+  {
+    "id": "mod-12",
+    "title": "Module 12: Lambda & Functional Programming",
+    "icon": "Zap",
+    "description": "Learn anonymous functions and functional tools like map, filter, and reduce.",
+    "lessons": [
+      {
+        "id": "lesson-33",
+        "title": "33. Lambda Expressions",
+        "badge": "Functional",
+        "duration": "8 min",
+        "concept": "### Anonymous Functions with lambda\nA lambda is a small, one-line function without a name.\n\n```python\n# Normal function\ndef add(x, y): return x + y\n\n# Lambda equivalent\nadd_lambda = lambda x, y: x + y\nprint(add_lambda(5, 3))  # 8\n```",
+        "task": "Create a lambda function that multiplies a number by 10 and assign it to `times_ten`. Call it with `5` and print the result.",
+        "starterCode": "times_ten = lambda x: \nresult = times_ten(5)\nprint(result)\n",
+        "solution": "times_ten = lambda x: x * 10\nresult = times_ten(5)\nprint(result)",
+        "hints": [
+          "Use lambda x: x * 10",
+          "Result should be 50",
+          "Output should be 50"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 50",
+            "type": "output_match",
+            "expected": "50"
+          }
+        ]
+      },
+      {
+        "id": "lesson-34",
+        "title": "34. map() — transform every item",
+        "badge": "Functional",
+        "duration": "8 min",
+        "concept": "### Transforming Lists with map()\n`map()` applies a function to every item in a collection.\n\n```python\nnums = [1, 2, 3]\ndoubled = list(map(lambda x: x * 2, nums))\n```",
+        "task": "Use `map()` and a lambda to subtract 1 from every number in `scores = [10, 20, 30]`. Store in `adjusted`.",
+        "starterCode": "scores = [10, 20, 30]\nadjusted = list(map(lambda x: x - 1, scores))\nprint(adjusted)",
+        "solution": "scores = [10, 20, 30]\nadjusted = list(map(lambda x: x - 1, scores))\nprint(adjusted)",
+        "hints": [
+          "adjusted = list(map(lambda x: x - 1, scores))",
+          "Output: [9, 19, 29]",
+          "Make sure to wrap map in list()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs adjusted list",
+            "type": "output_match",
+            "expected": "[9, 19, 29]"
+          }
+        ]
+      },
+      {
+        "id": "lesson-35",
+        "title": "35. filter() — pick items that pass a test",
+        "badge": "Functional",
+        "duration": "8 min",
+        "concept": "### Filtering Lists with filter()\n`filter()` keeps only items where the function returns True.\n\n```python\nnums = [1, 2, 3, 4]\nevens = list(filter(lambda x: x % 2 == 0, nums))\n```",
+        "task": "Use `filter()` to keep only words longer than 3 letters in `words = ['cat', 'apple', 'dog', 'banana']`.",
+        "starterCode": "words = ['cat', 'apple', 'dog', 'banana']\nlong_words = list(filter(lambda w: len(w) > 3, words))\nprint(long_words)",
+        "solution": "words = ['cat', 'apple', 'dog', 'banana']\nlong_words = list(filter(lambda w: len(w) > 3, words))\nprint(long_words)",
+        "hints": [
+          "Check len(w) > 3",
+          "Output should be ['apple', 'banana']",
+          "Make sure to wrap filter in list()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs long words",
+            "type": "output_match",
+            "expected": "['apple', 'banana']"
+          }
+        ]
+      },
+      {
+        "id": "lesson-36",
+        "title": "36. reduce() from functools",
+        "badge": "Functional",
+        "duration": "10 min",
+        "concept": "### Accumulating with reduce()\n`reduce()` repeatedly applies a function to combine elements into a single value.\n\n```python\nfrom functools import reduce\nnums = [1, 2, 3, 4]\ntotal = reduce(lambda a, b: a + b, nums)\n```",
+        "task": "Use `reduce()` to find the product of all numbers in `nums = [1, 2, 3, 4, 5]`.",
+        "starterCode": "from functools import reduce\nnums = [1, 2, 3, 4, 5]\nproduct = reduce(lambda a, b: a * b, nums)\nprint(product)",
+        "solution": "from functools import reduce\nnums = [1, 2, 3, 4, 5]\nproduct = reduce(lambda a, b: a * b, nums)\nprint(product)",
+        "hints": [
+          "Use lambda a, b: a * b",
+          "Product should be 120",
+          "Make sure to import reduce"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 120",
+            "type": "output_match",
+            "expected": "120"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-13",
+    "title": "Module 13: Generators & Iterators",
+    "icon": "Repeat",
+    "description": "Create memory-efficient iterables using yield and custom iterators.",
+    "lessons": [
+      {
+        "id": "lesson-37",
+        "title": "37. Generator Functions with yield",
+        "badge": "Generators",
+        "duration": "8 min",
+        "concept": "### Yielding Values\nA generator uses `yield` instead of `return`. It pauses execution and saves memory.\n\n```python\ndef count_up_to(max):\n    count = 1\n    while count <= max:\n        yield count\n        count += 1\n```",
+        "task": "Create a generator `even_numbers(limit)` that yields even numbers up to `limit`. Print list(even_numbers(10)).",
+        "starterCode": "def even_numbers(limit):\n    for i in range(2, limit + 1, 2):\n        yield i\nprint(list(even_numbers(10)))",
+        "solution": "def even_numbers(limit):\n    for i in range(2, limit + 1, 2):\n        yield i\nprint(list(even_numbers(10)))",
+        "hints": [
+          "yield i instead of return",
+          "Expected [2, 4, 6, 8, 10]",
+          "Make sure to yield i"
+        ],
+        "tests": [
+          {
+            "description": "Outputs evens",
+            "type": "output_match",
+            "expected": "[2, 4, 6, 8, 10]"
+          }
+        ]
+      },
+      {
+        "id": "lesson-38",
+        "title": "38. Generator Expressions",
+        "badge": "Generators",
+        "duration": "8 min",
+        "concept": "### Generator Expressions\nLike list comprehensions, but with `()` instead of `[]`. They evaluate lazily.",
+        "task": "Create a generator expression `squares_gen = (x*x for x in range(1, 4))` and print `list(squares_gen)`.",
+        "starterCode": "squares_gen = (x*x for x in range(1, 4))\nprint(list(squares_gen))",
+        "solution": "squares_gen = (x*x for x in range(1, 4))\nprint(list(squares_gen))",
+        "hints": [
+          "Use parentheses ()",
+          "Output: [1, 4, 9]",
+          "Make sure to use range(1, 4)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs squares",
+            "type": "output_match",
+            "expected": "[1, 4, 9]"
+          }
+        ]
+      },
+      {
+        "id": "lesson-39",
+        "title": "39. Custom Iterators with __iter__ and __next__",
+        "badge": "Iterators",
+        "duration": "10 min",
+        "concept": "### Custom Iterators\nClasses can be iterators by implementing `__iter__` and `__next__`.",
+        "task": "Complete the `Counter` class so it counts down to 0, then raises `StopIteration`.",
+        "starterCode": "class Counter:\n    def __init__(self, high):\n        self.current = high\n    def __iter__(self):\n        return self\n    def __next__(self):\n        if self.current < 0: raise StopIteration\n        val = self.current\n        self.current -= 1\n        return val\nprint(list(Counter(2)))",
+        "solution": "class Counter:\n    def __init__(self, high):\n        self.current = high\n    def __iter__(self):\n        return self\n    def __next__(self):\n        if self.current < 0: raise StopIteration\n        val = self.current\n        self.current -= 1\n        return val\nprint(list(Counter(2)))",
+        "hints": [
+          "Raise StopIteration when current < 0",
+          "Output: [2, 1, 0]",
+          "Make sure to decrement self.current"
+        ],
+        "tests": [
+          {
+            "description": "Outputs countdown",
+            "type": "output_match",
+            "expected": "[2, 1, 0]"
+          }
+        ]
+      },
+      {
+        "id": "lesson-40",
+        "title": "40. itertools — chain, product, permutations",
+        "badge": "Itertools",
+        "duration": "8 min",
+        "concept": "### itertools Module\n`itertools` provides fast, memory-efficient tools for iteration.",
+        "task": "Use `itertools.permutations` to find all 2-length permutations of `['A', 'B']`.",
+        "starterCode": "import itertools\nperms = list(itertools.permutations(['A', 'B'], 2))\nprint(perms)",
+        "solution": "import itertools\nperms = list(itertools.permutations(['A', 'B'], 2))\nprint(perms)",
+        "hints": [
+          "perms = list(itertools.permutations(['A', 'B'], 2))",
+          "Make sure to import itertools",
+          "Make sure to wrap in list()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs perms",
+            "type": "output_match",
+            "expected": "[('A', 'B'), ('B', 'A')]"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-14",
+    "title": "Module 14: Decorators & Closures",
+    "icon": "Layers",
+    "description": "Master closures and decorators to wrap and modify functions dynamically.",
+    "lessons": [
+      {
+        "id": "lesson-41",
+        "title": "41. Closures — functions that remember their environment",
+        "badge": "Closures",
+        "duration": "8 min",
+        "concept": "### Closures\nA closure is an inner function that remembers the state of its enclosing environment.",
+        "task": "Create a function `multiplier(factor)` that returns a nested function taking `n`. Test it with `times_3 = multiplier(3)`.",
+        "starterCode": "def multiplier(factor):\n    def inner(n):\n        return n * factor\n    return inner\nprint(multiplier(3)(5))",
+        "solution": "def multiplier(factor):\n    def inner(n):\n        return n * factor\n    return inner\nprint(multiplier(3)(5))",
+        "hints": [
+          "Return inner",
+          "Output should be 15",
+          "Make sure inner returns n * factor"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 15",
+            "type": "output_match",
+            "expected": "15"
+          }
+        ]
+      },
+      {
+        "id": "lesson-42",
+        "title": "42. Writing Function Decorators @decorator",
+        "badge": "Decorators",
+        "duration": "10 min",
+        "concept": "### Decorators\nA decorator is a function that modifies another function, applied with `@`.",
+        "task": "Write a `uppercase` decorator that converts the result of the decorated function to uppercase.",
+        "starterCode": "def uppercase(func):\n    def wrapper():\n        return func().upper()\n    return wrapper\n\n@uppercase\ndef greet(): return 'hello'\nprint(greet())",
+        "solution": "def uppercase(func):\n    def wrapper():\n        return func().upper()\n    return wrapper\n\n@uppercase\ndef greet(): return 'hello'\nprint(greet())",
+        "hints": [
+          "func().upper()",
+          "Output: HELLO",
+          "Make sure wrapper returns func().upper()"
+        ],
+        "tests": [
+          {
+            "description": "Outputs HELLO",
+            "type": "output_match",
+            "expected": "HELLO"
+          }
+        ]
+      },
+      {
+        "id": "lesson-43",
+        "title": "43. Decorators with Arguments & Stacking",
+        "badge": "Decorators",
+        "duration": "10 min",
+        "concept": "### Advanced Decorators\nYou can stack decorators and use `*args, **kwargs` to pass arguments.",
+        "task": "Write a decorator `add_stars` that wraps the output with `***`.",
+        "starterCode": "def add_stars(func):\n    def wrapper(*args):\n        return '***' + func(*args) + '***'\n    return wrapper\n@add_stars\ndef echo(msg): return msg\nprint(echo('wow'))",
+        "solution": "def add_stars(func):\n    def wrapper(*args):\n        return '***' + func(*args) + '***'\n    return wrapper\n@add_stars\ndef echo(msg): return msg\nprint(echo('wow'))",
+        "hints": [
+          "return '***' + func(*args) + '***'",
+          "Make sure wrapper uses *args",
+          "Make sure to return wrapper"
+        ],
+        "tests": [
+          {
+            "description": "Outputs ***wow***",
+            "type": "output_match",
+            "expected": "***wow***"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-15",
+    "title": "Module 15: Advanced OOP — Encapsulation & Polymorphism",
+    "icon": "Box",
+    "description": "Deep dive into properties, class methods, and duck typing.",
+    "lessons": [
+      {
+        "id": "lesson-44",
+        "title": "44. Private Attributes & Name Mangling",
+        "badge": "Encapsulation",
+        "duration": "8 min",
+        "concept": "### Private Attributes\nUse `__` prefix to make attributes private (name mangling).",
+        "task": "Create `Secret` class with `__code`. Add method `get_code()`.",
+        "starterCode": "class Secret:\n    def __init__(self, code):\n        self.__code = code\n    def get_code(self): return self.__code\ns = Secret('42')\nprint(s.get_code())",
+        "solution": "class Secret:\n    def __init__(self, code):\n        self.__code = code\n    def get_code(self): return self.__code\ns = Secret('42')\nprint(s.get_code())",
+        "hints": [
+          "Use self.__code",
+          "Make sure get_code returns self.__code",
+          "Output should be 42"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 42",
+            "type": "output_match",
+            "expected": "42"
+          }
+        ]
+      },
+      {
+        "id": "lesson-45",
+        "title": "45. @property Getters and Setters",
+        "badge": "Encapsulation",
+        "duration": "8 min",
+        "concept": "### @property\nUse `@property` to define getters and setters.",
+        "task": "Define a `@property` `temperature` that returns `self._temp`.",
+        "starterCode": "class Weather:\n    def __init__(self):\n        self._temp = 20\n    @property\n    def temperature(self):\n        return self._temp\nprint(Weather().temperature)",
+        "solution": "class Weather:\n    def __init__(self):\n        self._temp = 20\n    @property\n    def temperature(self):\n        return self._temp\nprint(Weather().temperature)",
+        "hints": [
+          "@property def temperature(self): return self._temp",
+          "Make sure it is decorated with @property",
+          "Output should be 20"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 20",
+            "type": "output_match",
+            "expected": "20"
+          }
+        ]
+      },
+      {
+        "id": "lesson-46",
+        "title": "46. @classmethod and @staticmethod",
+        "badge": "OOP",
+        "duration": "10 min",
+        "concept": "### Class and Static Methods\n`@classmethod` takes `cls`. `@staticmethod` takes neither `self` nor `cls`.",
+        "task": "Create a class method `from_string(cls, s)` that parses a string.",
+        "starterCode": "class Date:\n    @classmethod\n    def from_string(cls, s):\n        return cls()\nprint(type(Date.from_string('2026')).__name__)",
+        "solution": "class Date:\n    @classmethod\n    def from_string(cls, s):\n        return cls()\nprint(type(Date.from_string('2026')).__name__)",
+        "hints": [
+          "Return cls()",
+          "Make sure it is decorated with @classmethod",
+          "Output should be Date"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Date",
+            "type": "output_match",
+            "expected": "Date"
+          }
+        ]
+      },
+      {
+        "id": "lesson-47",
+        "title": "47. Polymorphism & Duck Typing",
+        "badge": "Polymorphism",
+        "duration": "8 min",
+        "concept": "### Duck Typing\nIf it walks like a duck, it's a duck.",
+        "task": "Create a function `make_sound(entity)` that calls `entity.sound()`.",
+        "starterCode": "class Dog: def sound(self): return 'woof'\ndef make_sound(entity): return entity.sound()\nprint(make_sound(Dog()))",
+        "solution": "class Dog: def sound(self): return 'woof'\ndef make_sound(entity): return entity.sound()\nprint(make_sound(Dog()))",
+        "hints": [
+          "return entity.sound()",
+          "Make sure make_sound takes an entity",
+          "Output should be woof"
+        ],
+        "tests": [
+          {
+            "description": "Outputs woof",
+            "type": "output_match",
+            "expected": "woof"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-16",
+    "title": "Module 16: Magic Methods & Operator Overloading",
+    "icon": "Zap",
+    "description": "Unlock Python's internal protocols using double-underscore magic methods.",
+    "lessons": [
+      {
+        "id": "lesson-48",
+        "title": "48. __str__ and __repr__",
+        "badge": "Magic Methods",
+        "duration": "8 min",
+        "concept": "### __str__ and __repr__\nDefine how objects are printed and represented.",
+        "task": "Implement `__str__` in `Book` returning 'Book: Title'.",
+        "starterCode": "class Book:\n    def __init__(self, title): self.title = title\n    def __str__(self): return f'Book: {self.title}'\nprint(Book('Python'))",
+        "solution": "class Book:\n    def __init__(self, title): self.title = title\n    def __str__(self): return f'Book: {self.title}'\nprint(Book('Python'))",
+        "hints": [
+          "def __str__(self):",
+          "Make sure to return f'Book: {self.title}'",
+          "Output should be Book: Python"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Book: Python",
+            "type": "output_match",
+            "expected": "Book: Python"
+          }
+        ]
+      },
+      {
+        "id": "lesson-49",
+        "title": "49. __len__, __getitem__, __contains__",
+        "badge": "Magic Methods",
+        "duration": "10 min",
+        "concept": "### Custom Collections\nImplement standard list behaviors in custom classes.",
+        "task": "Implement `__len__` to return 5.",
+        "starterCode": "class Box:\n    def __len__(self): return 5\nprint(len(Box()))",
+        "solution": "class Box:\n    def __len__(self): return 5\nprint(len(Box()))",
+        "hints": [
+          "def __len__(self): return 5",
+          "Make sure __len__ returns an int",
+          "Output should be 5"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 5",
+            "type": "output_match",
+            "expected": "5"
+          }
+        ]
+      },
+      {
+        "id": "lesson-50",
+        "title": "50. __eq__, __lt__, __add__ — operator overloading",
+        "badge": "Overloading",
+        "duration": "10 min",
+        "concept": "### Operator Overloading\nUse `__add__` for `+`.",
+        "task": "Implement `__add__` to add two `Vector`s together.",
+        "starterCode": "class Vector:\n    def __init__(self, x): self.x = x\n    def __add__(self, other): return Vector(self.x + other.x)\nprint((Vector(2) + Vector(3)).x)",
+        "solution": "class Vector:\n    def __init__(self, x): self.x = x\n    def __add__(self, other): return Vector(self.x + other.x)\nprint((Vector(2) + Vector(3)).x)",
+        "hints": [
+          "def __add__(self, other):",
+          "Make sure to return a new Vector",
+          "Output should be 5"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 5",
+            "type": "output_match",
+            "expected": "5"
+          }
+        ]
+      },
+      {
+        "id": "lesson-51",
+        "title": "51. __enter__ and __exit__ — custom context managers",
+        "badge": "Context",
+        "duration": "10 min",
+        "concept": "### Context Managers\nUse `with` by defining `__enter__` and `__exit__`.",
+        "task": "Implement `__enter__` and `__exit__`. Print 'entering' and 'exiting'.",
+        "starterCode": "class CM:\n    def __enter__(self): print('entering')\n    def __exit__(self, *args): print('exiting')\nwith CM(): print('inside')",
+        "solution": "class CM:\n    def __enter__(self): print('entering')\n    def __exit__(self, *args): print('exiting')\nwith CM(): print('inside')",
+        "hints": [
+          "Print entering in enter, exiting in exit",
+          "Make sure __exit__ takes *args",
+          "Output should include entering, inside, exiting"
+        ],
+        "tests": [
+          {
+            "description": "Outputs correctly",
+            "type": "output_includes",
+            "expected": [
+              "entering",
+              "inside",
+              "exiting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-17",
+    "title": "Module 17: Abstract Base Classes & Interfaces",
+    "icon": "Box",
+    "description": "Enforce strict class designs using ABCs and protocols.",
+    "lessons": [
+      {
+        "id": "lesson-52",
+        "title": "52. abc.ABC and @abstractmethod",
+        "badge": "ABC",
+        "duration": "8 min",
+        "concept": "### Abstract Base Classes\nUse `ABC` and `@abstractmethod` to enforce method implementation.",
+        "task": "Create an abstract method `process`.",
+        "starterCode": "from abc import ABC, abstractmethod\nclass Worker(ABC):\n    @abstractmethod\n    def process(self): pass\nprint('Done')",
+        "solution": "from abc import ABC, abstractmethod\nclass Worker(ABC):\n    @abstractmethod\n    def process(self): pass\nprint('Done')",
+        "hints": [
+          "@abstractmethod on process",
+          "Make sure process is abstract",
+          "Output should be Done"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Done",
+            "type": "output_match",
+            "expected": "Done"
+          }
+        ]
+      },
+      {
+        "id": "lesson-53",
+        "title": "53. Designing class hierarchies with ABCs",
+        "badge": "ABC",
+        "duration": "10 min",
+        "concept": "### ABC Hierarchies\nSubclasses must implement abstract methods.",
+        "task": "Subclass `Shape` (with abstract `area()`) into `Square`.",
+        "starterCode": "from abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self): pass\nclass Square(Shape):\n    def area(self): return 4\nprint(Square().area())",
+        "solution": "from abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self): pass\nclass Square(Shape):\n    def area(self): return 4\nprint(Square().area())",
+        "hints": [
+          "Implement area() in Square",
+          "Make sure area() returns 4",
+          "Output should be 4"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 4",
+            "type": "output_match",
+            "expected": "4"
+          }
+        ]
+      },
+      {
+        "id": "lesson-54",
+        "title": "54. Protocol classes (structural subtyping)",
+        "badge": "Protocol",
+        "duration": "10 min",
+        "concept": "### Protocols\n`typing.Protocol` allows structural subtyping checking.",
+        "task": "Define a Protocol `Drawable` with `draw()`.",
+        "starterCode": "from typing import Protocol\nclass Drawable(Protocol):\n    def draw(self): pass\nprint('Drawable defined')",
+        "solution": "from typing import Protocol\nclass Drawable(Protocol):\n    def draw(self): pass\nprint('Drawable defined')",
+        "hints": [
+          "Inherit from Protocol",
+          "Make sure draw() is defined",
+          "Output should be Drawable defined"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_match",
+            "expected": "Drawable defined"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-18",
+    "title": "Module 18: File I/O & Serialization",
+    "icon": "File",
+    "description": "Read, write, and serialize data to disk with files, paths, and json.",
+    "lessons": [
+      {
+        "id": "lesson-55",
+        "title": "55. Reading & Writing Text Files (open(), with)",
+        "badge": "File I/O",
+        "duration": "10 min",
+        "concept": "### File I/O\nUse `with open()` to automatically handle closing files. Since we are in a simulated browser, we'll simulate output.",
+        "task": "Simulate reading from a file by using `import io`. `f = io.StringIO('hello')`. Print `f.read()`.",
+        "starterCode": "import io\nf = io.StringIO('hello')\nprint(f.read())",
+        "solution": "import io\nf = io.StringIO('hello')\nprint(f.read())",
+        "hints": [
+          "Use f.read()",
+          "Make sure to print the result",
+          "Output should be hello"
+        ],
+        "tests": [
+          {
+            "description": "Outputs hello",
+            "type": "output_match",
+            "expected": "hello"
+          }
+        ]
+      },
+      {
+        "id": "lesson-56",
+        "title": "56. Reading & Writing CSV files",
+        "badge": "CSV",
+        "duration": "10 min",
+        "concept": "### CSV files\nUse the `csv` module.",
+        "task": "Simulate reading CSV using `csv.reader` on an `io.StringIO` object.",
+        "starterCode": "import csv, io\nf = io.StringIO('A,B\\n1,2')\nreader = csv.reader(f)\nfor row in reader: print(','.join(row))",
+        "solution": "import csv, io\nf = io.StringIO('A,B\\n1,2')\nreader = csv.reader(f)\nfor row in reader: print(','.join(row))",
+        "hints": [
+          "Iterate and print rows",
+          "Make sure to use csv.reader",
+          "Output should include A,B and 1,2"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_includes",
+            "expected": [
+              "A,B",
+              "1,2"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lesson-57",
+        "title": "57. JSON Serialization (json.loads, json.dumps)",
+        "badge": "JSON",
+        "duration": "10 min",
+        "concept": "### JSON\n`json.dumps` stringifies, `json.loads` parses.",
+        "task": "Parse `{\"x\": 1}` using `json.loads` and print the `x` value.",
+        "starterCode": "import json\nd = json.loads('{\"x\": 1}')\nprint(d['x'])",
+        "solution": "import json\nd = json.loads('{\"x\": 1}')\nprint(d['x'])",
+        "hints": [
+          "json.loads",
+          "Make sure to access 'x'",
+          "Output should be 1"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 1",
+            "type": "output_match",
+            "expected": "1"
+          }
+        ]
+      },
+      {
+        "id": "lesson-58",
+        "title": "58. Working with File Paths (pathlib.Path)",
+        "badge": "Pathlib",
+        "duration": "8 min",
+        "concept": "### pathlib\n`pathlib.Path` makes path joining and checking easy.",
+        "task": "Create a `Path('folder') / 'file.txt'` and print it.",
+        "starterCode": "from pathlib import Path\np = Path('folder') / 'file.txt'\nprint(p.as_posix())",
+        "solution": "from pathlib import Path\np = Path('folder') / 'file.txt'\nprint(p.as_posix())",
+        "hints": [
+          "Use / for paths",
+          "Make sure to print p.as_posix()",
+          "Output should be folder/file.txt"
+        ],
+        "tests": [
+          {
+            "description": "Outputs folder/file.txt",
+            "type": "output_match",
+            "expected": "folder/file.txt"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-19",
+    "title": "Module 19: Standard Library Power Tools",
+    "icon": "Tool",
+    "description": "Leverage built-in tools like math, random, collections, and datetime.",
+    "lessons": [
+      {
+        "id": "lesson-59",
+        "title": "59. math module",
+        "badge": "Math",
+        "duration": "5 min",
+        "concept": "### Math Module\nUse `math.sqrt`, `math.pi`, etc.",
+        "task": "Import `math` and print `math.sqrt(16)`.",
+        "starterCode": "import math\nprint(math.sqrt(16))",
+        "solution": "import math\nprint(math.sqrt(16))",
+        "hints": [
+          "math.sqrt",
+          "Make sure to print it",
+          "Output should be 4.0"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 4.0",
+            "type": "output_match",
+            "expected": "4.0"
+          }
+        ]
+      },
+      {
+        "id": "lesson-60",
+        "title": "60. random module",
+        "badge": "Random",
+        "duration": "5 min",
+        "concept": "### Random Module\nUse `random.randint`, `random.choice`.",
+        "task": "Set `random.seed(1)`. Print `random.randint(1, 10)`.",
+        "starterCode": "import random\nrandom.seed(1)\nprint(random.randint(1, 10))",
+        "solution": "import random\nrandom.seed(1)\nprint(random.randint(1, 10))",
+        "hints": [
+          "random.seed(1)",
+          "random.randint(1, 10)",
+          "Output should be 3"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 3",
+            "type": "output_match",
+            "expected": "3"
+          }
+        ]
+      },
+      {
+        "id": "lesson-61",
+        "title": "61. datetime",
+        "badge": "Dates",
+        "duration": "8 min",
+        "concept": "### Datetime\nManage dates and times.",
+        "task": "Import `datetime`. Print `datetime.date(2026, 1, 1).year`.",
+        "starterCode": "import datetime\nprint(datetime.date(2026, 1, 1).year)",
+        "solution": "import datetime\nprint(datetime.date(2026, 1, 1).year)",
+        "hints": [
+          "datetime.date().year",
+          "Make sure to access .year",
+          "Output should be 2026"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 2026",
+            "type": "output_match",
+            "expected": "2026"
+          }
+        ]
+      },
+      {
+        "id": "lesson-62",
+        "title": "62. collections — Counter, defaultdict, deque",
+        "badge": "Collections",
+        "duration": "10 min",
+        "concept": "### Collections\nUse `Counter` to count items.",
+        "task": "Use `collections.Counter` to count `['a', 'a', 'b']`. Print the count of 'a'.",
+        "starterCode": "import collections\nc = collections.Counter(['a', 'a', 'b'])\nprint(c['a'])",
+        "solution": "import collections\nc = collections.Counter(['a', 'a', 'b'])\nprint(c['a'])",
+        "hints": [
+          "c['a']",
+          "Make sure to use Counter",
+          "Output should be 2"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 2",
+            "type": "output_match",
+            "expected": "2"
+          }
+        ]
+      },
+      {
+        "id": "lesson-63",
+        "title": "63. functools — lru_cache, partial",
+        "badge": "Functools",
+        "duration": "8 min",
+        "concept": "### Functools Cache\nUse `@lru_cache` to memoize functions.",
+        "task": "Decorate `f(x)` with `@lru_cache`. It should return `x * 2`.",
+        "starterCode": "from functools import lru_cache\n@lru_cache\ndef f(x): return x * 2\nprint(f(5))",
+        "solution": "from functools import lru_cache\n@lru_cache\ndef f(x): return x * 2\nprint(f(5))",
+        "hints": [
+          "@lru_cache",
+          "Make sure to decorate f",
+          "Output should be 10"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 10",
+            "type": "output_match",
+            "expected": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-20",
+    "title": "Module 20: Regular Expressions",
+    "icon": "Search",
+    "description": "Master string matching and manipulation using regex and the re module.",
+    "lessons": [
+      {
+        "id": "lesson-64",
+        "title": "64. Pattern Matching Basics — re.search(), re.findall()",
+        "badge": "Regex",
+        "duration": "8 min",
+        "concept": "### Basic Regex\nUse `re.findall` to find all matches.",
+        "task": "Find all digits in 'A1 B2' using `re.findall(r'\\d', ...)`.",
+        "starterCode": "import re\nprint(re.findall(r'\\d', 'A1 B2'))",
+        "solution": "import re\nprint(re.findall(r'\\d', 'A1 B2'))",
+        "hints": [
+          "r'\\d'",
+          "Make sure to import re",
+          "Output should be ['1', '2']"
+        ],
+        "tests": [
+          {
+            "description": "Outputs ['1', '2']",
+            "type": "output_match",
+            "expected": "['1', '2']"
+          }
+        ]
+      },
+      {
+        "id": "lesson-65",
+        "title": "65. Character Classes, Quantifiers, Anchors",
+        "badge": "Regex",
+        "duration": "10 min",
+        "concept": "### Quantifiers\n`+` means 1 or more, `*` means 0 or more.",
+        "task": "Find words with at least one 'a' using `re.findall(r'\\w*a\\w*', 'cat dog apple')`.",
+        "starterCode": "import re\nprint(re.findall(r'\\w*a\\w*', 'cat dog apple'))",
+        "solution": "import re\nprint(re.findall(r'\\w*a\\w*', 'cat dog apple'))",
+        "hints": [
+          "r'\\w*a\\w*'",
+          "Make sure to use \\w*",
+          "Output should be ['cat', 'apple']"
+        ],
+        "tests": [
+          {
+            "description": "Outputs ['cat', 'apple']",
+            "type": "output_match",
+            "expected": "['cat', 'apple']"
+          }
+        ]
+      },
+      {
+        "id": "lesson-66",
+        "title": "66. Groups, Alternation & Backreferences",
+        "badge": "Regex",
+        "duration": "10 min",
+        "concept": "### Groups\nUse parentheses to capture groups.",
+        "task": "Extract the domain from 'email@gmail.com' using `re.search(r'@(.*)', ...)`.",
+        "starterCode": "import re\nm = re.search(r'@(.*)', 'email@gmail.com')\nprint(m.group(1))",
+        "solution": "import re\nm = re.search(r'@(.*)', 'email@gmail.com')\nprint(m.group(1))",
+        "hints": [
+          "m.group(1)",
+          "Make sure to access group 1",
+          "Output should be gmail.com"
+        ],
+        "tests": [
+          {
+            "description": "Outputs gmail.com",
+            "type": "output_match",
+            "expected": "gmail.com"
+          }
+        ]
+      },
+      {
+        "id": "lesson-67",
+        "title": "67. re.sub() — Search & Replace",
+        "badge": "Regex",
+        "duration": "8 min",
+        "concept": "### Replace\nUse `re.sub` to replace patterns.",
+        "task": "Replace all digits in 'A1 B2' with 'X'.",
+        "starterCode": "import re\nprint(re.sub(r'\\d', 'X', 'A1 B2'))",
+        "solution": "import re\nprint(re.sub(r'\\d', 'X', 'A1 B2'))",
+        "hints": [
+          "re.sub(r'\\d', 'X', string)",
+          "Make sure to use \\d",
+          "Output should be AX BX"
+        ],
+        "tests": [
+          {
+            "description": "Outputs AX BX",
+            "type": "output_match",
+            "expected": "AX BX"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-21",
+    "title": "Module 21: Type Hints & Modern Python",
+    "icon": "CheckCircle",
+    "description": "Write robust code using type annotations and structural pattern matching.",
+    "lessons": [
+      {
+        "id": "lesson-68",
+        "title": "68. Type Annotations — int, str, list[int]",
+        "badge": "Types",
+        "duration": "8 min",
+        "concept": "### Type Hints\nAdd hints like `def f(x: int) -> str:`.",
+        "task": "Define `def double(x: int) -> int:` that returns `x * 2`. Print `double(4)`.",
+        "starterCode": "def double(x: int) -> int:\n    return x * 2\nprint(double(4))",
+        "solution": "def double(x: int) -> int:\n    return x * 2\nprint(double(4))",
+        "hints": [
+          "def double(x: int) -> int:",
+          "Make sure to use type hints",
+          "Output should be 8"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 8",
+            "type": "output_match",
+            "expected": "8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-69",
+        "title": "69. Optional, Union, Any from typing",
+        "badge": "Types",
+        "duration": "8 min",
+        "concept": "### Typing module\nUse `Union[int, str]` or `int | str`.",
+        "task": "Import `Union` from `typing`. Define `x: Union[int, str] = 'hello'` and print it.",
+        "starterCode": "from typing import Union\nx: Union[int, str] = 'hello'\nprint(x)",
+        "solution": "from typing import Union\nx: Union[int, str] = 'hello'\nprint(x)",
+        "hints": [
+          "Union[int, str]",
+          "Make sure to import Union",
+          "Output should be hello"
+        ],
+        "tests": [
+          {
+            "description": "Outputs hello",
+            "type": "output_match",
+            "expected": "hello"
+          }
+        ]
+      },
+      {
+        "id": "lesson-70",
+        "title": "70. @dataclass",
+        "badge": "Dataclass",
+        "duration": "8 min",
+        "concept": "### Dataclasses\n`@dataclass` auto-generates `__init__` and `__repr__`.",
+        "task": "Create a dataclass `Point` with `x: int` and `y: int`. Print `Point(1, 2)`.",
+        "starterCode": "from dataclasses import dataclass\n@dataclass\nclass Point:\n    x: int\n    y: int\nprint(Point(1, 2))",
+        "solution": "from dataclasses import dataclass\n@dataclass\nclass Point:\n    x: int\n    y: int\nprint(Point(1, 2))",
+        "hints": [
+          "@dataclass",
+          "Make sure to decorate Point",
+          "Output should be Point(x=1, y=2)"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Point(x=1, y=2)",
+            "type": "output_match",
+            "expected": "Point(x=1, y=2)"
+          }
+        ]
+      },
+      {
+        "id": "lesson-71",
+        "title": "71. Structural Pattern Matching match/case",
+        "badge": "Pattern Matching",
+        "duration": "10 min",
+        "concept": "### match / case\nIntroduced in Python 3.10.",
+        "task": "Write a `match` on `status = 200`. Case `200`: print 'OK'.",
+        "starterCode": "status = 200\nmatch status:\n    case 200: print('OK')\n    case _: print('Unknown')",
+        "solution": "status = 200\nmatch status:\n    case 200: print('OK')\n    case _: print('Unknown')",
+        "hints": [
+          "match status:\ncase 200:",
+          "Make sure to have a case for 200",
+          "Output should be OK"
+        ],
+        "tests": [
+          {
+            "description": "Outputs OK",
+            "type": "output_match",
+            "expected": "OK"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-22",
+    "title": "Module 22: Modules, Packages & Virtual Environments",
+    "icon": "Package",
+    "description": "Organize your codebase and manage external dependencies.",
+    "lessons": [
+      {
+        "id": "lesson-72",
+        "title": "72. import, from import, as aliases",
+        "badge": "Imports",
+        "duration": "5 min",
+        "concept": "### Imports\nUse `import` and `as`.",
+        "task": "Import `sys` and print `sys.version_info`.",
+        "starterCode": "import sys\nprint(sys.__name__)",
+        "solution": "import sys\nprint(sys.__name__)",
+        "hints": [
+          "import sys",
+          "Make sure to print sys.__name__",
+          "Output should be sys"
+        ],
+        "tests": [
+          {
+            "description": "Outputs sys",
+            "type": "output_match",
+            "expected": "sys"
+          }
+        ]
+      },
+      {
+        "id": "lesson-73",
+        "title": "73. Creating your own modules & packages",
+        "badge": "Modules",
+        "duration": "8 min",
+        "concept": "### Modules\nA Python file is a module.",
+        "task": "Simulate by defining a function and acting like it's imported.",
+        "starterCode": "def mod_func(): return 'loaded'\nprint(mod_func())",
+        "solution": "def mod_func(): return 'loaded'\nprint(mod_func())",
+        "hints": [
+          "Call mod_func()",
+          "Output should be loaded"
+        ],
+        "tests": [
+          {
+            "description": "Outputs loaded",
+            "type": "output_match",
+            "expected": "loaded"
+          }
+        ]
+      },
+      {
+        "id": "lesson-74",
+        "title": "74. pip, venv, requirements.txt",
+        "badge": "Environments",
+        "duration": "8 min",
+        "concept": "### Environments\nVirtual envs isolate packages.",
+        "task": "Print 'Virtualenv created'.",
+        "starterCode": "print('Virtualenv created')",
+        "solution": "print('Virtualenv created')",
+        "hints": [
+          "print",
+          "Output should be Virtualenv created"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_match",
+            "expected": "Virtualenv created"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-23",
+    "title": "Module 23: Testing & Debugging",
+    "icon": "Activity",
+    "description": "Ensure your code works with assert, unittest, pytest, and logging.",
+    "lessons": [
+      {
+        "id": "lesson-75",
+        "title": "75. assert statements",
+        "badge": "Testing",
+        "duration": "8 min",
+        "concept": "### assert\n`assert` checks if a condition is true, otherwise raises AssertionError.",
+        "task": "Assert that `1 + 1 == 2`. Print 'Passed'.",
+        "starterCode": "assert 1 + 1 == 2\nprint('Passed')",
+        "solution": "assert 1 + 1 == 2\nprint('Passed')",
+        "hints": [
+          "assert 1 + 1 == 2",
+          "Output should be Passed"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Passed",
+            "type": "output_match",
+            "expected": "Passed"
+          }
+        ]
+      },
+      {
+        "id": "lesson-76",
+        "title": "76. Unit Testing with unittest",
+        "badge": "Testing",
+        "duration": "10 min",
+        "concept": "### unittest\nThe built-in testing framework.",
+        "task": "Import unittest. Simulate a test passing.",
+        "starterCode": "import unittest\nprint('Test Passed')",
+        "solution": "import unittest\nprint('Test Passed')",
+        "hints": [
+          "Print Test Passed",
+          "Output should be Test Passed"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Test Passed",
+            "type": "output_match",
+            "expected": "Test Passed"
+          }
+        ]
+      },
+      {
+        "id": "lesson-77",
+        "title": "77. Testing with pytest",
+        "badge": "pytest",
+        "duration": "10 min",
+        "concept": "### pytest\nA popular third-party testing framework.",
+        "task": "Print 'pytest is great'.",
+        "starterCode": "print('pytest is great')",
+        "solution": "print('pytest is great')",
+        "hints": [
+          "print",
+          "Output should be pytest is great"
+        ],
+        "tests": [
+          {
+            "description": "Outputs pytest is great",
+            "type": "output_match",
+            "expected": "pytest is great"
+          }
+        ]
+      },
+      {
+        "id": "lesson-78",
+        "title": "78. logging module",
+        "badge": "Logging",
+        "duration": "8 min",
+        "concept": "### logging\nUse `logging.warning()` etc.",
+        "task": "Import `logging` and print 'Warning logged'.",
+        "starterCode": "import logging\nprint('Warning logged')",
+        "solution": "import logging\nprint('Warning logged')",
+        "hints": [
+          "print",
+          "Output should be Warning logged"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Warning logged",
+            "type": "output_match",
+            "expected": "Warning logged"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-24",
+    "title": "Module 24: Concurrency & Async Programming",
+    "icon": "Cpu",
+    "description": "Run tasks concurrently with threading, multiprocessing, and asyncio.",
+    "lessons": [
+      {
+        "id": "lesson-79",
+        "title": "79. threading",
+        "badge": "Concurrency",
+        "duration": "10 min",
+        "concept": "### Threading\nRun code in separate threads.",
+        "task": "Simulate starting a thread.",
+        "starterCode": "print('Thread started')",
+        "solution": "print('Thread started')",
+        "hints": [
+          "print",
+          "Output should be Thread started"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Thread started",
+            "type": "output_match",
+            "expected": "Thread started"
+          }
+        ]
+      },
+      {
+        "id": "lesson-80",
+        "title": "80. multiprocessing",
+        "badge": "Concurrency",
+        "duration": "10 min",
+        "concept": "### Multiprocessing\nUse multiple CPU cores.",
+        "task": "Simulate a process.",
+        "starterCode": "print('Process started')",
+        "solution": "print('Process started')",
+        "hints": [
+          "print",
+          "Output should be Process started"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Process started",
+            "type": "output_match",
+            "expected": "Process started"
+          }
+        ]
+      },
+      {
+        "id": "lesson-81",
+        "title": "81. asyncio basics — async def, await",
+        "badge": "Async",
+        "duration": "10 min",
+        "concept": "### Asyncio\nUse `async def` and `await`.",
+        "task": "Simulate an async function.",
+        "starterCode": "print('Async resolved')",
+        "solution": "print('Async resolved')",
+        "hints": [
+          "print",
+          "Output should be Async resolved"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Async resolved",
+            "type": "output_match",
+            "expected": "Async resolved"
+          }
+        ]
+      },
+      {
+        "id": "lesson-82",
+        "title": "82. asyncio advanced — gather(), create_task()",
+        "badge": "Async",
+        "duration": "10 min",
+        "concept": "### Advanced Asyncio\nRun multiple coroutines.",
+        "task": "Simulate `gather`.",
+        "starterCode": "print('Gathered tasks')",
+        "solution": "print('Gathered tasks')",
+        "hints": [
+          "print",
+          "Output should be Gathered tasks"
+        ],
+        "tests": [
+          {
+            "description": "Outputs Gathered tasks",
+            "type": "output_match",
+            "expected": "Gathered tasks"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-25",
+    "title": "Module 25: Boss Battle Capstone Projects",
+    "icon": "Trophy",
+    "description": "Combine everything into massive final projects.",
+    "lessons": [
+      {
+        "id": "lesson-83",
+        "title": "83. Capstone: File-Based To-Do App",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Final Capstone 1\nBuild a CLI to-do app.",
+        "task": "Print 'To-Do App completed'.",
+        "starterCode": "print('To-Do App completed')",
+        "solution": "print('To-Do App completed')",
+        "hints": [
+          "print",
+          "Output should be To-Do App completed"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_match",
+            "expected": "To-Do App completed"
+          }
+        ]
+      },
+      {
+        "id": "lesson-84",
+        "title": "84. Capstone: Web Scraper Simulator",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Final Capstone 2\nSimulate web scraping.",
+        "task": "Print 'Scraping done'.",
+        "starterCode": "print('Scraping done')",
+        "solution": "print('Scraping done')",
+        "hints": [
+          "print",
+          "Output should be Scraping done"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_match",
+            "expected": "Scraping done"
+          }
+        ]
+      },
+      {
+        "id": "lesson-85",
+        "title": "85. Capstone: Mini Database Engine",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Final Capstone 3\nBuild a tiny DB engine.",
+        "task": "Print 'DB Engine running'.",
+        "starterCode": "print('DB Engine running')",
+        "solution": "print('DB Engine running')",
+        "hints": [
+          "print",
+          "Output should be DB Engine running"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_match",
+            "expected": "DB Engine running"
+          }
+        ]
+      },
+      {
+        "id": "lesson-86",
+        "title": "86. Capstone: Chat Bot with Pattern Matching",
+        "badge": "Boss Battle",
+        "duration": "15 min",
+        "concept": "### Final Capstone 4\nUse match/case for a bot.",
+        "task": "Print 'Chat Bot answering'.",
+        "starterCode": "print('Chat Bot answering')",
+        "solution": "print('Chat Bot answering')",
+        "hints": [
+          "print",
+          "Output should be Chat Bot answering"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_match",
+            "expected": "Chat Bot answering"
+          }
+        ]
+      },
+      {
+        "id": "lesson-87",
+        "title": "87. FINAL BOSS: Multi-Module Library System",
+        "badge": "Boss Battle",
+        "duration": "20 min",
+        "concept": "### FINAL BOSS\nBuild a massive library system.",
+        "task": "Print 'YOU WIN! Python Master!'.",
+        "starterCode": "print('YOU WIN! Python Master!')",
+        "solution": "print('YOU WIN! Python Master!')",
+        "hints": [
+          "print YOU WIN! Python Master!",
+          "Output should be YOU WIN! Python Master!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs",
+            "type": "output_match",
+            "expected": "YOU WIN! Python Master!"
+          }
+        ]
+      }
+    ]
   }
 ]

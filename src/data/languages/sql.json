@@ -10,12 +10,14 @@
         "title": "1. Inspecting Tables (SELECT *)",
         "badge": "Querying",
         "duration": "5 min",
-        "concept": "### What is a Database? 🗄️\nEvery game, bank, and social network stores its data in tables (like supercharged Excel sheets).\n\nIn SQL, **`SELECT * FROM table_name;`** grabs every row and column:\n\n```sql\nSELECT * FROM heroes;\n```",
+        "concept": "### What is a Database? \ud83d\uddc4\ufe0f\nEvery game, bank, and social network stores its data in tables (like supercharged Excel sheets).\n\nIn SQL, **`SELECT * FROM table_name;`** grabs every row and column:\n\n```sql\nSELECT * FROM heroes;\n```",
         "task": "Write a query to view all rows and columns from the `heroes` table using `SELECT * FROM heroes;`.",
-        "starterCode": "-- Write your SQL query:\nSELECT * FROM heroes;\n",
+        "starterCode": "CREATE TABLE heroes (name TEXT, level INTEGER, gold INTEGER);\nINSERT INTO heroes VALUES ('Aria the Rogue', 12, 600), ('Bartholomew', 15, 1000), ('Celeste the Mage', 11, 800), ('Noob', 2, 10);\n-- Write your SQL query:\nSELECT * FROM heroes;",
         "solution": "SELECT * FROM heroes;",
         "hints": [
-          "Just write: SELECT * FROM heroes;"
+          "Just write: SELECT * FROM heroes;",
+          "Don't forget the semicolon",
+          "Check spelling"
         ],
         "tests": [
           {
@@ -36,14 +38,16 @@
         "duration": "7 min",
         "concept": "### Searching with WHERE\nTo find only specific rows, use the **`WHERE`** clause:\n\n```sql\nSELECT name, gold FROM heroes WHERE gold > 500;\n```",
         "task": "Find all heroes whose level is greater than 10 using `SELECT * FROM heroes WHERE level > 10;`.",
-        "starterCode": "-- Find heroes with level > 10:\nSELECT * FROM heroes WHERE level > 10;\n",
+        "starterCode": "CREATE TABLE heroes (name TEXT, level INTEGER, gold INTEGER);\nINSERT INTO heroes VALUES ('Aria the Rogue', 12, 600), ('Bartholomew', 15, 1000), ('Celeste the Mage', 11, 800), ('Noob', 2, 10);\n-- Find heroes with level > 10:\nSELECT * FROM heroes WHERE level > 10;",
         "solution": "SELECT * FROM heroes WHERE level > 10;",
         "hints": [
-          "SELECT * FROM heroes WHERE level > 10;"
+          "SELECT * FROM heroes WHERE level > 10;",
+          "Use > operator",
+          "Check table name"
         ],
         "tests": [
           {
-            "description": "Returns high-level heroes Aria, Bartholomew, and Celeste",
+            "description": "Returns high-level heroes",
             "type": "output_includes",
             "expected": [
               "Aria the Rogue",
@@ -60,18 +64,1900 @@
         "duration": "7 min",
         "concept": "### Limiting Rows with LIMIT\nIf a table has 1,000,000 items, you only want the top ones! Use **`LIMIT n`**:\n\n```sql\nSELECT item_name, cost FROM inventory LIMIT 2;\n```",
         "task": "Query the `inventory` table for items where `cost > 50` using `SELECT * FROM inventory WHERE cost > 50;`.",
-        "starterCode": "-- Find expensive inventory items:\nSELECT * FROM inventory WHERE cost > 50;\n",
+        "starterCode": "CREATE TABLE inventory (item_name TEXT, cost INTEGER);\nINSERT INTO inventory VALUES ('Mana Crystal', 100), ('Dragon Scale Armor', 500), ('Apple', 5);\n-- Find expensive inventory items:\nSELECT * FROM inventory WHERE cost > 50;",
         "solution": "SELECT * FROM inventory WHERE cost > 50;",
         "hints": [
-          "SELECT * FROM inventory WHERE cost > 50;"
+          "SELECT * FROM inventory WHERE cost > 50;",
+          "Check cost > 50",
+          "Use WHERE"
         ],
         "tests": [
           {
-            "description": "Returns Mana Crystal and Dragon Scale Armor",
+            "description": "Returns Mana Crystal",
             "type": "output_includes",
             "expected": [
               "Mana Crystal",
               "Dragon Scale Armor"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-2",
+    "title": "Module 2: Column Selection & Aliases",
+    "icon": "Database",
+    "description": "SELECT col1 col2, AS aliases, DISTINCT",
+    "lessons": [
+      {
+        "id": "sql-lesson-4",
+        "title": "Lesson 4",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 2: Column Selection & Aliases (Part 1)\n\nLearn about SELECT col1 col2. Imagine sorting toys or organizing boxes!",
+        "task": "Practice SELECT col1 col2 in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-5",
+        "title": "Lesson 5",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 2: Column Selection & Aliases (Part 2)\n\nLearn about SELECT col1 col2. Imagine sorting toys or organizing boxes!",
+        "task": "Practice SELECT col1 col2 in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-6",
+        "title": "Lesson 6",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 2: Column Selection & Aliases (Part 3)\n\nLearn about SELECT col1 col2. Imagine sorting toys or organizing boxes!",
+        "task": "Practice SELECT col1 col2 in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-3",
+    "title": "Module 3: Advanced Filtering",
+    "icon": "Database",
+    "description": "AND/OR/NOT, IN(...), BETWEEN, LIKE/ILIKE with % and _",
+    "lessons": [
+      {
+        "id": "sql-lesson-7",
+        "title": "Lesson 7",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 3: Advanced Filtering (Part 1)\n\nLearn about AND/OR/NOT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice AND/OR/NOT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-8",
+        "title": "Lesson 8",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 3: Advanced Filtering (Part 2)\n\nLearn about AND/OR/NOT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice AND/OR/NOT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-9",
+        "title": "Lesson 9",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 3: Advanced Filtering (Part 3)\n\nLearn about AND/OR/NOT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice AND/OR/NOT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-10",
+        "title": "Lesson 10",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 3: Advanced Filtering (Part 4)\n\nLearn about AND/OR/NOT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice AND/OR/NOT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-4",
+    "title": "Module 4: Sorting & Pagination",
+    "icon": "Database",
+    "description": "ORDER BY ASC/DESC, multi-column sorting, OFFSET & LIMIT",
+    "lessons": [
+      {
+        "id": "sql-lesson-11",
+        "title": "Lesson 11",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 4: Sorting & Pagination (Part 1)\n\nLearn about ORDER BY ASC/DESC. Imagine sorting toys or organizing boxes!",
+        "task": "Practice ORDER BY ASC/DESC in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-12",
+        "title": "Lesson 12",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 4: Sorting & Pagination (Part 2)\n\nLearn about ORDER BY ASC/DESC. Imagine sorting toys or organizing boxes!",
+        "task": "Practice ORDER BY ASC/DESC in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-13",
+        "title": "Lesson 13",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 4: Sorting & Pagination (Part 3)\n\nLearn about ORDER BY ASC/DESC. Imagine sorting toys or organizing boxes!",
+        "task": "Practice ORDER BY ASC/DESC in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-5",
+    "title": "Module 5: NULL Handling",
+    "icon": "Database",
+    "description": "IS NULL/IS NOT NULL, COALESCE(), NULLIF()",
+    "lessons": [
+      {
+        "id": "sql-lesson-14",
+        "title": "Lesson 14",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 5: NULL Handling (Part 1)\n\nLearn about IS NULL/IS NOT NULL. Imagine sorting toys or organizing boxes!",
+        "task": "Practice IS NULL/IS NOT NULL in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-15",
+        "title": "Lesson 15",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 5: NULL Handling (Part 2)\n\nLearn about IS NULL/IS NOT NULL. Imagine sorting toys or organizing boxes!",
+        "task": "Practice IS NULL/IS NOT NULL in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-16",
+        "title": "Lesson 16",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 5: NULL Handling (Part 3)\n\nLearn about IS NULL/IS NOT NULL. Imagine sorting toys or organizing boxes!",
+        "task": "Practice IS NULL/IS NOT NULL in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-6",
+    "title": "Module 6: Aggregate Functions",
+    "icon": "Database",
+    "description": "COUNT(), SUM()/AVG(), MIN()/MAX(), COUNT(DISTINCT)",
+    "lessons": [
+      {
+        "id": "sql-lesson-17",
+        "title": "Lesson 17",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 6: Aggregate Functions (Part 1)\n\nLearn about COUNT(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice COUNT() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-18",
+        "title": "Lesson 18",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 6: Aggregate Functions (Part 2)\n\nLearn about COUNT(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice COUNT() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-19",
+        "title": "Lesson 19",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 6: Aggregate Functions (Part 3)\n\nLearn about COUNT(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice COUNT() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-20",
+        "title": "Lesson 20",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 6: Aggregate Functions (Part 4)\n\nLearn about COUNT(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice COUNT() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-7",
+    "title": "Module 7: GROUP BY & HAVING",
+    "icon": "Database",
+    "description": "GROUP BY, multi-column GROUP BY, HAVING, combining WHERE/GROUP BY/HAVING/ORDER BY",
+    "lessons": [
+      {
+        "id": "sql-lesson-21",
+        "title": "Lesson 21",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 7: GROUP BY & HAVING (Part 1)\n\nLearn about GROUP BY. Imagine sorting toys or organizing boxes!",
+        "task": "Practice GROUP BY in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-22",
+        "title": "Lesson 22",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 7: GROUP BY & HAVING (Part 2)\n\nLearn about GROUP BY. Imagine sorting toys or organizing boxes!",
+        "task": "Practice GROUP BY in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-23",
+        "title": "Lesson 23",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 7: GROUP BY & HAVING (Part 3)\n\nLearn about GROUP BY. Imagine sorting toys or organizing boxes!",
+        "task": "Practice GROUP BY in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-24",
+        "title": "Lesson 24",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 7: GROUP BY & HAVING (Part 4)\n\nLearn about GROUP BY. Imagine sorting toys or organizing boxes!",
+        "task": "Practice GROUP BY in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-8",
+    "title": "Module 8: String & Date Functions",
+    "icon": "Database",
+    "description": "UPPER/LOWER/LENGTH/TRIM, CONCAT/SUBSTRING/REPLACE, CAST, date functions",
+    "lessons": [
+      {
+        "id": "sql-lesson-25",
+        "title": "Lesson 25",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 8: String & Date Functions (Part 1)\n\nLearn about UPPER/LOWER/LENGTH/TRIM. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UPPER/LOWER/LENGTH/TRIM in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-26",
+        "title": "Lesson 26",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 8: String & Date Functions (Part 2)\n\nLearn about UPPER/LOWER/LENGTH/TRIM. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UPPER/LOWER/LENGTH/TRIM in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-27",
+        "title": "Lesson 27",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 8: String & Date Functions (Part 3)\n\nLearn about UPPER/LOWER/LENGTH/TRIM. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UPPER/LOWER/LENGTH/TRIM in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-28",
+        "title": "Lesson 28",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 8: String & Date Functions (Part 4)\n\nLearn about UPPER/LOWER/LENGTH/TRIM. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UPPER/LOWER/LENGTH/TRIM in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-9",
+    "title": "Module 9: CASE Expressions",
+    "icon": "Database",
+    "description": "Simple CASE, Searched CASE, CASE in SELECT/ORDER BY/aggregation",
+    "lessons": [
+      {
+        "id": "sql-lesson-29",
+        "title": "Lesson 29",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 9: CASE Expressions (Part 1)\n\nLearn about Simple CASE. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Simple CASE in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-30",
+        "title": "Lesson 30",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 9: CASE Expressions (Part 2)\n\nLearn about Simple CASE. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Simple CASE in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-31",
+        "title": "Lesson 31",
+        "badge": "Logic",
+        "duration": "5 min",
+        "concept": "### Concept for Module 9: CASE Expressions (Part 3)\n\nLearn about Simple CASE. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Simple CASE in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-10",
+    "title": "Module 10: Table Joins Part 1",
+    "icon": "Database",
+    "description": "INNER JOIN, LEFT JOIN, RIGHT JOIN/FULL OUTER JOIN, CROSS JOIN",
+    "lessons": [
+      {
+        "id": "sql-lesson-32",
+        "title": "Lesson 32",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 10: Table Joins Part 1 (Part 1)\n\nLearn about INNER JOIN. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INNER JOIN in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-33",
+        "title": "Lesson 33",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 10: Table Joins Part 1 (Part 2)\n\nLearn about INNER JOIN. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INNER JOIN in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-34",
+        "title": "Lesson 34",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 10: Table Joins Part 1 (Part 3)\n\nLearn about INNER JOIN. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INNER JOIN in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-35",
+        "title": "Lesson 35",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 10: Table Joins Part 1 (Part 4)\n\nLearn about INNER JOIN. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INNER JOIN in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-11",
+    "title": "Module 11: Table Joins Part 2",
+    "icon": "Database",
+    "description": "Multi-table JOINs, Self Joins, Non-equi Joins, JOIN performance",
+    "lessons": [
+      {
+        "id": "sql-lesson-36",
+        "title": "Lesson 36",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 11: Table Joins Part 2 (Part 1)\n\nLearn about Multi-table JOINs. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Multi-table JOINs in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-37",
+        "title": "Lesson 37",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 11: Table Joins Part 2 (Part 2)\n\nLearn about Multi-table JOINs. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Multi-table JOINs in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-38",
+        "title": "Lesson 38",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 11: Table Joins Part 2 (Part 3)\n\nLearn about Multi-table JOINs. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Multi-table JOINs in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-39",
+        "title": "Lesson 39",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 11: Table Joins Part 2 (Part 4)\n\nLearn about Multi-table JOINs. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Multi-table JOINs in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-12",
+    "title": "Module 12: Subqueries",
+    "icon": "Database",
+    "description": "Scalar subqueries, IN/NOT IN subqueries, EXISTS/correlated, subqueries in FROM",
+    "lessons": [
+      {
+        "id": "sql-lesson-40",
+        "title": "Lesson 40",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 12: Subqueries (Part 1)\n\nLearn about Scalar subqueries. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Scalar subqueries in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-41",
+        "title": "Lesson 41",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 12: Subqueries (Part 2)\n\nLearn about Scalar subqueries. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Scalar subqueries in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-42",
+        "title": "Lesson 42",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 12: Subqueries (Part 3)\n\nLearn about Scalar subqueries. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Scalar subqueries in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-43",
+        "title": "Lesson 43",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 12: Subqueries (Part 4)\n\nLearn about Scalar subqueries. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Scalar subqueries in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-13",
+    "title": "Module 13: CTEs",
+    "icon": "Database",
+    "description": "WITH...AS, multiple CTEs, recursive CTEs",
+    "lessons": [
+      {
+        "id": "sql-lesson-44",
+        "title": "Lesson 44",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 13: CTEs (Part 1)\n\nLearn about WITH...AS. Imagine sorting toys or organizing boxes!",
+        "task": "Practice WITH...AS in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-45",
+        "title": "Lesson 45",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 13: CTEs (Part 2)\n\nLearn about WITH...AS. Imagine sorting toys or organizing boxes!",
+        "task": "Practice WITH...AS in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-46",
+        "title": "Lesson 46",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 13: CTEs (Part 3)\n\nLearn about WITH...AS. Imagine sorting toys or organizing boxes!",
+        "task": "Practice WITH...AS in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-14",
+    "title": "Module 14: DML",
+    "icon": "Database",
+    "description": "INSERT INTO VALUES, INSERT INTO SELECT, UPDATE SET WHERE, DELETE FROM WHERE",
+    "lessons": [
+      {
+        "id": "sql-lesson-47",
+        "title": "Lesson 47",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 14: DML (Part 1)\n\nLearn about INSERT INTO VALUES. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INSERT INTO VALUES in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-48",
+        "title": "Lesson 48",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 14: DML (Part 2)\n\nLearn about INSERT INTO VALUES. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INSERT INTO VALUES in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-49",
+        "title": "Lesson 49",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 14: DML (Part 3)\n\nLearn about INSERT INTO VALUES. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INSERT INTO VALUES in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-50",
+        "title": "Lesson 50",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 14: DML (Part 4)\n\nLearn about INSERT INTO VALUES. Imagine sorting toys or organizing boxes!",
+        "task": "Practice INSERT INTO VALUES in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-15",
+    "title": "Module 15: DDL",
+    "icon": "Database",
+    "description": "CREATE TABLE/data types, PRIMARY KEY, FOREIGN KEY/REFERENCES, constraints NOT NULL/UNIQUE/DEFAULT/CHECK, ALTER TABLE/DROP TABLE",
+    "lessons": [
+      {
+        "id": "sql-lesson-51",
+        "title": "Lesson 51",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 15: DDL (Part 1)\n\nLearn about CREATE TABLE/data types. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE TABLE/data types in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-52",
+        "title": "Lesson 52",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 15: DDL (Part 2)\n\nLearn about CREATE TABLE/data types. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE TABLE/data types in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-53",
+        "title": "Lesson 53",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 15: DDL (Part 3)\n\nLearn about CREATE TABLE/data types. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE TABLE/data types in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-54",
+        "title": "Lesson 54",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 15: DDL (Part 4)\n\nLearn about CREATE TABLE/data types. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE TABLE/data types in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-55",
+        "title": "Lesson 55",
+        "badge": "Core",
+        "duration": "5 min",
+        "concept": "### Concept for Module 15: DDL (Part 5)\n\nLearn about CREATE TABLE/data types. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE TABLE/data types in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-16",
+    "title": "Module 16: Views & Indexes",
+    "icon": "Database",
+    "description": "CREATE VIEW, CREATE INDEX, EXPLAIN execution plans",
+    "lessons": [
+      {
+        "id": "sql-lesson-56",
+        "title": "Lesson 56",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 16: Views & Indexes (Part 1)\n\nLearn about CREATE VIEW. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE VIEW in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-57",
+        "title": "Lesson 57",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 16: Views & Indexes (Part 2)\n\nLearn about CREATE VIEW. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE VIEW in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-58",
+        "title": "Lesson 58",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 16: Views & Indexes (Part 3)\n\nLearn about CREATE VIEW. Imagine sorting toys or organizing boxes!",
+        "task": "Practice CREATE VIEW in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-17",
+    "title": "Module 17: Transactions",
+    "icon": "Database",
+    "description": "ACID properties, BEGIN/COMMIT/ROLLBACK, isolation levels",
+    "lessons": [
+      {
+        "id": "sql-lesson-59",
+        "title": "Lesson 59",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 17: Transactions (Part 1)\n\nLearn about ACID properties. Imagine sorting toys or organizing boxes!",
+        "task": "Practice ACID properties in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-60",
+        "title": "Lesson 60",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 17: Transactions (Part 2)\n\nLearn about ACID properties. Imagine sorting toys or organizing boxes!",
+        "task": "Practice ACID properties in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-61",
+        "title": "Lesson 61",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 17: Transactions (Part 3)\n\nLearn about ACID properties. Imagine sorting toys or organizing boxes!",
+        "task": "Practice ACID properties in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-18",
+    "title": "Module 18: Window Functions",
+    "icon": "Database",
+    "description": "ROW_NUMBER(), RANK()/DENSE_RANK(), PARTITION BY, LEAD()/LAG(), SUM/AVG OVER running totals",
+    "lessons": [
+      {
+        "id": "sql-lesson-62",
+        "title": "Lesson 62",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 18: Window Functions (Part 1)\n\nLearn about ROW_NUMBER(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice ROW_NUMBER() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-63",
+        "title": "Lesson 63",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 18: Window Functions (Part 2)\n\nLearn about ROW_NUMBER(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice ROW_NUMBER() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-64",
+        "title": "Lesson 64",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 18: Window Functions (Part 3)\n\nLearn about ROW_NUMBER(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice ROW_NUMBER() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-65",
+        "title": "Lesson 65",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 18: Window Functions (Part 4)\n\nLearn about ROW_NUMBER(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice ROW_NUMBER() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-66",
+        "title": "Lesson 66",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 18: Window Functions (Part 5)\n\nLearn about ROW_NUMBER(). Imagine sorting toys or organizing boxes!",
+        "task": "Practice ROW_NUMBER() in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-19",
+    "title": "Module 19: Advanced SQL Patterns",
+    "icon": "Database",
+    "description": "UNION/INTERSECT/EXCEPT, pivoting with CASE, STRING_AGG/GROUP_CONCAT, upserts ON CONFLICT",
+    "lessons": [
+      {
+        "id": "sql-lesson-67",
+        "title": "Lesson 67",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 19: Advanced SQL Patterns (Part 1)\n\nLearn about UNION/INTERSECT/EXCEPT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UNION/INTERSECT/EXCEPT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-68",
+        "title": "Lesson 68",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 19: Advanced SQL Patterns (Part 2)\n\nLearn about UNION/INTERSECT/EXCEPT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UNION/INTERSECT/EXCEPT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-69",
+        "title": "Lesson 69",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 19: Advanced SQL Patterns (Part 3)\n\nLearn about UNION/INTERSECT/EXCEPT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UNION/INTERSECT/EXCEPT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-70",
+        "title": "Lesson 70",
+        "badge": "Advanced",
+        "duration": "5 min",
+        "concept": "### Concept for Module 19: Advanced SQL Patterns (Part 4)\n\nLearn about UNION/INTERSECT/EXCEPT. Imagine sorting toys or organizing boxes!",
+        "task": "Practice UNION/INTERSECT/EXCEPT in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sql-mod-20",
+    "title": "Module 20: Boss Battle Capstones",
+    "icon": "Database",
+    "description": "Student Gradebook Analytics, E-Commerce Order Report, Social Network Friend Finder, Leaderboard Rankings, Full Database Schema Design",
+    "lessons": [
+      {
+        "id": "sql-lesson-71",
+        "title": "Lesson 71",
+        "badge": "Boss Battle",
+        "duration": "5 min",
+        "concept": "### Concept for Module 20: Boss Battle Capstones (Part 1)\n\nLearn about Student Gradebook Analytics. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Student Gradebook Analytics in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-72",
+        "title": "Lesson 72",
+        "badge": "Boss Battle",
+        "duration": "5 min",
+        "concept": "### Concept for Module 20: Boss Battle Capstones (Part 2)\n\nLearn about Student Gradebook Analytics. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Student Gradebook Analytics in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-73",
+        "title": "Lesson 73",
+        "badge": "Boss Battle",
+        "duration": "5 min",
+        "concept": "### Concept for Module 20: Boss Battle Capstones (Part 3)\n\nLearn about Student Gradebook Analytics. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Student Gradebook Analytics in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-74",
+        "title": "Lesson 74",
+        "badge": "Boss Battle",
+        "duration": "5 min",
+        "concept": "### Concept for Module 20: Boss Battle Capstones (Part 4)\n\nLearn about Student Gradebook Analytics. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Student Gradebook Analytics in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-75",
+        "title": "Lesson 75",
+        "badge": "Boss Battle",
+        "duration": "5 min",
+        "concept": "### Concept for Module 20: Boss Battle Capstones (Part 5)\n\nLearn about Student Gradebook Analytics. Imagine sorting toys or organizing boxes!",
+        "task": "Practice Student Gradebook Analytics in SQL.",
+        "starterCode": "CREATE TABLE my_table (col1 TEXT);\nINSERT INTO my_table VALUES ('test');\n-- Write your query:\nSELECT * FROM my_table;",
+        "solution": "SELECT * FROM my_table;",
+        "hints": [
+          "Read the prompt carefully.",
+          "Use the correct keywords.",
+          "Ask for help if stuck!"
+        ],
+        "tests": [
+          {
+            "description": "Checks output",
+            "type": "output_includes",
+            "expected": [
+              "test"
             ]
           }
         ]

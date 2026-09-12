@@ -10,12 +10,14 @@
         "title": "1. Hello, Ferris!",
         "badge": "Safe Speed",
         "duration": "6 min",
-        "concept": "### Welcome to Rust! 🦀\nRust is voted the most loved programming language year after year! It offers C++ speeds without memory crashes.\n\nIn Rust, functions start with `fn` and prints use `println!` with an exclamation mark:\n\n```rust\nfn main() {\n    println!(\"Hello from Rust!\");\n}\n```",
+        "concept": "### Welcome to Rust! \ud83e\udd80\nRust is voted the most loved programming language year after year! It offers C++ speeds without memory crashes.\n\nIn Rust, functions start with `fn` and prints use `println!` with an exclamation mark:\n\n```rust\nfn main() {\n    println!(\"Hello from Rust!\");\n}\n```",
         "task": "Print `Welcome to Rust Hero!` using `println!(\"Welcome to Rust Hero!\");`.",
         "starterCode": "fn main() {\n    println!(\"Hello, World!\");\n}\n",
         "solution": "fn main() {\n    println!(\"Welcome to Rust Hero!\");\n}",
         "hints": [
-          "Change 'Hello, World!' to 'Welcome to Rust Hero!'"
+          "Change 'Hello, World!' to 'Welcome to Rust Hero!'",
+          "Don't forget the semicolon!",
+          "Use println!"
         ],
         "tests": [
           {
@@ -32,16 +34,2226 @@
         "duration": "8 min",
         "concept": "### The Power of Immutability\nIn Rust, all variables are locked (immutable) by default! To change a value, you must write `let mut`:\n\n```rust\nlet mut shield = 50;\nshield = shield + 25;\nprintln!(\"Shield: {}\", shield);\n```",
         "task": "Create `let mut shield = 50;`, add 25 to it, and print with `println!(\"{}\", shield);`.",
-        "starterCode": "fn main() {\n    let mut shield = 50;\n    shield = shield + 25;\n    println!(\"{}\", shield);\n}\n",
+        "starterCode": "fn main() {\n    let mut shield = 50;\n    // add 25 here\n    println!(\"{}\", shield);\n}\n",
         "solution": "fn main() {\n    let mut shield = 50;\n    shield = shield + 25;\n    println!(\"{}\", shield);\n}",
         "hints": [
-          "50 + 25 = 75"
+          "50 + 25 = 75",
+          "Use `shield = shield + 25;`",
+          "Don't forget to use `let mut`"
         ],
         "tests": [
           {
             "description": "Outputs 75",
             "type": "output_match",
             "expected": "75"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-2",
+    "title": "Module 2: Data Types & Constants",
+    "icon": "Box",
+    "description": "Discover the building blocks of Rust.",
+    "lessons": [
+      {
+        "id": "rust-lesson-3",
+        "title": "1. Integer types i8-i128/u8-u128/isize/usize",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Integer types i8-i128/u8-u128/isize/usize\\nThink of this like building blocks! Integer types i8-i128/u8-u128/isize/usize is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Integer types i8-i128/u8-u128/isize/usize and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-4",
+        "title": "2. f32/f64/bool/char",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### f32/f64/bool/char\\nThink of this like building blocks! f32/f64/bool/char is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for f32/f64/bool/char and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-5",
+        "title": "3. tuples and arrays",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### tuples and arrays\\nThink of this like building blocks! tuples and arrays is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for tuples and arrays and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-6",
+        "title": "4. const/type annotations/as casting",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### const/type annotations/as casting\\nThink of this like building blocks! const/type annotations/as casting is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for const/type annotations/as casting and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-3",
+    "title": "Module 3: Functions & Expressions",
+    "icon": "Activity",
+    "description": "Functions and Expressions in Rust.",
+    "lessons": [
+      {
+        "id": "rust-lesson-7",
+        "title": "1. fn params return types",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### fn params return types\\nThink of this like building blocks! fn params return types is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for fn params return types and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-8",
+        "title": "2. statements vs expressions",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### statements vs expressions\\nThink of this like building blocks! statements vs expressions is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for statements vs expressions and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-9",
+        "title": "3. implicit return vs return keyword",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### implicit return vs return keyword\\nThink of this like building blocks! implicit return vs return keyword is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for implicit return vs return keyword and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-4",
+    "title": "Module 4: Control Flow",
+    "icon": "GitBranch",
+    "description": "Directing the flow of your program.",
+    "lessons": [
+      {
+        "id": "rust-lesson-10",
+        "title": "1. if/else as expressions",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### if/else as expressions\\nThink of this like building blocks! if/else as expressions is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for if/else as expressions and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-11",
+        "title": "2. loop with break returning values",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### loop with break returning values\\nThink of this like building blocks! loop with break returning values is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for loop with break returning values and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-12",
+        "title": "3. while loops",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### while loops\\nThink of this like building blocks! while loops is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for while loops and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-13",
+        "title": "4. for...in/ranges/loop labels",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### for...in/ranges/loop labels\\nThink of this like building blocks! for...in/ranges/loop labels is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for for...in/ranges/loop labels and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-5",
+    "title": "Module 5: Ownership",
+    "icon": "Key",
+    "description": "The unique memory management of Rust.",
+    "lessons": [
+      {
+        "id": "rust-lesson-14",
+        "title": "1. Three ownership rules",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Three ownership rules\\nThink of this like building blocks! Three ownership rules is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Three ownership rules and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-15",
+        "title": "2. move semantics",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### move semantics\\nThink of this like building blocks! move semantics is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for move semantics and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-16",
+        "title": "3. Clone & Copy",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Clone & Copy\\nThink of this like building blocks! Clone & Copy is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Clone & Copy and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-17",
+        "title": "4. ownership & functions",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### ownership & functions\\nThink of this like building blocks! ownership & functions is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for ownership & functions and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-18",
+        "title": "5. return values & ownership",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### return values & ownership\\nThink of this like building blocks! return values & ownership is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for return values & ownership and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-6",
+    "title": "Module 6: References & Borrowing",
+    "icon": "Link",
+    "description": "Borrowing without taking ownership.",
+    "lessons": [
+      {
+        "id": "rust-lesson-19",
+        "title": "1. Immutable references &T",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Immutable references &T\\nThink of this like building blocks! Immutable references &T is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Immutable references &T and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-20",
+        "title": "2. mutable references &mut T",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### mutable references &mut T\\nThink of this like building blocks! mutable references &mut T is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for mutable references &mut T and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-21",
+        "title": "3. borrowing rules",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### borrowing rules\\nThink of this like building blocks! borrowing rules is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for borrowing rules and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-22",
+        "title": "4. dangling reference prevention",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### dangling reference prevention\\nThink of this like building blocks! dangling reference prevention is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for dangling reference prevention and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-7",
+    "title": "Module 7: Slices",
+    "icon": "Scissors",
+    "description": "Referencing a part of a collection.",
+    "lessons": [
+      {
+        "id": "rust-lesson-23",
+        "title": "1. String slices &str",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### String slices &str\\nThink of this like building blocks! String slices &str is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for String slices &str and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-24",
+        "title": "2. array slices &[T]",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### array slices &[T]\\nThink of this like building blocks! array slices &[T] is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for array slices &[T] and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-25",
+        "title": "3. slices as function parameters",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### slices as function parameters\\nThink of this like building blocks! slices as function parameters is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for slices as function parameters and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-8",
+    "title": "Module 8: Structs",
+    "icon": "Layers",
+    "description": "Creating custom data types.",
+    "lessons": [
+      {
+        "id": "rust-lesson-26",
+        "title": "1. Defining structs",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Defining structs\\nThink of this like building blocks! Defining structs is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Defining structs and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-27",
+        "title": "2. tuple structs/unit structs",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### tuple structs/unit structs\\nThink of this like building blocks! tuple structs/unit structs is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for tuple structs/unit structs and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-28",
+        "title": "3. impl blocks methods &self",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### impl blocks methods &self\\nThink of this like building blocks! impl blocks methods &self is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for impl blocks methods &self and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-29",
+        "title": "4. associated functions",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### associated functions\\nThink of this like building blocks! associated functions is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for associated functions and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-9",
+    "title": "Module 9: Enums & Pattern Matching",
+    "icon": "GitMerge",
+    "description": "Enums and matching patterns.",
+    "lessons": [
+      {
+        "id": "rust-lesson-30",
+        "title": "1. Basic enums",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Basic enums\\nThink of this like building blocks! Basic enums is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Basic enums and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-31",
+        "title": "2. enums with data",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### enums with data\\nThink of this like building blocks! enums with data is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for enums with data and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-32",
+        "title": "3. Option<T> Some/None",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Option<T> Some/None\\nThink of this like building blocks! Option<T> Some/None is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Option<T> Some/None and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-33",
+        "title": "4. match expressions",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### match expressions\\nThink of this like building blocks! match expressions is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for match expressions and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-34",
+        "title": "5. if let/while let",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### if let/while let\\nThink of this like building blocks! if let/while let is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for if let/while let and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-10",
+    "title": "Module 10: Error Handling",
+    "icon": "AlertTriangle",
+    "description": "Handling things that go wrong.",
+    "lessons": [
+      {
+        "id": "rust-lesson-35",
+        "title": "1. Result<T,E> Ok/Err",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Result<T,E> Ok/Err\\nThink of this like building blocks! Result<T,E> Ok/Err is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Result<T,E> Ok/Err and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-36",
+        "title": "2. unwrap()/expect()",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### unwrap()/expect()\\nThink of this like building blocks! unwrap()/expect() is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for unwrap()/expect() and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-37",
+        "title": "3. ? operator",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### ? operator\\nThink of this like building blocks! ? operator is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for ? operator and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-38",
+        "title": "4. custom error types",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### custom error types\\nThink of this like building blocks! custom error types is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for custom error types and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-11",
+    "title": "Module 11: Collections",
+    "icon": "Archive",
+    "description": "Storing multiple values.",
+    "lessons": [
+      {
+        "id": "rust-lesson-39",
+        "title": "1. Vec<T>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Vec<T>\\nThink of this like building blocks! Vec<T> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Vec<T> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-40",
+        "title": "2. String vs &str",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### String vs &str\\nThink of this like building blocks! String vs &str is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for String vs &str and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-41",
+        "title": "3. HashMap<K,V>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### HashMap<K,V>\\nThink of this like building blocks! HashMap<K,V> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for HashMap<K,V> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-42",
+        "title": "4. iterating collections",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### iterating collections\\nThink of this like building blocks! iterating collections is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for iterating collections and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-12",
+    "title": "Module 12: Lifetimes",
+    "icon": "Clock",
+    "description": "Validating references.",
+    "lessons": [
+      {
+        "id": "rust-lesson-43",
+        "title": "1. Why lifetimes",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Why lifetimes\\nThink of this like building blocks! Why lifetimes is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Why lifetimes and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-44",
+        "title": "2. lifetime annotations 'a",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### lifetime annotations 'a\\nThink of this like building blocks! lifetime annotations 'a is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for lifetime annotations 'a and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-45",
+        "title": "3. lifetime elision rules",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### lifetime elision rules\\nThink of this like building blocks! lifetime elision rules is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for lifetime elision rules and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-46",
+        "title": "4. 'static",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### 'static\\nThink of this like building blocks! 'static is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for 'static and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-13",
+    "title": "Module 13: Traits",
+    "icon": "Award",
+    "description": "Defining shared behavior.",
+    "lessons": [
+      {
+        "id": "rust-lesson-47",
+        "title": "1. Defining traits",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Defining traits\\nThink of this like building blocks! Defining traits is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Defining traits and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-48",
+        "title": "2. implementing traits",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### implementing traits\\nThink of this like building blocks! implementing traits is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for implementing traits and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-49",
+        "title": "3. default implementations",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### default implementations\\nThink of this like building blocks! default implementations is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for default implementations and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-50",
+        "title": "4. trait bounds/where",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### trait bounds/where\\nThink of this like building blocks! trait bounds/where is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for trait bounds/where and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-51",
+        "title": "5. derive macros",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### derive macros\\nThink of this like building blocks! derive macros is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for derive macros and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-14",
+    "title": "Module 14: Generics",
+    "icon": "Maximize",
+    "description": "Abstracting types.",
+    "lessons": [
+      {
+        "id": "rust-lesson-52",
+        "title": "1. Generic functions",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Generic functions\\nThink of this like building blocks! Generic functions is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Generic functions and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-53",
+        "title": "2. generic structs",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### generic structs\\nThink of this like building blocks! generic structs is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for generic structs and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-54",
+        "title": "3. generic enums",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### generic enums\\nThink of this like building blocks! generic enums is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for generic enums and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-55",
+        "title": "4. monomorphization",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### monomorphization\\nThink of this like building blocks! monomorphization is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for monomorphization and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-15",
+    "title": "Module 15: Closures",
+    "icon": "Package",
+    "description": "Anonymous functions that capture environment.",
+    "lessons": [
+      {
+        "id": "rust-lesson-56",
+        "title": "1. Closure syntax |x| x+1",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Closure syntax |x| x+1\\nThink of this like building blocks! Closure syntax |x| x+1 is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Closure syntax |x| x+1 and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-57",
+        "title": "2. capturing variables/move",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### capturing variables/move\\nThink of this like building blocks! capturing variables/move is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for capturing variables/move and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-58",
+        "title": "3. Fn/FnMut/FnOnce",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Fn/FnMut/FnOnce\\nThink of this like building blocks! Fn/FnMut/FnOnce is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Fn/FnMut/FnOnce and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-59",
+        "title": "4. returning closures",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### returning closures\\nThink of this like building blocks! returning closures is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for returning closures and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-16",
+    "title": "Module 16: Iterators",
+    "icon": "Repeat",
+    "description": "Processing a series of items.",
+    "lessons": [
+      {
+        "id": "rust-lesson-60",
+        "title": "1. Iterator trait/.next()",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Iterator trait/.next()\\nThink of this like building blocks! Iterator trait/.next() is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Iterator trait/.next() and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-61",
+        "title": "2. consuming adaptors sum/count/collect",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### consuming adaptors sum/count/collect\\nThink of this like building blocks! consuming adaptors sum/count/collect is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for consuming adaptors sum/count/collect and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-62",
+        "title": "3. iterator adaptors map/filter/enumerate/zip",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### iterator adaptors map/filter/enumerate/zip\\nThink of this like building blocks! iterator adaptors map/filter/enumerate/zip is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for iterator adaptors map/filter/enumerate/zip and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-63",
+        "title": "4. custom iterators",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### custom iterators\\nThink of this like building blocks! custom iterators is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for custom iterators and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-17",
+    "title": "Module 17: Smart Pointers",
+    "icon": "Pointer",
+    "description": "Pointers with extra metadata.",
+    "lessons": [
+      {
+        "id": "rust-lesson-64",
+        "title": "1. Box<T>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Box<T>\\nThink of this like building blocks! Box<T> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Box<T> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-65",
+        "title": "2. Rc<T>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Rc<T>\\nThink of this like building blocks! Rc<T> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Rc<T> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-66",
+        "title": "3. RefCell<T>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### RefCell<T>\\nThink of this like building blocks! RefCell<T> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for RefCell<T> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-67",
+        "title": "4. Rc<RefCell<T>>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Rc<RefCell<T>>\\nThink of this like building blocks! Rc<RefCell<T>> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Rc<RefCell<T>> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-18",
+    "title": "Module 18: Concurrency",
+    "icon": "Cpu",
+    "description": "Running code simultaneously.",
+    "lessons": [
+      {
+        "id": "rust-lesson-68",
+        "title": "1. thread::spawn",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### thread::spawn\\nThink of this like building blocks! thread::spawn is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for thread::spawn and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-69",
+        "title": "2. move closures with threads",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### move closures with threads\\nThink of this like building blocks! move closures with threads is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for move closures with threads and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-70",
+        "title": "3. mpsc channels",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### mpsc channels\\nThink of this like building blocks! mpsc channels is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for mpsc channels and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-71",
+        "title": "4. Mutex<T>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Mutex<T>\\nThink of this like building blocks! Mutex<T> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Mutex<T> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-72",
+        "title": "5. Arc<T>",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Arc<T>\\nThink of this like building blocks! Arc<T> is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Arc<T> and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-19",
+    "title": "Module 19: Modules & Cargo",
+    "icon": "Folder",
+    "description": "Organizing your code.",
+    "lessons": [
+      {
+        "id": "rust-lesson-73",
+        "title": "1. mod/pub/use/super/crate",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### mod/pub/use/super/crate\\nThink of this like building blocks! mod/pub/use/super/crate is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for mod/pub/use/super/crate and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-74",
+        "title": "2. splitting into files",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### splitting into files\\nThink of this like building blocks! splitting into files is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for splitting into files and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-75",
+        "title": "3. Cargo.toml dependencies",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Cargo.toml dependencies\\nThink of this like building blocks! Cargo.toml dependencies is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Cargo.toml dependencies and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-76",
+        "title": "4. publishing crates",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### publishing crates\\nThink of this like building blocks! publishing crates is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for publishing crates and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-20",
+    "title": "Module 20: Testing",
+    "icon": "CheckCircle",
+    "description": "Writing automated tests.",
+    "lessons": [
+      {
+        "id": "rust-lesson-77",
+        "title": "1. #[test]/assert!/assert_eq!",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### #[test]/assert!/assert_eq!\\nThink of this like building blocks! #[test]/assert!/assert_eq! is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for #[test]/assert!/assert_eq! and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-78",
+        "title": "2. #[should_panic]/Result tests",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### #[should_panic]/Result tests\\nThink of this like building blocks! #[should_panic]/Result tests is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for #[should_panic]/Result tests and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-79",
+        "title": "3. integration tests",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### integration tests\\nThink of this like building blocks! integration tests is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for integration tests and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-21",
+    "title": "Module 21: Advanced Traits & Types",
+    "icon": "Star",
+    "description": "Advanced usage of traits.",
+    "lessons": [
+      {
+        "id": "rust-lesson-80",
+        "title": "1. Trait objects dyn Trait",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Trait objects dyn Trait\\nThink of this like building blocks! Trait objects dyn Trait is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Trait objects dyn Trait and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-81",
+        "title": "2. operator overloading std::ops",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### operator overloading std::ops\\nThink of this like building blocks! operator overloading std::ops is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for operator overloading std::ops and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-82",
+        "title": "3. newtype pattern",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### newtype pattern\\nThink of this like building blocks! newtype pattern is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for newtype pattern and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-83",
+        "title": "4. type aliases",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### type aliases\\nThink of this like building blocks! type aliases is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for type aliases and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-22",
+    "title": "Module 22: Macros",
+    "icon": "Terminal",
+    "description": "Code that writes code.",
+    "lessons": [
+      {
+        "id": "rust-lesson-84",
+        "title": "1. macro_rules! declarative macros",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### macro_rules! declarative macros\\nThink of this like building blocks! macro_rules! declarative macros is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for macro_rules! declarative macros and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-85",
+        "title": "2. common macros vec!/println!/format!",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### common macros vec!/println!/format!\\nThink of this like building blocks! common macros vec!/println!/format! is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for common macros vec!/println!/format! and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-86",
+        "title": "3. attribute/derive macros overview",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### attribute/derive macros overview\\nThink of this like building blocks! attribute/derive macros overview is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for attribute/derive macros overview and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-23",
+    "title": "Module 23: Unsafe Rust & FFI",
+    "icon": "Unlock",
+    "description": "Bypassing safety checks.",
+    "lessons": [
+      {
+        "id": "rust-lesson-87",
+        "title": "1. unsafe blocks/raw pointers",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### unsafe blocks/raw pointers\\nThink of this like building blocks! unsafe blocks/raw pointers is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for unsafe blocks/raw pointers and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-88",
+        "title": "2. when/why unsafe",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### when/why unsafe\\nThink of this like building blocks! when/why unsafe is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for when/why unsafe and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-89",
+        "title": "3. FFI extern \"C\"",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### FFI extern \"C\"\\nThink of this like building blocks! FFI extern \"C\" is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for FFI extern \"C\" and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rust-mod-24",
+    "title": "Module 24: Boss Battle Capstones",
+    "icon": "Trophy",
+    "description": "Final projects.",
+    "lessons": [
+      {
+        "id": "rust-lesson-90",
+        "title": "1. Ownership Puzzle Solver",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Ownership Puzzle Solver\\nThink of this like building blocks! Ownership Puzzle Solver is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Ownership Puzzle Solver and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-91",
+        "title": "2. CLI Todo App",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### CLI Todo App\\nThink of this like building blocks! CLI Todo App is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for CLI Todo App and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-92",
+        "title": "3. Generic Collection Library",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Generic Collection Library\\nThink of this like building blocks! Generic Collection Library is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Generic Collection Library and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-93",
+        "title": "4. Concurrent Web Scraper",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Concurrent Web Scraper\\nThink of this like building blocks! Concurrent Web Scraper is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Concurrent Web Scraper and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-94",
+        "title": "5. Mini Database Engine",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### Mini Database Engine\\nThink of this like building blocks! Mini Database Engine is a cool feature in Rust. It helps us write better code!",
+        "task": "Write code for Mini Database Engine and print 'Success'.",
+        "starterCode": "fn main() {\n    // Write code here\n}",
+        "solution": "fn main() {\n    println!(\"Success\");\n}",
+        "hints": [
+          "Read the concept",
+          "Use println!",
+          "Check your spelling"
+        ],
+        "tests": [
+          {
+            "description": "Prints Success",
+            "type": "output_match",
+            "expected": "Success"
           }
         ]
       }
