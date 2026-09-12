@@ -1,0 +1,50 @@
+[
+  {
+    "id": "java-mod-1",
+    "title": "Realm 1: The Blueprint Kingdom",
+    "icon": "Box",
+    "description": "Master Java classes, strong typing, and object-oriented architecture.",
+    "lessons": [
+      {
+        "id": "java-lesson-1",
+        "title": "1. Hello, Java!",
+        "badge": "OOP Enterprise",
+        "duration": "6 min",
+        "concept": "### Welcome to Java! ☕\nJava is one of the most reliable languages in the world. It runs on billions of devices, Minecraft, and Android!\n\nIn Java, everything lives inside a class:\n\n```java\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello from Java!\");\n    }\n}\n```",
+        "task": "Print `Welcome to Java Hero!` using `System.out.println(\"Welcome to Java Hero!\");`.",
+        "starterCode": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n",
+        "solution": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Welcome to Java Hero!\");\n    }\n}",
+        "hints": [
+          "Change 'Hello, World!' to 'Welcome to Java Hero!'"
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Welcome to Java Hero!'",
+            "type": "output_match",
+            "expected": "Welcome to Java Hero!"
+          }
+        ]
+      },
+      {
+        "id": "java-lesson-2",
+        "title": "2. Variables & Arithmetic",
+        "badge": "Types",
+        "duration": "7 min",
+        "concept": "### Data Types in Java\nJava is strictly typed:\n- `int score = 500;`\n- `double price = 19.99;`\n- `String name = \"Alex\";`\n\n```java\nint a = 20;\nint b = 30;\nSystem.out.println(a + b); // 50\n```",
+        "task": "Given `int attack = 15;` and `int bonus = 10;`, compute `int totalAttack = attack + bonus;` and print `totalAttack`.",
+        "starterCode": "public class Main {\n    public static void main(String[] args) {\n        int attack = 15;\n        int bonus = 10;\n        int totalAttack = attack + bonus;\n        System.out.println(totalAttack);\n    }\n}\n",
+        "solution": "public class Main {\n    public static void main(String[] args) {\n        int attack = 15;\n        int bonus = 10;\n        int totalAttack = attack + bonus;\n        System.out.println(totalAttack);\n    }\n}",
+        "hints": [
+          "Run the code to print 25!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 25",
+            "type": "output_match",
+            "expected": "25"
+          }
+        ]
+      }
+    ]
+  }
+]

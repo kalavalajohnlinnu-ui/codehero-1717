@@ -1,0 +1,81 @@
+[
+  {
+    "id": "sql-mod-1",
+    "title": "Realm 1: The Royal Data Vault",
+    "icon": "Database",
+    "description": "Query database tables, filter rows with WHERE, and sort results.",
+    "lessons": [
+      {
+        "id": "sql-lesson-1",
+        "title": "1. Inspecting Tables (SELECT *)",
+        "badge": "Querying",
+        "duration": "5 min",
+        "concept": "### What is a Database? 🗄️\nEvery game, bank, and social network stores its data in tables (like supercharged Excel sheets).\n\nIn SQL, **`SELECT * FROM table_name;`** grabs every row and column:\n\n```sql\nSELECT * FROM heroes;\n```",
+        "task": "Write a query to view all rows and columns from the `heroes` table using `SELECT * FROM heroes;`.",
+        "starterCode": "-- Write your SQL query:\nSELECT * FROM heroes;\n",
+        "solution": "SELECT * FROM heroes;",
+        "hints": [
+          "Just write: SELECT * FROM heroes;"
+        ],
+        "tests": [
+          {
+            "description": "Returns all 4 heroes",
+            "type": "output_includes",
+            "expected": [
+              "Aria the Rogue",
+              "Bartholomew",
+              "Celeste the Mage"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-2",
+        "title": "2. Filtering with WHERE",
+        "badge": "Filtering",
+        "duration": "7 min",
+        "concept": "### Searching with WHERE\nTo find only specific rows, use the **`WHERE`** clause:\n\n```sql\nSELECT name, gold FROM heroes WHERE gold > 500;\n```",
+        "task": "Find all heroes whose level is greater than 10 using `SELECT * FROM heroes WHERE level > 10;`.",
+        "starterCode": "-- Find heroes with level > 10:\nSELECT * FROM heroes WHERE level > 10;\n",
+        "solution": "SELECT * FROM heroes WHERE level > 10;",
+        "hints": [
+          "SELECT * FROM heroes WHERE level > 10;"
+        ],
+        "tests": [
+          {
+            "description": "Returns high-level heroes Aria, Bartholomew, and Celeste",
+            "type": "output_includes",
+            "expected": [
+              "Aria the Rogue",
+              "Bartholomew",
+              "Celeste the Mage"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sql-lesson-3",
+        "title": "3. The Inventory Table & LIMIT",
+        "badge": "Limits",
+        "duration": "7 min",
+        "concept": "### Limiting Rows with LIMIT\nIf a table has 1,000,000 items, you only want the top ones! Use **`LIMIT n`**:\n\n```sql\nSELECT item_name, cost FROM inventory LIMIT 2;\n```",
+        "task": "Query the `inventory` table for items where `cost > 50` using `SELECT * FROM inventory WHERE cost > 50;`.",
+        "starterCode": "-- Find expensive inventory items:\nSELECT * FROM inventory WHERE cost > 50;\n",
+        "solution": "SELECT * FROM inventory WHERE cost > 50;",
+        "hints": [
+          "SELECT * FROM inventory WHERE cost > 50;"
+        ],
+        "tests": [
+          {
+            "description": "Returns Mana Crystal and Dragon Scale Armor",
+            "type": "output_includes",
+            "expected": [
+              "Mana Crystal",
+              "Dragon Scale Armor"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

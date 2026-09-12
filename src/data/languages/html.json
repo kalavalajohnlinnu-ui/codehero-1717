@@ -1,0 +1,84 @@
+[
+  {
+    "id": "html-mod-1",
+    "title": "Realm 1: Painting the Web",
+    "icon": "Layers",
+    "description": "Build your first webpage using tags, images, links, colors, and layout.",
+    "lessons": [
+      {
+        "id": "html-lesson-1",
+        "title": "1. Headings & Paragraphs",
+        "badge": "Structure",
+        "duration": "5 min",
+        "concept": "### Welcome to HTML! 🎨\nHTML stands for HyperText Markup Language. It gives every webpage its skeleton!\n\nElements are wrapped in opening and closing tags:\n- `<h1>Big Title</h1>` for the main heading\n- `<p>This is a paragraph of text.</p>` for text\n- `<button>Click Me</button>` for clickable buttons!",
+        "task": "Create an `<h1>` heading with text `My Hero Quest` and a `<p>` paragraph with text `I am learning to code!`.",
+        "starterCode": "<!-- Write your HTML below -->\n<h1>Hello World</h1>\n<p>Welcome to the web!</p>\n",
+        "solution": "<h1>My Hero Quest</h1>\n<p>I am learning to code!</p>",
+        "hints": [
+          "Change the h1 to 'My Hero Quest' and p to 'I am learning to code!'"
+        ],
+        "tests": [
+          {
+            "description": "Contains 'My Hero Quest' in h1",
+            "type": "output_includes",
+            "expected": [
+              "My Hero Quest"
+            ]
+          },
+          {
+            "description": "Contains 'I am learning to code!' in p",
+            "type": "output_includes",
+            "expected": [
+              "I am learning to code!"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-2",
+        "title": "2. Buttons & Styling with CSS",
+        "badge": "Design",
+        "duration": "7 min",
+        "concept": "### Adding Style with CSS\nYou can add colors, rounded corners, and glowing buttons using CSS:\n\n```html\n<button style=\"background-color: #38bdf8; color: #000; padding: 10px 20px; border-radius: 12px; font-weight: bold;\">\n  Launch Rocket 🚀\n</button>\n```",
+        "task": "Create a `<button>` with style `background-color: gold; color: black;` and button text `Claim Reward ✨`.",
+        "starterCode": "<button style=\"background-color: blue; color: white;\">\n  Click\n</button>\n",
+        "solution": "<button style=\"background-color: gold; color: black; font-weight: bold; padding: 8px 16px; border-radius: 8px;\">\n  Claim Reward ✨\n</button>",
+        "hints": [
+          "Set background-color: gold; and text 'Claim Reward ✨'"
+        ],
+        "tests": [
+          {
+            "description": "Button contains 'Claim Reward'",
+            "type": "output_includes",
+            "expected": [
+              "Claim Reward"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "html-lesson-3",
+        "title": "3. The Hero Profile Card",
+        "badge": "Card Design",
+        "duration": "10 min",
+        "concept": "### Creating Card Containers `<div>`\nA `<div>` is like a cardboard box that holds text, buttons, and images together:\n\n```html\n<div style=\"background: #1e293b; color: white; padding: 20px; border-radius: 16px; text-align: center;\">\n  <h2>Hero Name</h2>\n  <p>Level: 10</p>\n</div>\n```",
+        "task": "Build a hero card container with a `<h2>` displaying `Cyber Knight` and a `<p>` displaying `Power Level: 9000`.",
+        "starterCode": "<div style=\"background: #1e293b; color: white; padding: 16px; border-radius: 12px;\">\n  <!-- Add your h2 and p here -->\n</div>\n",
+        "solution": "<div style=\"background: #1e293b; color: white; padding: 16px; border-radius: 12px;\">\n  <h2>Cyber Knight</h2>\n  <p>Power Level: 9000</p>\n</div>",
+        "hints": [
+          "Add <h2>Cyber Knight</h2> and <p>Power Level: 9000</p>"
+        ],
+        "tests": [
+          {
+            "description": "Card contains Cyber Knight and Power Level: 9000",
+            "type": "output_includes",
+            "expected": [
+              "Cyber Knight",
+              "Power Level: 9000"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

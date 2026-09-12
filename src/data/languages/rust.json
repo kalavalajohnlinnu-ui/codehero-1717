@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rust-mod-1",
+    "title": "Realm 1: The Armor of Safety",
+    "icon": "ShieldAlert",
+    "description": "Learn the world's most admired language: Rust, immutability, and blazing speed.",
+    "lessons": [
+      {
+        "id": "rust-lesson-1",
+        "title": "1. Hello, Ferris!",
+        "badge": "Safe Speed",
+        "duration": "6 min",
+        "concept": "### Welcome to Rust! 🦀\nRust is voted the most loved programming language year after year! It offers C++ speeds without memory crashes.\n\nIn Rust, functions start with `fn` and prints use `println!` with an exclamation mark:\n\n```rust\nfn main() {\n    println!(\"Hello from Rust!\");\n}\n```",
+        "task": "Print `Welcome to Rust Hero!` using `println!(\"Welcome to Rust Hero!\");`.",
+        "starterCode": "fn main() {\n    println!(\"Hello, World!\");\n}\n",
+        "solution": "fn main() {\n    println!(\"Welcome to Rust Hero!\");\n}",
+        "hints": [
+          "Change 'Hello, World!' to 'Welcome to Rust Hero!'"
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Welcome to Rust Hero!'",
+            "type": "output_match",
+            "expected": "Welcome to Rust Hero!"
+          }
+        ]
+      },
+      {
+        "id": "rust-lesson-2",
+        "title": "2. Immutable by Default (`let mut`)",
+        "badge": "Immutability",
+        "duration": "8 min",
+        "concept": "### The Power of Immutability\nIn Rust, all variables are locked (immutable) by default! To change a value, you must write `let mut`:\n\n```rust\nlet mut shield = 50;\nshield = shield + 25;\nprintln!(\"Shield: {}\", shield);\n```",
+        "task": "Create `let mut shield = 50;`, add 25 to it, and print with `println!(\"{}\", shield);`.",
+        "starterCode": "fn main() {\n    let mut shield = 50;\n    shield = shield + 25;\n    println!(\"{}\", shield);\n}\n",
+        "solution": "fn main() {\n    let mut shield = 50;\n    shield = shield + 25;\n    println!(\"{}\", shield);\n}",
+        "hints": [
+          "50 + 25 = 75"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 75",
+            "type": "output_match",
+            "expected": "75"
+          }
+        ]
+      }
+    ]
+  }
+]

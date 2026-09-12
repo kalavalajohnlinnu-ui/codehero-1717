@@ -1,0 +1,54 @@
+[
+  {
+    "id": "c-mod-1",
+    "title": "Realm 1: The Clockwork Core",
+    "icon": "Cpu",
+    "description": "Explore printf, memory variables, and the power of low-level speed.",
+    "lessons": [
+      {
+        "id": "c-lesson-1",
+        "title": "1. Hello, C!",
+        "badge": "Core Systems",
+        "duration": "6 min",
+        "concept": "### Welcome to C! ⚙️\nC is the mother of modern programming languages. Windows, macOS, Linux, and 3D game engines are built on C!\n\n```c\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello from C!\\n\");\n    return 0;\n}\n```",
+        "task": "Modify the printf statement to print `Welcome to C Hero!\\n`.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n",
+        "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Welcome to C Hero!\\n\");\n    return 0;\n}",
+        "hints": [
+          "Change 'Hello, World!' to 'Welcome to C Hero!'"
+        ],
+        "tests": [
+          {
+            "description": "Prints 'Welcome to C Hero!'",
+            "type": "output_includes",
+            "expected": [
+              "Welcome to C Hero!"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c-lesson-2",
+        "title": "2. Memory Slots & Variables",
+        "badge": "Memory",
+        "duration": "8 min",
+        "concept": "### Types in C\nIn C, every variable must state its exact memory type:\n- `int`: whole number\n- `float`: decimal\n\n```c\nint health = 100;\nprintf(\"HP: %d\\n\", health); // %d formats an integer!\n```",
+        "task": "Create an integer variable `int speed = 88;` and print it using `printf(\"Speed: %d\\n\", speed);`.",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    int speed = 88;\n    printf(\"Speed: %d\\n\", speed);\n    return 0;\n}\n",
+        "solution": "#include <stdio.h>\n\nint main() {\n    int speed = 88;\n    printf(\"Speed: %d\\n\", speed);\n    return 0;\n}",
+        "hints": [
+          "The code is ready to test! Click Run Spell to verify!"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'Speed: 88'",
+            "type": "output_includes",
+            "expected": [
+              "Speed: 88"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "js-mod-1",
+    "title": "Realm 1: The Spark of the Web",
+    "icon": "Terminal",
+    "description": "Master console output, variables with let and const, and template strings.",
+    "lessons": [
+      {
+        "id": "js-lesson-1",
+        "title": "1. Hello, JavaScript!",
+        "badge": "Web Basics",
+        "duration": "5 min",
+        "concept": "### Welcome to JavaScript! ⚡\nJavaScript is the programming language that powers every interactive website on the planet.\n\nIn JavaScript, we use **`console.log()`** to print messages to the console.\n\n```javascript\nconsole.log(\"Hello, Web Hero!\");\n```\n\nUnlike Python, JavaScript uses parentheses `()` and usually ends lines with a semicolon `;`.",
+        "task": "Write a `console.log()` command that prints: `Welcome to JavaScript Hero!` exactly as shown.",
+        "starterCode": "// Write your code below and click Run Spell:\nconsole.log(\"Hello, World!\");\n",
+        "solution": "console.log(\"Welcome to JavaScript Hero!\");",
+        "hints": [
+          "Change 'Hello, World!' to 'Welcome to JavaScript Hero!'",
+          "Ensure quotes are closed properly."
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'Welcome to JavaScript Hero!'",
+            "type": "output_match",
+            "expected": "Welcome to JavaScript Hero!"
+          }
+        ]
+      },
+      {
+        "id": "js-lesson-2",
+        "title": "2. Variables: let vs const",
+        "badge": "Storage",
+        "duration": "7 min",
+        "concept": "### Storing Values in JavaScript\nIn modern JavaScript, we create variables using:\n- **`let`**: When a value can change later (`let score = 0; score = 10;`).\n- **`const`**: For constants that never change (`const maxLives = 3;`).\n\n```javascript\nlet heroName = \"Sparky\";\nlet coins = 50;\nconst level = 1;\n\nconsole.log(heroName);\nconsole.log(coins);\n```",
+        "task": "Declare a variable `let heroName = \"Volt\";` and a variable `let power = 900;`. Print both using `console.log()`.",
+        "starterCode": "// Declare heroName and power:\nlet heroName = \"\";\nlet power = 0;\n\nconsole.log(heroName);\nconsole.log(power);\n",
+        "solution": "let heroName = \"Volt\";\nlet power = 900;\nconsole.log(heroName);\nconsole.log(power);",
+        "hints": [
+          "Set heroName = 'Volt' and power = 900."
+        ],
+        "tests": [
+          {
+            "description": "heroName is 'Volt' and power is 900",
+            "type": "var_check",
+            "vars": {
+              "heroName": "Volt",
+              "power": 900
+            }
+          },
+          {
+            "description": "Prints both Volt and 900",
+            "type": "output_includes",
+            "expected": [
+              "Volt",
+              "900"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "js-lesson-3",
+        "title": "3. Template Literals (`${}`)",
+        "badge": "String Magic",
+        "duration": "7 min",
+        "concept": "### Backticks & Template Literals\nInstead of clunky `+` signs, JavaScript lets you combine strings easily with backticks `` ` `` and `${variable}`:\n\n```javascript\nconst player = \"Alex\";\nconst score = 450;\n\nconsole.log(`Hero ${player} has ${score} points!`);\n```",
+        "task": "Given `const hero = \"Sparky\";` and `const gems = 15;`,\nUse backticks to print: `Sparky collected 15 gems!`.",
+        "starterCode": "const hero = \"Sparky\";\nconst gems = 15;\n\n// Use template literals:\nconsole.log(``);\n",
+        "solution": "const hero = \"Sparky\";\nconst gems = 15;\nconsole.log(`${hero} collected ${gems} gems!`);",
+        "hints": [
+          "Use `${hero} collected ${gems} gems!`"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'Sparky collected 15 gems!'",
+            "type": "output_match",
+            "expected": "Sparky collected 15 gems!"
+          }
+        ]
+      },
+      {
+        "id": "js-lesson-4",
+        "title": "4. Decision Making (if / else & ===)",
+        "badge": "Logic",
+        "duration": "8 min",
+        "concept": "### If Statements in JavaScript\nIn JavaScript, we use triple equals **`===`** for strict equality:\n\n```javascript\nlet health = 0;\n\nif (health > 0) {\n  console.log(\"Still fighting!\");\n} else {\n  console.log(\"Game Over!\");\n}\n```",
+        "task": "Check if `let mana = 50;` is greater than or equal to 30. If so, print `Spell ready!`. Otherwise print `Need mana.`. ",
+        "starterCode": "let mana = 50;\n\n// Add if / else:\nif (mana >= 30) {\n  \n} else {\n  \n}\n",
+        "solution": "let mana = 50;\nif (mana >= 30) {\n  console.log(\"Spell ready!\");\n} else {\n  console.log(\"Need mana.\");\n}",
+        "hints": [
+          "Print 'Spell ready!' inside the if block."
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'Spell ready!'",
+            "type": "output_match",
+            "expected": "Spell ready!"
+          }
+        ]
+      },
+      {
+        "id": "js-lesson-5",
+        "title": "5. Arrays & Push / Pop",
+        "badge": "Collections",
+        "duration": "8 min",
+        "concept": "### JavaScript Arrays `[]`\nAn array is a list of items:\n\n```javascript\nconst inventory = [\"Sword\", \"Shield\"];\ninventory.push(\"Magic Wand\"); // Adds to end\nconsole.log(inventory[0]); // 'Sword'\nconsole.log(inventory.length); // 3\n```",
+        "task": "Start with `const team = [\"Pikachu\", \"Charmander\"];`. Use `team.push(\"Squirtle\");` to add Squirtle, then print `team.length`.",
+        "starterCode": "const team = [\"Pikachu\", \"Charmander\"];\n\n// Push Squirtle and print length:\n\n",
+        "solution": "const team = [\"Pikachu\", \"Charmander\"];\nteam.push(\"Squirtle\");\nconsole.log(team.length);",
+        "hints": [
+          "team.push('Squirtle'); then console.log(team.length);"
+        ],
+        "tests": [
+          {
+            "description": "Prints 3",
+            "type": "output_match",
+            "expected": "3"
+          }
+        ]
+      },
+      {
+        "id": "js-lesson-6",
+        "title": "6. Arrow Functions",
+        "badge": "Modern JS",
+        "duration": "9 min",
+        "concept": "### Modern Arrow Functions `=>`\nArrow functions are clean and concise ways to write functions:\n\n```javascript\nconst double = (n) => n * 2;\nconsole.log(double(5)); // 10\n```",
+        "task": "Create an arrow function named `add` that takes `(a, b)` and returns `a + b`. Call `add(10, 20)` and print the result.",
+        "starterCode": "// Create arrow function add:\nconst add = (a, b) => \n\nconsole.log(add(10, 20));\n",
+        "solution": "const add = (a, b) => a + b;\nconsole.log(add(10, 20));",
+        "hints": [
+          "const add = (a, b) => a + b;"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 30",
+            "type": "output_match",
+            "expected": "30"
+          }
+        ]
+      }
+    ]
+  }
+]

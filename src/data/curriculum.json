@@ -1,0 +1,954 @@
+[
+  {
+    "id": "mod-1",
+    "title": "Module 1: The First Spark",
+    "icon": "Terminal",
+    "description": "Understand the Python mental model, execute your first command, and master comments.",
+    "lessons": [
+      {
+        "id": "lesson-1",
+        "title": "1. Hello, Python!",
+        "badge": "Foundation",
+        "duration": "5 min",
+        "concept": "### Welcome to Python! 🐍\nPython is one of the world's most popular, human-readable programming languages. Created by Guido van Rossum, it is designed around simplicity and readability.\n\nIn Python, the **`print()`** function displays whatever you give it onto your terminal or screen.\n\n```python\n# This sends the message inside quotes to the output console\nprint(\"Hello, World!\")\n```\n\n#### Rules for Strings:\n- Text is called a **string** and must be wrapped in quotes (`\"...\"` or `'...'`).\n- Python is case-sensitive: `print` works, but `Print` or `PRINT` will cause a `NameError`!",
+        "task": "Write a program that uses `print()` to output:\n`Welcome to Python Mastery!` exactly as shown.",
+        "starterCode": "# Type your code below and click Run & Test!\nprint(\"Hello, World!\")\n",
+        "solution": "print(\"Welcome to Python Mastery!\")",
+        "hints": [
+          "Replace 'Hello, World!' with 'Welcome to Python Mastery!' inside the print statement.",
+          "Ensure the punctuation and capitalization match exactly: 'Welcome to Python Mastery!'.",
+          "Final code: print(\"Welcome to Python Mastery!\")"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'Welcome to Python Mastery!'",
+            "type": "output_match",
+            "expected": "Welcome to Python Mastery!"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2",
+        "title": "2. Comments & Clean Code",
+        "badge": "Readability",
+        "duration": "5 min",
+        "concept": "### Speaking to Humans: Comments\nComputers read code to execute it. Humans read code to understand it.\n\nIn Python, anything following a **`#`** symbol is a **comment**. The Python interpreter completely ignores comments when running your program.\n\n```python\n# This is a single-line comment. Python ignores this!\nprint(\"Python runs this line!\")\n\n\"\"\"\nThis is a multi-line string / comment.\nUseful for long explanations or documentation.\n\"\"\"\n```\n\n#### Why Comments Matter:\n1. Explain **why** code was written a certain way.\n2. Temporarily disable a line of code during debugging.",
+        "task": "Uncomment the hidden victory message by removing the `#` symbol in front of it so that it prints `I am ready to master Python!`.",
+        "starterCode": "# Fix this code:\n# print(\"This line is commented out!\")\n# print(\"I am ready to master Python!\")\n",
+        "solution": "print(\"I am ready to master Python!\")",
+        "hints": [
+          "Remove the '#' and the space at the beginning of the line with 'I am ready to master Python!'.",
+          "Make sure you keep the other line commented or delete it.",
+          "Target line: print(\"I am ready to master Python!\")"
+        ],
+        "tests": [
+          {
+            "description": "Prints 'I am ready to master Python!'",
+            "type": "output_match",
+            "expected": "I am ready to master Python!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-2",
+    "title": "Module 2: Variables & Data Types",
+    "icon": "Layers",
+    "description": "Store information in memory, manipulate numbers, inspect types, and master strings.",
+    "lessons": [
+      {
+        "id": "lesson-3",
+        "title": "3. Variables: Memory Boxes",
+        "badge": "Core",
+        "duration": "7 min",
+        "concept": "### What is a Variable?\nThink of a variable as a labeled storage box in your computer's memory. You assign a value to a variable using the assignment operator **`=`**.\n\n```python\nplayer_name = \"Aria\"\nhealth = 100\nlevel = 1\n\nprint(player_name)\nprint(health)\n```\n\n#### Variable Naming Rules:\n- Names can contain letters, numbers, and underscores (`_`).\n- Cannot start with a number (e.g. `1player` is illegal, `player_1` is good).\n- In Python, we use **snake_case**: lowercase words separated by underscores (e.g. `user_age`, `total_score`).",
+        "task": "Create a variable named `player_name` with value `\"Shadow\"` and a variable `score` with value `950`. Print both variables on separate lines.",
+        "starterCode": "# Define your variables and print them:\nplayer_name = \"\"\nscore = 0\n\nprint(player_name)\nprint(score)\n",
+        "solution": "player_name = \"Shadow\"\nscore = 950\nprint(player_name)\nprint(score)",
+        "hints": [
+          "Set player_name = 'Shadow' and score = 950.",
+          "Print player_name first, then print score on the next line.",
+          "Notice how variables do not need quotes when passed into print()!"
+        ],
+        "tests": [
+          {
+            "description": "Checks player_name is 'Shadow' and score is 950",
+            "type": "var_check",
+            "vars": {
+              "player_name": "Shadow",
+              "score": 950
+            }
+          },
+          {
+            "description": "Outputs both values",
+            "type": "output_includes",
+            "expected": [
+              "Shadow",
+              "950"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lesson-4",
+        "title": "4. Numbers & Arithmetic",
+        "badge": "Math",
+        "duration": "8 min",
+        "concept": "### Working with Numbers\nPython has two main number types:\n1. **Integers (`int`)**: Whole numbers like `10`, `-5`, `0`.\n2. **Floats (`float`)**: Numbers with decimal points like `3.14`, `-0.5`.\n\n#### Python Arithmetic Operators:\n- **`+`** Addition (`10 + 5 = 15`)\n- **`-`** Subtraction (`10 - 4 = 6`)\n- **`*`** Multiplication (`3 * 4 = 12`)\n- **`/`** Division (always produces a float: `10 / 2 = 5.0`)\n- **`//`** Floor Division (rounds down to integer: `10 // 3 = 3`)\n- **`%`** Modulo (remainder: `10 % 3 = 1`)\n- **`**`** Exponent / Power (`2 ** 3 = 8`)",
+        "task": "You went to dinner! The meal cost is `80` and tip is `15`.\n1. Calculate `total = meal + tip`\n2. Split it equally between 2 people: `per_person = total / 2`\n3. Print `per_person`.",
+        "starterCode": "meal = 80\ntip = 15\n\n# 1. Calculate total\ntotal = \n\n# 2. Calculate per_person\nper_person = \n\nprint(per_person)\n",
+        "solution": "meal = 80\ntip = 15\ntotal = meal + tip\nper_person = total / 2\nprint(per_person)",
+        "hints": [
+          "Set total = meal + tip",
+          "Set per_person = total / 2",
+          "per_person will be 47.5"
+        ],
+        "tests": [
+          {
+            "description": "total should be 95 and per_person should be 47.5",
+            "type": "var_check",
+            "vars": {
+              "total": 95,
+              "per_person": 47.5
+            }
+          },
+          {
+            "description": "Prints 47.5",
+            "type": "output_match",
+            "expected": "47.5"
+          }
+        ]
+      },
+      {
+        "id": "lesson-5",
+        "title": "5. String Superpowers",
+        "badge": "Text",
+        "duration": "8 min",
+        "concept": "### Manipulating Strings\nStrings come with built-in superpower methods:\n\n```python\nmsg = \"  python rocks!  \"\n\nprint(msg.strip())       # \"python rocks!\" (removes outer spaces)\nprint(msg.upper())       # \"  PYTHON ROCKS!  \"\nprint(msg.lower())       # \"  python rocks!  \"\nprint(msg.title())       # \"  Python Rocks!  \"\nprint(msg.replace(\"rocks\", \"rules\")) # \"  python rules!  \"\nprint(len(msg))          # Counts character length\n```\n\n#### String Slicing:\nYou can grab parts of a string with brackets `[start:end]`:\n```python\nword = \"Python\"\nprint(word[0])    # 'P' (First character, 0-indexed!)\nprint(word[0:3])  # 'Pyt' (From index 0 up to, but not including, index 3)\nprint(word[-1])   # 'n' (Last character)\n```",
+        "task": "You receive a messy email input: `raw_email = \"  USER@EXAMPLE.COM  \"`.\n1. Clean it: remove leading/trailing spaces and make it lowercase. Store this in `clean_email`.\n2. Print `clean_email`.",
+        "starterCode": "raw_email = \"  USER@EXAMPLE.COM  \"\n\n# Clean the email:\nclean_email = \n\nprint(clean_email)\n",
+        "solution": "raw_email = \"  USER@EXAMPLE.COM  \"\nclean_email = raw_email.strip().lower()\nprint(clean_email)",
+        "hints": [
+          "You can chain methods: raw_email.strip().lower()",
+          "Or do it in two steps: temp = raw_email.strip(), then clean_email = temp.lower()",
+          "The expected output is 'user@example.com'"
+        ],
+        "tests": [
+          {
+            "description": "clean_email is 'user@example.com'",
+            "type": "var_check",
+            "vars": {
+              "clean_email": "user@example.com"
+            }
+          },
+          {
+            "description": "Prints 'user@example.com'",
+            "type": "output_match",
+            "expected": "user@example.com"
+          }
+        ]
+      },
+      {
+        "id": "lesson-6",
+        "title": "6. Booleans & Type Conversion",
+        "badge": "Types",
+        "duration": "7 min",
+        "concept": "### Truth Values & Converting Types\nA **Boolean** has only two possible values: **`True`** or **`False`** (capitalized!).\n\n#### Type Conversion (Casting):\nWhen you read data from files or user input, numbers often arrive as strings (`\"42\"`). You must convert them:\n- `int(\"42\")` ➔ 42\n- `float(\"3.14\")` ➔ 3.14\n- `str(100)` ➔ \"100\"\n- `bool(1)` ➔ True (0 is False, empty strings are False)\n\n```python\n# Check type with type()\nx = 50\nprint(type(x))  # <class 'int'>\n```",
+        "task": "Convert the string `price_str = \"45.50\"` into a float `price_num`, and convert `quantity_str = \"4\"` into an integer `quantity_num`.\nCompute `total_cost = price_num * quantity_num` and print `total_cost`.",
+        "starterCode": "price_str = \"45.50\"\nquantity_str = \"4\"\n\n# Convert types and compute:\nprice_num = \nquantity_num = \ntotal_cost = \n\nprint(total_cost)\n",
+        "solution": "price_str = \"45.50\"\nquantity_str = \"4\"\nprice_num = float(price_str)\nquantity_num = int(quantity_str)\ntotal_cost = price_num * quantity_num\nprint(total_cost)",
+        "hints": [
+          "Use float(price_str) to convert to float",
+          "Use int(quantity_str) to convert to integer",
+          "45.50 * 4 = 182.0"
+        ],
+        "tests": [
+          {
+            "description": "total_cost is 182.0",
+            "type": "var_check",
+            "vars": {
+              "total_cost": 182.0
+            }
+          },
+          {
+            "description": "Outputs 182.0",
+            "type": "output_match",
+            "expected": "182.0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-3",
+    "title": "Module 3: Making Decisions (Conditionals)",
+    "icon": "GitBranch",
+    "description": "Direct the flow of your program using if, elif, else, and logical expressions.",
+    "lessons": [
+      {
+        "id": "lesson-7",
+        "title": "7. The if & else Statements",
+        "badge": "Logic",
+        "duration": "8 min",
+        "concept": "### Making Choices in Code\nPrograms make decisions using `if` and `else`. Notice the **colon `:`** and the **indentation (4 spaces)**:\n\n```python\nage = 18\n\nif age >= 18:\n    print(\"You are eligible to vote!\")\nelse:\n    print(\"Too young to vote.\")\n```\n\n#### Comparison Operators:\n- `==` Equal to (5 == 5 is True)\n- `!=` Not equal to (5 != 3 is True)\n- `>` Greater than\n- `<` Less than\n- `>=` Greater than or equal to\n- `<=` Less than or equal to\n\n> ⚠️ **Common Mistake:** Use `==` to compare values, and single `=` to assign variables!",
+        "task": "Check if `temperature = 32`. If temperature is greater than or equal to 30, print `\"It is hot outside!\"`. Otherwise print `\"Nice weather.\"`. ",
+        "starterCode": "temperature = 32\n\n# Add your if / else logic:\n\n",
+        "solution": "temperature = 32\nif temperature >= 30:\n    print(\"It is hot outside!\")\nelse:\n    print(\"Nice weather.\")",
+        "hints": [
+          "Write 'if temperature >= 30:' followed by an indented print.",
+          "Write 'else:' followed by an indented print.",
+          "Make sure you indent 4 spaces inside the blocks."
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'It is hot outside!' for temp 32",
+            "type": "output_match",
+            "expected": "It is hot outside!"
+          }
+        ]
+      },
+      {
+        "id": "lesson-8",
+        "title": "8. Chained Conditions with elif",
+        "badge": "Conditionals",
+        "duration": "8 min",
+        "concept": "### Multiple Branches with elif\nWhen you have more than two outcomes, use **`elif`** (short for \"else if\"):\n\n```python\nscore = 85\n\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\n\nprint(grade)\n```\n\nPython checks conditions from top to bottom. The first condition that evaluates to True runs, and all subsequent branches are skipped!",
+        "task": "Given `score = 88`, determine the `grade`:\n- 90 or above: \"A\"\n- 80 to 89: \"B\"\n- 70 to 79: \"C\"\n- Below 70: \"Needs Improvement\"\nAssign the result to variable `grade` and print it.",
+        "starterCode": "score = 88\ngrade = \"\"\n\n# Write if-elif-else logic here:\n\n\nprint(grade)\n",
+        "solution": "score = 88\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"Needs Improvement\"\nprint(grade)",
+        "hints": [
+          "Use if score >= 90: grade = 'A'",
+          "elif score >= 80: grade = 'B'",
+          "For score = 88, grade will be 'B'"
+        ],
+        "tests": [
+          {
+            "description": "grade should be 'B'",
+            "type": "var_check",
+            "vars": {
+              "grade": "B"
+            }
+          },
+          {
+            "description": "Outputs 'B'",
+            "type": "output_match",
+            "expected": "B"
+          }
+        ]
+      },
+      {
+        "id": "lesson-9",
+        "title": "9. Logical Operators (and, or, not)",
+        "badge": "Boolean Logic",
+        "duration": "8 min",
+        "concept": "### Combining Conditions\nYou can combine multiple conditions using Python's readable logical keywords:\n\n- **`and`**: Returns True only if **both** sides are True.\n- **`or`**: Returns True if **at least one** side is True.\n- **`not`**: Reverses the boolean value (not True is False).\n\n```python\nhas_ticket = True\nhas_id = True\nis_banned = False\n\nif has_ticket and has_id and not is_banned:\n    print(\"Welcome to the concert!\")\n```",
+        "task": "A user wants access to the VIP lounge:\n`has_vip_pass = True` and `is_registered = False`.\nAccess is granted if `has_vip_pass` is True OR `is_registered` is True.\nCreate a boolean variable `access_granted` using the `or` operator, and print `access_granted`.",
+        "starterCode": "has_vip_pass = True\nis_registered = False\n\n# Set access_granted using 'or':\naccess_granted = \n\nprint(access_granted)\n",
+        "solution": "has_vip_pass = True\nis_registered = False\naccess_granted = has_vip_pass or is_registered\nprint(access_granted)",
+        "hints": [
+          "access_granted = has_vip_pass or is_registered",
+          "Since has_vip_pass is True, access_granted evaluates to True!"
+        ],
+        "tests": [
+          {
+            "description": "access_granted is True",
+            "type": "var_check",
+            "vars": {
+              "access_granted": true
+            }
+          },
+          {
+            "description": "Prints True",
+            "type": "output_match",
+            "expected": "True"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-4",
+    "title": "Module 4: Repetition & Loops",
+    "icon": "Repeat",
+    "description": "Automate repetitive tasks with while and for loops, range(), and loop control statements.",
+    "lessons": [
+      {
+        "id": "lesson-10",
+        "title": "10. The while Loop",
+        "badge": "Iteration",
+        "duration": "8 min",
+        "concept": "### Repeating While a Condition is True\nA **`while`** loop keeps executing its block as long as its condition remains True.\n\n```python\ncount = 1\nwhile count <= 3:\n    print(\"Count is:\", count)\n    count = count + 1  # Or count += 1\n```\n\n> ⚠️ **Caution:** Always ensure the loop variable changes toward the exit condition, otherwise you create an **infinite loop**!",
+        "task": "Write a while loop that starts with `count = 3` and counts down to 1.\nIn each iteration, print `count`.\nAfter printing 1, the loop should end and print `\"Blastoff!\"`.",
+        "starterCode": "count = 3\n\n# Write the while loop:\n\n\nprint(\"Blastoff!\")\n",
+        "solution": "count = 3\nwhile count >= 1:\n    print(count)\n    count -= 1\nprint(\"Blastoff!\")",
+        "hints": [
+          "Use while count >= 1:",
+          "Inside the loop, print(count) and then decrement count -= 1",
+          "The blastoff print should be outside the loop (not indented)."
+        ],
+        "tests": [
+          {
+            "description": "Outputs countdown 3, 2, 1 and Blastoff!",
+            "type": "output_includes",
+            "expected": [
+              "3",
+              "2",
+              "1",
+              "Blastoff!"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lesson-11",
+        "title": "11. The for Loop & range()",
+        "badge": "Core Loop",
+        "duration": "8 min",
+        "concept": "### Iterating with for and range()\nThe **`for`** loop is Python's most common loop. The **`range()`** function generates a sequence of numbers:\n\n- `range(5)` ➔ 0, 1, 2, 3, 4 (starts at 0, stops before 5)\n- `range(1, 6)` ➔ 1, 2, 3, 4, 5 (from 1 up to 6)\n- `range(2, 11, 2)` ➔ 2, 4, 6, 8, 10 (start, stop, step!)\n\n```python\n# Summing numbers\ntotal = 0\nfor i in range(1, 5):\n    total += i\nprint(total) # 1 + 2 + 3 + 4 = 10\n```",
+        "task": "Calculate the sum of all numbers from `1` to `10` (inclusive) using a `for` loop and `range(1, 11)`.\nStore the sum in `total_sum` and print it.",
+        "starterCode": "total_sum = 0\n\n# Use a for loop with range(1, 11) to add each number to total_sum:\n\n\nprint(total_sum)\n",
+        "solution": "total_sum = 0\nfor num in range(1, 11):\n    total_sum += num\nprint(total_sum)",
+        "hints": [
+          "for num in range(1, 11):",
+          "    total_sum += num",
+          "The sum of 1 through 10 is 55."
+        ],
+        "tests": [
+          {
+            "description": "total_sum is 55",
+            "type": "var_check",
+            "vars": {
+              "total_sum": 55
+            }
+          },
+          {
+            "description": "Prints 55",
+            "type": "output_match",
+            "expected": "55"
+          }
+        ]
+      },
+      {
+        "id": "lesson-12",
+        "title": "12. Loop Controls: break & continue",
+        "badge": "Control Flow",
+        "duration": "8 min",
+        "concept": "### Controlling Loop Flow\nSometimes you need to alter a loop's normal flow:\n\n1. **`break`**: Immediately terminates the entire loop.\n2. **`continue`**: Skips the rest of the current iteration and jumps to the next one.\n\n```python\n# Example of break:\nfor num in range(1, 10):\n    if num == 4:\n        break  # Stops completely when num hits 4\n    print(num)  # Prints 1, 2, 3\n\n# Example of continue:\nfor num in range(1, 5):\n    if num == 3:\n        continue  # Skips 3\n    print(num)  # Prints 1, 2, 4\n```",
+        "task": "Given numbers `[10, 20, -5, 30, -1, 40]`, loop through the numbers.\nIf a number is negative (less than 0), skip it using `continue`.\nAdd non-negative numbers to `positive_sum`.\nPrint `positive_sum`.",
+        "starterCode": "numbers = [10, 20, -5, 30, -1, 40]\npositive_sum = 0\n\nfor n in numbers:\n    # Add continue condition:\n    \n    positive_sum += n\n\nprint(positive_sum)\n",
+        "solution": "numbers = [10, 20, -5, 30, -1, 40]\npositive_sum = 0\nfor n in numbers:\n    if n < 0:\n        continue\n    positive_sum += n\nprint(positive_sum)",
+        "hints": [
+          "Check: if n < 0: continue",
+          "This skips -5 and -1.",
+          "10 + 20 + 30 + 40 = 100"
+        ],
+        "tests": [
+          {
+            "description": "positive_sum is 100",
+            "type": "var_check",
+            "vars": {
+              "positive_sum": 100
+            }
+          },
+          {
+            "description": "Prints 100",
+            "type": "output_match",
+            "expected": "100"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-5",
+    "title": "Module 5: Collections I - Lists & Tuples",
+    "icon": "List",
+    "description": "Store ordered sequences of data, mutate lists with methods, and understand immutable tuples.",
+    "lessons": [
+      {
+        "id": "lesson-13",
+        "title": "13. Lists & Indexing",
+        "badge": "Data Structures",
+        "duration": "8 min",
+        "concept": "### Python Lists\nA **list** is an ordered, mutable collection of items wrapped in square brackets **`[]`**.\n\n```python\nfruits = [\"apple\", \"banana\", \"cherry\", \"date\"]\n\n# Indexing starts at 0!\nprint(fruits[0])   # 'apple'\nprint(fruits[2])   # 'cherry'\n\n# Negative indexing counts from the end!\nprint(fruits[-1])  # 'date' (last item)\nprint(fruits[-2])  # 'cherry' (second to last)\n```",
+        "task": "Given the list `colors = [\"red\", \"green\", \"blue\", \"yellow\", \"purple\"]`:\n1. Store the first color in `first_color`\n2. Store the last color using negative indexing in `last_color`\n3. Print `first_color` and `last_color`.",
+        "starterCode": "colors = [\"red\", \"green\", \"blue\", \"yellow\", \"purple\"]\n\n# Access elements:\nfirst_color = \nlast_color = \n\nprint(first_color)\nprint(last_color)\n",
+        "solution": "colors = [\"red\", \"green\", \"blue\", \"yellow\", \"purple\"]\nfirst_color = colors[0]\nlast_color = colors[-1]\nprint(first_color)\nprint(last_color)",
+        "hints": [
+          "colors[0] gets the first element ('red')",
+          "colors[-1] gets the last element ('purple')"
+        ],
+        "tests": [
+          {
+            "description": "first_color is 'red' and last_color is 'purple'",
+            "type": "var_check",
+            "vars": {
+              "first_color": "red",
+              "last_color": "purple"
+            }
+          },
+          {
+            "description": "Prints red and purple",
+            "type": "output_includes",
+            "expected": [
+              "red",
+              "purple"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lesson-14",
+        "title": "14. Modifying Lists (Methods)",
+        "badge": "Mutations",
+        "duration": "8 min",
+        "concept": "### List Methods\nLists are **mutable** (can be modified in place):\n\n```python\nitems = [\"sword\", \"shield\"]\n\nitems.append(\"potion\")       # Adds to the end: ['sword', 'shield', 'potion']\nitems.insert(0, \"helmet\")     # Inserts at index 0\nitems.remove(\"shield\")       # Removes first matching item\nremoved = items.pop()        # Removes & returns last item ('potion')\nitems.sort()                 # Sorts the list\nprint(len(items))            # Length of list\n```",
+        "task": "Start with `cart = [\"apple\", \"banana\"]`.\n1. Append `\"orange\"` to the cart.\n2. Insert `\"bread\"` at the beginning (index 0).\n3. Print `cart`.",
+        "starterCode": "cart = [\"apple\", \"banana\"]\n\n# Perform modifications:\n\n\nprint(cart)\n",
+        "solution": "cart = [\"apple\", \"banana\"]\ncart.append(\"orange\")\ncart.insert(0, \"bread\")\nprint(cart)",
+        "hints": [
+          "Use cart.append('orange')",
+          "Use cart.insert(0, 'bread')",
+          "Final list should be: ['bread', 'apple', 'banana', 'orange']"
+        ],
+        "tests": [
+          {
+            "description": "cart contains 4 items in proper order",
+            "type": "var_check",
+            "vars": {
+              "cart": [
+                "bread",
+                "apple",
+                "banana",
+                "orange"
+              ]
+            }
+          },
+          {
+            "description": "Outputs the list",
+            "type": "output_includes",
+            "expected": [
+              "bread",
+              "orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lesson-15",
+        "title": "15. Slicing & Immutable Tuples",
+        "badge": "Sequences",
+        "duration": "8 min",
+        "concept": "### Slicing & Tuples\n#### Advanced Slicing: `[start : stop : step]`\n```python\nnums = [0, 1, 2, 3, 4, 5, 6, 7]\nprint(nums[1:5])    # [1, 2, 3, 4]\nprint(nums[::2])    # [0, 2, 4, 6] (every 2nd item)\nprint(nums[::-1])   # [7, 6, 5, 4, 3, 2, 1, 0] (reverse!)\n```\n\n#### Tuples: Frozen Lists\nA **tuple** is created with parentheses **`()`**. Unlike lists, tuples are **immutable**—they cannot be changed after creation!\n```python\npoint = (10, 20)\n# point[0] = 15  # ERROR! Tuples cannot be modified.\nx, y = point    # Unpacking! x = 10, y = 20\n```",
+        "task": "Given `data = [1, 2, 3, 4, 5, 6]`:\n1. Use slice notation to create `reversed_data` in reverse order.\n2. Create a tuple `coords = (100, 250)` and unpack it into variables `pos_x` and `pos_y`.\n3. Print `pos_x` and `pos_y`.",
+        "starterCode": "data = [1, 2, 3, 4, 5, 6]\n\n# 1. Reverse data using slice:\nreversed_data = \n\n# 2. Define tuple coords and unpack:\ncoords = (100, 250)\npos_x, pos_y = \n\nprint(pos_x)\nprint(pos_y)\n",
+        "solution": "data = [1, 2, 3, 4, 5, 6]\nreversed_data = data[::-1]\ncoords = (100, 250)\npos_x, pos_y = coords\nprint(pos_x)\nprint(pos_y)",
+        "hints": [
+          "reversed_data = data[::-1]",
+          "pos_x, pos_y = coords",
+          "Prints 100 then 250"
+        ],
+        "tests": [
+          {
+            "description": "reversed_data is [6, 5, 4, 3, 2, 1]",
+            "type": "var_check",
+            "vars": {
+              "reversed_data": [
+                6,
+                5,
+                4,
+                3,
+                2,
+                1
+              ],
+              "pos_x": 100,
+              "pos_y": 250
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-6",
+    "title": "Module 6: Collections II - Dictionaries & Sets",
+    "icon": "Database",
+    "description": "Map key-value pairs with dictionaries and perform fast lookups and unique operations with sets.",
+    "lessons": [
+      {
+        "id": "lesson-16",
+        "title": "16. Dictionaries (Key-Value)",
+        "badge": "Key-Value",
+        "duration": "8 min",
+        "concept": "### Python Dictionaries\nA **dictionary** stores pairs of **keys** and **values** enclosed in curly braces **`{}`**.\n\n```python\nuser = {\n    \"name\": \"Leo\",\n    \"role\": \"Engineer\",\n    \"level\": 5\n}\n\n# Accessing values\nprint(user[\"name\"])      # 'Leo'\nprint(user.get(\"role\"))  # 'Engineer' (safe lookup: returns None if key missing)\n\n# Updating or adding keys\nuser[\"level\"] = 6         # Updates level\nuser[\"city\"] = \"Tokyo\"    # Adds new key\n```",
+        "task": "Create a dictionary named `inventory` with keys:\n- \"gold\": 50\n- \"potions\": 3\nIncrease gold by 25 (inventory[\"gold\"] += 25).\nPrint `inventory[\"gold\"]`.",
+        "starterCode": "# Create and update inventory:\ninventory = {\n    \n}\n\n# Increase gold:\n\nprint(inventory[\"gold\"])\n",
+        "solution": "inventory = {\n    \"gold\": 50,\n    \"potions\": 3\n}\ninventory[\"gold\"] += 25\nprint(inventory[\"gold\"])",
+        "hints": [
+          "Define inventory = {'gold': 50, 'potions': 3}",
+          "inventory['gold'] += 25",
+          "Expected output: 75"
+        ],
+        "tests": [
+          {
+            "description": "inventory['gold'] equals 75",
+            "type": "var_check",
+            "vars": {
+              "inventory": {
+                "gold": 75,
+                "potions": 3
+              }
+            }
+          },
+          {
+            "description": "Outputs 75",
+            "type": "output_match",
+            "expected": "75"
+          }
+        ]
+      },
+      {
+        "id": "lesson-17",
+        "title": "17. Looping Over Dictionaries",
+        "badge": "Dict Methods",
+        "duration": "8 min",
+        "concept": "### Iterating Through Dictionaries\nYou can loop through keys, values, or both simultaneously using **`.items()`**:\n\n```python\nprices = {\"apple\": 1.5, \"banana\": 0.75, \"mango\": 2.0}\n\n# Loop over keys and values\nfor item, price in prices.items():\n    print(item, \"costs $\", price)\n```",
+        "task": "Given `scores = {\"Alice\": 90, \"Bob\": 85, \"Charlie\": 95}`:\nCalculate the total score by summing all values in `scores.values()`.\nStore it in `total_score` and print it.",
+        "starterCode": "scores = {\"Alice\": 90, \"Bob\": 85, \"Charlie\": 95}\n\ntotal_score = 0\n# Loop through scores.values() and add each to total_score:\n\n\nprint(total_score)\n",
+        "solution": "scores = {\"Alice\": 90, \"Bob\": 85, \"Charlie\": 95}\ntotal_score = sum(scores.values())\nprint(total_score)",
+        "hints": [
+          "You can loop: for s in scores.values(): total_score += s",
+          "Or use the built-in: total_score = sum(scores.values())",
+          "90 + 85 + 95 = 270"
+        ],
+        "tests": [
+          {
+            "description": "total_score is 270",
+            "type": "var_check",
+            "vars": {
+              "total_score": 270
+            }
+          },
+          {
+            "description": "Outputs 270",
+            "type": "output_match",
+            "expected": "270"
+          }
+        ]
+      },
+      {
+        "id": "lesson-18",
+        "title": "18. Sets: Unique Collections",
+        "badge": "Set Theory",
+        "duration": "7 min",
+        "concept": "### Sets in Python\nA **`set`** is an unordered collection of **unique** elements. Duplicate entries are automatically eliminated!\n\n```python\ntags = {\"python\", \"coding\", \"python\", \"ai\"}\nprint(tags)  # {'python', 'coding', 'ai'}\n\n# Set operations:\nset_a = {1, 2, 3}\nset_b = {3, 4, 5}\n\nprint(set_a | set_b)  # Union: {1, 2, 3, 4, 5}\nprint(set_a & set_b)  # Intersection (common): {3}\nprint(set_a - set_b)  # Difference: {1, 2}\n```",
+        "task": "Given `list_with_dupes = [1, 2, 2, 3, 4, 4, 5]`:\n1. Convert it to a set `unique_set = set(list_with_dupes)`\n2. Check how many unique items there are using `len(unique_set)` and store in `count`\n3. Print `count`.",
+        "starterCode": "list_with_dupes = [1, 2, 2, 3, 4, 4, 5]\n\nunique_set = \ncount = \n\nprint(count)\n",
+        "solution": "list_with_dupes = [1, 2, 2, 3, 4, 4, 5]\nunique_set = set(list_with_dupes)\ncount = len(unique_set)\nprint(count)",
+        "hints": [
+          "Use set(list_with_dupes) to deduplicate",
+          "Use len(unique_set) to count elements",
+          "There are 5 unique numbers (1, 2, 3, 4, 5)"
+        ],
+        "tests": [
+          {
+            "description": "count is 5",
+            "type": "var_check",
+            "vars": {
+              "count": 5
+            }
+          },
+          {
+            "description": "Outputs 5",
+            "type": "output_match",
+            "expected": "5"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-7",
+    "title": "Module 7: Functions & Modular Code",
+    "icon": "Cpu",
+    "description": "Write reusable logic with def, understand parameters vs arguments, return values, and scope.",
+    "lessons": [
+      {
+        "id": "lesson-19",
+        "title": "19. Defining Functions",
+        "badge": "Reusability",
+        "duration": "9 min",
+        "concept": "### Functions: Reusable Recipes\nInstead of repeating code, package it into a function with the **`def`** keyword:\n\n```python\ndef greet(name):\n    return \"Hello, \" + name + \"!\"\n\n# Calling the function\nmessage = greet(\"Maya\")\nprint(message)  # \"Hello, Maya!\"\n```\n\n#### Key Concepts:\n- **Parameter**: The placeholder variable in definition (`name`).\n- **Argument**: The actual value passed in (`\"Maya\"`).\n- **`return`**: Sends the computed result back to the caller.",
+        "task": "Define a function named `square(n)` that takes a number `n` and returns its square (`n * n`).\nCall `result = square(7)` and print `result`.",
+        "starterCode": "# Define square function:\ndef square(n):\n    # return the square of n\n    pass\n\nresult = square(7)\nprint(result)\n",
+        "solution": "def square(n):\n    return n * n\n\nresult = square(7)\nprint(result)",
+        "hints": [
+          "Replace pass with: return n * n",
+          "7 * 7 is 49!"
+        ],
+        "tests": [
+          {
+            "description": "result equals 49",
+            "type": "var_check",
+            "vars": {
+              "result": 49
+            }
+          },
+          {
+            "description": "Outputs 49",
+            "type": "output_match",
+            "expected": "49"
+          }
+        ]
+      },
+      {
+        "id": "lesson-20",
+        "title": "20. Default Parameters",
+        "badge": "Clean APIs",
+        "duration": "8 min",
+        "concept": "### Default Parameter Values\nYou can supply fallback default values for function parameters:\n\n```python\ndef make_coffee(size=\"Medium\", milk=True):\n    return f\"{size} coffee with {'milk' if milk else 'no milk'}\"\n\nprint(make_coffee())                # Uses defaults: 'Medium coffee with milk'\nprint(make_coffee(size=\"Large\"))    # Overrides size\n```",
+        "task": "Create a function `calc_total(subtotal, tax_rate=0.10)` that returns `subtotal + (subtotal * tax_rate)`.\nCall `total_with_default = calc_total(100)` (using default tax).\nPrint `total_with_default`.",
+        "starterCode": "# Define function with default tax_rate:\ndef calc_total(subtotal, tax_rate=0.10):\n    pass\n\ntotal_with_default = calc_total(100)\nprint(total_with_default)\n",
+        "solution": "def calc_total(subtotal, tax_rate=0.10):\n    return subtotal + (subtotal * tax_rate)\n\ntotal_with_default = calc_total(100)\nprint(total_with_default)",
+        "hints": [
+          "Inside calc_total, write: return subtotal + (subtotal * tax_rate)",
+          "100 + (100 * 0.10) = 110.0"
+        ],
+        "tests": [
+          {
+            "description": "total_with_default is 110.0",
+            "type": "var_check",
+            "vars": {
+              "total_with_default": 110.0
+            }
+          },
+          {
+            "description": "Outputs 110.0",
+            "type": "output_match",
+            "expected": "110.0"
+          }
+        ]
+      },
+      {
+        "id": "lesson-21",
+        "title": "21. Variable Scope: Local vs Global",
+        "badge": "Architecture",
+        "duration": "8 min",
+        "concept": "### Variable Scope\nWhere a variable is created determines where it can be seen:\n\n- **Local Scope**: Variables created *inside* a function exist only during that function's execution.\n- **Global Scope**: Variables created in the main script are accessible everywhere.\n\n```python\nglobal_var = 100\n\ndef my_func():\n    local_var = 20\n    print(global_var)  # Works!\n\n# print(local_var)     # ERROR! NameError: name 'local_var' is not defined\n```",
+        "task": "Fix the broken code so that `get_bonus()` returns the calculated bonus without trying to assign directly to a nonexistent variable. Store the return value in `final_bonus` and print it.",
+        "starterCode": "base_salary = 50000\n\ndef get_bonus(salary):\n    bonus = salary * 0.15\n    return bonus\n\n# Call get_bonus with base_salary and assign to final_bonus:\nfinal_bonus = \n\nprint(final_bonus)\n",
+        "solution": "base_salary = 50000\ndef get_bonus(salary):\n    bonus = salary * 0.15\n    return bonus\n\nfinal_bonus = get_bonus(base_salary)\nprint(final_bonus)",
+        "hints": [
+          "Set final_bonus = get_bonus(base_salary)",
+          "50000 * 0.15 = 7500.0"
+        ],
+        "tests": [
+          {
+            "description": "final_bonus is 7500.0",
+            "type": "var_check",
+            "vars": {
+              "final_bonus": 7500.0
+            }
+          },
+          {
+            "description": "Outputs 7500.0",
+            "type": "output_match",
+            "expected": "7500.0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-8",
+    "title": "Module 8: Bulletproofing Code - Error Handling",
+    "icon": "ShieldAlert",
+    "description": "Catch and handle exceptions gracefully with try, except, finally, and understand tracebacks.",
+    "lessons": [
+      {
+        "id": "lesson-22",
+        "title": "22. Handling Exceptions (try & except)",
+        "badge": "Robustness",
+        "duration": "8 min",
+        "concept": "### Preventing Crashes with try & except\nWhen Python encounters an error, it raises an **Exception**. If uncaught, your program terminates immediately!\n\n```python\ntry:\n    number = int(\"not_a_number\")\nexcept ValueError:\n    print(\"That was not a valid number!\")\n```\n\nCommon Built-in Exceptions:\n- `ZeroDivisionError`: Dividing by zero\n- `ValueError`: Right type, inappropriate value (e.g. `int(\"abc\")`)\n- `IndexError`: List index out of bounds\n- `KeyError`: Dictionary key not found",
+        "task": "Write a safe division block:\nGiven `a = 10` and `b = 0`:\nUse `try...except ZeroDivisionError` to catch division by zero.\nIf an error occurs, set `result = \"Cannot divide by zero\"`.\nOtherwise set `result = a / b`.\nPrint `result`.",
+        "starterCode": "a = 10\nb = 0\nresult = \"\"\n\n# Write try-except block here:\n\n\nprint(result)\n",
+        "solution": "a = 10\nb = 0\ntry:\n    result = a / b\nexcept ZeroDivisionError:\n    result = \"Cannot divide by zero\"\nprint(result)",
+        "hints": [
+          "Put 'result = a / b' inside the try block.",
+          "Catch ZeroDivisionError and set result = 'Cannot divide by zero'",
+          "Since b is 0, the except block will execute!"
+        ],
+        "tests": [
+          {
+            "description": "result is 'Cannot divide by zero'",
+            "type": "var_check",
+            "vars": {
+              "result": "Cannot divide by zero"
+            }
+          },
+          {
+            "description": "Outputs 'Cannot divide by zero'",
+            "type": "output_match",
+            "expected": "Cannot divide by zero"
+          }
+        ]
+      },
+      {
+        "id": "lesson-23",
+        "title": "23. else, finally & Raising Errors",
+        "badge": "Defensive Coding",
+        "duration": "8 min",
+        "concept": "### Complete Error Handling\n- **`else`**: Runs ONLY if NO exceptions occurred in `try`.\n- **`finally`**: ALWAYS runs no matter what (great for cleaning up connections or files).\n- **`raise`**: Manually triggers an exception.\n\n```python\ndef set_age(age):\n    if age < 0:\n        raise ValueError(\"Age cannot be negative!\")\n    return age\n```",
+        "task": "Wrap the lookup of `\"missing_key\"` from `settings = {\"theme\": \"dark\"}` in a `try...except KeyError`.\nIn the except block, set `status = \"Default fallback applied\"`.\nPrint `status`.",
+        "starterCode": "settings = {\"theme\": \"dark\"}\nstatus = \"\"\n\n# Use try...except KeyError:\ntry:\n    val = settings[\"missing_key\"]\nexcept KeyError:\n    status = \"Default fallback applied\"\n\nprint(status)\n",
+        "solution": "settings = {\"theme\": \"dark\"}\ntry:\n    val = settings[\"missing_key\"]\nexcept KeyError:\n    status = \"Default fallback applied\"\nprint(status)",
+        "hints": [
+          "The starter code already has the structure! Just run and verify.",
+          "KeyError occurs when an accessed dictionary key does not exist."
+        ],
+        "tests": [
+          {
+            "description": "status is 'Default fallback applied'",
+            "type": "var_check",
+            "vars": {
+              "status": "Default fallback applied"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-9",
+    "title": "Module 9: Object-Oriented Programming (OOP)",
+    "icon": "Box",
+    "description": "Model real-world entities with classes, methods, the __init__ constructor, and inheritance.",
+    "lessons": [
+      {
+        "id": "lesson-24",
+        "title": "24. Classes & Objects",
+        "badge": "OOP Basics",
+        "duration": "9 min",
+        "concept": "### Classes: Blueprints for Objects\nA **class** is a blueprint (like architectural plans for a house). An **object** is an actual house built from that blueprint.\n\n```python\nclass Car:\n    pass\n\n# Creating an instance\nmy_car = Car()\nmy_car.color = \"Red\"\nprint(my_car.color)\n```",
+        "task": "Create a class named `Book`.\nInstantiate a book object named `my_book = Book()`.\nSet `my_book.title = \"Python Mastery\"` and `my_book.pages = 320`.\nPrint `my_book.title`.",
+        "starterCode": "# Define Book class and instantiate:\nclass Book:\n    pass\n\nmy_book = Book()\n# Set attributes:\n\n\nprint(my_book.title)\n",
+        "solution": "class Book:\n    pass\n\nmy_book = Book()\nmy_book.title = \"Python Mastery\"\nmy_book.pages = 320\nprint(my_book.title)",
+        "hints": [
+          "my_book.title = 'Python Mastery'",
+          "my_book.pages = 320"
+        ],
+        "tests": [
+          {
+            "description": "my_book has title 'Python Mastery' and pages 320",
+            "type": "output_match",
+            "expected": "Python Mastery"
+          }
+        ]
+      },
+      {
+        "id": "lesson-25",
+        "title": "25. The __init__ Method & self",
+        "badge": "Constructors",
+        "duration": "10 min",
+        "concept": "### The __init__ Constructor & self\nThe **`__init__()`** method runs automatically whenever a new object is instantiated.\nThe **`self`** parameter refers to the specific instance being created!\n\n```python\nclass Hero:\n    def __init__(self, name, hp):\n        self.name = name\n        self.hp = hp\n    \n    def take_damage(self, amount):\n        self.hp -= amount\n        return self.hp\n\nplayer = Hero(\"Aragorn\", 100)\nplayer.take_damage(25)\nprint(player.hp)  # 75\n```",
+        "task": "Create a `BankAccount` class:\n1. `__init__(self, owner, balance=0)`: assigns `self.owner` and `self.balance`\n2. `deposit(self, amount)`: adds amount to balance and returns `self.balance`\n3. Instantiate `acc = BankAccount(\"Alice\", 100)`\n4. Deposit 50\n5. Print `acc.balance`.",
+        "starterCode": "class BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n        \n    def deposit(self, amount):\n        # Add amount to self.balance and return it:\n        pass\n\nacc = BankAccount(\"Alice\", 100)\nacc.deposit(50)\nprint(acc.balance)\n",
+        "solution": "class BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n        \n    def deposit(self, amount):\n        self.balance += amount\n        return self.balance\n\nacc = BankAccount(\"Alice\", 100)\nacc.deposit(50)\nprint(acc.balance)",
+        "hints": [
+          "Inside deposit: self.balance += amount; return self.balance",
+          "100 + 50 = 150"
+        ],
+        "tests": [
+          {
+            "description": "acc.balance equals 150",
+            "type": "output_match",
+            "expected": "150"
+          }
+        ]
+      },
+      {
+        "id": "lesson-26",
+        "title": "26. Inheritance & super()",
+        "badge": "OOP Advanced",
+        "duration": "9 min",
+        "concept": "### Inheritance: Code Hierarchy\nInheritance lets a child class inherit all methods and attributes from a parent class:\n\n```python\nclass Animal:\n    def speak(self):\n        return \"Some sound\"\n\nclass Dog(Animal):\n    def speak(self):\n        return \"Woof!\"  # Overrides parent method!\n\ndog = Dog()\nprint(dog.speak())  # 'Woof!'\n```",
+        "task": "Create a child class `ElectricCar` that inherits from `Vehicle`.\nOverride `get_fuel_type()` in `ElectricCar` to return `\"Electricity\"`.\nInstantiate `tesla = ElectricCar()` and print `tesla.get_fuel_type()`.",
+        "starterCode": "class Vehicle:\n    def get_fuel_type(self):\n        return \"Gasoline\"\n\n# Define ElectricCar inheriting from Vehicle:\nclass ElectricCar(Vehicle):\n    pass\n\ntesla = ElectricCar()\nprint(tesla.get_fuel_type())\n",
+        "solution": "class Vehicle:\n    def get_fuel_type(self):\n        return \"Gasoline\"\n\nclass ElectricCar(Vehicle):\n    def get_fuel_type(self):\n        return \"Electricity\"\n\ntesla = ElectricCar()\nprint(tesla.get_fuel_type())",
+        "hints": [
+          "In ElectricCar, define: def get_fuel_type(self): return 'Electricity'"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'Electricity'",
+            "type": "output_match",
+            "expected": "Electricity"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-10",
+    "title": "Module 10: Pythonic Superpowers",
+    "icon": "Sparkles",
+    "description": "Master list comprehensions, f-strings, enumerate, zip, and idiomatic Python.",
+    "lessons": [
+      {
+        "id": "lesson-27",
+        "title": "27. List Comprehensions",
+        "badge": "Pythonic",
+        "duration": "8 min",
+        "concept": "### The Elegance of List Comprehensions\nList comprehensions provide a concise way to create new lists by transforming or filtering elements:\n\n```python\n# Standard loop:\nsquares = []\nfor x in range(5):\n    squares.append(x ** 2)\n\n# Pythonic List Comprehension:\nsquares = [x ** 2 for x in range(5)]\n# [0, 1, 4, 9, 16]\n\n# With filtering condition:\nevens = [x for x in range(10) if x % 2 == 0]\n# [0, 2, 4, 6, 8]\n```",
+        "task": "Create a list comprehension that takes `numbers = [1, 2, 3, 4, 5, 6, 7, 8]` and returns only the doubles (`x * 2`) of numbers greater than 4.\nStore this in `doubled_high` and print it.",
+        "starterCode": "numbers = [1, 2, 3, 4, 5, 6, 7, 8]\n\n# Create list comprehension:\ndoubled_high = \n\nprint(doubled_high)\n",
+        "solution": "numbers = [1, 2, 3, 4, 5, 6, 7, 8]\ndoubled_high = [x * 2 for x in numbers if x > 4]\nprint(doubled_high)",
+        "hints": [
+          "Syntax: [x * 2 for x in numbers if x > 4]",
+          "Numbers greater than 4 are 5, 6, 7, 8.",
+          "Doubles will be [10, 12, 14, 16]"
+        ],
+        "tests": [
+          {
+            "description": "doubled_high is [10, 12, 14, 16]",
+            "type": "var_check",
+            "vars": {
+              "doubled_high": [
+                10,
+                12,
+                14,
+                16
+              ]
+            }
+          },
+          {
+            "description": "Outputs list",
+            "type": "output_match",
+            "expected": "[10, 12, 14, 16]"
+          }
+        ]
+      },
+      {
+        "id": "lesson-28",
+        "title": "28. F-Strings & Formatting",
+        "badge": "String Magic",
+        "duration": "8 min",
+        "concept": "### Modern String Formatting: f-strings\nIntroduced in Python 3.6, **f-strings** are fast and readable:\n\n```python\nname = \"Kiran\"\npoints = 88.547\n\n# Interpolation and decimal formatting:\nmsg = f\"Player {name} scored {points:.2f} points!\"\nprint(msg)  # 'Player Kiran scored 88.55 points!'\n```\n\nFormatting Modifiers:\n- `:.2f`: 2 decimal places\n- `:>10`: Right-align in 10 spaces\n- `:, `: Adds commas to large numbers (e.g. 1,000,000)",
+        "task": "Format the report message:\nGiven `product = \"Laptop\"`, `cost = 899.95`, and `discount = 0.15`.\nCalculate `final_price = cost * (1 - discount)`.\nUsing an f-string, create `summary = f\"{product} costs ${final_price:.2f}\"`.\nPrint `summary`.",
+        "starterCode": "product = \"Laptop\"\ncost = 899.95\ndiscount = 0.15\n\nfinal_price = cost * (1 - discount)\nsummary = \n\nprint(summary)\n",
+        "solution": "product = \"Laptop\"\ncost = 899.95\ndiscount = 0.15\nfinal_price = cost * (1 - discount)\nsummary = f\"{product} costs ${final_price:.2f}\"\nprint(summary)",
+        "hints": [
+          "Use f\"{product} costs ${final_price:.2f}\"",
+          "899.95 * 0.85 = 764.9575, formatted to 2 decimals is 764.96"
+        ],
+        "tests": [
+          {
+            "description": "Outputs 'Laptop costs $764.96'",
+            "type": "output_match",
+            "expected": "Laptop costs $764.96"
+          }
+        ]
+      },
+      {
+        "id": "lesson-29",
+        "title": "29. Built-in Superheroes: enumerate & zip",
+        "badge": "Idiomatic",
+        "duration": "8 min",
+        "concept": "### enumerate() and zip()\n#### 1. `enumerate()`: Loop with Index\nNever use `range(len(items))` again!\n```python\nheroes = [\"Batman\", \"Iron Man\", \"Spider-Man\"]\nfor index, hero in enumerate(heroes, start=1):\n    print(f\"{index}. {hero}\")\n```\n\n#### 2. `zip()`: Pair Two Lists Together\n```python\nnames = [\"Alice\", \"Bob\"]\nscores = [95, 88]\nfor name, score in zip(names, scores):\n    print(f\"{name}: {score}\")\n```",
+        "task": "Given `tasks = [\"Wake up\", \"Code Python\", \"Sleep\"]`:\nUse `enumerate(tasks, start=1)` inside a for loop to print each task with its number, formatted as `\"{i}: {t}\"`.",
+        "starterCode": "tasks = [\"Wake up\", \"Code Python\", \"Sleep\"]\n\n# Loop with enumerate:\nfor i, t in enumerate(tasks, start=1):\n    pass\n",
+        "solution": "tasks = [\"Wake up\", \"Code Python\", \"Sleep\"]\nfor i, t in enumerate(tasks, start=1):\n    print(f\"{i}: {t}\")",
+        "hints": [
+          "Inside loop: print(f'{i}: {t}')",
+          "Will print: 1: Wake up, 2: Code Python, 3: Sleep"
+        ],
+        "tests": [
+          {
+            "description": "Prints numbered tasks",
+            "type": "output_includes",
+            "expected": [
+              "1: Wake up",
+              "2: Code Python",
+              "3: Sleep"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-11",
+    "title": "Module 11: Real-World Capstone Projects",
+    "icon": "Trophy",
+    "description": "Apply everything you learned to build 3 real practical Python programs.",
+    "lessons": [
+      {
+        "id": "lesson-30",
+        "title": "30. Capstone: Smart Calculator Engine",
+        "badge": "Project 1",
+        "duration": "15 min",
+        "concept": "### Capstone Project: Smart Calculator\nBuild a modular calculator engine that takes two numbers and an operator, computes the result, and tracks history.\n\n```python\ndef calculate(a, op, b):\n    if op == '+': return a + b\n    # handle -, *, /\n```",
+        "task": "Implement `calculate(a, op, b)` supporting '+', '-', '*', and '/'.\nFor division, if `b == 0`, return `\"Error: Division by zero\"`.\nTest your function with `calculate(10, '*', 5)` and print the output.",
+        "starterCode": "def calculate(a, op, b):\n    # Implement operations:\n    pass\n\nres = calculate(10, '*', 5)\nprint(res)\n",
+        "solution": "def calculate(a, op, b):\n    if op == '+': return a + b\n    elif op == '-': return a - b\n    elif op == '*': return a * b\n    elif op == '/':\n        if b == 0: return \"Error: Division by zero\"\n        return a / b\n    return \"Unknown operator\"\n\nres = calculate(10, '*', 5)\nprint(res)",
+        "hints": [
+          "Use if op == '+': return a + b",
+          "Check for division by zero when op == '/'"
+        ],
+        "tests": [
+          {
+            "description": "Multiplication returns 50",
+            "type": "output_match",
+            "expected": "50"
+          }
+        ]
+      },
+      {
+        "id": "lesson-31",
+        "title": "31. Capstone: Password Strength Analyzer",
+        "badge": "Project 2",
+        "duration": "15 min",
+        "concept": "### Capstone Project: Password Strength Scorer\nSecurity systems inspect password characteristics:\n- Length >= 8\n- Contains at least one digit\n- Contains at least one uppercase letter\n- Contains at least one special character\n\nUsing string methods like `.isupper()` and `.isdigit()`, you can build a fast security analyzer.",
+        "task": "Write a function `check_password(pw)` that returns:\n- \"Strong\" if length is at least 8 AND contains at least one digit (any(c.isdigit() for c in pw))\n- Otherwise return \"Weak\".\nTest with `pw = \"PythonMaster2026\"` and print the result.",
+        "starterCode": "def check_password(pw):\n    has_min_len = len(pw) >= 8\n    has_digit = any(c.isdigit() for c in pw)\n    if has_min_len and has_digit:\n        return \"Strong\"\n    return \"Weak\"\n\nresult = check_password(\"PythonMaster2026\")\nprint(result)\n",
+        "solution": "def check_password(pw):\n    has_min_len = len(pw) >= 8\n    has_digit = any(c.isdigit() for c in pw)\n    if has_min_len and has_digit:\n        return \"Strong\"\n    return \"Weak\"\n\nresult = check_password(\"PythonMaster2026\")\nprint(result)",
+        "hints": [
+          "Run the analyzer with the provided password!",
+          "'PythonMaster2026' has 16 characters and numbers, so it is Strong."
+        ],
+        "tests": [
+          {
+            "description": "Evaluates to Strong",
+            "type": "output_match",
+            "expected": "Strong"
+          }
+        ]
+      },
+      {
+        "id": "lesson-32",
+        "title": "32. Capstone: Mini RPG Battle Simulator",
+        "badge": "Project 3",
+        "duration": "20 min",
+        "concept": "### Capstone Project: Turn-Based Mini RPG\nBring together classes, loops, conditionals, and arithmetic to build a battle round simulator!",
+        "task": "Build a simulation where `Hero` attacks `Monster`.\nEach turn, hero deals `hero_dmg` to monster hp.\nIf monster hp <= 0, hero wins!\nRun the provided battle simulator loop and observe the victory printout.",
+        "starterCode": "class Character:\n    def __init__(self, name, hp, attack):\n        self.name = name\n        self.hp = hp\n        self.attack = attack\n\nhero = Character(\"Knight\", 50, 15)\ngoblin = Character(\"Goblin\", 30, 8)\n\nwhile goblin.hp > 0:\n    goblin.hp -= hero.attack\n    print(f\"{hero.name} attacks {goblin.name}! Goblin HP: {max(0, goblin.hp)}\")\n\nprint(f\"{hero.name} defeated the {goblin.name}!\")\n",
+        "solution": "class Character:\n    def __init__(self, name, hp, attack):\n        self.name = name\n        self.hp = hp\n        self.attack = attack\n\nhero = Character(\"Knight\", 50, 15)\ngoblin = Character(\"Goblin\", 30, 8)\n\nwhile goblin.hp > 0:\n    goblin.hp -= hero.attack\n    print(f\"{hero.name} attacks {goblin.name}! Goblin HP: {max(0, goblin.hp)}\")\n\nprint(f\"{hero.name} defeated the {goblin.name}!\")",
+        "hints": [
+          "Run the code to simulate the battle!",
+          "The hero deals 15 damage per hit, reducing goblin HP from 30 -> 15 -> 0."
+        ],
+        "tests": [
+          {
+            "description": "Victory message displayed",
+            "type": "output_includes",
+            "expected": [
+              "defeated the Goblin!"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
