@@ -17,7 +17,8 @@ import {
   Box, 
   Sparkles, 
   Trophy,
-  X
+  X,
+  FileCheck
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -44,114 +45,154 @@ export function Sidebar({
   onOpenModuleCheckpoint,
   passedModuleExams = []
 }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm]       = useState('');
   const [collapsedModules, setCollapsedModules] = useState({});
 
-  const toggleModule = (modId) => {
-    setCollapsedModules(prev => ({
-      ...prev,
-      [modId]: !prev[modId]
-    }));
-  };
+  const toggleModule = (modId) =>
+    setCollapsedModules(prev => ({ ...prev, [modId]: !prev[modId] }));
 
-  // Filter lessons based on search
   const filteredCurriculum = curriculum.map(mod => {
     const matchesTitle = mod.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchingLessons = mod.lessons.filter(l => 
+    const matchingLessons = mod.lessons.filter(l =>
       l.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       l.concept.toLowerCase().includes(searchTerm.toLowerCase()) ||
       l.task.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     if (matchesTitle) return mod;
-    if (matchingLessons.length > 0) {
-      return { ...mod, lessons: matchingLessons };
-    }
+    if (matchingLessons.length > 0) return { ...mod, lessons: matchingLessons };
     return null;
   }).filter(Boolean);
 
   return (
     <>
-      {/* Mobile Backdrop */}
+      {/* Mobile backdrop */}
       {isOpenMobile && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+        <div
+          className="fixed inset-0 z-40 lg:hidden"
+          style={{ background: 'rgba(6,8,15,0.75)', backdropFilter: 'blur(8px)' }}
           onClick={onCloseMobile}
         />
       )}
 
       <aside className={`
         fixed lg:static top-0 bottom-0 left-0 z-50
-        w-80 bg-slate-950/95 lg:bg-slate-950/40 border-r border-slate-800/80
-        flex flex-col h-full transition-transform duration-300 ease-in-out
+        w-72 flex flex-col h-full
+        transition-transform duration-300 ease-in-out
         ${isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-      `}>
-        {/* Search Bar & Header */}
-        <div className="p-3.5 border-b border-slate-800/80">
+      `}
+        style={{
+          background: 'rgba(10,12,20,0.97)',
+          borderRight: '1px solid rgba(255,255,255,0.05)',
+        }}>
+
+        {/* Header */}
+        <div className="p-3.5 shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          {/* Mobile close row */}
           <div className="flex items-center justify-between lg:hidden mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
-              Learning Curriculum
+            <span className="text-[10px] font-mono uppercase tracking-widest font-semibold"
+              style={{ color: '#4B5568' }}>
+              Curriculum
             </span>
-            <button 
+            <button
               onClick={onCloseMobile}
-              className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
-            >
+              className="p-1.5 rounded-lg transition-colors"
+              style={{ color: '#4B5568' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#EEF0F8'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#4B5568'; }}>
               <X className="w-4 h-4" />
             </button>
           </div>
 
+          {/* Search */}
           <div className="relative">
-            <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+            <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#4B5568' }} />
             <input
               type="text"
-              placeholder="Search topics, syntax, methods..."
+              placeholder="Search topics…"
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-800 focus:border-sky-500/50 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 outline-none transition-all"
+              className="w-full rounded-lg text-xs pl-9 pr-3 py-2"
+              style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                color: '#EEF0F8',
+                fontFamily: "'JetBrains Mono', monospace",
+                outline: 'none',
+              }}
+              onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,229,255,0.3)'}
+              onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}
             />
           </div>
         </div>
 
-        {/* Modules Tree */}
-        <div className="flex-1 overflow-y-auto p-2.5 space-y-2">
+        {/* Scrollable module tree */}
+        <div className="flex-1 overflow-y-auto p-2 space-y-0.5">
           {filteredCurriculum.map((module) => {
             const Icon = ICON_MAP[module.icon] || BookOpen;
-            const isCollapsed = !searchTerm && collapsedModules[module.id];
+            const isCollapsed  = !searchTerm && collapsedModules[module.id];
             const completedCount = module.lessons.filter(l => completedLessons.includes(l.id)).length;
             const isAllCompleted = completedCount === module.lessons.length && module.lessons.length > 0;
+            const isPassed = passedModuleExams.includes(module.id);
+            const pct = module.lessons.length ? Math.round((completedCount / module.lessons.length) * 100) : 0;
 
             return (
-              <div 
-                key={module.id}
-                className="rounded-xl border border-slate-800/60 bg-slate-900/30 overflow-hidden transition-all"
-              >
-                {/* Module Header */}
+              <div key={module.id} className="rounded-lg overflow-hidden"
+                style={{ border: '1px solid rgba(255,255,255,0.04)', marginBottom: '2px' }}>
+
+                {/* Module header row */}
                 <button
                   onClick={() => toggleModule(module.id)}
-                  className="w-full flex items-center justify-between p-2.5 hover:bg-slate-800/50 text-left transition-colors"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className={`p-1.5 rounded-lg ${isAllCompleted ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-slate-800 text-sky-400'}`}>
-                      <Icon className="w-3.5 h-3.5" />
+                  className="w-full flex items-center gap-2.5 p-2.5 text-left transition-all group"
+                  style={{ background: isAllCompleted ? 'rgba(34,211,166,0.03)' : 'transparent' }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
+                  onMouseLeave={e => e.currentTarget.style.background = isAllCompleted ? 'rgba(34,211,166,0.03)' : 'transparent'}>
+
+                  {/* Icon */}
+                  <div className="w-7 h-7 rounded-md flex items-center justify-center shrink-0"
+                    style={isAllCompleted ? {
+                      background: 'rgba(34,211,166,0.12)',
+                      border: '1px solid rgba(34,211,166,0.25)',
+                    } : {
+                      background: 'rgba(0,229,255,0.06)',
+                      border: '1px solid rgba(0,229,255,0.12)',
+                    }}>
+                    {isAllCompleted
+                      ? <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#22D3A6' }} />
+                      : <Icon className="w-3.5 h-3.5" style={{ color: '#00E5FF' }} />}
+                  </div>
+
+                  {/* Title + progress */}
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[11px] font-semibold truncate" style={{ color: '#C8D0E0' }}>
+                      {module.title}
                     </div>
-                    <div className="truncate">
-                      <div className="text-xs font-semibold text-slate-200 truncate">
-                        {module.title}
+                    <div className="flex items-center gap-2 mt-1">
+                      {/* Mini progress bar */}
+                      <div className="flex-1 h-[3px] rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                        <div className="h-full rounded-full transition-all duration-500"
+                          style={{
+                            width: `${pct}%`,
+                            background: isAllCompleted ? '#22D3A6' : 'rgba(0,229,255,0.6)'
+                          }} />
                       </div>
-                      <div className="text-[10px] text-slate-400 font-mono">
-                        {completedCount}/{module.lessons.length} done
-                      </div>
+                      <span className="text-[9px] font-mono shrink-0" style={{ color: '#4B5568' }}>
+                        {completedCount}/{module.lessons.length}
+                      </span>
                     </div>
                   </div>
 
-                  <div className="text-slate-500 pl-2">
-                    {isCollapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                  {/* Chevron */}
+                  <div style={{ color: '#4B5568' }}>
+                    {isCollapsed
+                      ? <ChevronRight className="w-3.5 h-3.5" />
+                      : <ChevronDown className="w-3.5 h-3.5" />}
                   </div>
                 </button>
 
-                {/* Lessons List */}
+                {/* Lesson list */}
                 {!isCollapsed && (
-                  <div className="px-1.5 pb-2 pt-0.5 space-y-0.5 border-t border-slate-800/40">
+                  <div className="px-2 pb-2 pt-0.5 space-y-0.5"
+                    style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
                     {module.lessons.map(lesson => {
                       const isSelected = lesson.id === currentLessonId;
                       const isComplete = completedLessons.includes(lesson.id);
@@ -159,49 +200,71 @@ export function Sidebar({
                       return (
                         <button
                           key={lesson.id}
-                          onClick={() => {
-                            onSelectLesson(lesson.id);
-                            if (onCloseMobile) onCloseMobile();
+                          onClick={() => { onSelectLesson(lesson.id); onCloseMobile?.(); }}
+                          className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-md text-left transition-all text-xs"
+                          style={isSelected ? {
+                            background: 'rgba(0,229,255,0.08)',
+                            border: '1px solid rgba(0,229,255,0.22)',
+                            color: '#00E5FF',
+                          } : {
+                            border: '1px solid transparent',
+                            color: isComplete ? '#6B7A96' : '#8892AA',
                           }}
-                          className={`
-                            w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg text-left transition-all text-xs
-                            ${isSelected 
-                              ? 'bg-sky-500/15 text-sky-200 border border-sky-500/30 font-medium shadow-sm shadow-sky-500/5' 
-                              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 border border-transparent'
+                          onMouseEnter={e => {
+                            if (!isSelected) {
+                              e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                              e.currentTarget.style.color = '#EEF0F8';
                             }
-                          `}
-                        >
-                          <div className="flex items-center gap-2 truncate">
-                            {isComplete ? (
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                            ) : (
-                              <Circle className="w-3.5 h-3.5 text-slate-600 shrink-0" />
-                            )}
-                            <span className="truncate">{lesson.title}</span>
+                          }}
+                          onMouseLeave={e => {
+                            if (!isSelected) {
+                              e.currentTarget.style.background = 'transparent';
+                              e.currentTarget.style.color = isComplete ? '#6B7A96' : '#8892AA';
+                            }
+                          }}>
+                          <div className="shrink-0">
+                            {isComplete
+                              ? <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#22D3A6' }} />
+                              : <Circle className="w-3.5 h-3.5" style={{ color: '#2D3552' }} />}
                           </div>
-
-                          <span className="text-[10px] font-mono text-slate-500 shrink-0">
+                          <span className="truncate font-mono" style={{ fontSize: '11px' }}>{lesson.title}</span>
+                          <span className="shrink-0 ml-auto text-[9px] font-mono" style={{ color: '#4B5568' }}>
                             {lesson.duration}
                           </span>
                         </button>
                       );
                     })}
 
-                    {/* Module Checkpoint Mini-Exam */}
+                    {/* Module checkpoint button */}
                     <button
-                      onClick={() => {
-                        if (onOpenModuleCheckpoint) onOpenModuleCheckpoint(module);
-                        if (onCloseMobile) onCloseMobile();
+                      onClick={() => { onOpenModuleCheckpoint?.(module); onCloseMobile?.(); }}
+                      className="w-full mt-1.5 px-2.5 py-2 rounded-md flex items-center justify-between transition-all"
+                      style={{
+                        background: isPassed ? 'rgba(34,211,166,0.05)' : 'rgba(245,158,11,0.06)',
+                        border: `1px solid ${isPassed ? 'rgba(34,211,166,0.2)' : 'rgba(245,158,11,0.18)'}`,
+                        color: isPassed ? '#22D3A6' : '#F59E0B',
                       }}
-                      className="w-full mt-1.5 p-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/25 text-amber-300 font-bold text-xs flex items-center justify-between transition-all"
-                      title={`Take the ${module.title} Checkpoint Test`}
-                    >
-                      <span className="flex items-center gap-1.5 truncate">
-                        <span>📝</span>
-                        <span className="truncate font-mono text-[11px]">Checkpoint Exam</span>
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = isPassed ? 'rgba(34,211,166,0.1)' : 'rgba(245,158,11,0.1)';
+                        e.currentTarget.style.borderColor = isPassed ? 'rgba(34,211,166,0.35)' : 'rgba(245,158,11,0.3)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = isPassed ? 'rgba(34,211,166,0.05)' : 'rgba(245,158,11,0.06)';
+                        e.currentTarget.style.borderColor = isPassed ? 'rgba(34,211,166,0.2)' : 'rgba(245,158,11,0.18)';
+                      }}>
+                      <span className="flex items-center gap-1.5 text-[11px] font-mono font-semibold">
+                        <FileCheck className="w-3.5 h-3.5" />
+                        Checkpoint Test
                       </span>
-                      <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 font-bold shrink-0">
-                        {passedModuleExams.includes(module.id) ? 'Passed ⭐' : 'Test'}
+                      <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded"
+                        style={isPassed ? {
+                          background: 'rgba(34,211,166,0.15)',
+                          color: '#22D3A6'
+                        } : {
+                          background: 'rgba(245,158,11,0.12)',
+                          color: '#F59E0B'
+                        }}>
+                        {isPassed ? 'Passed ✓' : 'Take Test'}
                       </span>
                     </button>
                   </div>

@@ -29,353 +29,334 @@ export function OutputConsole({
   const [activeTab, setActiveTab] = useState('terminal');
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Automatically switch tab when relevant events occur
   useEffect(() => {
-    if (outputResult?.error) {
-      setActiveTab('detective');
-    } else if (currentLanguageId === 'html' && outputResult?.htmlPreview) {
-      setActiveTab('preview');
-    } else if (currentLanguageId === 'sql' && outputResult?.sqlResults) {
-      setActiveTab('table');
-    } else if (testResults && testResults.results && testResults.results.length > 0) {
-      setActiveTab('tests');
-    } else if (outputResult?.stdout) {
-      setActiveTab('terminal');
-    }
+    if (outputResult?.error) setActiveTab('detective');
+    else if (currentLanguageId === 'html' && outputResult?.htmlPreview) setActiveTab('preview');
+    else if (currentLanguageId === 'sql' && outputResult?.sqlResults)   setActiveTab('table');
+    else if (testResults?.results?.length > 0) setActiveTab('tests');
+    else if (outputResult?.stdout) setActiveTab('terminal');
   }, [outputResult, testResults, currentLanguageId]);
 
-  const errorDetails = outputResult?.error ? translatePythonError(outputResult.error) : null;
-  const passedCount = testResults?.results?.filter(r => r.passed).length || 0;
-  const totalTests = testResults?.results?.length || 0;
+  const errorDetails  = outputResult?.error ? translatePythonError(outputResult.error) : null;
+  const passedCount   = testResults?.results?.filter(r => r.passed).length || 0;
+  const totalTests    = testResults?.results?.length || 0;
   const hasFailedTest = totalTests > 0 && passedCount < totalTests;
+  const isHtml        = currentLanguageId === 'html';
+  const isSql         = currentLanguageId === 'sql';
 
-  const isHtml = currentLanguageId === 'html';
-  const isSql = currentLanguageId === 'sql';
+  const tabs = [
+    { id: 'terminal', label: 'Terminal', icon: Terminal, condition: true,
+      active: { bg: 'rgba(0,229,255,0.08)', color: '#00E5FF', border: 'rgba(0,229,255,0.25)' } },
+    { id: 'preview', label: 'Web Preview', icon: Globe, condition: isHtml,
+      dot: { show: !!outputResult?.htmlPreview, color: '#F59E0B' },
+      active: { bg: 'rgba(245,158,11,0.1)', color: '#F59E0B', border: 'rgba(245,158,11,0.25)' } },
+    { id: 'table', label: 'Table Results', icon: Database, condition: isSql,
+      active: { bg: 'rgba(34,211,166,0.08)', color: '#22D3A6', border: 'rgba(34,211,166,0.25)' } },
+    { id: 'tests', label: 'Goal Tests', icon: CheckCircle2, condition: isTestingMode,
+      active: {
+        bg: passedCount === totalTests && totalTests > 0 ? 'rgba(34,211,166,0.08)' : 'rgba(255,83,112,0.08)',
+        color: passedCount === totalTests && totalTests > 0 ? '#22D3A6' : '#FF5370',
+        border: passedCount === totalTests && totalTests > 0 ? 'rgba(34,211,166,0.25)' : 'rgba(255,83,112,0.25)'
+      }
+    },
+    { id: 'jars', label: 'Variables', icon: null, condition: true,
+      emoji: '🏺',
+      active: { bg: 'rgba(245,158,11,0.08)', color: '#F59E0B', border: 'rgba(245,158,11,0.2)' } },
+    { id: 'detective', label: 'Why Failed?', icon: null, condition: outputResult?.error || hasFailedTest,
+      emoji: '🕵️', isError: true,
+      active: { bg: 'rgba(255,83,112,0.1)', color: '#FF5370', border: 'rgba(255,83,112,0.3)' } },
+  ];
 
   return (
-    <div className={`
-      flex flex-col bg-slate-950 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl transition-all duration-300
-      ${isExpanded ? 'h-96 sm:h-[460px]' : 'h-64 sm:h-76'}
-    `}>
-      {/* Top Tabs Bar */}
-      <div className="flex items-center justify-between px-3.5 bg-slate-900/90 border-b border-slate-800 shrink-0">
-        <div className="flex items-center gap-1 overflow-x-auto py-1">
-          {/* 1. Terminal Console Tab */}
-          <button
-            onClick={() => {
-              soundService.playClick();
-              setActiveTab('terminal');
-            }}
-            className={`
-              flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap
-              ${activeTab === 'terminal' 
-                ? 'bg-sky-500/15 text-sky-300 border border-sky-500/30' 
-                : 'text-slate-400 hover:text-slate-200'
-              }
-            `}
-          >
-            <Terminal className="w-3.5 h-3.5" />
-            <span>Terminal</span>
-            {outputResult?.stdout && (
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            )}
-          </button>
+    <div className={`flex flex-col overflow-hidden transition-all duration-300`}
+      style={{
+        background: '#06070D',
+        border: '1px solid rgba(255,255,255,0.07)',
+        borderRadius: '12px',
+        height: isExpanded ? '480px' : '260px',
+      }}>
 
-          {/* 2. Live Web Preview Tab (HTML / CSS) */}
-          {isHtml && (
-            <button
-              onClick={() => {
-                soundService.playClick();
-                setActiveTab('preview');
-              }}
-              className={`
-                flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap
-                ${activeTab === 'preview' 
-                  ? 'bg-orange-500/20 text-orange-300 border border-orange-500/30' 
-                  : 'text-slate-400 hover:text-slate-200'
-                }
-              `}
-            >
-              <Globe className="w-3.5 h-3.5 text-orange-400" />
-              <span>Web Preview</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-md bg-orange-500/20 text-orange-300 font-bold">
-                Live
-              </span>
-            </button>
-          )}
+      {/* ── Tab Bar ──────────────────────────────────── */}
+      <div className="flex items-center justify-between px-2 shrink-0"
+        style={{
+          background: 'rgba(0,0,0,0.4)',
+          borderBottom: '1px solid rgba(255,255,255,0.05)',
+          minHeight: '38px',
+        }}>
+        <div className="flex items-center gap-0.5 overflow-x-auto py-1.5">
+          {tabs.filter(t => t.condition).map(tab => {
+            const Icon     = tab.icon;
+            const isActive = activeTab === tab.id;
+            const style    = isActive ? tab.active : {};
 
-          {/* 3. SQL Table Results Tab */}
-          {isSql && (
-            <button
-              onClick={() => {
-                soundService.playClick();
-                setActiveTab('table');
-              }}
-              className={`
-                flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap
-                ${activeTab === 'table' 
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
-                  : 'text-slate-400 hover:text-slate-200'
-                }
-              `}
-            >
-              <Database className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Table Results</span>
-              {outputResult?.sqlResults && (
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-emerald-300 font-bold">
-                  {outputResult.sqlResults.rows?.length || 0}
-                </span>
-              )}
-            </button>
-          )}
-
-          {/* 4. Test Results Tab */}
-          {isTestingMode && (
-            <button
-              onClick={() => {
-                soundService.playClick();
-                setActiveTab('tests');
-              }}
-              className={`
-                flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap
-                ${activeTab === 'tests' 
-                  ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' 
-                  : 'text-slate-400 hover:text-slate-200'
-                }
-              `}
-            >
-              {totalTests > 0 && passedCount === totalTests ? (
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              ) : hasFailedTest ? (
-                <XCircle className="w-3.5 h-3.5 text-rose-400" />
-              ) : (
-                <CheckCircle2 className="w-3.5 h-3.5 text-slate-500" />
-              )}
-              <span>Goal Tests</span>
-              {totalTests > 0 && (
-                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-md font-bold ${
-                  passedCount === totalTests ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'
-                }`}>
-                  {passedCount}/{totalTests}
-                </span>
-              )}
-            </button>
-          )}
-
-          {/* 5. Magic Memory Jars Tab */}
-          <button
-            onClick={() => {
-              soundService.playClick();
-              setActiveTab('jars');
-            }}
-            className={`
-              flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap
-              ${activeTab === 'jars' 
-                ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' 
-                : 'text-slate-400 hover:text-slate-200'
-              }
-            `}
-          >
-            <span>🏺</span>
-            <span>Memory Jars</span>
-            {outputResult?.variables && outputResult.variables.length > 0 && (
-              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-md bg-amber-500/20 text-amber-300 font-bold">
-                {outputResult.variables.length}
-              </span>
-            )}
-          </button>
-
-          {/* 6. Detective Why It Failed Tab */}
-          {(outputResult?.error || hasFailedTest) && (
-            <button
-              onClick={() => {
-                soundService.playClick();
-                setActiveTab('detective');
-              }}
-              className={`
-                flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all whitespace-nowrap animate-bounce
-                ${activeTab === 'detective' 
-                  ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm' 
-                  : 'bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20'
-                }
-              `}
-            >
-              <span>🕵️</span>
-              <span>Why Did It Fail?</span>
-            </button>
-          )}
+            return (
+              <button
+                key={tab.id}
+                onClick={() => { soundService.playClick(); setActiveTab(tab.id); }}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold transition-all whitespace-nowrap shrink-0"
+                style={isActive ? {
+                  background: style.bg,
+                  border: `1px solid ${style.border}`,
+                  color: style.color,
+                } : {
+                  color: '#4B5568',
+                  border: '1px solid transparent',
+                }}
+                onMouseEnter={e => {
+                  if (!isActive) {
+                    e.currentTarget.style.color = '#8892AA';
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!isActive) {
+                    e.currentTarget.style.color = '#4B5568';
+                    e.currentTarget.style.background = 'transparent';
+                  }
+                }}>
+                {tab.emoji
+                  ? <span>{tab.emoji}</span>
+                  : Icon && <Icon className="w-3.5 h-3.5" />}
+                <span>{tab.label}</span>
+                {/* Badges */}
+                {tab.id === 'tests' && totalTests > 0 && (
+                  <span className="text-[9px] px-1 rounded font-bold"
+                    style={passedCount === totalTests
+                      ? { background: 'rgba(34,211,166,0.15)', color: '#22D3A6' }
+                      : { background: 'rgba(255,83,112,0.15)', color: '#FF5370' }}>
+                    {passedCount}/{totalTests}
+                  </span>
+                )}
+                {tab.id === 'jars' && outputResult?.variables?.length > 0 && (
+                  <span className="text-[9px] px-1 rounded font-bold"
+                    style={{ background: 'rgba(245,158,11,0.15)', color: '#F59E0B' }}>
+                    {outputResult.variables.length}
+                  </span>
+                )}
+                {tab.dot?.show && (
+                  <span className="w-1.5 h-1.5 rounded-full animate-pulse"
+                    style={{ background: tab.dot.color }} />
+                )}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Right Tools: Duration, Expand, Clear */}
-        <div className="flex items-center gap-2 text-slate-400 shrink-0">
+        {/* Right tools */}
+        <div className="flex items-center gap-1.5 shrink-0 pl-2">
           {outputResult?.durationMs !== undefined && (
-            <div className="hidden sm:flex items-center gap-1 text-[11px] font-mono text-slate-500 pr-2 border-r border-slate-800">
+            <div className="hidden sm:flex items-center gap-1 text-[10px] font-mono pr-2"
+              style={{ color: '#2D3552', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
               <Clock className="w-3 h-3" />
-              <span>{outputResult.durationMs}ms</span>
+              {outputResult.durationMs}ms
             </div>
           )}
-
           <button
-            onClick={() => {
-              soundService.playClick();
-              onClearConsole();
-            }}
-            className="p-1.5 hover:text-slate-200 hover:bg-slate-800 rounded-xl transition-colors"
-            title="Clear console"
-          >
+            onClick={() => { soundService.playClick(); onClearConsole(); }}
+            className="p-1.5 rounded-md transition-all"
+            style={{ color: '#2D3552' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#6B7A96'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#2D3552'; }}
+            title="Clear">
             <Trash2 className="w-3.5 h-3.5" />
           </button>
-
           <button
-            onClick={() => {
-              soundService.playClick();
-              setIsExpanded(!isExpanded);
-            }}
-            className="p-1.5 hover:text-slate-200 hover:bg-slate-800 rounded-xl transition-colors hidden sm:block"
-            title={isExpanded ? "Collapse" : "Expand"}
-          >
+            onClick={() => { soundService.playClick(); setIsExpanded(!isExpanded); }}
+            className="p-1.5 rounded-md transition-all hidden sm:block"
+            style={{ color: '#2D3552' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#6B7A96'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#2D3552'; }}
+            title={isExpanded ? 'Collapse' : 'Expand'}>
             {isExpanded ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
           </button>
         </div>
       </div>
 
-      {/* Tab Content Panels */}
-      <div className="flex-1 overflow-y-auto p-4 font-sans text-xs text-slate-200">
-        {/* 1. Terminal Console Output */}
+      {/* ── Tab Content ──────────────────────────────── */}
+      <div className="flex-1 overflow-y-auto p-3 text-xs"
+        style={{ color: '#C8D0E0', fontFamily: "'Inter', sans-serif" }}>
+
+        {/* 1. Terminal */}
         {activeTab === 'terminal' && (
-          <div className="h-full space-y-2">
+          <div className="h-full">
             {outputResult?.stdout ? (
-              <pre className="whitespace-pre-wrap leading-relaxed text-emerald-300 font-mono text-xs sm:text-sm bg-slate-900/60 p-3 rounded-2xl border border-slate-800">
+              <pre className="whitespace-pre-wrap leading-relaxed rounded-xl p-3 text-xs"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: '#22D3A6',
+                  background: 'rgba(0,0,0,0.3)',
+                  border: '1px solid rgba(34,211,166,0.1)',
+                }}>
                 {outputResult.stdout}
               </pre>
             ) : outputResult?.error ? (
-              <div className="text-rose-300 whitespace-pre-wrap leading-relaxed font-mono bg-rose-500/10 p-3 rounded-2xl border border-rose-500/20">
+              <pre className="whitespace-pre-wrap leading-relaxed rounded-xl p-3 text-xs"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: '#FF5370',
+                  background: 'rgba(255,83,112,0.05)',
+                  border: '1px solid rgba(255,83,112,0.15)',
+                }}>
                 {outputResult.error}
-              </div>
+              </pre>
             ) : (
-              <div className="h-full flex flex-col items-center justify-center text-slate-500 font-sans text-xs py-6 text-center">
-                <span className="text-2xl mb-1">🪄</span>
-                <span>Console is ready! Click "Run & Test" above to run your code.</span>
+              <div className="h-full flex flex-col items-center justify-center gap-2 text-center py-6">
+                <span className="text-3xl opacity-20">{'>'}_</span>
+                <span className="text-xs font-mono" style={{ color: '#2D3552' }}>
+                  Console ready. Click "Run & Test" to execute your code.
+                </span>
               </div>
             )}
           </div>
         )}
 
-        {/* 2. Live Web Preview Tab */}
+        {/* 2. Web Preview */}
         {activeTab === 'preview' && (
           <div className="h-full">
             <LiveWebPreview htmlCode={outputResult?.htmlPreview || ''} />
           </div>
         )}
 
-        {/* 3. SQL Table Results Tab */}
+        {/* 3. SQL Table */}
         {activeTab === 'table' && (
           <div className="h-full">
             {outputResult?.sqlResults ? (
-              <SqlTableViewer 
-                columns={outputResult.sqlResults.columns} 
-                rows={outputResult.sqlResults.rows} 
+              <SqlTableViewer
+                columns={outputResult.sqlResults.columns}
+                rows={outputResult.sqlResults.rows}
               />
             ) : (
-              <div className="text-slate-500 text-center py-6">
-                No SQL query executed yet. Run a SELECT query to see database results!
+              <div className="h-full flex items-center justify-center py-8 text-xs font-mono"
+                style={{ color: '#2D3552' }}>
+                No SQL query run yet. Execute a SELECT to see results.
               </div>
             )}
           </div>
         )}
 
-        {/* 4. Test Verification Goals */}
+        {/* 4. Test Results */}
         {activeTab === 'tests' && (
-          <div className="space-y-3 font-sans">
-            {testResults && testResults.results && testResults.results.length > 0 ? (
+          <div className="space-y-3">
+            {testResults?.results?.length > 0 ? (
               <>
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs font-medium">
-                  <span className="text-slate-400">Verification Checklist:</span>
-                  <span className={`font-mono font-bold px-2 py-0.5 rounded-full ${
-                    testResults.allPassed ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'
-                  }`}>
+                {/* Summary row */}
+                <div className="flex items-center justify-between pb-2.5"
+                  style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <span className="text-[11px] font-mono" style={{ color: '#4B5568' }}>Verification Checklist</span>
+                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md"
+                    style={testResults.allPassed
+                      ? { background: 'rgba(34,211,166,0.1)', color: '#22D3A6' }
+                      : { background: 'rgba(255,83,112,0.1)', color: '#FF5370' }}>
                     {passedCount} / {totalTests} Passed
                   </span>
                 </div>
 
-                <div className="space-y-2">
-                  {testResults.results.map((r, idx) => (
-                    <div 
-                      key={idx}
-                      className={`p-3 rounded-2xl border text-xs flex items-start justify-between gap-3 ${
-                        r.passed 
-                          ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-200' 
-                          : 'bg-rose-500/10 border-rose-500/30 text-rose-200'
-                      }`}
-                    >
-                      <div className="flex items-start gap-2.5">
-                        {r.passed ? (
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                        ) : (
-                          <XCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
-                        )}
-                        <div>
-                          <div className="font-bold text-slate-100">{r.description}</div>
-                          {!r.passed && (
-                            <div className="text-[11px] font-mono text-rose-300 mt-1 bg-slate-950/60 p-1.5 rounded-lg border border-rose-500/20">
-                              {r.actual}
-                            </div>
-                          )}
+                {testResults.results.map((r, idx) => (
+                  <div key={idx}
+                    className="p-3 rounded-xl flex items-start justify-between gap-3"
+                    style={r.passed ? {
+                      background: 'rgba(34,211,166,0.04)',
+                      border: '1px solid rgba(34,211,166,0.15)',
+                    } : {
+                      background: 'rgba(255,83,112,0.06)',
+                      border: '1px solid rgba(255,83,112,0.2)',
+                    }}>
+                    <div className="flex items-start gap-2.5 min-w-0">
+                      {r.passed
+                        ? <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#22D3A6' }} />
+                        : <XCircle className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#FF5370' }} />}
+                      <div className="min-w-0">
+                        <div className="font-semibold text-xs" style={{ color: r.passed ? '#C8D0E0' : '#EEF0F8' }}>
+                          {r.description}
                         </div>
+                        {!r.passed && (
+                          <div className="mt-1.5 text-[11px] font-mono rounded-lg px-2 py-1.5"
+                            style={{
+                              color: '#FF5370',
+                              background: 'rgba(0,0,0,0.3)',
+                              border: '1px solid rgba(255,83,112,0.15)',
+                            }}>
+                            {r.actual}
+                          </div>
+                        )}
                       </div>
-
-                      {!r.passed && onOpenDetective && (
-                        <button
-                          onClick={onOpenDetective}
-                          className="shrink-0 flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 rounded-lg transition-colors"
-                        >
-                          <span>🕵️ Inspect Clue</span>
-                        </button>
-                      )}
                     </div>
-                  ))}
-                </div>
+                    {!r.passed && onOpenDetective && (
+                      <button
+                        onClick={onOpenDetective}
+                        className="shrink-0 flex items-center gap-1 px-2.5 py-1 text-[10px] font-mono font-bold rounded-lg transition-all"
+                        style={{
+                          background: 'rgba(245,158,11,0.1)',
+                          border: '1px solid rgba(245,158,11,0.25)',
+                          color: '#F59E0B'
+                        }}
+                        onMouseEnter={e => e.currentTarget.style.background = 'rgba(245,158,11,0.18)'}
+                        onMouseLeave={e => e.currentTarget.style.background = 'rgba(245,158,11,0.1)'}>
+                        🕵️ Inspect
+                      </button>
+                    )}
+                  </div>
+                ))}
               </>
             ) : (
-              <div className="h-full flex items-center justify-center text-slate-500 text-xs py-8">
-                No tests evaluated yet. Click "Run & Test" to check your solution!
+              <div className="h-full flex items-center justify-center py-8 text-xs font-mono"
+                style={{ color: '#2D3552' }}>
+                No tests run yet. Click "Run & Test" to check your solution.
               </div>
             )}
           </div>
         )}
 
-        {/* 5. Magic Memory Jars */}
+        {/* 5. Memory Jars */}
         {activeTab === 'jars' && (
           <MagicMemoryJars variables={outputResult?.variables || []} />
         )}
 
-        {/* 6. Detective Why It Failed Breakdown */}
+        {/* 6. Detective */}
         {activeTab === 'detective' && (
-          <div className="space-y-3 font-sans">
-            <div className="p-4 rounded-2xl border border-amber-500/30 bg-amber-500/10">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2 text-amber-300 font-extrabold text-sm">
-                  <span>🕵️</span>
-                  <span>Detective {mascotName}'s Analysis: {errorDetails?.title || 'Goal Mismatch'}</span>
+          <div className="space-y-3">
+            <div className="p-4 rounded-xl"
+              style={{
+                background: 'rgba(245,158,11,0.05)',
+                border: '1px solid rgba(245,158,11,0.2)',
+              }}>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">🕵️</span>
+                  <span className="text-sm font-bold" style={{ color: '#F59E0B', fontFamily: "'JetBrains Mono', monospace" }}>
+                    {errorDetails?.title || 'Why Your Code Did Not Pass'}
+                  </span>
                 </div>
-
                 {onOpenDetective && (
                   <button
                     onClick={onOpenDetective}
-                    className="text-xs font-bold text-amber-300 hover:text-white bg-amber-500/20 hover:bg-amber-500/30 px-3 py-1 rounded-xl transition-colors border border-amber-500/30"
-                  >
-                    Open Full Case File →
+                    className="text-xs font-bold font-mono px-3 py-1 rounded-lg transition-all"
+                    style={{
+                      background: 'rgba(245,158,11,0.1)',
+                      border: '1px solid rgba(245,158,11,0.25)',
+                      color: '#F59E0B'
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(245,158,11,0.18)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'rgba(245,158,11,0.1)'}>
+                    Full Analysis →
                   </button>
                 )}
               </div>
-
-              <p className="text-xs text-slate-200 leading-relaxed font-sans mb-3">
-                {errorDetails?.explanation || (hasFailedTest && testResults?.results?.find(r => !r.passed)?.description) || 'A test expectation was not met.'}
+              <p className="text-xs leading-relaxed" style={{ color: '#C8D0E0' }}>
+                {errorDetails?.explanation ||
+                  (hasFailedTest && testResults?.results?.find(r => !r.passed)?.description) ||
+                  'A test expectation was not met.'}
               </p>
-
               {errorDetails?.fix && (
-                <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs font-mono text-slate-300 whitespace-pre-line">
-                  <span className="text-amber-400 font-bold block mb-1 font-sans">💡 Detective's Fix Step:</span>
+                <div className="mt-3 p-3 rounded-lg text-xs font-mono leading-relaxed whitespace-pre-line"
+                  style={{
+                    background: 'rgba(0,0,0,0.3)',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    color: '#8892AA'
+                  }}>
+                  <span className="font-bold block mb-1" style={{ color: '#F59E0B', fontFamily: "'Inter', sans-serif" }}>
+                    💡 How to Fix:
+                  </span>
                   {errorDetails.fix}
                 </div>
               )}
