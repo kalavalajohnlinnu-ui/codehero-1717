@@ -1,0 +1,390 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Calendar, 
+  Clock, 
+  CheckCircle2, 
+  Circle, 
+  X, 
+  Printer, 
+  Sparkles, 
+  ChevronRight, 
+  ArrowRight,
+  Target,
+  Flame,
+  BookOpen,
+  Layers,
+  Award,
+  RefreshCw
+} from 'lucide-react';
+import { 
+  STUDY_PRESETS, 
+  DAILY_HOURS_PRESETS, 
+  generateStudyPlan 
+} from '../services/studyPlanService';
+import { storageService } from '../services/storageService';
+import { soundService } from '../services/soundService';
+
+export function StudyPlanModal({
+  isOpen,
+  onClose,
+  currentLanguageId = 'python',
+  studentName = 'Hero Student'
+}) {
+  const [targetDays, setTargetDays] = useState(30);
+  const [dailyHours, setDailyHours] = useState(1);
+  const [plan, setPlan] = useState(null);
+  const [activeDayIndex, setActiveDayIndex] = useState(0);
+
+  // Load existing plan or generate new default on mount/open
+  useEffect(() => {
+    if (!isOpen) return;
+    const existing = storageService.getStudyPlan();
+    if (existing && existing.languageId === currentLanguageId) {
+      setPlan(existing);
+      setTargetDays(existing.targetDays || 30);
+      setDailyHours(existing.dailyHours || 1);
+    } else {
+      handleRegeneratePlan(30, 1);
+    }
+  }, [isOpen, currentLanguageId]);
+
+  if (!isOpen) return null;
+
+  const handleRegeneratePlan = (days = targetDays, hours = dailyHours) => {
+    soundService.playClick();
+    const newPlan = generateStudyPlan({
+      targetDays: days,
+      dailyHours: hours,
+      languageId: currentLanguageId
+    });
+    setPlan(newPlan);
+    storageService.saveStudyPlan(newPlan);
+    setActiveDayIndex(0);
+  };
+
+  const handleToggleDay = (idx) => {
+    if (!plan || !plan.days) return;
+    const updatedDays = [...plan.days];
+    const newState = !updatedDays[idx].isCompleted;
+    updatedDays[idx].isCompleted = newState;
+
+    if (newState) {
+      soundService.playSuccess();
+    } else {
+      soundService.playClick();
+    }
+
+    const updatedPlan = {
+      ...plan,
+      days: updatedDays
+    };
+    setPlan(updatedPlan);
+    storageService.saveStudyPlan(updatedPlan);
+  };
+
+  const completedDaysCount = plan?.days?.filter(d => d.isCompleted).length || 0;
+  const progressPercent = plan?.days?.length 
+    ? Math.round((completedDaysCount / plan.days.length) * 100) 
+    : 0;
+
+  const currentActiveDay = plan?.days?.[activeDayIndex] || plan?.days?.[0];
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/90 backdrop-blur-md animate-fade-in">
+      <div 
+        className="bg-[#090C14] border border-amber-500/30 rounded-3xl max-w-5xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-200"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="bg-gradient-to-r from-amber-950/40 via-slate-900 to-[#090C14] p-4 sm:p-5 border-b border-white/[0.08] flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold">
+              📅
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">
+                  STUDY ROADMAP ENGINE
+                </span>
+                <span className="text-[10px] font-mono text-slate-400">
+                  {currentLanguageId.toUpperCase()} Mastery Plan
+                </span>
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-white mt-0.5">
+                Personalized Timetable: When, What & How to Learn
+              </h3>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => window.print()}
+              className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-amber-300 border border-amber-500/20 flex items-center gap-1.5 transition-all"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Print Timetable</span>
+            </button>
+            <button
+              onClick={onClose}
+              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Configuration Bar */}
+        <div className="p-4 bg-[#0C101A] border-b border-white/[0.06] flex flex-wrap items-center justify-between gap-4 shrink-0">
+          {/* Target Days Selector */}
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5 text-amber-400" />
+              <span>Target Duration:</span>
+            </span>
+            <div className="flex items-center gap-1 bg-black/40 p-1 rounded-xl border border-white/10">
+              {STUDY_PRESETS.map(p => (
+                <button
+                  key={p.days}
+                  onClick={() => {
+                    setTargetDays(p.days);
+                    handleRegeneratePlan(p.days, dailyHours);
+                  }}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
+                    targetDays === p.days
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {p.days} Days
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Daily Hours Selector */}
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5 text-sky-400" />
+              <span>Daily Study Time:</span>
+            </span>
+            <div className="flex items-center gap-1 bg-black/40 p-1 rounded-xl border border-white/10">
+              {DAILY_HOURS_PRESETS.map(h => (
+                <button
+                  key={h.hours}
+                  onClick={() => {
+                    setDailyHours(h.hours);
+                    handleRegeneratePlan(targetDays, h.hours);
+                  }}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
+                    dailyHours === h.hours
+                      ? 'bg-sky-500 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {h.hours === 0.5 ? '30m' : `${h.hours}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Plan Progress Metric */}
+          <div className="flex items-center gap-3">
+            <div className="text-right">
+              <div className="text-[10px] font-mono text-slate-400">Pacing Status</div>
+              <div className="text-xs font-bold text-emerald-400 font-mono">
+                {completedDaysCount} of {plan?.days?.length || 0} Days Done ({progressPercent}%)
+              </div>
+            </div>
+            <div className="w-24 bg-black/40 h-2 rounded-full border border-white/10 overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-amber-500 to-emerald-400 transition-all duration-300"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Modal Body: Split Master-Detail Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden">
+          {/* Left Column: Day Calendar List (4 cols) */}
+          <div className="md:col-span-5 border-r border-white/[0.06] overflow-y-auto p-3 space-y-2 bg-[#0A0D16]">
+            <div className="text-[11px] font-mono text-slate-400 px-2 py-1 flex items-center justify-between">
+              <span>SCHEDULED TIMELINE</span>
+              <span className="text-[10px] text-amber-400 font-bold">CLICK A DAY TO VIEW DETAILS</span>
+            </div>
+
+            {plan?.days?.map((day, idx) => {
+              const isSelected = activeDayIndex === idx;
+              return (
+                <div
+                  key={day.dayNumber}
+                  onClick={() => setActiveDayIndex(idx)}
+                  className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-2.5 ${
+                    isSelected
+                      ? 'bg-amber-500/15 border-amber-500/50 text-white shadow-md'
+                      : day.isCompleted
+                      ? 'bg-emerald-950/15 border-emerald-500/30 text-slate-300'
+                      : 'bg-white/[0.02] border-white/[0.06] text-slate-400 hover:bg-white/[0.05]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    {/* Completion Checkbox */}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleToggleDay(idx);
+                      }}
+                      className="text-slate-400 hover:text-emerald-400 transition-colors shrink-0"
+                    >
+                      {day.isCompleted ? (
+                        <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                      ) : (
+                        <Circle className="w-5 h-5 text-slate-600 hover:text-slate-400" />
+                      )}
+                    </button>
+
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-white">
+                          Day {day.dayNumber}
+                        </span>
+                        <span className="text-[10px] font-mono text-slate-500">
+                          {day.date}
+                        </span>
+                      </div>
+                      <div className="text-[11px] text-slate-300 truncate max-w-[200px]">
+                        {day.theme}
+                      </div>
+                    </div>
+                  </div>
+
+                  {day.milestone && (
+                    <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 shrink-0">
+                      Event
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Right Column: Active Day Detail Card ("When, What, How") (7 cols) */}
+          <div className="md:col-span-7 overflow-y-auto p-5 sm:p-6 space-y-4 bg-[#090C14]">
+            {currentActiveDay ? (
+              <div className="space-y-4 animate-fade-in">
+                {/* Day Header Banner */}
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-950/30 via-slate-900 to-black border border-amber-500/30 flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-mono font-bold text-amber-400 uppercase">
+                        DAY {currentActiveDay.dayNumber} OF {plan.targetDays}
+                      </span>
+                      <span className="text-xs font-mono text-slate-400">
+                        {currentActiveDay.date}
+                      </span>
+                    </div>
+                    <h3 className="text-base font-bold text-white mt-1">
+                      {currentActiveDay.theme}
+                    </h3>
+                  </div>
+
+                  <button
+                    onClick={() => handleToggleDay(activeDayIndex)}
+                    className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md ${
+                      currentActiveDay.isCompleted
+                        ? 'bg-emerald-500 text-slate-950'
+                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+                    }`}
+                  >
+                    {currentActiveDay.isCompleted ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Completed!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Circle className="w-4 h-4" />
+                        <span>Mark Day Done</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {currentActiveDay.milestone && (
+                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center gap-2 text-xs font-mono text-amber-300 font-bold">
+                    <span>⭐ MILESTONE:</span>
+                    <span>{currentActiveDay.milestone}</span>
+                  </div>
+                )}
+
+                {/* 1. WHEN TO DO (Time Breakdown) */}
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2.5">
+                  <div className="text-xs font-mono font-bold text-sky-400 flex items-center gap-1.5">
+                    <Clock className="w-4 h-4 text-sky-400" />
+                    <span>1. When to Do (Recommended Session Blocks)</span>
+                  </div>
+                  <div className="space-y-1.5">
+                    {currentActiveDay.whenToDo.map((slot, sIdx) => (
+                      <div 
+                        key={sIdx}
+                        className="p-2.5 rounded-xl bg-black/40 border border-white/[0.04] flex items-center justify-between text-xs font-mono"
+                      >
+                        <span className="text-amber-300 font-bold">{slot.time}</span>
+                        <span className="text-slate-300">{slot.activity}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. WHAT TO DO (Exact Tasks) */}
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
+                  <div className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
+                    <Target className="w-4 h-4 text-emerald-400" />
+                    <span>2. What to Do (Today's Assignment)</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-black/40 border border-emerald-500/20 text-xs text-slate-200 leading-relaxed font-mono">
+                    {currentActiveDay.whatToDo}
+                  </div>
+                </div>
+
+                {/* 3. HOW TO DO (Pedagogical Guidance) */}
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
+                  <div className="text-xs font-mono font-bold text-purple-400 flex items-center gap-1.5">
+                    <BookOpen className="w-4 h-4 text-purple-400" />
+                    <span>3. How to Do (Action Protocol)</span>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-black/40 border border-purple-500/20 text-xs text-slate-300 whitespace-pre-line leading-relaxed">
+                    {currentActiveDay.howToDo}
+                  </div>
+                </div>
+
+                {/* Next / Previous Day Navigation */}
+                <div className="flex items-center justify-between pt-2">
+                  <button
+                    disabled={activeDayIndex === 0}
+                    onClick={() => setActiveDayIndex(prev => prev - 1)}
+                    className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 disabled:opacity-30 text-xs font-mono text-slate-300"
+                  >
+                    ← Previous Day
+                  </button>
+                  <button
+                    disabled={activeDayIndex === plan.days.length - 1}
+                    onClick={() => setActiveDayIndex(prev => prev + 1)}
+                    className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-30 text-slate-950 font-bold text-xs font-mono shadow-md"
+                  >
+                    Next Day →
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-12 text-slate-500">
+                Select a day on the left to view the study instructions.
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

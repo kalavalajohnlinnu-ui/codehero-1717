@@ -17,7 +17,9 @@ import {
   Sparkles,
   ExternalLink,
   Award,
-  Lock
+  Lock,
+  Calendar,
+  User
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { soundService } from '../services/soundService';
@@ -43,7 +45,10 @@ export function Header({
   onOpenRoadmap,
   onOpenNotes,
   onOpenExam,
-  onOpenModeLocked
+  onOpenModeLocked,
+  currentStudent,
+  onOpenStudentAuth,
+  onOpenStudyPlan
 }) {
   const [isMuted, setIsMuted] = useState(soundService.isMuted());
   const prog = getLevelProgress(totalXP);
@@ -138,17 +143,46 @@ export function Header({
             </div>
           </div>
 
-          {/* Digital Notes */}
+          {/* Student Account & Email Status */}
+          <button
+            onClick={() => {
+              soundService.playClick();
+              onOpenStudentAuth && onOpenStudentAuth();
+            }}
+            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium text-slate-200 hover:text-white bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 rounded-xl transition-all"
+            title="Student Profile & Email Data Saving"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <User className="w-3.5 h-3.5 text-sky-400" />
+            <span className="font-bold text-sky-300 max-w-[100px] truncate hidden sm:inline">
+              {currentStudent?.name || 'Student'}
+            </span>
+          </button>
+
+          {/* Personalized Study Plan */}
+          <button
+            onClick={() => {
+              soundService.playClick();
+              onOpenStudyPlan && onOpenStudyPlan();
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-medium text-amber-300 hover:text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-xl transition-colors"
+            title="Personalized Study Plan: When to do, What to do, How to do"
+          >
+            <Calendar className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden md:inline">Plan</span>
+          </button>
+
+          {/* Digital Notes & PDF */}
           <button
             onClick={() => {
               soundService.playClick();
               onOpenNotes && onOpenNotes();
             }}
             className="flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-medium text-slate-300 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] rounded-xl transition-colors"
-            title="Open & Download Digital Master Notes (.md)"
+            title="Open Illustrated Notes & Download PDF Handbook"
           >
             <BookOpen className="w-3.5 h-3.5 text-sky-400" />
-            <span className="hidden md:inline">Notes</span>
+            <span className="hidden md:inline">Notes/PDF</span>
           </button>
 
           {/* Checkpoint Exam */}
@@ -158,7 +192,7 @@ export function Header({
               onOpenExam && onOpenExam();
             }}
             className="flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-bold text-amber-300 hover:text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-xl transition-colors"
-            title="Conduct Formal Checkpoint Examination & Earn Official Certificate"
+            title="Conduct Formal Knowledge Test & Earn Certificate"
           >
             <Award className="w-3.5 h-3.5 text-amber-400" />
             <span className="hidden md:inline">Exam</span>

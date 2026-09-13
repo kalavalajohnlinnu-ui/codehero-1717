@@ -1,6 +1,11 @@
 // Persistent Storage Service for CodeHero Universe
-const STORAGE_KEY = 'codehero_universe_state_v2';
-const LEGACY_STORAGE_KEY = 'python_mastery_state_v1';
+import { authService } from './authService';
+
+const LEGACY_STORAGE_KEY_V2 = 'codehero_universe_state_v2';
+const LEGACY_STORAGE_KEY_V1 = 'python_mastery_state_v1';
+
+const getActiveStorageKey = () => authService.getStudentStorageKey('state_v3');
+const getStudyPlanStorageKey = () => authService.getStudentStorageKey('study_plan_v1');
 
 const DEFAULT_SANDBOX_BY_LANG = {
   python: `# Python Sandbox: Test anything you like!
@@ -94,26 +99,30 @@ const DEFAULT_STATE = {
 export const storageService = {
   loadState() {
     try {
-      let data = localStorage.getItem(STORAGE_KEY);
+      const activeKey = getActiveStorageKey();
+      let data = localStorage.getItem(activeKey);
       let parsed = null;
 
       if (!data) {
-        // Check legacy key for migration
-        const legacyData = localStorage.getItem(LEGACY_STORAGE_KEY);
-        if (legacyData) {
+        // Check legacy keys for migration into this student's profile
+        const legacyDataV2 = localStorage.getItem(LEGACY_STORAGE_KEY_V2);
+        const legacyDataV1 = localStorage.getItem(LEGACY_STORAGE_KEY_V1);
+        const sourceData = legacyDataV2 || legacyDataV1;
+
+        if (sourceData) {
           try {
-            const legacyParsed = JSON.parse(legacyData);
+            const legacyParsed = JSON.parse(sourceData);
             parsed = {
               ...DEFAULT_STATE,
               totalXP: legacyParsed.totalXP || 0,
               streak: legacyParsed.streak || 1,
               completedByLanguage: {
                 ...DEFAULT_STATE.completedByLanguage,
-                python: legacyParsed.completedLessons || []
+                ...(legacyParsed.completedByLanguage || { python: legacyParsed.completedLessons || [] })
               },
               currentLessonByLanguage: {
                 ...DEFAULT_STATE.currentLessonByLanguage,
-                python: legacyParsed.currentLessonId || 'lesson-1'
+                ...(legacyParsed.currentLessonByLanguage || { python: legacyParsed.currentLessonId || 'lesson-1' })
               },
               codeDrafts: legacyParsed.codeDrafts || {}
             };
@@ -157,9 +166,31 @@ export const storageService = {
 
   saveState(state) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const activeKey = getActiveStorageKey();
+      localStorage.setItem(activeKey, JSON.stringify(state));
     } catch (e) {
       console.error("Failed to save progress state:", e);
+    }
+  },
+
+  // Study Plan Persistence (per student)
+  saveStudyPlan(planData) {
+    try {
+      const key = getStudyPlanStorageKey();
+      localStorage.setItem(key, JSON.stringify(planData));
+    } catch (e) {
+      console.error("Failed to save study plan:", e);
+    }
+  },
+
+  getStudyPlan() {
+    try {
+      const key = getStudyPlanStorageKey();
+      const data = localStorage.getItem(key);
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      console.error("Failed to load study plan:", e);
+      return null;
     }
   },
 

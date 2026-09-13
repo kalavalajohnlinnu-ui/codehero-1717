@@ -20,9 +20,11 @@ import { getLevelProgress as getLevelInfo } from './services/gameEngine';
 import { ComboMeter } from './components/game/ComboMeter';
 import { LevelUpModal } from './components/game/LevelUpModal';
 import { TrophyToast } from './components/game/TrophyToast';
-import { DailyRewardModal } from './components/game/DailyRewardModal';
 import { BonusRoundPopup } from './components/game/BonusRoundPopup';
 import { StreakModal } from './components/game/StreakModal';
+import { authService } from './services/authService';
+import { StudentAuthModal } from './components/StudentAuthModal';
+import { StudyPlanModal } from './components/StudyPlanModal';
 import { GameModeSelector } from './components/game/GameModeSelector';
 import { AlgorithmArena } from './components/game/AlgorithmArena';
 import { BugDetective } from './components/game/BugDetective';
@@ -50,10 +52,14 @@ export default function App() {
   const [bonusRoundActive, setBonusRoundActive] = useState(false);
   const [bonusMultiplier, setBonusMultiplier] = useState(1);
   const [pendingAchievements, setPendingAchievements] = useState([]);
-  const [dailyRewardClaimed, setDailyRewardClaimed] = useState(true); // default true, check in effect
   const [currentGameMode, setCurrentGameMode] = useState('lessons'); // 'lessons' | 'arena' | 'bugs' | 'speed' | 'projects'
   const [isGameModeSelectorOpen, setIsGameModeSelectorOpen] = useState(false);
   const [lessonsCompletedSession, setLessonsCompletedSession] = useState(0);
+  
+  // Student Auth & Study Plan
+  const [currentStudent, setCurrentStudent] = useState(() => authService.getCurrentStudent());
+  const [isStudentAuthOpen, setIsStudentAuthOpen] = useState(false);
+  const [isStudyPlanOpen, setIsStudyPlanOpen] = useState(false);
   
   // Modals state
   const [levelUpData, setLevelUpData] = useState(null);
@@ -116,14 +122,8 @@ export default function App() {
     setCompletedByLanguage(savedState.completedByLanguage || {});
     setStreak(savedState.streak || 1);
 
-    const today = new Date().toISOString().split('T')[0];
-    const lastClaim = localStorage.getItem('lastDailyClaim');
-    if (lastClaim !== today) {
-      setDailyRewardClaimed(false);
-    }
-
     // Check streak milestones
-    if (savedState.streak > 1 && [3, 7, 14, 30, 50, 100].includes(savedState.streak) && lastClaim !== today) {
+    if (savedState.streak > 1 && [3, 7, 14, 30, 50, 100].includes(savedState.streak)) {
         setStreakModalData({ days: savedState.streak, bonus: savedState.streak * 100 });
     }
 
@@ -208,11 +208,28 @@ export default function App() {
     setRecentXpAward(finalAmount);
   };
 
-  const handleClaimDaily = (amount) => {
-    handleXPEarned(amount);
-    const today = new Date().toISOString().split('T')[0];
-    localStorage.setItem('lastDailyClaim', today);
-    setDailyRewardClaimed(true);
+  const handleStudentChanged = (newStudent) => {
+    setCurrentStudent(newStudent);
+    // Reload state for this specific student profile
+    const savedState = storageService.loadState();
+    setTotalXP(savedState.totalXP || 0);
+    setCompletedByLanguage(savedState.completedByLanguage || {});
+    setStreak(savedState.streak || 1);
+
+    const initialLangId = savedState.currentLanguageId || 'python';
+    setCurrentLanguageId(initialLangId);
+
+    const initialLangConfig = getLanguageConfig(initialLangId);
+    const initialLessons = initialLangConfig.curriculum.flatMap(m => m.lessons);
+    const targetLessonId = storageService.getCurrentLessonId(initialLangId, initialLessons[0].id);
+    setCurrentLessonId(targetLessonId);
+
+    const targetLessonObj = initialLessons.find(l => l.id === targetLessonId) || initialLessons[0];
+    const initialCode = storageService.getLessonDraft(targetLessonId, targetLessonObj.starterCode);
+    setCurrentCode(initialCode);
+
+    setOutputResult(null);
+    setTestResults(null);
   };
 
   const handleSelectLanguage = (newLangId) => {
@@ -490,6 +507,9 @@ export default function App() {
         onOpenNotes={() => setIsNotesOpen(true)}
         onOpenExam={() => setIsExamOpen(true)}
         onOpenModeLocked={(modeId) => setLockedModeInfo(modeId)}
+        currentStudent={currentStudent}
+        onOpenStudentAuth={() => setIsStudentAuthOpen(true)}
+        onOpenStudyPlan={() => setIsStudyPlanOpen(true)}
       />
 
       {renderGameMode()}
@@ -545,9 +565,23 @@ export default function App() {
         }}
       />
 
-      {!dailyRewardClaimed && (
-        <DailyRewardModal onClaim={handleClaimDaily} onClose={() => setDailyRewardClaimed(true)} />
-      )}
+      {/* Student Profile & Email Account Modal */}
+      <StudentAuthModal
+        isOpen={isStudentAuthOpen}
+        onClose={() => setIsStudentAuthOpen(false)}
+        onStudentChanged={handleStudentChanged}
+        totalXP={totalXP}
+        streak={streak}
+        completedCount={completedLessonsInLang.length}
+      />
+
+      {/* Personalized Study Plan Timetable Modal */}
+      <StudyPlanModal
+        isOpen={isStudyPlanOpen}
+        onClose={() => setIsStudyPlanOpen(false)}
+        currentLanguageId={currentLanguageId}
+        studentName={currentStudent?.name || 'Hero Student'}
+      />
 
       {levelUpData && (
         <LevelUpModal newLevel={levelUpData.level} levelName={levelUpData.name} onClose={() => setLevelUpData(null)} />
