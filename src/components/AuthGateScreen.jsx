@@ -11,6 +11,7 @@ import {
 import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
 import { MascotAvatar } from './mascots/MascotAvatar';
+import { GoogleSignInButton } from './GoogleSignInButton';
 
 const AVATARS = [
   { id: 'dragon', name: 'Pythie Dragon', desc: 'Python & AI Guardian' },
@@ -212,6 +213,23 @@ export function AuthGateScreen({ onAuthenticated }) {
                 ? 'Your progress is saved permanently under your account.'
                 : 'Log in to restore your lessons, scores, and certificates.'}
             </p>
+          </div>
+
+          {/* Prominent Google Sign-In Button */}
+          <div className="mb-6">
+            <GoogleSignInButton 
+              onAuthenticated={onAuthenticated}
+              variant="light"
+              text="Continue with Google"
+            />
+
+            <div className="flex items-center gap-3 my-5">
+              <div className="flex-1 h-[1px]" style={{ background: 'rgba(255,255,255,0.08)' }} />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
+                or sign in with email
+              </span>
+              <div className="flex-1 h-[1px]" style={{ background: 'rgba(255,255,255,0.08)' }} />
+            </div>
           </div>
 
           {/* Tab switcher */}

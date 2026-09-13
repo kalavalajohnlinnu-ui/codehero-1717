@@ -17,6 +17,8 @@ import {
 import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
 import { MascotAvatar } from './mascots/MascotAvatar';
+import { GoogleSignInButton } from './GoogleSignInButton';
+import { GoogleLogo } from './GoogleSignInModal';
 
 const AVATAR_OPTIONS = [
   { id: 'dragon', name: 'Pythie Dragon', desc: 'Python & Logic Guardian' },
@@ -80,6 +82,16 @@ export function StudentAuthModal({
       soundService.playFail();
       setError(err.message);
     }
+  };
+
+  const handleGoogleSuccess = (googleStudent) => {
+    soundService.playFanfare();
+    setSuccessMsg(`Welcome, ${googleStudent.name}! Connected with Google.`);
+    setTimeout(() => {
+      setSuccessMsg(null);
+      if (onStudentChanged) onStudentChanged(googleStudent);
+      setTab('profile');
+    }, 800);
   };
 
   const handleSwitch = (targetEmail) => {
@@ -251,9 +263,17 @@ export function StudentAuthModal({
                     </div>
                   </div>
 
-                  <span className="px-2 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[10px] font-mono font-bold">
-                    ACTIVE
-                  </span>
+                  <div className="flex flex-col items-end gap-1">
+                    <span className="px-2 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[10px] font-mono font-bold">
+                      ACTIVE
+                    </span>
+                    {currentStudent.authProvider === 'google' && (
+                      <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-white/10 text-white text-[9px] font-mono border border-white/15">
+                        <GoogleLogo className="w-2.5 h-2.5" />
+                        <span>Google Account</span>
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 pt-2 border-t border-white/[0.06]">
@@ -332,7 +352,22 @@ export function StudentAuthModal({
 
           {/* TAB 2: SIGN UP */}
           {tab === 'signup' && (
-            <form onSubmit={handleRegister} className="space-y-3.5 animate-fade-in">
+            <div className="space-y-4 animate-fade-in">
+              <GoogleSignInButton
+                onAuthenticated={handleGoogleSuccess}
+                variant="light"
+                text="Sign up with Google"
+              />
+
+              <div className="flex items-center gap-3 my-3">
+                <div className="flex-1 h-[1px] bg-white/10" />
+                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
+                  or register with email
+                </span>
+                <div className="flex-1 h-[1px] bg-white/10" />
+              </div>
+
+              <form onSubmit={handleRegister} className="space-y-3.5">
               <div>
                 <label className="block text-[11px] font-mono text-slate-400 mb-1">
                   Full Name / Username
@@ -418,11 +453,27 @@ export function StudentAuthModal({
                 Create Student Profile & Save Progress
               </button>
             </form>
+          </div>
           )}
 
           {/* TAB 3: LOG IN */}
           {tab === 'login' && (
-            <form onSubmit={handleLogin} className="space-y-3.5 animate-fade-in">
+            <div className="space-y-4 animate-fade-in">
+              <GoogleSignInButton
+                onAuthenticated={handleGoogleSuccess}
+                variant="light"
+                text="Sign in with Google"
+              />
+
+              <div className="flex items-center gap-3 my-3">
+                <div className="flex-1 h-[1px] bg-white/10" />
+                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
+                  or log in with email
+                </span>
+                <div className="flex-1 h-[1px] bg-white/10" />
+              </div>
+
+              <form onSubmit={handleLogin} className="space-y-3.5">
               <div>
                 <label className="block text-[11px] font-mono text-slate-400 mb-1">
                   Registered Email Address
@@ -463,6 +514,7 @@ export function StudentAuthModal({
                 Log In to Student Account
               </button>
             </form>
+          </div>
           )}
 
           {/* TAB 4: SWITCH PROFILES */}

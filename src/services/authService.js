@@ -123,6 +123,75 @@ export const authService = {
     return student;
   },
 
+  // Login or Register via Google OAuth
+  loginWithGoogle({ email, name, picture, googleId }) {
+    if (!email || !email.includes('@')) {
+      throw new Error('Google did not provide a valid email address.');
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    const students = this.getAllStudents();
+    let student = students.find(s => s.email.toLowerCase() === cleanEmail);
+
+    if (student) {
+      // Update existing student with Google account info
+      student.name = name || student.name;
+      if (picture) student.googlePicture = picture;
+      student.authProvider = 'google';
+      student.googleId = googleId || student.googleId;
+      student.isGuest = false;
+    } else {
+      // Create new student from Google Profile
+      student = {
+        id: 'student_google_' + (googleId || Date.now()),
+        email: cleanEmail,
+        name: name || cleanEmail.split('@')[0],
+        avatar: 'dragon',
+        googlePicture: picture || null,
+        authProvider: 'google',
+        googleId: googleId || null,
+        joinedDate: new Date().toISOString().split('T')[0],
+        isGuest: false
+      };
+      students.push(student);
+    }
+
+    this.saveAllStudents(students);
+    this.setCurrentStudent(student);
+    return student;
+  },
+
+  // Decode standard Google JWT Token from GIS
+  decodeGoogleCredential(credentialToken) {
+    try {
+      const base64Url = credentialToken.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+      return JSON.parse(jsonPayload);
+    } catch (e) {
+      console.error('Failed to decode Google JWT token:', e);
+      return null;
+    }
+  },
+
+  // Google Client ID storage
+  getGoogleClientId() {
+    return localStorage.getItem('codehero_google_client_id_v1') || '';
+  },
+
+  setGoogleClientId(clientId) {
+    if (clientId) {
+      localStorage.setItem('codehero_google_client_id_v1', clientId.trim());
+    } else {
+      localStorage.removeItem('codehero_google_client_id_v1');
+    }
+  },
+
   // Switch student profile directly
   switchStudent(email) {
     const cleanEmail = email.trim().toLowerCase();
