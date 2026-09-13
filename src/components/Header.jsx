@@ -56,12 +56,12 @@ export function Header({
   };
 
   const modes = [
-    { id: 'lessons', label: 'Core Quests', icon: Zap, count: '631' },
-    { id: 'arena', label: 'Algorithm Arena', icon: Sword, count: '80' },
-    { id: 'bugs', label: 'Bug Detective', icon: Search, count: '40' },
-    { id: 'speed', label: 'Speed Sprint', icon: Timer, count: 'Live' },
-    { id: 'projects', label: 'Project Lab', icon: Hammer, count: '15' },
-    { id: 'oracle', label: 'Language Oracle & AI Hub', icon: Sparkles, count: 'Vault' }
+    { id: 'lessons', label: 'Lessons', icon: Zap, count: '631' },
+    { id: 'speed', label: 'Speed Practice', icon: Timer, count: 'Fast' },
+    { id: 'bugs', label: 'Fix Bugs', icon: Search, count: '40' },
+    { id: 'arena', label: 'Coding Puzzles', icon: Sword, count: '80' },
+    { id: 'projects', label: 'Build Projects', icon: Hammer, count: '15' },
+    { id: 'oracle', label: 'Ask & Help', icon: Sparkles, count: 'Help' }
   ];
 
   return (

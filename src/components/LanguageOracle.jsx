@@ -118,7 +118,7 @@ export function LanguageOracle({ currentLanguageId, onSelectLanguage, onOpenRoad
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            📋 Technical Dossier
+            📋 Language Overview
           </button>
           <button
             onClick={() => setActiveTab('ask')}
@@ -129,7 +129,7 @@ export function LanguageOracle({ currentLanguageId, onSelectLanguage, onOpenRoad
             }`}
           >
             <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-            <span>Ask & External Prompt Forge</span>
+            <span>💬 Ask Any Question</span>
           </button>
           <button
             onClick={() => setActiveTab('pitfalls')}
@@ -139,7 +139,7 @@ export function LanguageOracle({ currentLanguageId, onSelectLanguage, onOpenRoad
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            ⚠️ Traps & Gotchas
+            ⚠️ Common Mistakes
           </button>
           <button
             onClick={() => setActiveTab('interview')}
@@ -149,7 +149,7 @@ export function LanguageOracle({ currentLanguageId, onSelectLanguage, onOpenRoad
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            🎯 Top 1% Deep Concepts
+            🎯 Interview Questions
           </button>
         </div>
 

@@ -117,7 +117,7 @@ export function ModuleCheckpointModal({
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-[10px] font-mono uppercase px-2 py-0.2 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 font-bold">
-                  MODULE CHECKPOINT
+                  Module Mini-Quiz
                 </span>
                 <span className="text-xs text-slate-400 font-mono">
                   Step {currentStep + 1} of 2
@@ -143,7 +143,7 @@ export function ModuleCheckpointModal({
             <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-1">
               <div className="text-[10px] font-mono uppercase text-sky-400 font-bold flex items-center gap-1.5">
                 <HelpCircle className="w-3.5 h-3.5" />
-                <span>Knowledge Check</span>
+                <span>Question 1: Check Your Understanding</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
                 {conceptQuestion.prompt}
@@ -193,7 +193,7 @@ export function ModuleCheckpointModal({
 
             <div className="pt-2 flex items-center justify-between">
               <span className="text-[11px] font-mono text-slate-500">
-                {!isAnswerSubmitted ? 'Select an answer above' : (isCorrect ? '✅ Correct! Ready for step 2' : '❌ Review and try again')}
+                {!isAnswerSubmitted ? 'Choose an option above' : (isCorrect ? '✅ Correct! Ready for step 2' : '❌ Try again')}
               </span>
 
               {!isAnswerSubmitted ? (
@@ -202,14 +202,14 @@ export function ModuleCheckpointModal({
                   onClick={handleVerifyConcept}
                   className="px-5 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 disabled:opacity-40 text-slate-950 font-bold text-xs transition-all shadow-md"
                 >
-                  Verify Answer
+                  Check Answer
                 </button>
               ) : isCorrect ? (
                 <button
                   onClick={() => setCurrentStep(1)}
                   className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-md flex items-center gap-1.5"
                 >
-                  <span>Proceed to Coding Task</span>
+                  <span>Next: Small Coding Task</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               ) : (
@@ -220,7 +220,7 @@ export function ModuleCheckpointModal({
                   }}
                   className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all"
                 >
-                  Retry Question
+                  Try Again
                 </button>
               )}
             </div>
@@ -233,10 +233,10 @@ export function ModuleCheckpointModal({
             <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-1">
               <div className="text-[10px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1.5">
                 <Award className="w-3.5 h-3.5" />
-                <span>Coding Verification Task</span>
+                <span>Question 2: Practice in Code</span>
               </div>
               <p className="text-xs text-slate-200 whitespace-pre-line leading-relaxed">
-                {lastLesson.task || `Complete the exercise code below to verify your mastery of ${module.title}.`}
+                {lastLesson.task || `Complete the exercise code below to finish the quiz for ${module.title}.`}
               </p>
             </div>
 

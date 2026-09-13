@@ -187,25 +187,25 @@ export function Top1PercentRoadmapModal({ isOpen, onClose }) {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
                   <div className="text-lg mb-1">🌐</div>
-                  <div className="text-xs font-bold text-white">Polyglot Fluency</div>
+                  <div className="text-xs font-bold text-white">Multiple Languages</div>
                   <p className="text-[11px] text-slate-400 mt-1">
-                    Direct fluency in Python, JS, HTML/CSS, SQL, C/C++, Java, and Rust. Surpasses 85% of university CS graduates.
+                    Strong hands-on practice in Python, JS, HTML/CSS, SQL, C/C++, Java, and Rust.
                   </p>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
                   <div className="text-lg mb-1">⚡</div>
-                  <div className="text-xs font-bold text-white">Algorithmic Muscle</div>
+                  <div className="text-xs font-bold text-white">Problem Solving & Logic</div>
                   <p className="text-[11px] text-slate-400 mt-1">
-                    Ability to comfortably solve LeetCode Easy & Medium challenges across Arrays, Strings, Sorting, and Trees.
+                    Ability to solve real coding challenges and algorithmic puzzles with confidence.
                   </p>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
                   <div className="text-lg mb-1">🔍</div>
-                  <div className="text-xs font-bold text-white">Forensic Debugging</div>
+                  <div className="text-xs font-bold text-white">Finding & Fixing Bugs</div>
                   <p className="text-[11px] text-slate-400 mt-1">
-                    Instinctive bug detection for off-by-one errors, type coercion quirks, and scope leaks.
+                    Sharp eye to spot errors, typos, and logic bugs in broken code quickly.
                   </p>
                 </div>
               </div>

@@ -180,14 +180,14 @@ export function CheckpointExamModal({
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base font-bold text-white tracking-tight">
-                  Realm Checkpoint Examination
+                  Knowledge Test
                 </h2>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 font-bold uppercase">
-                  Official Standard
+                  Skill Test
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-mono mt-0.5">
-                Target: 80% Passing Score · No Hints Allowed · Timed Assessment
+                Pass mark: 80% · No hints during test · 15 minutes
               </p>
             </div>
           </div>
@@ -224,26 +224,26 @@ export function CheckpointExamModal({
 
               <div>
                 <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                  Ready for the {currentLanguageId.toUpperCase()} Realm Examination?
+                  Ready for the {currentLanguageId.toUpperCase()} Test?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-                  This examination conducts a formal audit of your independent problem-solving skills.
-                  Unlike standard quests, <strong>hints and auto-solutions are completely disabled</strong>.
+                  This test checks what you have learned so far on your own.
+                  During this test, <strong>hints are turned off</strong> so you can see how much you truly know!
                 </p>
               </div>
 
               <div className="grid grid-cols-3 gap-3 text-left">
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
                   <div className="text-[10px] font-mono text-slate-500 uppercase">Questions</div>
-                  <div className="text-sm font-bold text-white mt-0.5">3 Coding Tasks</div>
+                  <div className="text-sm font-bold text-white mt-0.5">3 Coding Problems</div>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
                   <div className="text-[10px] font-mono text-slate-500 uppercase">Time Limit</div>
                   <div className="text-sm font-bold text-amber-400 mt-0.5">15 Minutes</div>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
-                  <div className="text-[10px] font-mono text-slate-500 uppercase">Passing Threshold</div>
-                  <div className="text-sm font-bold text-emerald-400 mt-0.5">80% Accuracy</div>
+                  <div className="text-[10px] font-mono text-slate-500 uppercase">Score to Pass</div>
+                  <div className="text-sm font-bold text-emerald-400 mt-0.5">80% or Higher</div>
                 </div>
               </div>
 
@@ -260,7 +260,7 @@ export function CheckpointExamModal({
                   className="px-8 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold text-xs hover:opacity-90 transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2"
                 >
                   <Play className="w-4 h-4 fill-slate-950" />
-                  <span>Begin Examination</span>
+                  <span>Start Test</span>
                 </button>
               </div>
             </div>
@@ -301,7 +301,7 @@ export function CheckpointExamModal({
                   onClick={handleAutoSubmit}
                   className="px-4 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold transition-all"
                 >
-                  Submit All & Finish Exam
+                  Submit & Finish Test
                 </button>
               </div>
 
@@ -323,7 +323,7 @@ export function CheckpointExamModal({
                   onRun={handleRunAndTestQuestion}
                   onReset={() => handleCodeChange(currentQ.starter)}
                   isRunning={isRunning}
-                  wasmStatus="Exam Security Active"
+                  wasmStatus="Test in Progress"
                   language={currentLanguageId}
                   isHeroMode={false}
                 />
@@ -335,17 +335,17 @@ export function CheckpointExamModal({
                   {questionResults[currentQuestionIndex] === true && (
                     <span className="text-emerald-400 font-bold flex items-center gap-1">
                       <CheckCircle2 className="w-4 h-4" />
-                      <span>Task Verified: Tests Passed!</span>
+                      <span>Great job! All tests passed!</span>
                     </span>
                   )}
                   {questionResults[currentQuestionIndex] === false && (
                     <span className="text-rose-400 font-bold flex items-center gap-1">
                       <XCircle className="w-4 h-4" />
-                      <span>Tests Failed. Review logic and test again!</span>
+                      <span>Not quite right. Review your logic and test again!</span>
                     </span>
                   )}
                   {questionResults[currentQuestionIndex] === undefined && (
-                    <span className="text-slate-500">Click "Run & Test Code" in the editor to grade this task.</span>
+                    <span className="text-slate-500">Click "Run & Test Code" to check your answer.</span>
                   )}
                 </div>
 
@@ -379,25 +379,25 @@ export function CheckpointExamModal({
 
                 <div>
                   <h3 className="text-xl font-bold text-white">
-                    {isPassed ? 'Examination Passed With Honors!' : 'Examination Requires Retest'}
+                    {isPassed ? 'Congratulations! You Passed the Test!' : 'Keep Practicing! Try Again Soon'}
                   </h3>
                   <p className="text-xs text-slate-400 mt-1 font-mono">
-                    Score: {passedCount} of {questions.length} tasks correct ({scorePercent}%)
+                    Score: {passedCount} of {questions.length} problems correct ({scorePercent}%)
                   </p>
                 </div>
 
-                {/* Official Printable Certificate (If Passed) */}
+                {/* Printable Certificate (If Passed) */}
                 {isPassed && (
                   <div 
                     id="certificate-print"
                     className="p-8 my-4 rounded-2xl bg-gradient-to-b from-[#121624] via-[#0c0f18] to-[#07090e] border-2 border-amber-500/40 shadow-2xl text-center space-y-4 max-w-xl mx-auto"
                   >
                     <div className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">
-                      OFFICIAL CERTIFICATE OF REALM PROFICIENCY
+                      CERTIFICATE OF COMPLETION
                     </div>
 
                     <div className="text-slate-400 text-xs italic">
-                      This hereby certifies that
+                      This is awarded to
                     </div>
 
                     <div className="text-2xl font-serif font-bold text-white tracking-wide border-b border-amber-500/20 pb-2">
@@ -405,16 +405,16 @@ export function CheckpointExamModal({
                     </div>
 
                     <p className="text-xs text-slate-300 leading-relaxed max-w-md mx-auto">
-                      has successfully demonstrated verified programming fluency, rigorous problem decomposition, and algorithmic execution in the
+                      for successfully completing the coursework and passing the practical coding test in
                     </p>
 
                     <div className="text-lg font-mono font-bold text-sky-400 uppercase">
-                      {currentLanguageId} Coding Realm
+                      {currentLanguageId} Programming
                     </div>
 
                     <div className="pt-4 flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-white/[0.08]">
                       <div>DATE: {new Date().toLocaleDateString()}</div>
-                      <div className="text-amber-400 font-bold">CODEHERO ARCHITECT GUILD</div>
+                      <div className="text-amber-400 font-bold">CODEHERO ACADEMY</div>
                       <div>GRADE: {scorePercent}%</div>
                     </div>
                   </div>
@@ -427,7 +427,7 @@ export function CheckpointExamModal({
                       className="px-5 py-2 rounded-xl bg-white text-slate-950 font-bold text-xs hover:bg-slate-200 transition-all shadow-md flex items-center gap-1.5"
                     >
                       <Printer className="w-3.5 h-3.5" />
-                      <span>Print / Save Certificate</span>
+                      <span>Download / Print Certificate</span>
                     </button>
                   )}
 
@@ -435,7 +435,7 @@ export function CheckpointExamModal({
                     onClick={onClose}
                     className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all"
                   >
-                    Close & Return to Guild
+                    Close & Continue Learning
                   </button>
                 </div>
               </div>

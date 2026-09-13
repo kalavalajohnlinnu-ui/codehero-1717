@@ -78,7 +78,7 @@ export function DetectiveFailModal({
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 font-bold">
-                  DIAGNOSTIC CASE FILE
+                  Code Check
                 </span>
                 <span className="text-[10px] font-mono text-slate-400">
                   {languageName}
@@ -104,7 +104,7 @@ export function DetectiveFailModal({
           <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-1">
             <div className="text-[10px] font-mono uppercase text-sky-400 font-bold flex items-center gap-1.5">
               <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-              <span>1. Exact Reason for Failure</span>
+              <span>1. Why Your Code Did Not Pass</span>
             </div>
             <p className="text-slate-300 leading-relaxed text-xs">
               {explanation}
@@ -117,7 +117,7 @@ export function DetectiveFailModal({
             <div className="p-3 rounded-2xl bg-emerald-950/20 border border-emerald-500/30">
               <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold text-emerald-400 mb-1">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Expected by Test</span>
+                <span>What Was Expected</span>
               </div>
               <div className="bg-black/40 border border-emerald-500/20 rounded-xl p-2 font-mono text-[11px] text-emerald-200 break-all min-h-[42px] flex items-center">
                 {String(expectedDisplay)}
@@ -128,7 +128,7 @@ export function DetectiveFailModal({
             <div className="p-3 rounded-2xl bg-rose-950/20 border border-rose-500/30">
               <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold text-rose-400 mb-1">
                 <XCircle className="w-3.5 h-3.5" />
-                <span>Your Code Produced</span>
+                <span>What Your Code Did</span>
               </div>
               <div className="bg-black/40 border border-rose-500/20 rounded-xl p-2 font-mono text-[11px] text-rose-200 break-all min-h-[42px] flex items-center">
                 {String(actualDisplay)}
@@ -136,29 +136,29 @@ export function DetectiveFailModal({
             </div>
           </div>
 
-          {/* 3. Actionable Detective Hint */}
+          {/* 3. Actionable Hint */}
           <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
             <div className="text-[10px] font-mono uppercase text-amber-400 font-bold mb-1.5 flex items-center gap-1.5">
               <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
-              <span>2. Detective Clue</span>
+              <span>2. Helpful Hint</span>
             </div>
             <p className="text-slate-300 leading-relaxed">
               {errorDetails?.fix || (
-                lesson?.hints?.[0] || `Check the challenge description carefully: make sure variable names match, return types are correct, and no syntax errors are present.`
+                lesson?.hints?.[0] || `Check the instructions carefully: make sure your variable names, spelling, and symbols match what the problem asked for.`
               )}
             </p>
           </div>
 
-          {/* 4. Progressive Disclosure: Alternative Solution Locked */}
+          {/* 4. Progressive Disclosure: Solution Locked */}
           <div className="p-3.5 rounded-2xl bg-[#0F131D] border border-white/[0.08]">
             {!solutionUnlocked ? (
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
                   <Lock className="w-4 h-4 text-slate-500" />
                   <div>
-                    <div className="text-xs font-bold text-slate-300">Alternative Solution Locked</div>
+                    <div className="text-xs font-bold text-slate-300">Answer Locked</div>
                     <div className="text-[10px] text-slate-500 font-mono">
-                      Mastery is built by debugging yourself. Only unlock if genuinely stuck!
+                      You learn best by fixing it yourself! Only peek if you are truly stuck.
                     </div>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export function DetectiveFailModal({
                   className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono font-bold text-amber-400 border border-amber-500/30 hover:border-amber-500/50 transition-all shrink-0 flex items-center gap-1"
                 >
                   <Unlock className="w-3 h-3" />
-                  <span>Reveal Solution</span>
+                  <span>Show Answer</span>
                 </button>
               </div>
             ) : (
@@ -176,13 +176,13 @@ export function DetectiveFailModal({
                 <div className="flex items-center justify-between border-b border-white/[0.06] pb-2">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-amber-300">
                     <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Unlocked Official Solution</span>
+                    <span>Working Example Solution</span>
                   </div>
                   <button
                     onClick={handleApplyFix}
                     className="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs font-mono transition-all"
                   >
-                    Apply Fix to Editor
+                    Copy to Code Editor
                   </button>
                 </div>
 
@@ -200,7 +200,7 @@ export function DetectiveFailModal({
             onClick={onClose}
             className="w-full sm:w-auto px-5 py-2 text-xs font-bold text-slate-950 bg-white hover:bg-slate-200 rounded-xl transition-all shadow-md"
           >
-            I'll Fix It Myself (Recommended)
+            I'll Try Again Myself
           </button>
         </div>
       </div>

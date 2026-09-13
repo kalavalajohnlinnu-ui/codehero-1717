@@ -54,20 +54,20 @@ export function ModeLockedModal({
           {criteria.name} is Locked
         </h3>
 
-        <p className="text-xs text-slate-400 mt-1.5 leading-relaxed font-sans">
-          To maintain step-by-step mastery, this mode unlocks as you progress through <strong className="text-white">{languageName}</strong> quests.
+        <p className="text-xs text-slate-300 mt-1.5 leading-relaxed font-sans">
+          {criteria.reason || `You need to finish earlier lessons first so you have the skills to solve these!` }
         </p>
 
         {/* Progress Card */}
-        <div className="my-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] text-left space-y-2">
+        <div className="my-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] text-left space-y-2.5">
           <div className="flex items-center justify-between text-xs font-mono">
             <span className="text-slate-400">Unlock Condition:</span>
-            <span className="text-amber-300 font-bold">{criteria.requiredQuests} Quests in {languageName}</span>
+            <span className="text-amber-300 font-bold">Finish {criteria.requiredQuests} Lessons in {languageName}</span>
           </div>
 
           <div className="flex items-center justify-between text-xs font-mono">
-            <span className="text-slate-400">Your Current Progress:</span>
-            <span className="text-white font-bold">{completedCount} / {criteria.requiredQuests}</span>
+            <span className="text-slate-400">Your Progress:</span>
+            <span className="text-white font-bold">{completedCount} of {criteria.requiredQuests} Lessons</span>
           </div>
 
           {/* Progress Bar */}
@@ -79,7 +79,7 @@ export function ModeLockedModal({
           </div>
 
           <div className="text-[11px] text-amber-400 font-mono text-center pt-1">
-            {questsNeeded > 0 ? `Complete ${questsNeeded} more quest${questsNeeded > 1 ? 's' : ''} to unlock!` : 'Ready to unlock!'}
+            {questsNeeded > 0 ? `Complete ${questsNeeded} more lesson${questsNeeded > 1 ? 's' : ''} to unlock!` : 'Ready to unlock!'}
           </div>
         </div>
 
@@ -93,7 +93,7 @@ export function ModeLockedModal({
             }}
             className="w-full py-2.5 rounded-xl bg-white text-slate-950 font-bold text-xs hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-md"
           >
-            <span>Continue {languageName} Quests</span>
+            <span>Continue {languageName} Lessons</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
 
@@ -102,7 +102,7 @@ export function ModeLockedModal({
             className="w-full py-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] text-slate-400 hover:text-slate-200 text-[11px] font-mono transition-colors flex items-center justify-center gap-1.5"
           >
             <Unlock className="w-3 h-3 text-slate-500" />
-            <span>I'm an Experienced Dev (Unlock Mode Now)</span>
+            <span>I already know how to code (Unlock now)</span>
           </button>
         </div>
       </div>
