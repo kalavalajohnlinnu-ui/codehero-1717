@@ -16,11 +16,13 @@ import {
   Hammer,
   Sparkles,
   ExternalLink,
-  Award
+  Award,
+  Lock
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { soundService } from '../services/soundService';
 import { getLevelProgress } from '../services/gameEngine';
+import { progressionService } from '../services/progressionService';
 
 export function Header({
   currentLanguageId,
@@ -40,7 +42,8 @@ export function Header({
   onSelectGameMode,
   onOpenRoadmap,
   onOpenNotes,
-  onOpenExam
+  onOpenExam,
+  onOpenModeLocked
 }) {
   const [isMuted, setIsMuted] = useState(soundService.isMuted());
   const prog = getLevelProgress(totalXP);
@@ -202,26 +205,43 @@ export function Header({
           {modes.map((mode) => {
             const Icon = mode.icon;
             const isActive = currentGameMode === mode.id;
+            const isUnlocked = progressionService.isModeUnlocked(mode.id, currentLanguageId, completedCount);
 
             return (
               <button
                 key={mode.id}
                 onClick={() => {
                   soundService.playClick();
-                  onSelectGameMode(mode.id);
+                  if (isUnlocked) {
+                    onSelectGameMode(mode.id);
+                  } else {
+                    onOpenModeLocked && onOpenModeLocked(mode.id);
+                  }
                 }}
                 className={`
                   flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 font-mono
                   ${isActive 
                     ? 'bg-white/10 text-white border border-white/20 shadow-sm shadow-black/50' 
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04] border border-transparent'
+                    : isUnlocked
+                      ? 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04] border border-transparent'
+                      : 'text-slate-500 hover:text-amber-300 hover:bg-amber-500/10 border border-transparent'
                   }
                 `}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-sky-400' : 'text-slate-400'}`} />
+                {!isUnlocked ? (
+                  <Lock className="w-3.5 h-3.5 text-amber-400/80" />
+                ) : (
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-sky-400' : 'text-slate-400'}`} />
+                )}
                 <span>{mode.label}</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-sky-500/20 text-sky-300' : 'bg-white/5 text-slate-500'}`}>
-                  {mode.count}
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                  isActive 
+                    ? 'bg-sky-500/20 text-sky-300' 
+                    : !isUnlocked 
+                      ? 'bg-amber-500/15 text-amber-300' 
+                      : 'bg-white/5 text-slate-500'
+                }`}>
+                  {!isUnlocked ? 'Locked' : mode.count}
                 </span>
               </button>
             );

@@ -170,6 +170,25 @@ export function CodeEditor({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const insertTextAtCursor = (textToInsert) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const before = actualCode.substring(0, start);
+    const after = actualCode.substring(end);
+    const newCode = before + textToInsert + after;
+    onChange(newCode);
+    setTimeout(() => {
+      textarea.focus();
+      if (textToInsert.length === 2 && ['()', '{}', '[]', '""', "''"].includes(textToInsert)) {
+        textarea.selectionStart = textarea.selectionEnd = start + 1;
+      } else {
+        textarea.selectionStart = textarea.selectionEnd = start + textToInsert.length;
+      }
+    }, 0);
+  };
+
   const lines = actualCode.split('\n');
   const lineCount = Math.max(lines.length, 12);
 
@@ -250,6 +269,38 @@ export function CodeEditor({
             </button>
           )}
         </div>
+      </div>
+
+      {/* Mobile Code Touch Helper Keys */}
+      <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0A0D15] border-b border-slate-800/80 overflow-x-auto shrink-0 select-none">
+        <span className="text-[10px] font-mono text-slate-500 uppercase shrink-0 font-bold hidden sm:inline">Keys:</span>
+        {[
+          { label: 'Tab', val: langMeta.spaces || '    ' },
+          { label: '( )', val: '()' },
+          { label: '{ }', val: '{}' },
+          { label: '[ ]', val: '[]' },
+          { label: '" "', val: '""' },
+          { label: "' '", val: "''" },
+          { label: ':', val: ':' },
+          { label: ';', val: ';' },
+          { label: '=', val: ' = ' },
+          { label: '==', val: ' == ' },
+          { label: '+', val: ' + ' },
+          { label: '-', val: ' - ' },
+          { label: '_', val: '_' },
+          { label: 'def', val: 'def ' },
+          { label: 'return', val: 'return ' },
+          { label: 'print', val: language === 'python' ? 'print()' : 'console.log()' }
+        ].map((item, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => insertTextAtCursor(item.val)}
+            className="px-2 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.1] active:bg-sky-500/30 active:text-sky-300 border border-white/[0.08] text-xs font-mono text-slate-300 font-semibold shrink-0 transition-colors shadow-sm"
+          >
+            {item.label}
+          </button>
+        ))}
       </div>
 
       {/* Editor Main Surface (Line Numbers + Code Input) */}

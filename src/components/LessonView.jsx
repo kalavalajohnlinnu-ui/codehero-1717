@@ -22,6 +22,7 @@ export function LessonView({
   onApplySolution,
   onOpenMobileSidebar,
   onNextLesson,
+  onOpenCheckpoint,
   isComplete,
   isHeroMode = true,
   pythieMood = 'idle',
@@ -303,18 +304,32 @@ export function LessonView({
       )}
 
       {/* Advance to Next Quest Button */}
-      {isComplete && onNextLesson && (
-        <div className="pt-3 border-t border-slate-800/80 flex justify-end">
-          <button
-            onClick={() => {
-              soundService.playClick();
-              onNextLesson();
-            }}
-            className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-sky-400 via-emerald-400 to-amber-300 text-slate-950 font-black text-xs rounded-2xl shadow-xl hover:opacity-95 transition-all active:scale-95"
-          >
-            <span>Continue Next Quest</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+      {isComplete && (
+        <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 flex-wrap">
+          {onOpenCheckpoint && (
+            <button
+              onClick={() => {
+                soundService.playClick();
+                onOpenCheckpoint();
+              }}
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-mono font-bold transition-all shadow-sm"
+            >
+              <span>📝 Module Checkpoint Exam</span>
+            </button>
+          )}
+
+          {onNextLesson && (
+            <button
+              onClick={() => {
+                soundService.playClick();
+                onNextLesson();
+              }}
+              className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-sky-400 via-emerald-400 to-amber-300 text-slate-950 font-black text-xs rounded-2xl shadow-xl hover:opacity-95 transition-all active:scale-95 ml-auto"
+            >
+              <span>Continue Next Quest</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       )}
     </div>

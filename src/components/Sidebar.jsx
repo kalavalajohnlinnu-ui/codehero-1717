@@ -40,7 +40,9 @@ export function Sidebar({
   completedLessons,
   onSelectLesson,
   isOpenMobile,
-  onCloseMobile
+  onCloseMobile,
+  onOpenModuleCheckpoint,
+  passedModuleExams = []
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [collapsedModules, setCollapsedModules] = useState({});
@@ -184,6 +186,24 @@ export function Sidebar({
                         </button>
                       );
                     })}
+
+                    {/* Module Checkpoint Mini-Exam */}
+                    <button
+                      onClick={() => {
+                        if (onOpenModuleCheckpoint) onOpenModuleCheckpoint(module);
+                        if (onCloseMobile) onCloseMobile();
+                      }}
+                      className="w-full mt-1.5 p-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/25 text-amber-300 font-bold text-xs flex items-center justify-between transition-all"
+                      title={`Take the ${module.title} Checkpoint Test`}
+                    >
+                      <span className="flex items-center gap-1.5 truncate">
+                        <span>📝</span>
+                        <span className="truncate font-mono text-[11px]">Checkpoint Exam</span>
+                      </span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 font-bold shrink-0">
+                        {passedModuleExams.includes(module.id) ? 'Passed ⭐' : 'Test'}
+                      </span>
+                    </button>
                   </div>
                 )}
               </div>

@@ -32,6 +32,8 @@ import { LanguageOracle } from './components/LanguageOracle';
 import { Top1PercentRoadmapModal } from './components/Top1PercentRoadmapModal';
 import { DigitalNotesModal } from './components/DigitalNotesModal';
 import { CheckpointExamModal } from './components/CheckpointExamModal';
+import { ModeLockedModal } from './components/ModeLockedModal';
+import { ModuleCheckpointModal } from './components/ModuleCheckpointModal';
 
 export default function App() {
   // 1. Language & State
@@ -39,6 +41,9 @@ export default function App() {
   const [completedByLanguage, setCompletedByLanguage] = useState({});
   const [totalXP, setTotalXP] = useState(0);
   const [streak, setStreak] = useState(1);
+
+  // Mobile layout state
+  const [mobileTab, setMobileTab] = useState('lesson'); // 'lesson' | 'editor' | 'output'
 
   // Game State
   const [combo, setCombo] = useState(0);
@@ -56,6 +61,15 @@ export default function App() {
   const [isRoadmapOpen, setIsRoadmapOpen] = useState(false);
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [isExamOpen, setIsExamOpen] = useState(false);
+  const [lockedModeInfo, setLockedModeInfo] = useState(null);
+  const [activeCheckpointModule, setActiveCheckpointModule] = useState(null);
+  const [passedModuleExams, setPassedModuleExams] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('passed_module_exams') || '[]');
+    } catch {
+      return [];
+    }
+  });
 
   // Active Language Configuration & Curriculum
   const activeLang = useMemo(() => getLanguageConfig(currentLanguageId), [currentLanguageId]);
@@ -239,11 +253,17 @@ export default function App() {
     setTestResults(null);
     setPythieMood('idle');
     storageService.saveCurrentLessonId(currentLanguageId, lessonId);
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      setMobileTab('lesson');
+    }
   };
 
   const handleRunCode = async () => {
     setIsRunning(true);
     setPythieMood('thinking');
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      setMobileTab('output');
+    }
     
     try {
       const execResult = await runMultiLanguageCode(currentCode, currentLanguageId, pyodide);
@@ -324,50 +344,122 @@ export default function App() {
               onSelectLesson={handleSelectLesson}
               isOpenMobile={isMobileSidebarOpen}
               onCloseMobile={() => setIsMobileSidebarOpen(false)}
+              onOpenModuleCheckpoint={(mod) => setActiveCheckpointModule(mod)}
+              passedModuleExams={passedModuleExams}
             />
-            <main className="flex-1 flex flex-col lg:flex-row overflow-hidden bg-slate-900/20">
-              <div className="w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-800/80 flex flex-col overflow-hidden h-1/2 lg:h-full bg-slate-950/40">
-                <LessonView
-                  lesson={currentLesson}
-                  onApplySolution={(c) => { setCurrentCode(c); setCombo(0); }}
-                  onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
-                  onNextLesson={() => {
-                    const currentIndex = allLessons.findIndex(l => l.id === currentLessonId);
-                    if (currentIndex >= 0 && currentIndex < allLessons.length - 1) handleSelectLesson(allLessons[currentIndex + 1].id);
-                  }}
-                  isComplete={completedLessonsInLang.includes(currentLessonId)}
-                  isHeroMode={isHeroMode}
-                  pythieMood={pythieMood}
-                  pythieSpeech={pythieSpeech}
-                  mascotName={activeLang.mascotName}
-                  mascotType={activeLang.mascotType}
-                  mascotTitle={activeLang.mascotTitle}
-                />
+
+            <main className="flex-1 flex flex-col overflow-hidden bg-slate-900/20">
+              {/* Mobile View Switcher Tab Strip (Visible on mobile/phone screens < 1024px) */}
+              <div className="lg:hidden flex items-center justify-around border-b border-white/[0.08] bg-[#0A0D15] p-1.5 shrink-0 select-none">
+                <button
+                  onClick={() => setMobileTab('lesson')}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition-all ${
+                    mobileTab === 'lesson'
+                      ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  <span>📖</span>
+                  <span>Quest</span>
+                </button>
+
+                <button
+                  onClick={() => setMobileTab('editor')}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition-all ${
+                    mobileTab === 'editor'
+                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  <span>💻</span>
+                  <span>Editor</span>
+                </button>
+
+                <button
+                  onClick={() => setMobileTab('output')}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition-all ${
+                    mobileTab === 'output'
+                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  <span>⚡</span>
+                  <span>Output</span>
+                  {testResults && (
+                    <span className="text-[10px]">
+                      {testResults.allPassed ? '✅' : '❌'}
+                    </span>
+                  )}
+                </button>
               </div>
-              <div className="w-full lg:w-7/12 flex flex-col p-2.5 sm:p-4 gap-2.5 sm:gap-3 overflow-hidden h-1/2 lg:h-full bg-slate-950/60">
-                <div className="flex-1 min-h-[220px] overflow-hidden">
-                  <CodeEditor
-                    code={currentCode}
-                    onChange={setCurrentCode}
-                    onRun={handleRunCode}
-                    onReset={() => setCurrentCode(currentLesson.starterCode)}
-                    isRunning={isRunning}
-                    wasmStatus={wasmStatus}
+
+              {/* Responsive Workspace Panes */}
+              <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+                {/* Lesson Instructions Pane: full height on mobile if mobileTab === 'lesson', or on desktop */}
+                <div className={`
+                  ${mobileTab === 'lesson' ? 'flex' : 'hidden'} lg:flex
+                  w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-800/80 flex-col overflow-hidden h-full bg-slate-950/40
+                `}>
+                  <LessonView
+                    lesson={currentLesson}
+                    onApplySolution={(c) => { setCurrentCode(c); setCombo(0); }}
+                    onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
+                    onNextLesson={() => {
+                      const currentIndex = allLessons.findIndex(l => l.id === currentLessonId);
+                      if (currentIndex >= 0 && currentIndex < allLessons.length - 1) handleSelectLesson(allLessons[currentIndex + 1].id);
+                    }}
+                    onOpenCheckpoint={() => {
+                      const currentMod = activeCurriculum.find(m => m.lessons.some(l => l.id === currentLessonId));
+                      if (currentMod) setActiveCheckpointModule(currentMod);
+                    }}
+                    isComplete={completedLessonsInLang.includes(currentLessonId)}
                     isHeroMode={isHeroMode}
-                    language={currentLanguageId}
+                    pythieMood={pythieMood}
+                    pythieSpeech={pythieSpeech}
+                    mascotName={activeLang.mascotName}
+                    mascotType={activeLang.mascotType}
+                    mascotTitle={activeLang.mascotTitle}
                   />
                 </div>
-                <div className="shrink-0">
-                  <OutputConsole
-                    outputResult={outputResult}
-                    testResults={testResults}
-                    onClearConsole={() => { setOutputResult(null); setTestResults(null); }}
-                    onOpenDetective={() => setIsDetectiveOpen(true)}
-                    isTestingMode={true}
-                    isHeroMode={isHeroMode}
-                    currentLanguageId={currentLanguageId}
-                    mascotName={activeLang.mascotName}
-                  />
+
+                {/* Editor & Console Workspace */}
+                <div className={`
+                  ${mobileTab !== 'lesson' ? 'flex' : 'hidden'} lg:flex
+                  w-full lg:w-7/12 flex-col p-2 sm:p-4 gap-2 sm:gap-3 overflow-hidden h-full bg-slate-950/60
+                `}>
+                  {/* Editor: full on mobile if mobileTab === 'editor', or on desktop */}
+                  <div className={`
+                    ${mobileTab === 'editor' ? 'flex' : 'hidden'} lg:flex
+                    flex-1 min-h-[220px] overflow-hidden flex-col
+                  `}>
+                    <CodeEditor
+                      code={currentCode}
+                      onChange={setCurrentCode}
+                      onRun={handleRunCode}
+                      onReset={() => setCurrentCode(currentLesson.starterCode)}
+                      isRunning={isRunning}
+                      wasmStatus={wasmStatus}
+                      isHeroMode={isHeroMode}
+                      language={currentLanguageId}
+                    />
+                  </div>
+
+                  {/* Console: full on mobile if mobileTab === 'output', or at bottom of desktop */}
+                  <div className={`
+                    ${mobileTab === 'output' ? 'flex flex-1' : 'hidden'} lg:flex lg:shrink-0
+                    overflow-hidden flex-col
+                  `}>
+                    <OutputConsole
+                      outputResult={outputResult}
+                      testResults={testResults}
+                      onClearConsole={() => { setOutputResult(null); setTestResults(null); }}
+                      onOpenDetective={() => setIsDetectiveOpen(true)}
+                      isTestingMode={true}
+                      isHeroMode={isHeroMode}
+                      currentLanguageId={currentLanguageId}
+                      mascotName={activeLang.mascotName}
+                    />
+                  </div>
                 </div>
               </div>
             </main>
@@ -397,6 +489,7 @@ export default function App() {
         onOpenRoadmap={() => setIsRoadmapOpen(true)}
         onOpenNotes={() => setIsNotesOpen(true)}
         onOpenExam={() => setIsExamOpen(true)}
+        onOpenModeLocked={(modeId) => setLockedModeInfo(modeId)}
       />
 
       {renderGameMode()}
@@ -420,6 +513,36 @@ export default function App() {
         currentLanguageId={currentLanguageId}
         pyodideInstance={pyodide}
         onExamPassed={() => handleXPEarned(200)}
+      />
+
+      <ModeLockedModal
+        isOpen={!!lockedModeInfo}
+        onClose={() => setLockedModeInfo(null)}
+        modeId={lockedModeInfo}
+        languageId={currentLanguageId}
+        languageName={activeLang.name}
+        completedCount={completedLessonsInLang.length}
+        onGoToQuests={() => setCurrentGameMode('lessons')}
+        onUnlockAnyway={(modeId) => {
+          setCurrentGameMode(modeId);
+          setLockedModeInfo(null);
+        }}
+      />
+
+      <ModuleCheckpointModal
+        isOpen={!!activeCheckpointModule}
+        onClose={() => setActiveCheckpointModule(null)}
+        module={activeCheckpointModule}
+        currentLanguageId={currentLanguageId}
+        pyodideInstance={pyodide}
+        onPassModule={(modId) => {
+          setPassedModuleExams(prev => {
+            const next = Array.from(new Set([...prev, modId]));
+            localStorage.setItem('passed_module_exams', JSON.stringify(next));
+            return next;
+          });
+          handleXPEarned(50);
+        }}
       />
 
       {!dailyRewardClaimed && (
