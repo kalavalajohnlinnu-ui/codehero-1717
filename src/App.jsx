@@ -366,15 +366,15 @@ export default function App() {
               passedModuleExams={passedModuleExams}
             />
 
-            <main className="flex-1 flex flex-col overflow-hidden bg-slate-900/20">
+            <main className="flex-1 flex flex-col overflow-hidden bg-slate-50">
               {/* Mobile View Switcher Tab Strip (Visible on mobile/phone screens < 1024px) */}
-              <div className="lg:hidden flex items-center justify-around border-b border-white/[0.08] bg-[#0A0D15] p-1.5 shrink-0 select-none">
+              <div className="lg:hidden flex items-center justify-around border-b border-slate-200 bg-white p-1.5 shrink-0 select-none">
                 <button
                   onClick={() => setMobileTab('lesson')}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition-all ${
                     mobileTab === 'lesson'
-                      ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-sm'
-                      : 'text-slate-400 hover:text-white'
+                      ? 'bg-sky-50 text-sky-700 border border-sky-300 shadow-sm font-bold'
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                 >
                   <span>📖</span>
@@ -385,8 +385,8 @@ export default function App() {
                   onClick={() => setMobileTab('editor')}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition-all ${
                     mobileTab === 'editor'
-                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                      : 'text-slate-400 hover:text-white'
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-300 shadow-sm font-bold'
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                 >
                   <span>💻</span>
@@ -397,8 +397,8 @@ export default function App() {
                   onClick={() => setMobileTab('output')}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition-all ${
                     mobileTab === 'output'
-                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
-                      : 'text-slate-400 hover:text-white'
+                      ? 'bg-amber-50 text-amber-700 border border-amber-300 shadow-sm font-bold'
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                 >
                   <span>⚡</span>
@@ -416,7 +416,7 @@ export default function App() {
                 {/* Lesson Instructions Pane: full height on mobile if mobileTab === 'lesson', or on desktop */}
                 <div className={`
                   ${mobileTab === 'lesson' ? 'flex' : 'hidden'} lg:flex
-                  w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-800/80 flex-col overflow-hidden h-full bg-slate-950/40
+                  w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-200 flex-col overflow-hidden h-full bg-white
                 `}>
                   <LessonView
                     lesson={currentLesson}
@@ -443,7 +443,7 @@ export default function App() {
                 {/* Editor & Console Workspace */}
                 <div className={`
                   ${mobileTab !== 'lesson' ? 'flex' : 'hidden'} lg:flex
-                  w-full lg:w-7/12 flex-col p-2 sm:p-4 gap-2 sm:gap-3 overflow-hidden h-full bg-slate-950/60
+                  w-full lg:w-7/12 flex-col p-2 sm:p-4 gap-2 sm:gap-3 overflow-hidden h-full bg-[#F8FAFC]
                 `}>
                   {/* Editor: full on mobile if mobileTab === 'editor', or on desktop */}
                   <div className={`
@@ -492,7 +492,7 @@ export default function App() {
   }
 
   return (
-    <div className={`flex flex-col h-screen overflow-hidden font-sans ${isHeroMode ? 'bg-[#06080F] text-slate-100' : 'bg-slate-950 text-slate-100'}`}>
+    <div className="flex flex-col h-screen overflow-hidden font-sans bg-[#F8FAFC] text-slate-900">
       <Header
         currentLanguageId={currentLanguageId}
         onSelectLanguage={handleSelectLanguage}

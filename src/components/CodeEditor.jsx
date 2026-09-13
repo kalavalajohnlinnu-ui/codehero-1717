@@ -3,15 +3,15 @@ import { Play, RotateCcw, Copy, Check, Loader2, Sparkles } from 'lucide-react';
 import { soundService } from '../services/soundService';
 
 const LANG_METADATA = {
-  python:     { heroFile: 'magic_spell.py',     proFile: 'main.py',    badge: 'Python 3.12',     indentChar: ':',  spaces: '    ' },
+  python:     { heroFile: 'magic_spell.py',     proFile: 'main.py',    badge: 'Python 3.12',       indentChar: ':',  spaces: '    ' },
   javascript: { heroFile: 'lightning_spell.js', proFile: 'index.js',   badge: 'JavaScript ES2024', indentChar: '{', spaces: '  ' },
-  typescript: { heroFile: 'lightning_spell.ts', proFile: 'index.ts',   badge: 'TypeScript 5.4',  indentChar: '{',  spaces: '  ' },
-  html:       { heroFile: 'web_canvas.html',    proFile: 'index.html', badge: 'HTML5 & CSS3',    indentChar: '>',  spaces: '  ' },
-  sql:        { heroFile: 'vault_query.sql',    proFile: 'query.sql',  badge: 'SQL',              indentChar: '',   spaces: '  ' },
-  c:          { heroFile: 'clockwork_core.c',   proFile: 'main.c',     badge: 'C / C++',          indentChar: '{',  spaces: '    ' },
-  cpp:        { heroFile: 'clockwork_core.cpp', proFile: 'main.cpp',   badge: 'C++20',            indentChar: '{',  spaces: '    ' },
-  java:       { heroFile: 'HeroClass.java',     proFile: 'Main.java',  badge: 'Java 21',          indentChar: '{',  spaces: '    ' },
-  rust:       { heroFile: 'fearless_hero.rs',   proFile: 'main.rs',    badge: 'Rust 1.78',        indentChar: '{',  spaces: '    ' }
+  typescript: { heroFile: 'lightning_spell.ts', proFile: 'index.ts',   badge: 'TypeScript 5.4',    indentChar: '{',  spaces: '  ' },
+  html:       { heroFile: 'web_canvas.html',    proFile: 'index.html', badge: 'HTML5 & CSS3',      indentChar: '>',  spaces: '  ' },
+  sql:        { heroFile: 'vault_query.sql',    proFile: 'query.sql',  badge: 'SQL Relational',    indentChar: '',   spaces: '  ' },
+  c:          { heroFile: 'clockwork_core.c',   proFile: 'main.c',     badge: 'C / C++',            indentChar: '{',  spaces: '    ' },
+  cpp:        { heroFile: 'clockwork_core.cpp', proFile: 'main.cpp',   badge: 'C++20',              indentChar: '{',  spaces: '    ' },
+  java:       { heroFile: 'HeroClass.java',     proFile: 'Main.java',  badge: 'Java 21',            indentChar: '{',  spaces: '    ' },
+  rust:       { heroFile: 'fearless_hero.rs',   proFile: 'main.rs',    badge: 'Rust 1.78',          indentChar: '{',  spaces: '    ' }
 };
 
 export function CodeEditor({
@@ -117,53 +117,37 @@ export function CodeEditor({
   const lineCount = Math.max(lines.length, 12);
 
   return (
-    <div className="flex flex-col h-full overflow-hidden"
-      style={{
-        background: '#070911',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: '12px',
-        boxShadow: '0 0 0 1px rgba(0,0,0,0.5) inset',
-      }}>
+    <div className="flex flex-col h-full overflow-hidden bg-white border border-slate-200 rounded-2xl shadow-sm">
 
       {/* ── Top Bar ──────────────────────────────────── */}
-      <div className="flex items-center justify-between px-3.5 py-2 shrink-0"
-        style={{
-          background: 'rgba(0,0,0,0.35)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-        }}>
+      <div className="flex items-center justify-between px-3.5 py-2 shrink-0 bg-slate-50 border-b border-slate-200">
         <div className="flex items-center gap-2.5">
-          {/* Traffic lights */}
+          {/* Traffic light dots */}
           <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(255,83,112,0.7)', boxShadow: '0 0 6px rgba(255,83,112,0.3)' }} />
-            <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(245,158,11,0.7)', boxShadow: '0 0 6px rgba(245,158,11,0.3)' }} />
-            <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(34,211,166,0.7)', boxShadow: '0 0 6px rgba(34,211,166,0.3)' }} />
+            <div className="w-2.5 h-2.5 rounded-full bg-rose-400" />
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
           </div>
-          <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.06)' }} />
+          <div className="w-[1px] h-3.5 bg-slate-200" />
           {/* File name */}
-          <span className="text-xs font-mono" style={{ color: '#C8D0E0' }}>
+          <span className="text-xs font-mono font-bold text-slate-800">
             {isHeroMode ? langMeta.heroFile : langMeta.proFile}
           </span>
           {/* Language badge */}
-          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded"
-            style={{
-              background: 'rgba(0,229,255,0.08)',
-              border: '1px solid rgba(0,229,255,0.15)',
-              color: '#00E5FF'
-            }}>
+          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">
             {langMeta.badge}
           </span>
         </div>
 
         <div className="flex items-center gap-1.5">
           {/* Copy */}
-          <button onClick={handleCopy}
-            className="p-1.5 rounded-md transition-all"
-            style={{ color: '#4B5568' }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#EEF0F8'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#4B5568'; }}
-            title="Copy Code">
+          <button 
+            onClick={handleCopy}
+            className="p-1.5 rounded-md text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 transition-colors"
+            title="Copy Code"
+          >
             {copied
-              ? <Check className="w-3.5 h-3.5" style={{ color: '#22D3A6' }} />
+              ? <Check className="w-3.5 h-3.5 text-emerald-600" />
               : <Copy className="w-3.5 h-3.5" />}
           </button>
 
@@ -171,11 +155,9 @@ export function CodeEditor({
           {onReset && (
             <button
               onClick={() => { soundService.playClick(); onReset(); }}
-              className="flex items-center gap-1 px-2.5 py-1 text-xs rounded-md transition-all font-mono"
-              style={{ color: '#4B5568' }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#EEF0F8'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#4B5568'; }}
-              title="Reset to starter code">
+              className="flex items-center gap-1 px-2.5 py-1 text-xs rounded-md font-mono text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 transition-colors"
+              title="Reset to starter code"
+            >
               <RotateCcw className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Reset</span>
             </button>
@@ -186,32 +168,15 @@ export function CodeEditor({
             <button
               onClick={() => { soundService.playClick(); onRun(); }}
               disabled={isRunning}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg font-bold text-xs transition-all"
-              style={isRunning ? {
-                background: 'rgba(245,158,11,0.12)',
-                border: '1px solid rgba(245,158,11,0.3)',
-                color: '#F59E0B',
-                cursor: 'wait',
-                fontFamily: "'JetBrains Mono', monospace",
-              } : {
-                background: 'linear-gradient(135deg, #00E5FF 0%, #00B4CC 100%)',
-                color: '#06080F',
-                boxShadow: '0 2px 0 #005E70, 0 4px 16px rgba(0,229,255,0.2)',
-                fontFamily: "'JetBrains Mono', monospace",
-              }}
-              onMouseEnter={e => {
-                if (!isRunning) {
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.boxShadow = '0 3px 0 #005E70, 0 6px 24px rgba(0,229,255,0.3)';
+              className={`
+                flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all shadow-sm
+                ${isRunning 
+                  ? 'bg-amber-100 text-amber-800 border border-amber-300 cursor-wait' 
+                  : 'bg-sky-600 hover:bg-sky-700 active:scale-95 text-white shadow-sky-600/20'
                 }
-              }}
-              onMouseLeave={e => {
-                if (!isRunning) {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 0 #005E70, 0 4px 16px rgba(0,229,255,0.2)';
-                }
-              }}
-              title="Run code (Ctrl+Enter)">
+              `}
+              title="Run code (Ctrl+Enter)"
+            >
               {isRunning ? (
                 <>
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -221,7 +186,7 @@ export function CodeEditor({
                 <>
                   <Play className="w-3.5 h-3.5 fill-current" />
                   <span>Run & Test</span>
-                  <span className="hidden md:inline text-[9px] opacity-60 font-mono bg-black/20 px-1 py-0.5 rounded">
+                  <span className="hidden md:inline text-[9px] opacity-75 font-mono bg-black/15 px-1 py-0.5 rounded">
                     Ctrl+↵
                   </span>
                 </>
@@ -232,10 +197,10 @@ export function CodeEditor({
       </div>
 
       {/* ── Mobile shortcut keys ─────────────────────── */}
-      <div className="flex items-center gap-1.5 px-3 py-2 overflow-x-auto shrink-0 select-none"
-        style={{ background: '#06070E', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-        <span className="text-[9px] font-mono uppercase tracking-widest shrink-0 hidden sm:inline"
-          style={{ color: '#2D3552' }}>Keys:</span>
+      <div className="flex items-center gap-1.5 px-3 py-1.5 overflow-x-auto shrink-0 select-none bg-slate-50/50 border-b border-slate-200">
+        <span className="text-[9px] font-mono uppercase tracking-widest text-slate-400 font-bold shrink-0 hidden sm:inline">
+          Keys:
+        </span>
         {[
           { label: 'Tab', val: langMeta.spaces || '    ' },
           { label: '( )', val: '()' }, { label: '{ }', val: '{}' }, { label: '[ ]', val: '[]' },
@@ -251,40 +216,27 @@ export function CodeEditor({
             key={idx}
             type="button"
             onClick={() => insertTextAtCursor(item.val)}
-            className="px-2 py-1 rounded-md text-xs font-mono font-semibold shrink-0 transition-all"
-            style={{
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.07)',
-              color: '#6B7A96',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,229,255,0.08)'; e.currentTarget.style.color = '#00E5FF'; e.currentTarget.style.borderColor = 'rgba(0,229,255,0.2)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.color = '#6B7A96'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; }}>
+            className="px-2 py-0.5 rounded-md text-xs font-mono font-semibold shrink-0 transition-all bg-white border border-slate-200 text-slate-700 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 shadow-2xs"
+          >
             {item.label}
           </button>
         ))}
       </div>
 
-      {/* ── Code surface ─────────────────────────────── */}
-      <div className="relative flex-1 flex overflow-hidden font-mono"
-        style={{ background: '#07090F' }}>
+      {/* ── Code surface (Clean Light IDE) ───────────── */}
+      <div className="relative flex-1 flex overflow-hidden font-mono bg-white">
         {/* Line numbers */}
         <div
           ref={lineNumbersRef}
           aria-hidden="true"
-          className="select-none py-3 pl-2 pr-3 text-right overflow-hidden leading-[1.65] shrink-0"
-          style={{
-            width: '44px',
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: '12px',
-            color: '#2D3552',
-            borderRight: '1px solid rgba(255,255,255,0.04)',
-          }}>
+          className="select-none py-3 pl-2 pr-3 text-right overflow-hidden leading-[1.65] shrink-0 bg-slate-50/60 border-r border-slate-200 text-slate-400 text-xs w-11"
+        >
           {Array.from({ length: lineCount }).map((_, i) => (
             <div key={i} style={{ lineHeight: '1.65', height: '19.8px' }}>{i + 1}</div>
           ))}
         </div>
 
-        {/* Textarea */}
+        {/* Textarea Code Input */}
         <textarea
           ref={textareaRef}
           value={actualCode}
@@ -295,34 +247,24 @@ export function CodeEditor({
           autoCapitalize="off"
           autoComplete="off"
           autoCorrect="off"
-          className="code-editor-textarea flex-1 w-full h-full p-3 bg-transparent resize-none focus:outline-none overflow-auto"
+          className="code-editor-textarea flex-1 w-full h-full p-3 bg-transparent text-slate-900 placeholder-slate-400 resize-none focus:outline-none overflow-auto font-mono selection:bg-sky-100 text-xs sm:text-sm"
           style={{
-            color: '#22D3A6',
-            caretColor: '#00E5FF',
             lineHeight: '1.65',
-            fontSize: '13px',
           }}
-          placeholder={`# Start coding here…`}
+          placeholder={`# Start typing your code here...`}
         />
       </div>
 
       {/* ── Status bar ───────────────────────────────── */}
-      <div className="px-3.5 py-1.5 flex items-center justify-between shrink-0"
-        style={{
-          background: 'rgba(0,0,0,0.4)',
-          borderTop: '1px solid rgba(255,255,255,0.04)',
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: '11px',
-          color: '#2D3552',
-        }}>
+      <div className="px-3.5 py-1 flex items-center justify-between shrink-0 bg-slate-50 border-t border-slate-200 font-mono text-[11px] text-slate-500">
         <div className="flex items-center gap-3">
           <span>Ln {lines.length}</span>
           <span>Col {actualCode.length}</span>
-          <span style={{ color: '#2D3552' }}>UTF-8</span>
+          <span>UTF-8</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#22D3A6' }} />
-          <span style={{ color: '#22D3A6' }}>Ready</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-emerald-700 font-medium">Ready</span>
         </div>
       </div>
     </div>

@@ -199,42 +199,28 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
     <>
       <style>{PDF_PRINT_CSS}</style>
 
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 print:hidden"
-        style={{ background: 'rgba(4,6,12,0.96)', backdropFilter: 'blur(20px)' }}>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 print:hidden bg-slate-900/40 backdrop-blur-sm">
 
-        <div className="w-full max-w-6xl flex flex-col overflow-hidden print:hidden"
-          style={{
-            background: 'var(--bg-surface)',
-            border: '1px solid rgba(255,255,255,0.09)',
-            borderRadius: '16px',
-            height: '95vh',
-            boxShadow: '0 32px 80px rgba(0,0,0,0.85)',
-          }}
+        <div className="w-full max-w-6xl flex flex-col overflow-hidden print:hidden bg-white text-slate-900 border border-slate-200 rounded-3xl shadow-2xl"
+          style={{ height: '95vh' }}
           onClick={e => e.stopPropagation()}>
 
-          {/* ── Top Header Strip ───────────────────────────────── */}
-          <div className="flex items-center justify-between px-5 py-3.5 shrink-0"
-            style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(0,0,0,0.3)' }}>
+          {/* ── Top Header Strip (Light Theme) ─────────────────── */}
+          <div className="flex items-center justify-between px-5 py-3.5 shrink-0 border-b border-slate-200 bg-slate-50/80">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center font-mono font-black text-sm"
-                style={{
-                  background: 'rgba(0,229,255,0.1)',
-                  border: '1px solid rgba(0,229,255,0.25)',
-                  color: '#00E5FF',
-                }}>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center font-mono font-black text-sm bg-sky-100 text-sky-700 border border-sky-300 shadow-sm">
                 CH
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono uppercase tracking-widest font-bold" style={{ color: '#00E5FF' }}>
+                  <span className="text-[10px] font-mono uppercase tracking-widest font-bold text-sky-700">
                     COMPLETE ACADEMY OMNIBUS & NOTES
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full"
-                    style={{ background: 'rgba(34,211,166,0.15)', color: '#22D3A6', border: '1px solid rgba(34,211,166,0.25)' }}>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 font-semibold">
                     ALL WEB CONTENT INCLUDED
                   </span>
                 </div>
-                <div className="text-sm font-bold text-white mt-0.5">
+                <div className="text-sm font-bold text-slate-900 mt-0.5">
                   {langDetails.name} Complete Handbook & Reference Manual
                 </div>
               </div>
@@ -242,15 +228,14 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
 
             <div className="flex items-center gap-2">
               {/* Language Picker */}
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <span className="text-[10px] font-mono text-slate-400">Language:</span>
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white border border-slate-200 shadow-2xs">
+                <span className="text-[10px] font-mono text-slate-500 font-semibold">Language:</span>
                 <select
                   value={activeLangId}
                   onChange={e => setActiveLangId(e.target.value)}
-                  className="bg-transparent text-xs font-mono font-bold text-white focus:outline-none cursor-pointer">
+                  className="bg-transparent text-xs font-mono font-bold text-slate-800 focus:outline-none cursor-pointer">
                   {LANGUAGES.map(l => (
-                    <option key={l.id} value={l.id} style={{ background: '#0C0E18' }}>{l.name}</option>
+                    <option key={l.id} value={l.id}>{l.name}</option>
                   ))}
                 </select>
               </div>
@@ -258,14 +243,7 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
               {/* Print / Download Button */}
               <button
                 onClick={handlePrint}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all"
-                style={{
-                  background: 'linear-gradient(135deg, #00E5FF 0%, #00B4CC 100%)',
-                  color: '#06080F',
-                  boxShadow: '0 2px 0 #005E70, 0 4px 16px rgba(0,229,255,0.2)',
-                }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-1px)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-sm shadow-sky-600/20 active:scale-95"
                 title="Print or export as high-resolution PDF document">
                 <Printer className="w-3.5 h-3.5" />
                 <span>Export PDF</span>
@@ -274,15 +252,14 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
               {/* Close */}
               <button
                 onClick={() => { soundService.playClick(); onClose(); }}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all">
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all">
                 <X className="w-4 h-4" />
               </button>
             </div>
           </div>
 
-          {/* ── Tabs & Search Bar ─────────────────────────────── */}
-          <div className="px-5 py-2.5 flex flex-wrap items-center justify-between gap-3 shrink-0"
-            style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(0,0,0,0.2)' }}>
+          {/* ── Tabs & Search Bar (Light Theme) ───────────────── */}
+          <div className="px-5 py-2.5 flex flex-wrap items-center justify-between gap-3 shrink-0 border-b border-slate-200 bg-slate-50/40">
             
             {/* Category Navigation Tabs */}
             <div className="flex items-center gap-1 overflow-x-auto py-0.5">
@@ -293,17 +270,11 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
                   <button
                     key={t.id}
                     onClick={() => { soundService.playClick(); setActiveTab(t.id); }}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all shrink-0"
-                    style={isActive ? {
-                      background: 'rgba(0,229,255,0.1)',
-                      border: '1px solid rgba(0,229,255,0.28)',
-                      color: '#00E5FF'
-                    } : {
-                      color: '#6B7A96',
-                      border: '1px solid transparent',
-                    }}
-                    onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = '#EEF0F8'; }}
-                    onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = '#6B7A96'; }}>
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all shrink-0 ${
+                      isActive
+                        ? 'bg-white text-sky-800 border border-slate-200 shadow-2xs font-bold'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 border border-transparent'
+                    }`}>
                     <Icon className="w-3.5 h-3.5" />
                     <span>{t.label}</span>
                   </button>
@@ -313,13 +284,13 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
 
             {/* Instant Filter / Search Box */}
             <div className="relative flex items-center min-w-[220px]">
-              <Search className="w-3.5 h-3.5 absolute left-3 text-slate-500" />
+              <Search className="w-3.5 h-3.5 absolute left-3 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search notes, syntax, code..."
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                className="w-full text-xs font-mono pl-8 pr-3 py-1.5 rounded-lg bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400"
+                className="w-full text-xs font-mono pl-8 pr-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 shadow-2xs"
               />
             </div>
           </div>
