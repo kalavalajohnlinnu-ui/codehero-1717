@@ -142,10 +142,71 @@ export const authService = {
     return guest;
   },
 
+  // Check if a real student is currently logged in (not guest)
+  isLoggedIn() {
+    const student = this.getCurrentStudent();
+    return !!(student && !student.isGuest && student.email);
+  },
+
   // Helper: Get student-specific storage key for progress isolation
   getStudentStorageKey(suffix = 'state_v2') {
     const student = this.getCurrentStudent();
     const safeEmail = (student.email || 'guest').replace(/[^a-zA-Z0-9_]/g, '_');
     return `codehero_student_${safeEmail}_${suffix}`;
+  },
+
+  // Export full JSON backup of student profile, progress, and study plan
+  exportStudentBackup() {
+    const student = this.getCurrentStudent();
+    const safeEmail = (student.email || 'guest').replace(/[^a-zA-Z0-9_]/g, '_');
+    const stateKey = `codehero_student_${safeEmail}_state_v3`;
+    const planKey = `codehero_student_${safeEmail}_study_plan_v1`;
+
+    const progressState = localStorage.getItem(stateKey);
+    const studyPlan = localStorage.getItem(planKey);
+
+    return {
+      backupVersion: 1,
+      appName: 'CodeHero Universe',
+      exportedAt: new Date().toISOString(),
+      student,
+      progressState: progressState ? JSON.parse(progressState) : null,
+      studyPlan: studyPlan ? JSON.parse(studyPlan) : null
+    };
+  },
+
+  // Import JSON backup and restore all data
+  importStudentBackup(backupData) {
+    if (!backupData || !backupData.student || !backupData.student.email) {
+      throw new Error('Invalid backup file. Could not find student profile.');
+    }
+
+    const student = {
+      ...backupData.student,
+      isGuest: false
+    };
+
+    const cleanEmail = student.email.trim().toLowerCase();
+    const safeEmail = cleanEmail.replace(/[^a-zA-Z0-9_]/g, '_');
+
+    // Register or update in students directory
+    const students = this.getAllStudents().filter(s => s.email.toLowerCase() !== cleanEmail);
+    students.push(student);
+    this.saveAllStudents(students);
+    this.setCurrentStudent(student);
+
+    // Restore state
+    if (backupData.progressState) {
+      const stateKey = `codehero_student_${safeEmail}_state_v3`;
+      localStorage.setItem(stateKey, JSON.stringify(backupData.progressState));
+    }
+
+    // Restore study plan
+    if (backupData.studyPlan) {
+      const planKey = `codehero_student_${safeEmail}_study_plan_v1`;
+      localStorage.setItem(planKey, JSON.stringify(backupData.studyPlan));
+    }
+
+    return student;
   }
 };

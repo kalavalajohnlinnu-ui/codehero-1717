@@ -1,5 +1,14 @@
-// Study Plan Generation Service for CodeHero Universe
-// Calculates "When to do, What to do, How to do" day-by-day timetable
+export const TOTAL_ACADEMY_LESSONS = 631;
+
+export const LANGUAGE_LESSON_COUNTS = {
+  python: { modules: 25, lessons: 87, name: 'Python' },
+  javascript: { modules: 25, lessons: 100, name: 'JavaScript' },
+  html: { modules: 22, lessons: 87, name: 'HTML & CSS' },
+  sql: { modules: 20, lessons: 75, name: 'SQL Database' },
+  c: { modules: 24, lessons: 92, name: 'C & C++' },
+  java: { modules: 25, lessons: 96, name: 'Java' },
+  rust: { modules: 24, lessons: 94, name: 'Rust' }
+};
 
 export const STUDY_PRESETS = [
   { days: 15, label: '15-Day Bootcamp Sprint', desc: 'Intensive fast-track pace for quick mastery', badge: '⚡ High Intensity' },

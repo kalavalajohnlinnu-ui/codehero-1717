@@ -25,6 +25,7 @@ import { StreakModal } from './components/game/StreakModal';
 import { authService } from './services/authService';
 import { StudentAuthModal } from './components/StudentAuthModal';
 import { StudyPlanModal } from './components/StudyPlanModal';
+import { AuthGateScreen } from './components/AuthGateScreen';
 import { GameModeSelector } from './components/game/GameModeSelector';
 import { AlgorithmArena } from './components/game/AlgorithmArena';
 import { BugDetective } from './components/game/BugDetective';
@@ -484,6 +485,11 @@ export default function App() {
         );
     }
   };
+
+  // Mandatory Login Gate: Student must create account or log in to access the web app
+  if (!currentStudent || currentStudent.isGuest) {
+    return <AuthGateScreen onAuthenticated={handleStudentChanged} />;
+  }
 
   return (
     <div className={`flex flex-col h-screen overflow-hidden font-sans ${isHeroMode ? 'bg-[#06080F] text-slate-100' : 'bg-slate-950 text-slate-100'}`}>

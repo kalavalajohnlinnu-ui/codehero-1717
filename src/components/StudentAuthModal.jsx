@@ -102,6 +102,42 @@ export function StudentAuthModal({
     setTab('login');
   };
 
+  const handleExportBackup = () => {
+    soundService.playSuccess();
+    const backupData = authService.exportStudentBackup();
+    const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `codehero_backup_${backupData.student.email.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setSuccessMsg('Backup downloaded! You can restore this file anytime.');
+    setTimeout(() => setSuccessMsg(null), 4000);
+  };
+
+  const handleImportBackup = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const backupData = JSON.parse(event.target.result);
+        const restoredStudent = authService.importStudentBackup(backupData);
+        soundService.playFanfare();
+        setSuccessMsg(`Backup successfully restored for ${restoredStudent.name}!`);
+        if (onStudentChanged) onStudentChanged(restoredStudent);
+        setTimeout(() => setSuccessMsg(null), 4000);
+      } catch (err) {
+        soundService.playFail();
+        setError('Failed to restore backup file: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md animate-fade-in">
       <div 
@@ -240,11 +276,38 @@ export function StudentAuthModal({
               <div className="p-3.5 rounded-2xl bg-sky-950/20 border border-sky-500/30 text-slate-300 text-xs space-y-1">
                 <div className="font-bold text-sky-300 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-sky-400" />
-                  <span>Personal Data Saving Enabled</span>
+                  <span>Personal Data Saving & Update Safety</span>
                 </div>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  All your coding lessons, quiz scores, project progress, and study schedule are securely linked to <span className="text-white font-mono">{currentStudent.email}</span>. Multiple students can share this device without overwriting each other's work!
+                  All your coding lessons, quiz scores, project progress, and study schedule are securely saved under <span className="text-white font-mono">{currentStudent.email}</span>. When new versions of the website are published, your data is <strong>never reset or erased</strong>.
                 </p>
+              </div>
+
+              {/* Data Backup & Restore Controls */}
+              <div className="p-3 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
+                <div className="text-[11px] font-mono text-slate-400 flex items-center justify-between">
+                  <span>DATA BACKUP & RESTORE</span>
+                  <span className="text-[10px] text-emerald-400 font-bold">100% PORTABLE</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={handleExportBackup}
+                    className="py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 transition-all flex items-center justify-center gap-1.5"
+                  >
+                    <span>📥 Save Backup (.json)</span>
+                  </button>
+
+                  <label className="py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-sky-300 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                    <span>📤 Restore Backup</span>
+                    <input 
+                      type="file" 
+                      accept=".json" 
+                      onChange={handleImportBackup} 
+                      className="hidden" 
+                    />
+                  </label>
+                </div>
               </div>
 
               {/* Quick Actions */}

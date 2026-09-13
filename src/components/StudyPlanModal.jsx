@@ -19,7 +19,9 @@ import {
 import { 
   STUDY_PRESETS, 
   DAILY_HOURS_PRESETS, 
-  generateStudyPlan 
+  generateStudyPlan,
+  LANGUAGE_LESSON_COUNTS,
+  TOTAL_ACADEMY_LESSONS
 } from '../services/studyPlanService';
 import { storageService } from '../services/storageService';
 import { soundService } from '../services/soundService';
@@ -88,6 +90,10 @@ export function StudyPlanModal({
     : 0;
 
   const currentActiveDay = plan?.days?.[activeDayIndex] || plan?.days?.[0];
+
+  const langMeta = LANGUAGE_LESSON_COUNTS[currentLanguageId] || { lessons: 87, modules: 25, name: 'Python' };
+  const netStudyDays = Math.max(1, targetDays - Math.floor(targetDays / 7) - 1);
+  const dailyLessonsNeeded = Math.max(1, Math.ceil(langMeta.lessons / netStudyDays));
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/90 backdrop-blur-md animate-fade-in">
@@ -201,6 +207,29 @@ export function StudyPlanModal({
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
+          </div>
+        </div>
+
+        {/* What to do & Lesson Quota Strip */}
+        <div className="px-4 sm:px-6 py-2.5 bg-[#080B13] border-b border-white/[0.06] flex flex-wrap items-center justify-between gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="text-xs font-mono font-bold text-amber-400">
+              🎯 YOUR {langMeta.name.toUpperCase()} CURRICULUM:
+            </span>
+            <span className="text-xs font-mono text-white">
+              Complete <strong className="text-sky-400">{langMeta.lessons} Lessons</strong> ({langMeta.modules} Modules)
+            </span>
+            <span className="text-xs font-mono text-slate-400">
+              · Daily Target: <strong className="text-emerald-400">~{dailyLessonsNeeded} lessons/day</strong> to finish in {targetDays} days
+            </span>
+          </div>
+
+          <div className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400">
+            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10">📖 631 Lessons</span>
+            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10">⚡ Speed Practice</span>
+            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10">🔍 40 Bugs</span>
+            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10">⚔️ 80 Puzzles</span>
+            <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10">🏗️ 15 Projects</span>
           </div>
         </div>
 
