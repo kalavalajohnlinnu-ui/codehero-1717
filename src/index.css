@@ -1,57 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================================================
-   LIGHT DESIGN SYSTEM TOKENS
-   Theme: Modern Clean / Light Studio (Zero Dark Mode)
-   Palette: Crisp White + Slate 900 + Vibrant Blue & Emerald
+   DESIGN SYSTEM TOKENS — LIGHT STUDIO (MODERN TECH)
+   Typography: Plus Jakarta Sans (Display & Interface) + JetBrains Mono (Code)
+   Palette: Crisp White + Deep Slate 900 + Vibrant Sky Blue & Emerald
    ============================================================ */
 :root {
-  --bg-base:       #F8FAFC;
-  --bg-surface:    #FFFFFF;
-  --bg-raised:     #F1F5F9;
-  --bg-hover:      #E2E8F0;
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-mid:    rgba(15, 23, 42, 0.14);
-  --border-strong: rgba(15, 23, 42, 0.22);
-  --accent-cyan:   #0284C7; /* vibrant sky blue */
-  --accent-amber:  #D97706; /* amber / gold */
-  --accent-green:  #059669; /* emerald */
-  --accent-rose:   #DC2626; /* crimson / red */
-  --text-primary:  #0F172A; /* dark slate 900 */
+  --bg-base:        #F8FAFC;
+  --bg-surface:     #FFFFFF;
+  --bg-raised:      #F1F5F9;
+  --bg-hover:       #E2E8F0;
+  --border-subtle:  rgba(15, 23, 42, 0.08);
+  --border-mid:     rgba(15, 23, 42, 0.14);
+  --border-strong:  rgba(15, 23, 42, 0.22);
+  --accent-cyan:    #0284C7; /* vibrant sky blue */
+  --accent-amber:   #D97706; /* warm amber */
+  --accent-green:   #059669; /* emerald */
+  --accent-rose:    #DC2626; /* crimson / red */
+  --text-primary:   #0F172A; /* dark slate 900 */
   --text-secondary: #475569; /* mid slate 600 */
-  --text-muted:    #94A3B8; /* light slate 400 */
+  --text-muted:     #94A3B8; /* light slate 400 */
 }
 
 @layer base {
-  html { font-size: 14px; }
+  html { 
+    font-size: 14px; 
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   body {
     background-color: var(--bg-base);
     color: var(--text-primary);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
   }
   * { box-sizing: border-box; }
 }
 
 /* ============================================================
-   LIGHT SCROLLBAR
+   PRECISION LIGHT SCROLLBAR
    ============================================================ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: #F1F5F9; }
-::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 99px; }
 ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
 /* ============================================================
    TYPOGRAPHY UTILITIES
    ============================================================ */
-.font-display    { font-family: 'Syne', sans-serif; }
-.font-mono-code  { font-family: 'JetBrains Mono', monospace; }
+.font-display { 
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.025em;
+}
+.font-mono-code { 
+  font-family: 'JetBrains Mono', monospace; 
+}
 .eyebrow {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
@@ -69,161 +78,161 @@
 }
 
 /* ============================================================
-   SURFACES (LIGHT THEME)
+   TACTILE MICRO-INTERACTIONS (BUTTONS & HOVERS)
+   ============================================================ */
+button, a, input[type="button"], input[type="submit"] {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.15s ease, 
+              background-color 0.15s ease, 
+              border-color 0.15s ease, 
+              color 0.15s ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn-hover-glow:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px -2px rgba(2, 132, 199, 0.25);
+}
+
+.btn-primary {
+  background: #0284C7;
+  color: #FFFFFF;
+  border: 1px solid #0284C7;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-primary:hover {
+  background: #0369A1;
+  border-color: #0369A1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(2, 132, 199, 0.3);
+}
+
+.btn-solid-run {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 2px 0 #075985, 0 4px 14px rgba(2, 132, 199, 0.25);
+}
+.btn-solid-run:hover {
+  background: linear-gradient(135deg, #0369A1 0%, #075985 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 0 #075985, 0 6px 20px rgba(2, 132, 199, 0.35);
+}
+.btn-solid-run:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #075985, 0 2px 6px rgba(2, 132, 199, 0.2);
+}
+
+/* ============================================================
+   SURFACES & ELEVATION
    ============================================================ */
 .surface-base    { background: var(--bg-surface); border: 1px solid var(--border-subtle); }
 .surface-raised  { background: var(--bg-raised);  border: 1px solid var(--border-mid); }
 .surface-glass   {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px) saturate(1.5);
   -webkit-backdrop-filter: blur(16px) saturate(1.5);
   border: 1px solid var(--border-subtle);
 }
 
-/* ============================================================
-   LIGHT ACCENT GLOWS
-   ============================================================ */
-.glow-cyan  { box-shadow: 0 0 0 1px rgba(2,132,199,0.2), 0 4px 20px rgba(2,132,199,0.1); }
-.glow-amber { box-shadow: 0 0 0 1px rgba(217,119,6,0.2), 0 4px 20px rgba(217,119,6,0.1); }
-.glow-green { box-shadow: 0 0 0 1px rgba(5,150,105,0.2), 0 4px 20px rgba(5,150,105,0.1); }
-.glow-rose  { box-shadow: 0 0 0 1px rgba(220,38,38,0.2), 0 4px 20px rgba(220,38,38,0.1); }
-
-/* Aliases */
-.glow-blue   { box-shadow: 0 0 0 1px rgba(2,132,199,0.2), 0 4px 20px rgba(2,132,199,0.1); }
-.glow-gold   { box-shadow: 0 0 0 1px rgba(217,119,6,0.2), 0 4px 20px rgba(217,119,6,0.1); }
-.glow-purple { box-shadow: 0 0 0 1px rgba(124,58,237,0.2), 0 4px 20px rgba(124,58,237,0.1); }
-.glow-red    { box-shadow: 0 0 0 1px rgba(220,38,38,0.2), 0 4px 20px rgba(220,38,38,0.1); }
-
-/* ============================================================
-   BACKGROUND AMBIENCE (CLEAN LIGHT ARCHITECTURAL)
-   ============================================================ */
-.cosmic-bg {
-  background:
-    radial-gradient(ellipse 80% 50% at 10% 0%,  rgba(2,132,199,0.03) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(217,119,6,0.03) 0%, transparent 50%),
-    var(--bg-base);
-}
-
-/* ============================================================
-   LIGHT BUTTONS
-   ============================================================ */
-.btn-primary {
-  background: #0284C7;
-  color: #FFFFFF;
-  border: 1px solid #0284C7;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-}
-.btn-primary:hover {
-  background: #0369A1;
-  border-color: #0369A1;
-}
-.btn-amber {
-  background: rgba(217,119,6,0.1);
-  border: 1px solid rgba(217,119,6,0.3);
-  color: #B45309;
-}
-.btn-amber:hover {
-  background: rgba(217,119,6,0.16);
-  border-color: rgba(217,119,6,0.45);
-}
-.btn-solid-run {
-  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
-  color: #FFFFFF;
-  font-weight: 700;
-  box-shadow: 0 2px 0 #075985, 0 4px 12px rgba(2,132,199,0.25);
-}
-.btn-solid-run:hover {
-  background: linear-gradient(135deg, #0369A1 0%, #075985 100%);
-  transform: translateY(-1px);
-}
-.btn-solid-run:active {
-  transform: translateY(1px);
-}
-
-/* Legacy button classes */
-.btn-game {
-  font-weight: 700; border-radius: 10px; padding: 9px 18px;
-  transition: all 0.15s ease; cursor: pointer;
-}
-.btn-success { background: #059669; color: white; }
-.btn-danger  { background: #DC2626; color: white; }
-.btn-gold    { background: #D97706; color: white; }
-
-/* ============================================================
-   METRIC STRIP (LIGHT)
-   ============================================================ */
-.metric-strip {
-  display: flex;
-  align-items: stretch;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-}
-.metric-cell {
-  padding: 8px 14px;
-  border-right: 1px solid var(--border-subtle);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.metric-cell:last-child { border-right: none; }
-.metric-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.metric-value {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-/* ============================================================
-   CARD SYSTEM (LIGHT)
-   ============================================================ */
-.card-base {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.card-base:hover {
-  border-color: var(--border-mid);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
 .card-interactive {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-interactive:hover {
   background: var(--bg-raised);
   border-color: var(--border-mid);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
 }
 
 /* ============================================================
-   BADGES (LIGHT)
+   MODALS & OVERLAYS
    ============================================================ */
-.badge-easy      { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
-.badge-medium    { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
-.badge-hard      { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
-.badge-legendary { background: #F5F3FF; color: #6D28D9; border: 1px solid #DDD6FE; }
-.diff-badge {
-  padding: 2px 8px; border-radius: 4px;
-  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal-panel {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  animation: modal-spring-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modal-spring-in {
+  0% { opacity: 0; transform: scale(0.96) translateY(6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ============================================================
+   PROGRESS & REWARD ANIMATIONS
+   ============================================================ */
+.xp-bar-track {
+  background: #E2E8F0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.xp-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #0284C7, #38BDF8);
+  transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+.xp-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.4) 60%, transparent 90%);
+  animation: xp-shimmer 2.4s infinite;
+}
+
+@keyframes xp-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.streak-fire { 
+  animation: streak-bounce 0.8s ease-in-out infinite alternate; 
+  display: inline-block; 
+}
+@keyframes streak-bounce {
+  from { transform: scale(1) rotate(-3deg); }
+  to   { transform: scale(1.12) rotate(3deg); }
+}
+
+/* XP floating badge */
+.xp-float {
+  position: fixed; pointer-events: none;
+  font-weight: 800; font-size: 1.1rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #0284C7;
+  text-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+  z-index: 9999;
+  animation: xp-rise 1.2s ease-out forwards;
+}
+@keyframes xp-rise {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-60px) scale(1.15); opacity: 0; }
+}
+
+/* Success flash on lesson completion */
+.success-flash {
+  animation: success-glow 0.6s ease-out;
+}
+@keyframes success-glow {
+  0%   { box-shadow: 0 0 0 rgba(5, 150, 105, 0); }
+  50%  { box-shadow: 0 0 28px rgba(5, 150, 105, 0.35); }
+  100% { box-shadow: 0 0 0 rgba(5, 150, 105, 0); }
 }
 
 /* ============================================================
@@ -238,81 +247,10 @@
   color: #0F172A;
   caret-color: #0284C7;
 }
-.code-editor-wrapper {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.code-line-numbers {
-  color: #94A3B8;
-  user-select: none;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  line-height: 1.65;
-  padding: 0 10px;
-  text-align: right;
-  background: #F8FAFC;
-  border-right: 1px solid #E2E8F0;
-}
 
-/* ============================================================
-   MODALS (LIGHT)
-   ============================================================ */
-.modal-overlay {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-.modal-panel {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* ============================================================
-   XP BAR (LIGHT)
-   ============================================================ */
-.xp-bar-track {
-  background: #E2E8F0;
-  border-radius: 99px;
-  overflow: hidden;
-}
-.xp-bar-fill {
-  height: 100%;
-  border-radius: 99px;
-  background: linear-gradient(90deg, #0284C7, #38BDF8);
-  transition: width 0.7s cubic-bezier(0.34,1.56,0.64,1);
-  position: relative;
-}
-
-/* ============================================================
-   ANIMATIONS & EFFECTS
-   ============================================================ */
-.streak-fire { animation: streak-bounce 0.8s ease-in-out infinite alternate; display: inline-block; }
-@keyframes streak-bounce {
-  from { transform: scale(1) rotate(-3deg); }
-  to   { transform: scale(1.1) rotate(3deg); }
-}
-
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.animate-fade-in-up  { animation: fade-in-up 0.3s ease-out forwards; }
-.animate-fade-in     { animation: fade-in 0.25s ease-out forwards; }
-
-/* ============================================================
-   INPUT FOCUS STYLE (LIGHT)
-   ============================================================ */
+/* Input Focus Ring */
 input:focus-visible, textarea:focus-visible, select:focus-visible {
   outline: none;
   border-color: #0284C7 !important;
-  box-shadow: 0 0 0 3px rgba(2,132,199,0.15) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
 }

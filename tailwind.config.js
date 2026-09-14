@@ -27,9 +27,9 @@ export default {
         }
       },
       fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'monospace'],
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Syne', 'Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

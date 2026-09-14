@@ -124,8 +124,7 @@ export function AuthGateScreen({ onAuthenticated }) {
             style={{ letterSpacing: '0.18em' }}>
             01 // YOUR MISSION
           </div>
-          <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-slate-900 mb-4"
-            style={{ fontFamily: "'Syne', sans-serif" }}>
+          <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-4 font-display">
             Become the<br />
             <span className="text-sky-600">Top 10-15%</span><br />
             Software Engineer
@@ -177,7 +176,7 @@ export function AuthGateScreen({ onAuthenticated }) {
             <div className="text-[10px] font-mono uppercase tracking-widest mb-1.5 text-sky-600 font-bold">
               {mode === 'signup' ? '02 // CREATE ACCOUNT' : '02 // SIGN IN'}
             </div>
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Syne', sans-serif" }}>
+            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight font-display">
               {mode === 'signup' ? 'Start your journey' : 'Continue your progress'}
             </h2>
             <p className="text-xs text-slate-500 mt-1">

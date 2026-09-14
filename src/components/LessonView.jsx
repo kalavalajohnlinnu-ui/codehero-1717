@@ -205,8 +205,7 @@ export function LessonView({
           )}
         </div>
 
-        <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900"
-          style={{ fontFamily: "'Syne', sans-serif" }}>
+        <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 font-display">
           {lesson.title}
         </h2>
       </div>
