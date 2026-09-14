@@ -21,7 +21,9 @@ import {
   Plus,
   Trash2,
   BookOpen,
-  UserCheck
+  UserCheck,
+  Upload,
+  Database
 } from 'lucide-react';
 import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
@@ -85,6 +87,53 @@ export function AdminPortalModal({ isOpen, onClose }) {
       URL.revokeObjectURL(url);
     }, 200);
     showToast('Class roster exported as CSV.');
+  };
+
+  const handleExportFullJSON = () => {
+    soundService.playClick();
+    const students = authService.getAllStudentsWithProgress();
+    const fullData = {
+      app: 'CodeHero Academy 2.0',
+      exportedAt: new Date().toISOString(),
+      admin: currentStudent.email,
+      totalStudents: students.length,
+      students: students
+    };
+    const blob = new Blob([JSON.stringify(fullData, null, 2)], { type: 'application/json;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `CodeHero_Master_Database_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => {
+      link.remove();
+      URL.revokeObjectURL(url);
+    }, 200);
+    showToast('Master student database exported as JSON.');
+  };
+
+  const handleImportDatabase = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const data = JSON.parse(event.target.result);
+        if (Array.isArray(data.students)) {
+          authService.saveAllStudents(data.students);
+          soundService.playSuccess();
+          showToast(`Successfully restored ${data.students.length} students into database!`);
+          setRefreshTrigger(prev => prev + 1);
+        } else {
+          showToast('Invalid database backup format.');
+        }
+      } catch (err) {
+        showToast('Failed to parse database file: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
   };
 
   const handlePrintPDF = () => {
@@ -238,6 +287,27 @@ export function AdminPortalModal({ isOpen, onClose }) {
               <Download className="w-3.5 h-3.5 text-sky-600" />
               <span className="hidden md:inline">Export CSV</span>
             </button>
+
+            {/* Backup Full DB JSON button */}
+            <button
+              type="button"
+              onClick={handleExportFullJSON}
+              className="px-3 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95"
+              title="Download complete multi-language master student database as JSON"
+            >
+              <Database className="w-3.5 h-3.5 text-amber-600" />
+              <span className="hidden lg:inline">Backup DB (.json)</span>
+            </button>
+
+            {/* Restore DB button */}
+            <label
+              className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-mono text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95"
+              title="Restore / Import student database from JSON"
+            >
+              <Upload className="w-3.5 h-3.5 text-slate-600" />
+              <span className="hidden lg:inline">Restore DB</span>
+              <input type="file" accept=".json" onChange={handleImportDatabase} className="hidden" />
+            </label>
 
             {/* Print / Save PDF button */}
             <button

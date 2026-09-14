@@ -450,20 +450,6 @@ export function AuthGateScreen({ onAuthenticated }) {
               </div>
             </div>
           )}
-
-          {/* Restore backup */}
-          <div className="mt-4 pt-3 flex items-center justify-between border-t border-slate-200">
-            <span className="flex items-center gap-1.5 text-xs font-mono text-slate-500">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              Have a backup file?
-            </span>
-            <label className="cursor-pointer text-xs font-mono font-bold flex items-center gap-1.5 text-sky-600 hover:text-sky-700 transition-colors">
-              <Upload className="w-3.5 h-3.5" />
-              <span>Restore Backup</span>
-              <input type="file" accept=".json" onChange={handleFileRestore} className="hidden" />
-            </label>
-          </div>
-
         </div>
       </div>
     </div>

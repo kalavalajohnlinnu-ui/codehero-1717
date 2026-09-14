@@ -359,32 +359,34 @@ export function StudentAuthModal({
                 </p>
               </div>
 
-              {/* Data Backup & Restore */}
-              <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                <div className="text-[11px] font-mono text-slate-500 flex items-center justify-between font-semibold">
-                  <span>DATA BACKUP &amp; RESTORE</span>
-                  <span className="text-[10px] text-emerald-600 font-bold">100% PORTABLE</span>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={handleExportBackup}
-                    className="py-2 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-xs font-mono text-slate-700 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
-                  >
-                    <span>📥 Save Backup (.json)</span>
-                  </button>
+              {/* Data Backup & Restore - Strictly for Administrators */}
+              {authService.isCurrentStudentAdmin() && (
+                <div className="p-3 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
+                  <div className="text-[11px] font-mono text-amber-800 flex items-center justify-between font-semibold">
+                    <span>ADMINISTRATOR DATA CONTROLS</span>
+                    <span className="text-[10px] text-amber-700 font-bold bg-amber-100 px-1.5 py-0.5 rounded-full">ADMIN ONLY</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={handleExportBackup}
+                      className="py-2 px-3 rounded-xl bg-white hover:bg-slate-100 border border-amber-300 text-xs font-mono text-slate-800 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs font-semibold"
+                    >
+                      <span>📥 Save Backup (.json)</span>
+                    </button>
 
-                  <label className="py-2 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-xs font-mono text-sky-700 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs">
-                    <span>📤 Restore Backup</span>
-                    <input 
-                      type="file" 
-                      accept=".json" 
-                      onChange={handleImportBackup} 
-                      className="hidden" 
-                    />
-                  </label>
+                    <label className="py-2 px-3 rounded-xl bg-white hover:bg-slate-100 border border-amber-300 text-xs font-mono text-sky-800 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs font-semibold">
+                      <span>📤 Restore Backup</span>
+                      <input 
+                        type="file" 
+                        accept=".json" 
+                        onChange={handleImportBackup} 
+                        className="hidden" 
+                      />
+                    </label>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Quick Actions */}
               <div className="flex items-center gap-2 pt-2">
