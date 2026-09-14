@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CodeEditor } from '../CodeEditor';
 import { soundService } from '../../services/soundService';
+import { LanguageLogo } from '../LanguageLogo';
 
 const PROJECTS = [
   {
@@ -181,9 +182,13 @@ export function ProjectWorkshop({ currentLanguageId = 'python', onXPEarned }) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] p-8 font-sans">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-xl shadow-sm border border-[#E2E8F0] p-8 mb-8 text-center">
-            <h1 className="text-4xl font-bold text-slate-800 mb-2 font-display">🏗️ Project Lab — Build Real Software</h1>
-            <p className="text-slate-500 text-lg">15 progressive builds from zero to hero</p>
+          <div className="bg-white rounded-2xl shadow-sm border border-[#E2E8F0] p-8 mb-8 text-center relative overflow-hidden">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 mb-3 shadow-2xs">
+              <LanguageLogo languageId={currentLanguageId} size={16} className="w-4 h-4 shrink-0" />
+              <span className="text-xs font-mono font-bold text-slate-700 capitalize">{currentLanguageId || 'python'} Workshop</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-2 font-display">🏗️ Project Lab — Build Real Software</h1>
+            <p className="text-slate-500 text-base">15 progressive builds from zero to hero</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -254,8 +259,9 @@ export function ProjectWorkshop({ currentLanguageId = 'python', onXPEarned }) {
             ← Back to Projects
           </button>
           <div className="h-6 w-px bg-slate-200"></div>
-          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <span>{activeProject.icon}</span> {activeProject.title}
+          <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <LanguageLogo languageId={currentLanguageId} size={20} className="w-5 h-5 shrink-0" />
+            <span>{activeProject.title}</span>
           </h2>
         </div>
         <div className="flex items-center gap-4">

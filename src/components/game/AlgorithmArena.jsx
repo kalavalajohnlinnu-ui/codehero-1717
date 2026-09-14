@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CodeEditor } from '../CodeEditor';
 import { soundService } from '../../services/soundService';
+import { LanguageLogo } from '../LanguageLogo';
 
 const CHALLENGES = [
   {
@@ -202,6 +203,10 @@ export function AlgorithmArena({ currentLanguageId = 'python', xp = 0, combo = 0
       <header className="flex flex-col md:flex-row items-center justify-between p-4 bg-white border-b border-[#E2E8F0] shadow-sm shrink-0">
         <div className="flex items-center gap-3">
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">⚔️ Algorithm Arena</h1>
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-xl shadow-2xs">
+            <LanguageLogo languageId={currentLanguageId} size={16} className="w-4 h-4 shrink-0" />
+            <span className="text-xs font-mono font-bold text-slate-700 capitalize">{currentLanguageId || 'python'}</span>
+          </div>
           <div className="px-3 py-1 bg-sky-100 text-sky-800 rounded-full font-semibold text-sm border border-sky-200 shadow-sm">
             XP: {xp} | Combo: {combo}x
           </div>

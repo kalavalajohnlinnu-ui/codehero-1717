@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CodeEditor } from '../CodeEditor';
 import { soundService } from '../../services/soundService';
+import { LanguageLogo } from '../LanguageLogo';
 
 const SPEED_DRILLS = [
   {
@@ -181,9 +182,13 @@ export function SpeedChallenge({ currentLanguageId = 'python', onXPEarned }) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] p-8 font-sans">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-xl shadow-sm border border-[#E2E8F0] p-8 mb-8 text-center">
-            <h1 className="text-4xl font-bold text-slate-800 mb-2 font-display">⚡ SPEED PRACTICE</h1>
-            <p className="text-slate-500 text-lg">Beat the clock! Solve coding drills in 60 seconds</p>
+          <div className="bg-white rounded-2xl shadow-sm border border-[#E2E8F0] p-8 mb-8 text-center relative overflow-hidden">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 mb-3 shadow-2xs">
+              <LanguageLogo languageId={currentLanguageId} size={16} className="w-4 h-4 shrink-0" />
+              <span className="text-xs font-mono font-bold text-slate-700 capitalize">{currentLanguageId || 'python'} Track</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-2 font-display">⚡ SPEED PRACTICE</h1>
+            <p className="text-slate-500 text-base">Beat the clock! Solve coding drills in 60 seconds</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -231,10 +236,15 @@ export function SpeedChallenge({ currentLanguageId = 'python', onXPEarned }) {
         <div className="bg-white rounded-xl shadow-sm border border-[#E2E8F0] p-8 text-center flex flex-col items-center justify-center relative">
           <button 
             onClick={() => setGameState('lobby')}
-            className="absolute top-4 left-4 text-slate-400 hover:text-slate-600 text-sm active:scale-[0.97] transition-transform"
+            className="absolute top-4 left-4 text-slate-400 hover:text-slate-600 text-sm active:scale-[0.97] transition-transform font-bold"
           >
             ← Back
           </button>
+
+          <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg shadow-2xs">
+            <LanguageLogo languageId={currentLanguageId} size={14} className="w-3.5 h-3.5 shrink-0" />
+            <span className="text-[11px] font-mono font-bold text-slate-700 capitalize">{currentLanguageId || 'python'}</span>
+          </div>
           
           <h2 className="text-slate-500 font-semibold mb-2 uppercase tracking-wide">Time Remaining</h2>
           <div className={`text-6xl font-bold font-mono ${timeLeft < 10 ? 'text-[#DC2626] animate-pulse' : 'text-slate-800'}`}>

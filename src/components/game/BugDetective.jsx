@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CodeEditor } from '../CodeEditor';
 import { soundService } from '../../services/soundService';
+import { LanguageLogo } from '../LanguageLogo';
 
 const BUG_CASES = [
   {
@@ -212,8 +213,14 @@ export function BugDetective({ currentLanguageId = 'python', onXPEarned }) {
             <span>🕵️</span> Bug Detective <span className="font-light text-amber-700">| Case Files</span>
           </h1>
         </div>
-        <div className="px-4 py-1.5 bg-amber-100 text-amber-800 rounded-md font-bold text-sm border border-amber-300 shadow-sm uppercase tracking-wide">
-          Forensics Lab
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-white text-slate-800 rounded-lg font-bold text-xs border border-amber-300 shadow-2xs">
+            <LanguageLogo languageId={activeCase.language} size={16} className="w-4 h-4 shrink-0" />
+            <span className="capitalize">{activeCase.language}</span>
+          </div>
+          <div className="px-4 py-1.5 bg-amber-100 text-amber-800 rounded-md font-bold text-sm border border-amber-300 shadow-sm uppercase tracking-wide">
+            Forensics Lab
+          </div>
         </div>
       </header>
 
@@ -305,9 +312,12 @@ export function BugDetective({ currentLanguageId = 'python', onXPEarned }) {
               <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
               Evidence Source Code
             </h3>
-            <span className="text-xs font-mono font-bold px-2 py-1 bg-slate-200 text-slate-600 rounded">
-              {activeCase.language.toUpperCase()}
-            </span>
+            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white border border-slate-200 shadow-2xs rounded-lg">
+              <LanguageLogo languageId={activeCase.language} size={14} className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-xs font-mono font-bold text-slate-700">
+                {activeCase.language.toUpperCase()}
+              </span>
+            </div>
           </div>
 
           <div className="flex-1 min-h-[300px] px-4 pb-4">

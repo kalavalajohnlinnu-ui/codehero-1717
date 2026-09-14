@@ -28,6 +28,7 @@ import {
 import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
 import { MascotAvatar } from './mascots/MascotAvatar';
+import { LanguageLogo } from './LanguageLogo';
 
 const LANGUAGE_META = {
   python:     { name: 'Python',     icon: '🐍', color: '#0284C7', bg: 'bg-sky-50', text: 'text-sky-800', border: 'border-sky-200' },
@@ -547,7 +548,7 @@ export function AdminPortalModal({ isOpen, onClose }) {
                                       key={l.id} 
                                       className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-lg border text-[10px] font-bold ${meta.bg} ${meta.text} ${meta.border}`}
                                     >
-                                      <span>{meta.icon}</span>
+                                      <LanguageLogo languageId={l.id} size={14} className="w-3.5 h-3.5 shrink-0" />
                                       <span>{meta.name}:</span>
                                       <span className="font-black">{l.completedCount}</span>
                                     </span>
@@ -620,7 +621,9 @@ export function AdminPortalModal({ isOpen, onClose }) {
                   <div key={id} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
-                        <span className="text-2xl">{meta.icon}</span>
+                        <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 p-1.5 shadow-2xs">
+                          <LanguageLogo languageId={id} size={22} className="w-5.5 h-5.5" />
+                        </div>
                         <div>
                           <h4 className="font-bold text-sm text-slate-900">{meta.name}</h4>
                           <span className="text-[10px] font-mono text-slate-400 uppercase">Core Language</span>
@@ -832,7 +835,7 @@ export function AdminPortalModal({ isOpen, onClose }) {
                       return (
                         <div key={l.id} className="p-3 rounded-xl border border-slate-200 bg-slate-50/50 flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <span className="text-base">{meta.icon}</span>
+                            <LanguageLogo languageId={l.id} size={18} className="w-4.5 h-4.5 shrink-0" />
                             <span className="font-bold text-slate-800">{meta.name}</span>
                           </div>
                           <div className="flex items-center gap-2">

@@ -26,6 +26,7 @@ import {
 import { LANGUAGES } from '../data/languages/registry';
 import { getLanguageDetails } from '../data/languages/languageDetails';
 import { soundService } from '../services/soundService';
+import { LanguageLogo } from './LanguageLogo';
 import algoChallenges from '../data/algorithms/challenges.json';
 import bugChallenges from '../data/bugs/challenges.json';
 import projectBuilds from '../data/projects/projects.json';
@@ -384,8 +385,8 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
           {/* ── Top Header Strip (Light Theme) ─────────────────── */}
           <div className="flex items-center justify-between px-5 py-3.5 shrink-0 border-b border-slate-200 bg-slate-50/80">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center font-mono font-black text-sm bg-sky-100 text-sky-700 border border-sky-300 shadow-sm">
-                CH
+              <div className="w-10 h-10 rounded-2xl flex items-center justify-center bg-white border border-slate-200 shadow-2xs shrink-0 p-1.5">
+                <LanguageLogo languageId={activeLangId} size={24} className="w-6 h-6" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -404,8 +405,9 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
 
             <div className="flex items-center gap-2">
               {/* Language Picker */}
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white border border-slate-200 shadow-2xs">
-                <span className="text-[10px] font-mono text-slate-500 font-semibold">Language:</span>
+              <div className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                <LanguageLogo languageId={activeLangId} size={16} className="w-4 h-4 shrink-0" />
+                <span className="text-[10px] font-mono text-slate-500 font-semibold hidden sm:inline">Track:</span>
                 <select
                   value={activeLangId}
                   onChange={e => setActiveLangId(e.target.value)}
