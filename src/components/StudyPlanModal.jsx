@@ -64,6 +64,114 @@ export function StudyPlanModal({
     setActiveDayIndex(0);
   };
 
+  const handleExportPDF = () => {
+    if (!plan || !plan.days) return;
+    soundService.playSuccess();
+
+    const langMeta2 = LANGUAGE_LESSON_COUNTS[currentLanguageId] || { name: 'Python', lessons: 87, modules: 25 };
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const daysHTML = plan.days.map((day) => `
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">Day ${day.dayNumber} of ${plan.targetDays}</div>
+          <div class="day-date">${day.date}</div>
+          <div class="day-theme">${day.theme}</div>
+          ${day.milestone ? `<div class="milestone">⭐ MILESTONE: ${day.milestone}</div>` : ''}
+        </div>
+        <div class="section">
+          <div class="section-title">🕐 When to Study</div>
+          ${(day.whenToDo || []).map(s => `
+            <div class="time-slot"><span class="time">${s.time}</span><span class="activity">${s.activity}</span></div>
+          `).join('')}
+        </div>
+        <div class="section">
+          <div class="section-title">🎯 What to Do Today</div>
+          <div class="task-box">${day.whatToDo}</div>
+        </div>
+        <div class="section">
+          <div class="section-title">📖 How to Study (Action Protocol)</div>
+          <div class="how-box">${(day.howToDo || '').replace(/\n/g, '<br>')}</div>
+        </div>
+      </div>
+    `).join('');
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>CodeHero Academy — ${langMeta2.name} Study Plan</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #0F172A; background: #fff; font-size: 11pt; line-height: 1.55; }
+    @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+    @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+    /* Cover Page */
+    .cover { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 240px; text-align: center; padding: 30px; border-bottom: 3px solid #0284C7; margin-bottom: 28px; page-break-after: avoid; }
+    .cover-badge { font-family: 'JetBrains Mono', monospace; font-size: 9pt; background: #EFF6FF; color: #1D4ED8; padding: 4px 12px; border-radius: 99px; border: 1px solid #BFDBFE; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
+    .cover-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26pt; font-weight: 800; color: #0F172A; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 6px; }
+    .cover-sub { font-size: 12pt; color: #475569; margin-bottom: 16px; }
+    .cover-stats { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 16pt; font-weight: 700; color: #0284C7; }
+    .stat-lbl { font-size: 8pt; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+
+    /* Day Card */
+    .day-card { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 18px; overflow: hidden; page-break-inside: avoid; break-inside: avoid; }
+    .day-header { background: #F8FAFC; padding: 10px 14px; border-bottom: 1px solid #E2E8F0; }
+    .day-num { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; font-weight: 700; color: #D97706; text-transform: uppercase; letter-spacing: 0.08em; }
+    .day-date { font-size: 8pt; color: #94A3B8; margin-top: 1px; }
+    .day-theme { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11.5pt; font-weight: 700; color: #0F172A; margin-top: 3px; }
+    .milestone { margin-top: 5px; font-size: 8.5pt; font-weight: 700; color: #D97706; background: #FFFBEB; padding: 4px 8px; border-radius: 5px; display: inline-block; }
+
+    .section { padding: 9px 14px; border-bottom: 1px solid #F1F5F9; }
+    .section:last-child { border-bottom: none; }
+    .section-title { font-family: 'JetBrains Mono', monospace; font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: #64748B; margin-bottom: 6px; }
+    .time-slot { display: flex; gap: 12px; margin-bottom: 4px; font-size: 9.5pt; }
+    .time { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #D97706; min-width: 90px; }
+    .activity { color: #334155; }
+    .task-box { background: #EFF6FF; border-left: 3px solid #0284C7; padding: 8px 10px; border-radius: 0 6px 6px 0; font-size: 9.5pt; color: #1E3A5F; font-weight: 500; }
+    .how-box { background: #F8FAFC; border: 1px solid #E2E8F0; padding: 8px 10px; border-radius: 6px; font-size: 9.5pt; color: #334155; }
+
+    /* Footer */
+    .footer { text-align: center; color: #CBD5E1; font-size: 8pt; font-family: 'JetBrains Mono', monospace; padding-top: 12px; border-top: 1px solid #F1F5F9; }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="cover-badge">CodeHero Academy 2.0 — Personalized Study Plan</div>
+    <div class="cover-title">Your ${langMeta2.name} Mastery Roadmap</div>
+    <div class="cover-sub">Hello, ${studentName} — here is your complete ${plan.targetDays}-day plan</div>
+    <div class="cover-stats">
+      <div class="stat"><div class="stat-num">${plan.targetDays}</div><div class="stat-lbl">Days</div></div>
+      <div class="stat"><div class="stat-num">${plan.dailyHours}h</div><div class="stat-lbl">Per Day</div></div>
+      <div class="stat"><div class="stat-num">${langMeta2.lessons}</div><div class="stat-lbl">Lessons</div></div>
+      <div class="stat"><div class="stat-num">${langMeta2.modules}</div><div class="stat-lbl">Modules</div></div>
+    </div>
+    <div style="margin-top:14px; font-size:8.5pt; color:#94A3B8;">Generated ${today} · CodeHero Academy</div>
+  </div>
+
+  ${daysHTML}
+
+  <div class="footer">CodeHero Academy 2.0 · Top 10-15% Engineer Track · codehero-1717.github.io</div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() { window.print(); }, 600);
+    };
+  </script>
+</body>
+</html>`;
+
+    const win = window.open('', '_blank', 'width=900,height=700');
+    if (!win) { alert('Please allow pop-ups for this site to download the PDF.'); return; }
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
+  };
+
   const handleToggleDay = (idx) => {
     if (!plan || !plan.days) return;
     const updatedDays = [...plan.days];
@@ -124,11 +232,11 @@ export function StudyPlanModal({
 
           <div className="flex items-center gap-2">
             <button
-              onClick={() => window.print()}
-              className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-amber-300 border border-amber-500/20 flex items-center gap-1.5 transition-all"
+              onClick={handleExportPDF}
+              className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-amber-300 border border-amber-500/20 flex items-center gap-1.5 transition-all active:scale-[0.97]"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Print Timetable</span>
+              <span className="hidden sm:inline">Download PDF</span>
             </button>
             <button
               onClick={onClose}

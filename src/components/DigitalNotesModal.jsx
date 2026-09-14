@@ -101,7 +101,130 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
 
   const handlePrint = () => {
     soundService.playSuccess();
-    window.print();
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const curriculum = langConfig?.curriculum || [];
+
+    // Build all lessons HTML
+    const chaptersHTML = curriculum.map((mod, modIdx) => `
+      <div class="chapter">
+        <div class="chapter-header">
+          <span class="chapter-num">Module ${String(modIdx + 1).padStart(2, '0')}</span>
+          <span class="chapter-title">${mod.title}</span>
+          <span class="chapter-count">${mod.lessons?.length || 0} lessons</span>
+        </div>
+        ${(mod.lessons || []).map((lesson, lIdx) => `
+          <div class="lesson-block">
+            <div class="lesson-title">
+              <span class="lesson-num">${modIdx + 1}.${lIdx + 1}</span>
+              ${lesson.title}
+              <span class="lesson-badge">${lesson.badge || ''}</span>
+              <span class="lesson-dur">${lesson.duration || ''}</span>
+            </div>
+            <div class="concept-box">
+              <div class="box-label">📖 Concept &amp; Theory</div>
+              <div class="concept-text">${(lesson.concept || '').replace(/\n/g, '<br>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</div>
+            </div>
+            <div class="task-box">
+              <div class="box-label">🎯 Coding Mission</div>
+              <div class="task-text">${(lesson.task || '').replace(/\n/g, '<br>')}</div>
+            </div>
+            ${lesson.solution ? `
+            <div class="solution-box">
+              <div class="box-label">✅ Solution Code</div>
+              <pre class="code-block">${lesson.solution.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</pre>
+            </div>` : ''}
+            ${lesson.hints?.length ? `
+            <div class="hints-box">
+              <div class="box-label">💡 Hints</div>
+              ${lesson.hints.map((h, hi) => `<div class="hint"><span class="hint-num">Clue ${hi + 1}</span> ${h}</div>`).join('')}
+            </div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `).join('');
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>CodeHero Academy — ${langDetails.name} Complete Handbook</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #0F172A; background: #fff; font-size: 10.5pt; line-height: 1.6; }
+    @page { size: A4; margin: 18mm 15mm 18mm 15mm; }
+    @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+    /* Cover */
+    .cover { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px 20px; border-bottom:4px solid #0284C7; margin-bottom:32px; page-break-after:always; }
+    .cover-badge { font-family:'JetBrains Mono',monospace; font-size:8.5pt; background:#EFF6FF; color:#1D4ED8; padding:4px 14px; border-radius:99px; border:1px solid #BFDBFE; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; display:inline-block; }
+    .cover-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:28pt; font-weight:800; color:#0F172A; letter-spacing:-0.03em; margin-bottom:8px; }
+    .cover-sub { font-size:12pt; color:#475569; margin-bottom:20px; }
+    .cover-stats { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; }
+    .stat { text-align:center; }
+    .stat-num { font-family:'JetBrains Mono',monospace; font-size:18pt; font-weight:700; color:#0284C7; }
+    .stat-lbl { font-size:7.5pt; color:#94A3B8; text-transform:uppercase; letter-spacing:0.08em; font-weight:600; }
+    .cover-note { margin-top:18px; font-size:8pt; color:#94A3B8; }
+
+    /* Chapter */
+    .chapter { page-break-before:always; margin-bottom:24px; }
+    .chapter-header { display:flex; align-items:center; gap:10px; padding:10px 14px; background:#F8FAFC; border-left:4px solid #0284C7; border-bottom:1px solid #E2E8F0; margin-bottom:12px; }
+    .chapter-num { font-family:'JetBrains Mono',monospace; font-size:8pt; font-weight:700; color:#0284C7; background:#EFF6FF; padding:2px 8px; border-radius:4px; }
+    .chapter-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:13pt; font-weight:700; color:#0F172A; flex:1; }
+    .chapter-count { font-family:'JetBrains Mono',monospace; font-size:8pt; color:#94A3B8; }
+
+    /* Lesson */
+    .lesson-block { border:1px solid #E2E8F0; border-radius:8px; margin-bottom:14px; overflow:hidden; break-inside:avoid; page-break-inside:avoid; }
+    .lesson-title { display:flex; align-items:center; gap:8px; padding:8px 12px; background:#F8FAFC; border-bottom:1px solid #E2E8F0; font-family:'Plus Jakarta Sans',sans-serif; font-size:11pt; font-weight:700; color:#0F172A; }
+    .lesson-num { font-family:'JetBrains Mono',monospace; font-size:8pt; font-weight:700; color:#0284C7; background:#EFF6FF; padding:1px 6px; border-radius:3px; }
+    .lesson-badge { font-family:'JetBrains Mono',monospace; font-size:7.5pt; color:#64748B; background:#F1F5F9; padding:1px 6px; border-radius:3px; margin-left:auto; }
+    .lesson-dur { font-family:'JetBrains Mono',monospace; font-size:7.5pt; color:#94A3B8; }
+
+    /* Content Boxes */
+    .concept-box, .task-box, .solution-box, .hints-box { padding:9px 12px; border-bottom:1px solid #F1F5F9; }
+    .solution-box:last-child, .hints-box:last-child { border-bottom:none; }
+    .box-label { font-family:'JetBrains Mono',monospace; font-size:7.5pt; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#64748B; margin-bottom:5px; }
+    .concept-text { font-size:9.5pt; color:#334155; line-height:1.65; }
+    .task-text { font-size:9.5pt; color:#1E3A5F; background:#EFF6FF; padding:7px 9px; border-radius:5px; border-left:3px solid #0284C7; }
+    code { font-family:'JetBrains Mono',monospace; font-size:8.5pt; background:#F1F5F9; padding:1px 5px; border-radius:3px; color:#0F172A; }
+    .code-block { font-family:'JetBrains Mono',monospace; font-size:8.5pt; background:#F8FAFC; border:1px solid #CBD5E1; border-radius:5px; padding:9px 11px; white-space:pre-wrap; word-break:break-word; color:#1E293B; line-height:1.55; }
+    .hint { font-size:9pt; color:#475569; margin-bottom:4px; }
+    .hint-num { font-family:'JetBrains Mono',monospace; font-size:7.5pt; font-weight:700; color:#D97706; background:#FFFBEB; padding:1px 5px; border-radius:3px; margin-right:4px; }
+
+    /* Footer */
+    .footer { text-align:center; color:#CBD5E1; font-size:7.5pt; font-family:'JetBrains Mono',monospace; margin-top:24px; padding-top:10px; border-top:1px solid #F1F5F9; }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="cover-badge">CodeHero Academy 2.0 · Complete Handbook</div>
+    <div class="cover-title">${langDetails.name}<br>Complete Reference Manual</div>
+    <div class="cover-sub">Every lesson, concept, mission, and verified solution — untruncated</div>
+    <div class="cover-stats">
+      <div class="stat"><div class="stat-num">${curriculum.length}</div><div class="stat-lbl">Modules</div></div>
+      <div class="stat"><div class="stat-num">${curriculum.reduce((a, m) => a + (m.lessons?.length || 0), 0)}</div><div class="stat-lbl">Lessons</div></div>
+      <div class="stat"><div class="stat-num">Top 15%</div><div class="stat-lbl">Engineer Track</div></div>
+    </div>
+    <div class="cover-note">Generated ${today} · CodeHero Academy · Save as PDF using Ctrl+P → Save as PDF</div>
+  </div>
+
+  ${chaptersHTML}
+
+  <div class="footer">CodeHero Academy 2.0 · Top 10–15% Engineer Foundation Track · Your Personal Handbook</div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() { window.print(); }, 800);
+    };
+  </script>
+</body>
+</html>`;
+
+    const win = window.open('', '_blank', 'width=960,height=700');
+    if (!win) { alert('Please allow pop-ups for this site to download the PDF.'); return; }
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
   };
 
   const handleCopyCode = (id, text) => {
