@@ -96,7 +96,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
           >
             <IngeniumLogoMark size={32} />
             <div className="flex items-center gap-2">
-              <span className="font-mono tracking-[0.18em] font-black text-lg md:text-xl">INGENIUM</span>
+              <span className="font-mono tracking-[0.18em] font-black text-lg md:text-xl text-[#FCD34D]">INGENIUM</span>
               <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border border-white/20 text-white/70 font-normal hidden sm:inline-block">
                 Academy
               </span>
@@ -107,7 +107,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
           <button
             type="button"
             onClick={() => setIsOverlayOpen(prev => !prev)}
-            className={`hidden md:flex px-5 py-2 rounded-full border border-white/20 text-white/90 text-sm hover:bg-white/10 items-center gap-2 transition-all cursor-pointer z-50 ${
+            className={`hidden md:flex px-5 py-2 rounded-full border border-[#FCD34D]/40 text-[#FCD34D] text-sm hover:bg-[#FCD34D]/10 items-center gap-2 transition-all cursor-pointer z-50 ${
               navMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
             style={{
@@ -130,7 +130,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               transitionDelay: navMounted ? '400ms' : '0ms'
             }}
           >
-            <Flower2 className="w-7 h-7 text-white/90" />
+            <Flower2 className="w-7 h-7 text-[#FCD34D]" />
           </div>
 
           {/* Right — Mobile: Hamburger (md:hidden) */}
@@ -149,7 +149,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
           >
             {/* Top Bar */}
             <span
-              className={`w-6 h-[2px] bg-white transition-transform ${
+              className={`w-6 h-[2px] bg-[#FCD34D] transition-transform ${
                 isOverlayOpen ? 'rotate-45 translate-y-[4px]' : ''
               }`}
               style={{
@@ -191,7 +191,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
                 e.preventDefault();
                 handleLinkClick(name);
               }}
-              className={`text-white font-instrument text-4xl md:text-6xl hover:opacity-60 transition-all cursor-pointer ${
+              className={`text-[#FCD34D] font-instrument text-4xl md:text-6xl hover:opacity-75 transition-all cursor-pointer ${
                 isOverlayOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{
@@ -231,7 +231,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
         <div className="relative z-10 text-center px-6 pb-16 md:pb-24 max-w-4xl mx-auto">
           {/* H1 (Instrument Serif) */}
           <h1
-            className={`font-instrument text-white text-[2.5rem] leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl mb-5 md:mb-6 transition-all duration-900 ${
+            className={`font-instrument text-[#FCD34D] drop-shadow-[0_2px_30px_rgba(252,211,77,0.45)] text-[2.5rem] leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl mb-5 md:mb-6 transition-all duration-900 ${
               heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{
@@ -244,7 +244,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
 
           {/* Subcopy */}
           <p
-            className={`text-white/80 text-base md:text-lg mb-6 md:mb-8 max-w-xl mx-auto transition-all duration-900 leading-relaxed ${
+            className={`text-amber-100 text-base md:text-lg mb-6 md:mb-8 drop-shadow-sm font-medium max-w-xl mx-auto transition-all duration-900 leading-relaxed ${
               heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{
@@ -257,7 +257,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
 
           {/* Supported Languages Ticker */}
           <div
-            className={`flex items-center justify-center flex-wrap gap-2 text-[10px] sm:text-[11px] font-mono tracking-widest text-white/60 mb-8 transition-all duration-900 ${
+            className={`flex items-center justify-center flex-wrap gap-2 text-[10px] sm:text-[11px] font-mono tracking-widest text-amber-300/85 mb-8 transition-all duration-900 font-semibold ${
               heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{
@@ -286,7 +286,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
                 e.preventDefault();
                 if (onEnter) onEnter();
               }}
-              className={`inline-block px-9 py-4 bg-white text-black text-sm md:text-base font-semibold rounded-full hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-900 cursor-pointer shadow-xl shadow-white/10 ${
+              className={`inline-block px-9 py-4 bg-[#FCD34D] hover:bg-[#FACC15] text-slate-950 text-sm md:text-base font-bold rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-900 cursor-pointer shadow-xl shadow-amber-400/25 ${
                 heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{
