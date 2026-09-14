@@ -117,7 +117,7 @@ export function Sidebar({
             const totalInModule  = module.lessons?.length || 0;
             const isAllCompleted = completedCount === totalInModule && totalInModule > 0;
             const isPassed       = passedModuleExams.includes(module.id);
-            const pct            = totalInModule ? Math.round((completedCount / totalInModule) * 100) : 0;
+            const pct            = totalInModule ? Math.max(5, Math.round((completedCount / totalInModule) * 100)) : 0;
 
             return (
               <div 

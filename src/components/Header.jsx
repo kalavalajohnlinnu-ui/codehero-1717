@@ -23,7 +23,7 @@ import {
 import { LanguageSelector } from './LanguageSelector';
 import { soundService } from '../services/soundService';
 import { getLevelProgress } from '../services/gameEngine';
-import { progressionService } from '../services/progressionService';
+import { progressionService, MODE_UNLOCK_CRITERIA } from '../services/progressionService';
 
 export function Header({
   currentLanguageId,
@@ -220,6 +220,8 @@ export function Header({
               const Icon = mode.icon;
               const isActive = currentGameMode === mode.id;
               const isUnlocked = progressionService.isModeUnlocked(mode.id, currentLanguageId, completedCount);
+              const criteria = MODE_UNLOCK_CRITERIA[mode.id];
+              const needed = criteria ? Math.max(0, criteria.requiredQuests - completedCount) : 0;
 
               return (
                 <button
@@ -229,6 +231,7 @@ export function Header({
                     if (isUnlocked) onSelectGameMode(mode.id);
                     else onOpenModeLocked?.(mode.id);
                   }}
+                  title={!isUnlocked && criteria ? `🔒 Unlocks in ${needed} more lesson${needed !== 1 ? 's' : ''} (${completedCount}/${criteria.requiredQuests} completed)` : mode.label}
                   className={`
                     flex items-center gap-1.5 px-3 py-2 rounded-md text-xs font-mono font-semibold transition-all shrink-0
                     ${isActive 
@@ -247,10 +250,10 @@ export function Header({
                     isActive 
                       ? 'bg-sky-100 text-sky-800' 
                       : !isUnlocked
-                        ? 'bg-amber-100 text-amber-800'
+                        ? 'bg-amber-50 text-amber-700 border border-amber-200'
                         : 'bg-slate-100 text-slate-500'
                   }`}>
-                    {!isUnlocked ? 'Locked' : mode.count}
+                    {!isUnlocked && criteria ? `${completedCount}/${criteria.requiredQuests}` : mode.count}
                   </span>
                 </button>
               );

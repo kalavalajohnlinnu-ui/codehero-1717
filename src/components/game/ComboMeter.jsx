@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { soundService } from '../../services/soundService';
 
 export const ComboMeter = ({ combo }) => {
   const [shake, setShake] = useState(false);
@@ -16,19 +17,22 @@ export const ComboMeter = ({ combo }) => {
 
   const multiplier = Math.min(Math.floor(combo / 2) + 1, 5); // Max x5
   
-  let colors = "from-yellow-400 to-orange-500";
+  let borderColor = "border-amber-300";
   let icon = "⚡";
   let size = "scale-100";
+  let gradientColors = "from-amber-400 to-amber-600";
   
   if (multiplier >= 3) {
-    colors = "from-orange-500 to-red-500";
+    borderColor = "border-orange-400";
     icon = "🔥";
     size = "scale-110";
+    gradientColors = "from-orange-400 to-orange-600";
   }
   if (multiplier >= 5) {
-    colors = "from-red-500 to-purple-500";
+    borderColor = "border-red-400";
     icon = "☄️";
     size = "scale-125";
+    gradientColors = "from-red-400 to-red-600";
   }
 
   return (
@@ -45,20 +49,20 @@ export const ComboMeter = ({ combo }) => {
         }
         @keyframes pulse-combo {
           0%, 100% { transform: scale(1); filter: brightness(1); }
-          50% { transform: scale(1.05); filter: brightness(1.2); }
+          50% { transform: scale(1.02); filter: brightness(1.05); }
         }
         .combo-pulse {
           animation: pulse-combo 1s infinite alternate;
         }
       `}</style>
       
-      <div className={`flex items-center bg-slate-900 border-2 border-slate-700 rounded-full pl-2 pr-4 py-2 shadow-xl \${shake ? 'combo-shake' : 'combo-pulse'}`}>
-        <div className={`flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br \${colors} shadow-[0_0_15px_rgba(251,146,60,0.6)] mr-3`}>
-          <span className="text-2xl drop-shadow-md">{icon}</span>
+      <div className={`flex items-center bg-white border-2 \${borderColor} rounded-2xl pl-2 pr-4 py-2 shadow-lg shadow-amber-500/20 \${shake ? 'combo-shake' : 'combo-pulse'}`}>
+        <div className={`flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 mr-3`}>
+          <span className="text-2xl">{icon}</span>
         </div>
         <div className="flex flex-col">
-          <span className="text-xs text-slate-400 font-bold uppercase tracking-wider leading-none mb-1">Combo</span>
-          <span className={`text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r \${colors} leading-none`}>
+          <span className="text-xs text-slate-700 font-bold uppercase tracking-wider leading-none mb-1 font-sans">Combo</span>
+          <span className={`text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r \${gradientColors} leading-none font-sans`}>
             x{multiplier}
           </span>
         </div>

@@ -642,7 +642,25 @@ export default function App() {
 
       <CheatsheetModal isOpen={isCheatsheetOpen} onClose={() => setIsCheatsheetOpen(false)} currentLanguageId={currentLanguageId} languageName={activeLang.name} />
       <SandboxModal isOpen={isSandboxOpen} onClose={() => setIsSandboxOpen(false)} sandboxCode="" onSaveSandboxCode={() => {}} pyodideInstance={pyodide} currentLanguageId={currentLanguageId} languageName={activeLang.name} mascotName={activeLang.mascotName} />
-      <CelebrationModal isOpen={isCelebrationOpen} lessonTitle={currentLesson?.title || 'Challenge'} xpGained={recentXpAward} onNextLesson={() => {}} onClose={() => setIsCelebrationOpen(false)} />
+      <CelebrationModal 
+        isOpen={isCelebrationOpen} 
+        lessonTitle={currentLesson?.title || 'Challenge'} 
+        xpGained={recentXpAward} 
+        onNextLesson={() => {
+          const currentIndex = allLessons.findIndex(l => l.id === currentLessonId);
+          if (currentIndex >= 0 && currentIndex < allLessons.length - 1) handleSelectLesson(allLessons[currentIndex + 1].id);
+        }}
+        onClose={() => setIsCelebrationOpen(false)}
+        nextLessonTitle={(() => {
+          const idx = allLessons.findIndex(l => l.id === currentLessonId);
+          return idx >= 0 && idx < allLessons.length - 1 ? allLessons[idx + 1].title : null;
+        })()}
+        nextLessonHook={(() => {
+          const idx = allLessons.findIndex(l => l.id === currentLessonId);
+          const next = allLessons[idx + 1];
+          return next ? `Next, you'll discover: ${next.badge} — ${next.task?.slice(0, 60)}...` : "You're at the frontier of mastery!";
+        })()}
+      />
     </div>
   );
 }

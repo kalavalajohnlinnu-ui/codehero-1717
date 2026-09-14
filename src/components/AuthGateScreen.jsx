@@ -42,6 +42,23 @@ export function AuthGateScreen({ onAuthenticated }) {
   const [error, setError]       = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
 
+  const handleGoogleSuccess = ({ email, name, googleId }) => {
+    try {
+      // Try to find existing account or create one
+      let student;
+      try {
+        student = authService.loginStudent({ email, password: googleId });
+      } catch {
+        student = authService.registerStudent({ email, name: name || email.split('@')[0], password: googleId, avatar });
+      }
+      soundService.playFanfare();
+      setSuccessMsg(`Welcome${student.isNew ? '' : ' back'}, ${student.name}!`);
+      setTimeout(() => onAuthenticated(student), 1000);
+    } catch (err) {
+      setError('Google sign-in failed: ' + err.message);
+    }
+  };
+
   const existingStudents = authService.getAllStudents().filter(s => !s.isGuest);
 
   const handleRegister = (e) => {
@@ -189,9 +206,8 @@ export function AuthGateScreen({ onAuthenticated }) {
           {/* Prominent Google Sign-In Button */}
           <div className="mb-5">
             <GoogleSignInButton 
-              onAuthenticated={onAuthenticated}
-              variant="light"
-              text="Continue with Google"
+              onSuccess={handleGoogleSuccess}
+              onError={(err) => setError('Google sign-in error: ' + err.message)}
             />
 
             <div className="flex items-center gap-3 my-4">

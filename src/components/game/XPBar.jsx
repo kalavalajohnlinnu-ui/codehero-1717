@@ -39,7 +39,7 @@ export function XPBar({ xp, streak, onProfileClick }) {
 
       {/* XP Bar Strip */}
       <div
-        className="flex items-center gap-3 px-3 py-1.5 rounded-xl glass-card cursor-pointer select-none"
+        className="flex items-center gap-3 px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-sm cursor-pointer select-none"
         onClick={onProfileClick}
         title="View your profile"
       >
@@ -69,9 +69,9 @@ export function XPBar({ xp, streak, onProfileClick }) {
         </div>
 
         {/* Streak */}
-        <div className="flex items-center gap-1 shrink-0 bg-orange-500/10 border border-orange-500/30 rounded-lg px-2 py-0.5">
+        <div className="flex items-center gap-1 shrink-0 bg-amber-50 border border-amber-200 text-amber-600 rounded-lg px-2 py-0.5">
           <span className="streak-fire text-base leading-none">🔥</span>
-          <span className="text-orange-300 font-bold text-sm">{streak}</span>
+          <span className="font-bold text-sm text-amber-600">{streak}</span>
         </div>
       </div>
     </>
