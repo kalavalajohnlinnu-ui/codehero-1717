@@ -33,10 +33,10 @@ const VIDEO_URL = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIX
 function StatBadge({ value, label, color = '#38BDF8' }) {
   return (
     <div className="flex flex-col">
-      <span className="font-mono font-black text-xl leading-none" style={{ color }}>
+      <span className="font-mono font-black text-xl sm:text-2xl leading-none" style={{ color }}>
         {value}
       </span>
-      <span className="text-[9px] uppercase tracking-widest font-mono text-white/70 font-semibold mt-0.5">
+      <span className="text-[9px] uppercase tracking-widest font-mono text-white/70 font-semibold mt-1">
         {label}
       </span>
     </div>
@@ -55,6 +55,8 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   const [successMsg, setSuccessMsg]             = useState(null);
 
   const existingStudents = authService.getAllStudents().filter(s => !s.isGuest);
+  // Strictly ONE saved profile only as requested
+  const savedProfile = existingStudents[0] || null;
 
   const handleGoogleSuccess = (profile) => {
     try {
@@ -155,8 +157,8 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-x-hidden font-sans select-none flex items-center justify-center p-3 sm:p-5 md:p-8">
-      {/* ── 1. Full-Screen Raw Video Background (No dimming, no dark overlay) ── */}
+    <div className="relative w-full min-h-screen bg-black overflow-x-hidden font-sans select-none flex items-center justify-center p-4 sm:p-6 lg:p-10">
+      {/* ── 1. Full-Screen Raw Video Background ── */}
       <video
         className="fixed inset-0 w-full h-full object-cover pointer-events-none"
         src={VIDEO_URL}
@@ -166,15 +168,15 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
         playsInline
       />
 
-      {/* ── 2. Two-Column Foreground Layout (Centered, Content-Hugging, No Empty Space) ── */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10">
+      {/* ── 2. Full-Width Split Layout (Anchored Left & Right, Balanced) ── */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14 min-h-[88vh] py-6">
 
-        {/* ── Left Column: Mission (Tightly hugs content - ZERO empty blurred space) ── */}
-        <div className="w-full lg:w-1/2 h-fit p-6 sm:p-8 rounded-2xl backdrop-blur-md bg-black/30 border border-white/10 shadow-xl text-white">
+        {/* ── Left Column: Mission (Anchored on Left Side of Screen) ── */}
+        <div className="w-full lg:max-w-[520px] h-fit p-7 sm:p-9 rounded-3xl backdrop-blur-md bg-black/35 border border-white/15 shadow-2xl text-white">
           {/* Brand Header */}
-          <div className="flex items-center justify-between gap-3 mb-5">
+          <div className="flex items-center justify-between gap-3 mb-6">
             <div className="flex items-center gap-2.5">
-              <IngeniumLogoMark size={32} />
+              <IngeniumLogoMark size={34} />
               <div className="flex flex-col">
                 <span className="font-mono font-black text-xs tracking-[0.2em] text-white leading-tight">
                   INGENIUM 2.0
@@ -189,7 +191,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
               <button
                 type="button"
                 onClick={onBackToIntro}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/15 transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/15 transition-all cursor-pointer"
               >
                 <ArrowLeft size={12} />
                 <span>Intro</span>
@@ -198,38 +200,38 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
           </div>
 
           {/* Mission Eyebrow & Headline */}
-          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-sky-400 font-bold mb-2">
+          <div className="text-[10px] font-mono uppercase tracking-[0.22em] text-sky-400 font-bold mb-2.5">
             01 // YOUR MISSION
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight mb-3">
+          <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-white leading-[1.15] tracking-tight mb-4">
             Become the<br />
-            <span className="text-sky-400 drop-shadow-[0_0_16px_rgba(56,189,248,0.4)]">
+            <span className="text-sky-400 drop-shadow-[0_0_18px_rgba(56,189,248,0.4)]">
               Top 10–15%
             </span><br />
             Software Engineer
           </h1>
 
-          <p className="text-xs sm:text-sm text-gray-200 leading-relaxed max-w-md mb-5">
+          <p className="text-xs sm:text-sm text-gray-200 leading-relaxed max-w-lg mb-6">
             631 structured lessons across 7 programming languages. Real coding tasks, diagnostic debugging cases, and a personalized study plan.
           </p>
 
           {/* 3 Stats Grid */}
-          <div className="grid grid-cols-3 gap-3 py-3.5 border-t border-b border-white/15">
+          <div className="grid grid-cols-3 gap-4 py-4 border-t border-b border-white/15 mb-5">
             <StatBadge value="631" label="Lessons" color="#38BDF8" />
             <StatBadge value="7" label="Languages" color="#34D399" />
             <StatBadge value="100%" label="Free" color="#FBBF24" />
           </div>
 
-          {/* Languages Strip (Immediately below stats - no empty void!) */}
-          <div className="pt-4">
-            <div className="text-[9px] font-mono uppercase tracking-widest text-white/60 mb-2 font-bold">
+          {/* Languages Strip (Immediately follows stats) */}
+          <div>
+            <div className="text-[9px] font-mono uppercase tracking-widest text-white/60 mb-2.5 font-bold">
               LANGUAGES YOU'LL MASTER
             </div>
             <div className="flex flex-wrap gap-1.5">
               {LANGUAGES_LIST.map(lang => (
                 <span
                   key={lang}
-                  className="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-white/10 border border-white/15 text-white/90 shadow-xs"
+                  className="px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-white/10 border border-white/15 text-white/90 shadow-2xs"
                 >
                   {lang}
                 </span>
@@ -238,9 +240,9 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
           </div>
         </div>
 
-        {/* ── Right Column: Compact Blurred Box for Account Creating (Decreased capacity & opacity) ── */}
-        <div className="w-full lg:w-[430px] shrink-0 h-fit">
-          <div className="w-full backdrop-blur-md bg-white/88 border border-white/70 rounded-2xl p-5 sm:p-6 shadow-xl shadow-black/30 text-slate-900 transition-all">
+        {/* ── Right Column: The Blurred Box (Compact, ONE Profile Only) ── */}
+        <div className="w-full lg:w-[420px] shrink-0 h-fit">
+          <div className="w-full backdrop-blur-md bg-white/88 border border-white/70 rounded-2xl p-5 sm:p-6 shadow-2xl shadow-black/35 text-slate-900 transition-all">
 
             {/* Header */}
             <div className="mb-3">
@@ -409,7 +411,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
                             : 'bg-slate-50 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
                         }`}
                       >
-                        <MascotAvatar mascotType={a.id} size={22} />
+                        <MascotAvatar mascotType={a.id} size={20} />
                         <div className="min-w-0">
                           <div className="text-[11px] font-bold text-slate-900 leading-tight truncate">{a.name}</div>
                           <div className="text-[8px] text-slate-500 leading-tight truncate">{a.desc}</div>
@@ -431,29 +433,32 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
               </button>
             </form>
 
-            {/* Saved Profiles Section (Compact) */}
-            {existingStudents.length > 0 && (
+            {/* ── ONE PROFILE ONLY: Saved Profile on This Device ── */}
+            {savedProfile && (
               <div className="mt-3 pt-2.5 border-t border-slate-200">
                 <div className="text-[9px] font-mono uppercase tracking-wider text-slate-400 mb-1.5 font-bold">
-                  SAVED PROFILES ON THIS DEVICE
+                  SAVED PROFILE ON THIS DEVICE
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {existingStudents.map(s => (
-                    <button
-                      key={s.email}
-                      type="button"
-                      onClick={() => handleQuickSwitch(s.email)}
-                      className="px-2 py-1 rounded-lg text-[10px] font-mono bg-slate-50 border border-slate-200 hover:border-sky-400 hover:bg-sky-50 text-slate-800 transition-all cursor-pointer flex items-center gap-1.5"
-                    >
-                      <MascotAvatar mascotType={s.avatar || 'dragon'} size={13} />
-                      <span className="font-semibold">{s.name || s.email}</span>
-                    </button>
-                  ))}
-                </div>
+                <button
+                  type="button"
+                  onClick={() => handleQuickSwitch(savedProfile.email)}
+                  className="w-full px-3 py-2 rounded-xl text-xs font-mono bg-slate-50/90 border border-slate-200 hover:border-sky-400 hover:bg-sky-50/80 text-slate-800 transition-all cursor-pointer flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2">
+                    <MascotAvatar mascotType={savedProfile.avatar || 'dragon'} size={18} />
+                    <div className="text-left">
+                      <div className="font-bold leading-tight">{savedProfile.name}</div>
+                      <div className="text-[9px] text-slate-400 truncate max-w-[170px]">{savedProfile.email}</div>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono text-sky-600 font-bold group-hover:underline">
+                    Sign in →
+                  </span>
+                </button>
               </div>
             )}
 
-            {/* Footer: Backup Restore & Demo Login (Compact) */}
+            {/* Footer: Backup Restore & Demo Login */}
             <div className="mt-3 pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] text-slate-500">
               <button
                 type="button"
