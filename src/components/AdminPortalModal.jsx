@@ -29,6 +29,7 @@ import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
 import { MascotAvatar } from './mascots/MascotAvatar';
 import { LanguageLogo } from './LanguageLogo';
+import { getLevelProgress } from '../services/gameEngine';
 
 const LANGUAGE_META = {
   python:     { name: 'Python',     icon: '🐍', color: '#0284C7', bg: 'bg-sky-50', text: 'text-sky-800', border: 'border-sky-200' },
@@ -40,12 +41,27 @@ const LANGUAGE_META = {
   rust:       { name: 'Rust',       icon: '🦀', color: '#B45309', bg: 'bg-amber-100', text: 'text-amber-950', border: 'border-amber-300' },
 };
 
+
+function getActivityBadge(lastVisitDate) {
+  if (!lastVisitDate) return { label: 'Inactive', color: 'text-slate-400 bg-slate-100 border-slate-200', dot: 'bg-slate-400' };
+  const today = new Date().toISOString().split('T')[0];
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  if (lastVisitDate === today) {
+    return { label: 'Active Today', color: 'text-emerald-700 bg-emerald-50 border-emerald-200', dot: 'bg-emerald-500 animate-pulse' };
+  }
+  if (lastVisitDate === yesterday) {
+    return { label: 'Active Yesterday', color: 'text-amber-700 bg-amber-50 border-amber-200', dot: 'bg-amber-500' };
+  }
+  return { label: lastVisitDate, color: 'text-slate-600 bg-slate-50 border-slate-200', dot: 'bg-slate-300' };
+}
+
 export function AdminPortalModal({ isOpen, onClose }) {
   const currentStudent = authService.getCurrentStudent();
   const [activeTab, setActiveTab] = useState('students'); // 'students' | 'languages' | 'admins'
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLanguageFilter, setSelectedLanguageFilter] = useState('all');
   const [selectedDepthFilter, setSelectedDepthFilter] = useState('all'); // 'all' | '1' | '2' | '3+'
+  const [activityFilter, setActivityFilter] = useState('all'); // 'all' | 'today' | 'week' | 'inactive'
   const [sortBy, setSortBy] = useState('xp'); // 'xp' | 'lessons' | 'languages' | 'recent'
   const [selectedStudentDossier, setSelectedStudentDossier] = useState(null);
   
@@ -225,6 +241,15 @@ export function AdminPortalModal({ isOpen, onClose }) {
         if (s.languageCount < 3) return false;
       }
 
+      // Web Activity filter
+      if (activityFilter !== 'all') {
+        const today = new Date().toISOString().split('T')[0];
+        const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().split('T')[0];
+        if (activityFilter === 'today' && s.lastVisit !== today) return false;
+        if (activityFilter === 'week' && (!s.lastVisit || s.lastVisit < weekAgo)) return false;
+        if (activityFilter === 'inactive' && s.lastVisit && s.lastVisit >= weekAgo) return false;
+      }
+
       return true;
     }).sort((a, b) => {
       if (sortBy === 'xp') return b.totalXP - a.totalXP;
@@ -233,7 +258,7 @@ export function AdminPortalModal({ isOpen, onClose }) {
       if (sortBy === 'recent') return (b.lastVisit || '').localeCompare(a.lastVisit || '');
       return 0;
     });
-  }, [students, searchTerm, selectedLanguageFilter, selectedDepthFilter, sortBy]);
+  }, [students, searchTerm, selectedLanguageFilter, selectedDepthFilter, activityFilter, sortBy]);
 
   return (
     <div 
@@ -459,6 +484,18 @@ export function AdminPortalModal({ isOpen, onClose }) {
                   <option value="3+">3 or 4+ Languages (Polyglot)</option>
                 </select>
 
+                {/* Web Activity Filter */}
+                <select
+                  value={activityFilter}
+                  onChange={e => setActivityFilter(e.target.value)}
+                  className="px-2.5 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-mono text-slate-700 cursor-pointer focus:outline-none focus:border-sky-500"
+                >
+                  <option value="all">All Web Activity</option>
+                  <option value="today">🟢 Active Today</option>
+                  <option value="week">🟡 Active This Week</option>
+                  <option value="inactive">⚪ Inactive / Idle</option>
+                </select>
+
                 {/* Sort */}
                 <select
                   value={sortBy}
@@ -478,11 +515,11 @@ export function AdminPortalModal({ isOpen, onClose }) {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 bg-slate-50/80 text-[11px] font-mono uppercase tracking-wider text-slate-500 sticky top-0 z-10">
-                    <th className="py-3 px-4 font-semibold">Student Profile</th>
-                    <th className="py-3 px-4 font-semibold">Multi-Language Progress (1, 2, 4+)</th>
-                    <th className="py-3 px-3 font-semibold text-center">Quests</th>
+                    <th className="py-3 px-4 font-semibold">Student (Email Vault)</th>
+                    <th className="py-3 px-4 font-semibold">Languages &amp; Quests</th>
+                    <th className="py-3 px-3 font-semibold text-center">Student Level</th>
                     <th className="py-3 px-3 font-semibold text-center">Total XP</th>
-                    <th className="py-3 px-3 font-semibold text-center">Streak</th>
+                    <th className="py-3 px-3 font-semibold text-center">Web Activity</th>
                     <th className="py-3 px-4 font-semibold text-right">Action</th>
                   </tr>
                 </thead>
@@ -494,7 +531,10 @@ export function AdminPortalModal({ isOpen, onClose }) {
                       </td>
                     </tr>
                   ) : (
-                    filteredStudents.map(student => (
+                    filteredStudents.map(student => {
+                      const prog = getLevelProgress(student.totalXP);
+                      const act = getActivityBadge(student.lastVisit);
+                      return (
                       <tr 
                         key={student.email}
                         className="hover:bg-slate-50/70 transition-colors group cursor-pointer"
@@ -559,11 +599,16 @@ export function AdminPortalModal({ isOpen, onClose }) {
                           </div>
                         </td>
 
-                        {/* Completed Quests */}
+                        {/* Student Level */}
                         <td className="py-3.5 px-3 text-center">
-                          <span className="font-bold text-slate-900 bg-slate-100 px-2.5 py-1 rounded-lg">
-                            {student.totalLessonsCompleted}
-                          </span>
+                          <div className="inline-flex flex-col items-center">
+                            <span className="font-bold text-xs text-slate-900 px-2.5 py-0.5 rounded-lg bg-sky-50 border border-sky-200">
+                              Lvl {prog.level}: {prog.levelName}
+                            </span>
+                            <span className="text-[9px] text-slate-400 font-semibold mt-0.5">
+                              {student.totalLessonsCompleted} quests • {prog.progress}% to next
+                            </span>
+                          </div>
                         </td>
 
                         {/* Total XP */}
@@ -573,11 +618,17 @@ export function AdminPortalModal({ isOpen, onClose }) {
                           </span>
                         </td>
 
-                        {/* Streak */}
+                        {/* Web Activity & Streak */}
                         <td className="py-3.5 px-3 text-center">
-                          <span className="font-bold text-orange-600">
-                            🔥 {student.streak}d
-                          </span>
+                          <div className="flex flex-col items-center gap-1">
+                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${act.color}`}>
+                              <span className={`w-1.5 h-1.5 rounded-full ${act.dot}`} />
+                              <span>{act.label}</span>
+                            </span>
+                            <span className="text-[11px] font-bold text-orange-600">
+                              🔥 {student.streak}d streak
+                            </span>
+                          </div>
                         </td>
 
                         {/* Inspect action */}
@@ -594,7 +645,7 @@ export function AdminPortalModal({ isOpen, onClose }) {
                           </button>
                         </td>
                       </tr>
-                    ))
+                    );})
                   )}
                 </tbody>
               </table>
@@ -804,6 +855,39 @@ export function AdminPortalModal({ isOpen, onClose }) {
 
               {/* Dossier Content */}
               <div className="p-5 overflow-y-auto space-y-4 text-xs font-mono flex-1">
+                {/* Level & Web Activity Banner */}
+                {(() => {
+                  const prog = getLevelProgress(selectedStudentDossier.totalXP);
+                  const act = getActivityBadge(selectedStudentDossier.lastVisit);
+                  return (
+                    <div className="p-3.5 rounded-2xl bg-gradient-to-r from-sky-50 to-indigo-50/40 border border-sky-200 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="px-2.5 py-1 rounded-lg bg-sky-600 text-white font-bold text-xs">
+                            Level {prog.level}
+                          </span>
+                          <span className="font-bold text-slate-900 text-sm">
+                            {prog.levelName}
+                          </span>
+                        </div>
+                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${act.color}`}>
+                          <span className={`w-1.5 h-1.5 rounded-full ${act.dot}`} />
+                          <span>{act.label}</span>
+                        </span>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-[10px] text-slate-500 mb-1 font-semibold">
+                          <span>Next Rank: {prog.nextLevelName}</span>
+                          <span>{prog.progress}% ({prog.xpInLevel}/{prog.xpNeeded} XP)</span>
+                        </div>
+                        <div className="w-full bg-white rounded-full h-2 border border-slate-200 overflow-hidden">
+                          <div className="bg-sky-500 h-full rounded-full transition-all duration-500" style={{ width: `${prog.progress}%` }} />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 {/* Stats row */}
                 <div className="grid grid-cols-4 gap-2">
                   <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-center">
