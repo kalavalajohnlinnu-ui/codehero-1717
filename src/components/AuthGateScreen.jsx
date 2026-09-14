@@ -157,7 +157,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-x-hidden font-sans select-none flex items-center justify-center p-4 sm:p-6 lg:p-10">
+    <div className="relative w-full min-h-screen bg-black overflow-x-hidden font-sans select-none flex items-center justify-center p-4 sm:p-6 md:p-8 lg:px-14 xl:px-20 py-8">
       {/* ── 1. Full-Screen Raw Video Background ── */}
       <video
         className="fixed inset-0 w-full h-full object-cover pointer-events-none"
@@ -169,10 +169,10 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
       />
 
       {/* ── 2. Full-Width Split Layout (Anchored Left & Right, Maximum Contrast) ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14 min-h-[88vh] py-6">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 py-4">
 
         {/* ── Left Column: Mission (Solid dark high-contrast panel) ── */}
-        <div className="w-full lg:max-w-[520px] h-fit p-7 sm:p-9 rounded-3xl backdrop-blur-2xl bg-black/75 border border-white/20 shadow-2xl text-white">
+        <div className="w-full lg:w-[48%] xl:w-[46%] max-w-xl h-fit p-7 sm:p-9 rounded-3xl backdrop-blur-2xl bg-black/75 border border-white/20 shadow-2xl text-white">
           {/* Brand Header */}
           <div className="flex items-center justify-between gap-3 mb-6">
             <div className="flex items-center gap-2.5">
@@ -241,7 +241,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
         </div>
 
         {/* ── Right Column: The Account Creation Card (Ultra-Visible High-Contrast Typography) ── */}
-        <div className="w-full lg:w-[430px] shrink-0 h-fit">
+        <div className="w-full lg:w-[46%] xl:w-[44%] max-w-[430px] flex justify-center lg:justify-end shrink-0 h-fit">
           <div className="w-full backdrop-blur-2xl bg-white/96 border-2 border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-2xl shadow-black/50 text-slate-950 transition-all">
 
             {/* Header */}
