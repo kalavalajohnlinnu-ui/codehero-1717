@@ -371,6 +371,7 @@ export default function App() {
               onCloseMobile={() => setIsMobileSidebarOpen(false)}
               onOpenModuleCheckpoint={(mod) => setActiveCheckpointModule(mod)}
               passedModuleExams={passedModuleExams}
+              onOpenNotes={() => setIsNotesOpen(true)}
             />
 
             <main className="flex-1 flex flex-col overflow-hidden bg-slate-50">
@@ -594,6 +595,7 @@ export default function App() {
         onClose={() => setIsStudyPlanOpen(false)}
         currentLanguageId={currentLanguageId}
         studentName={currentStudent?.name || 'Hero Student'}
+        onOpenNotes={() => { setIsStudyPlanOpen(false); setIsNotesOpen(true); }}
       />
 
       {levelUpData && (

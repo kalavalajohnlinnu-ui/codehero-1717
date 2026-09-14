@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   BookOpen, 
   Printer, 
@@ -91,9 +91,17 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
   const [activeLangId, setActiveLangId] = useState(currentLanguageId);
   const [activeTab, setActiveTab]       = useState('curriculum'); // 'curriculum' | 'arena' | 'bugs' | 'projects' | 'diagrams' | 'pitfalls'
   const [searchTerm, setSearchTerm]     = useState('');
-  const [openModules, setOpenModules]   = useState({});
+  const [openModules, setOpenModules]   = useState({
+    'mod-1': true, 'js-mod-1': true, 'html-mod-1': true, 'sql-mod-1': true, 'c-mod-1': true, 'java-mod-1': true, 'rust-mod-1': true
+  });
   const [expandAll, setExpandAll]       = useState(false);
   const [copiedCodeId, setCopiedCodeId] = useState(null);
+
+  useEffect(() => {
+    if (currentLanguageId) {
+      setActiveLangId(currentLanguageId);
+    }
+  }, [currentLanguageId]);
 
   if (!isOpen) return null;
 
@@ -410,27 +418,32 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
 
               {/* Print / Save PDF Button */}
               <button
+                type="button"
                 onClick={handlePrint}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs font-mono transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-sm shadow-sky-600/20 active:scale-95"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl font-bold text-xs font-mono transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-sm shadow-sky-600/20 active:scale-95 touch-manipulation cursor-pointer shrink-0"
                 title="Print or save as PDF">
                 <Printer className="w-3.5 h-3.5" />
-                <span>Save as PDF</span>
+                <span className="hidden sm:inline">Save as PDF</span>
+                <span className="sm:hidden">PDF</span>
               </button>
 
               {/* Download Notes HTML */}
               <button
+                type="button"
                 onClick={handleDownloadHTML}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs font-mono transition-all bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm shadow-emerald-600/20 active:scale-95"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl font-bold text-xs font-mono transition-all bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm shadow-emerald-600/20 active:scale-95 touch-manipulation cursor-pointer shrink-0"
                 title="Download complete offline handbook file">
                 <Download className="w-3.5 h-3.5" />
-                <span>Download Notes</span>
+                <span className="hidden sm:inline">Download Notes</span>
+                <span className="sm:hidden">HTML</span>
               </button>
 
-              {/* Close Button */}
+              {/* Close Button — 44px touch target */}
               <button
+                type="button"
                 onClick={() => { soundService.playClick(); onClose(); }}
-                className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-600 hover:text-slate-900 border border-slate-200 flex items-center justify-center transition-all shadow-xs"
-                title="Close Notes"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-90 text-slate-600 hover:text-slate-900 border border-slate-200 flex items-center justify-center transition-all shadow-xs touch-manipulation cursor-pointer shrink-0"
+                title="Close Notes (Esc)"
                 aria-label="Close Notes"
               >
                 <X className="w-5 h-5" />
@@ -483,20 +496,20 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
             ═══════════════════════════════════════════════════ */}
             {activeTab === 'curriculum' && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                   <div>
-                    <h3 className="text-base font-bold text-white flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-sky-400" />
+                    <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-sky-600" />
                       <span>{langDetails.name} — Complete Curriculum Lessons ({totalLessonsInCurriculum} Lessons)</span>
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-slate-500 mt-1">
                       Every single quest, concept explanation, mission challenge, starter code, and working solution.
                     </p>
                   </div>
 
                   <button
                     onClick={handleToggleExpandAll}
-                    className="px-3 py-1 text-xs font-mono font-bold rounded-lg border transition-all text-sky-400 bg-sky-500/10 border-sky-500/20 hover:bg-sky-500/20">
+                    className="px-3 py-1.5 text-xs font-mono font-bold rounded-xl border transition-all text-sky-700 bg-sky-50 border-sky-200 hover:bg-sky-100 shadow-2xs active:scale-95 touch-manipulation cursor-pointer">
                     {expandAll ? 'Collapse All' : 'Expand All'}
                   </button>
                 </div>
@@ -506,57 +519,57 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
                   const lessonCount = module.lessons?.length || 0;
 
                   return (
-                    <div key={module.id} className="rounded-xl overflow-hidden border border-white/[0.08] bg-white/[0.01]">
+                    <div key={module.id} className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xs">
                       {/* Module Header */}
                       <button
                         onClick={() => toggleModule(module.id)}
-                        className="w-full flex items-center justify-between p-3.5 hover:bg-white/[0.03] text-left transition-colors">
+                        className="w-full flex items-center justify-between p-4 hover:bg-slate-50 text-left transition-colors cursor-pointer touch-manipulation">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center font-mono font-bold text-xs text-sky-400">
+                          <div className="w-8 h-8 rounded-xl bg-sky-100 border border-sky-200 flex items-center justify-center font-mono font-bold text-xs text-sky-700 shrink-0">
                             {String(modIdx + 1).padStart(2, '0')}
                           </div>
                           <div>
-                            <div className="text-sm font-bold text-white">{module.title}</div>
-                            <div className="text-xs font-mono text-slate-400">{lessonCount} lessons in module</div>
+                            <div className="text-sm font-bold text-slate-900">{module.title}</div>
+                            <div className="text-xs font-mono text-slate-500">{lessonCount} lessons in module</div>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 text-slate-400">
-                          {isOpen ? <ChevronDown className="w-4 h-4 text-sky-400" /> : <ChevronRight className="w-4 h-4" />}
+                        <div className="flex items-center gap-2 text-slate-500">
+                          {isOpen ? <ChevronDown className="w-4 h-4 text-sky-600" /> : <ChevronRight className="w-4 h-4" />}
                         </div>
                       </button>
 
                       {/* Every Single Lesson in this Module (Untruncated) */}
                       {isOpen && module.lessons && (
-                        <div className="p-3.5 pt-0 space-y-4 border-t border-white/[0.04]">
+                        <div className="p-4 pt-0 space-y-4 border-t border-slate-100 bg-slate-50/30">
                           {module.lessons.map((lesson, lIdx) => (
-                            <div key={lesson.id} className="p-4 rounded-xl bg-black/40 border border-white/[0.06] space-y-3">
+                            <div key={lesson.id} className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-3">
                               {/* Lesson Header */}
                               <div className="flex flex-wrap items-center justify-between gap-2">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">
                                     {modIdx + 1}.{lIdx + 1}
                                   </span>
-                                  <span className="text-sm font-bold text-white">{lesson.title}</span>
+                                  <span className="text-sm font-bold text-slate-900">{lesson.title}</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                                  <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {lesson.duration}</span>
-                                  <span className="px-2 py-0.5 rounded bg-white/5 text-slate-300">{lesson.badge}</span>
+                                <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
+                                  <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-slate-400" /> {lesson.duration}</span>
+                                  <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">{lesson.badge}</span>
                                 </div>
                               </div>
 
                               {/* Concept Text */}
-                              <div className="text-xs text-slate-300 leading-relaxed bg-white/[0.02] p-3 rounded-lg border border-white/[0.04]">
-                                <span className="text-[10px] font-mono uppercase tracking-widest text-sky-400 font-bold block mb-1">
+                              <div className="text-xs text-slate-700 leading-relaxed bg-sky-50/50 p-3.5 rounded-xl border border-sky-100">
+                                <span className="text-[10px] font-mono uppercase tracking-widest text-sky-700 font-bold block mb-1">
                                   Core Concept & Logic
                                 </span>
-                                <p className="whitespace-pre-line">{lesson.concept}</p>
+                                <p className="whitespace-pre-line font-normal">{lesson.concept}</p>
                               </div>
 
                               {/* Task Mission */}
-                              <div className="text-xs text-amber-200 leading-relaxed bg-amber-500/[0.06] p-3 rounded-lg border border-amber-500/20">
-                                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold flex items-center gap-1 mb-1">
-                                  <Target className="w-3 h-3" /> Practice Mission / Task
+                              <div className="text-xs text-amber-950 leading-relaxed bg-amber-50/70 p-3.5 rounded-xl border border-amber-200">
+                                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700 font-bold flex items-center gap-1 mb-1">
+                                  <Target className="w-3 h-3 text-amber-600" /> Practice Mission / Task
                                 </span>
                                 <p className="whitespace-pre-line font-medium">{lesson.task}</p>
                               </div>
@@ -564,19 +577,19 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
                               {/* Code Solution with Copy Button */}
                               {lesson.solution && (
                                 <div>
-                                  <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1 px-1">
-                                    <span className="font-bold text-emerald-400">Verified Code Solution</span>
+                                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-1.5 px-1">
+                                    <span className="font-bold text-emerald-700">Verified Code Solution</span>
                                     <button
                                       onClick={() => handleCopyCode(lesson.id, lesson.solution)}
-                                      className="flex items-center gap-1 hover:text-white transition-colors">
+                                      className="flex items-center gap-1 text-slate-600 hover:text-slate-900 transition-colors font-semibold active:scale-95 touch-manipulation cursor-pointer">
                                       {copiedCodeId === lesson.id ? (
-                                        <><Check className="w-3 h-3 text-emerald-400" /> Copied!</>
+                                        <><Check className="w-3.5 h-3.5 text-emerald-600" /> Copied!</>
                                       ) : (
-                                        <><Copy className="w-3 h-3" /> Copy Code</>
+                                        <><Copy className="w-3.5 h-3.5 text-slate-500" /> Copy Code</>
                                       )}
                                     </button>
                                   </div>
-                                  <pre className="p-3 rounded-lg bg-[#070911] border border-emerald-500/20 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
+                                  <pre className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed shadow-inner">
                                     {lesson.solution}
                                   </pre>
                                 </div>
@@ -602,37 +615,37 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
             ═══════════════════════════════════════════════════ */}
             {activeTab === 'arena' && (
               <div className="space-y-4">
-                <div className="pb-3 border-b border-white/[0.06]">
-                  <h3 className="text-base font-bold text-white flex items-center gap-2">
-                    <Sword className="w-4 h-4 text-indigo-400" />
+                <div className="pb-3 border-b border-slate-200">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <Sword className="w-4 h-4 text-indigo-600" />
                     <span>Algorithm Arena — All 80 Coding Challenges</span>
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-500 mt-1">
                     LeetCode-style algorithmic puzzles covering Arrays, Strings, Math, Recursion, Sorting, and Data Structures with complete solutions.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {filteredAlgo.map((c, idx) => (
-                    <div key={c.id || idx} className="p-4 rounded-xl bg-black/40 border border-white/[0.08] space-y-2.5">
+                    <div key={c.id || idx} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-indigo-400">
+                        <span className="text-xs font-mono font-bold text-indigo-600">
                           #{idx + 1} · {c.category || 'General'}
                         </span>
-                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase ${
-                          c.difficulty === 'easy' ? 'bg-emerald-500/20 text-emerald-300' :
-                          c.difficulty === 'medium' ? 'bg-amber-500/20 text-amber-300' :
-                          'bg-rose-500/20 text-rose-300'
+                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-md font-bold uppercase border ${
+                          c.difficulty === 'easy' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
+                          c.difficulty === 'medium' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                          'bg-rose-50 text-rose-800 border-rose-200'
                         }`}>
                           {c.difficulty || 'easy'}
                         </span>
                       </div>
 
-                      <h4 className="text-sm font-bold text-white">{c.title}</h4>
-                      <p className="text-xs text-slate-300 leading-relaxed">{c.description}</p>
+                      <h4 className="text-sm font-bold text-slate-900">{c.title}</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed">{c.description}</p>
 
                       {c.examples && c.examples[0] && (
-                        <div className="p-2 rounded bg-white/[0.02] border border-white/[0.05] font-mono text-[11px] text-slate-400">
+                        <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-[11px] text-slate-700">
                           <div>Input: {c.examples[0].input}</div>
                           <div>Output: {c.examples[0].output}</div>
                         </div>
@@ -640,16 +653,15 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
 
                       {c.solution && (
                         <div>
-                          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
-                            <span className="text-emerald-400 font-bold">Solution:</span>
+                          <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-1">
+                            <span className="text-emerald-700 font-bold">Solution:</span>
                             <button
                               onClick={() => handleCopyCode(`algo-${idx}`, c.solution)}
-                              className="hover:text-white transition-colors flex items-center gap-1">
-                              {copiedCodeId === `algo-${idx}` ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                              Copy
+                              className="hover:text-slate-900 text-slate-500 transition-colors flex items-center gap-1 active:scale-95 touch-manipulation cursor-pointer">
+                              {copiedCodeId === `algo-${idx}` ? <><Check className="w-3.5 h-3.5 text-emerald-600" /> Copied</> : <><Copy className="w-3.5 h-3.5" /> Copy</>}
                             </button>
                           </div>
-                          <pre className="p-2.5 rounded bg-[#070911] border border-white/[0.06] text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
+                          <pre className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
                             {c.solution}
                           </pre>
                         </div>
@@ -665,46 +677,46 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
             ═══════════════════════════════════════════════════ */}
             {activeTab === 'bugs' && (
               <div className="space-y-4">
-                <div className="pb-3 border-b border-white/[0.06]">
-                  <h3 className="text-base font-bold text-white flex items-center gap-2">
-                    <ShieldAlert className="w-4 h-4 text-rose-400" />
+                <div className="pb-3 border-b border-slate-200">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <ShieldAlert className="w-4 h-4 text-rose-600" />
                     <span>Bug Detective — All 40 Forensic Debugging Cases</span>
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-500 mt-1">
                     Broken code specimens and crime scene files. Study how to identify, explain, and repair real errors.
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   {filteredBugs.map((b, idx) => (
-                    <div key={b.id || idx} className="p-4 rounded-xl bg-black/40 border border-rose-500/20 space-y-3">
+                    <div key={b.id || idx} className="p-4 rounded-2xl bg-white border border-rose-200 shadow-xs space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-rose-400">
+                        <span className="text-xs font-mono font-bold text-rose-700">
                           {b.caseTitle || `Case #${idx + 1}`}
                         </span>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-300 border border-rose-500/20">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200">
                           Diagnostic File
                         </span>
                       </div>
 
-                      <p className="text-xs text-slate-300">{b.description}</p>
-                      <div className="text-xs font-mono text-amber-300 bg-amber-500/10 p-2 rounded border border-amber-500/20">
+                      <p className="text-xs text-slate-700">{b.description}</p>
+                      <div className="text-xs font-mono text-amber-900 bg-amber-50 p-2.5 rounded-xl border border-amber-200">
                         ⚠️ Bug Root Cause: {b.bugDescription}
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {/* Broken Code */}
                         <div>
-                          <div className="text-[10px] font-mono text-rose-400 font-bold mb-1">❌ Broken Code:</div>
-                          <pre className="p-2.5 rounded bg-rose-950/20 border border-rose-500/30 text-rose-300 font-mono text-xs overflow-x-auto leading-relaxed">
+                          <div className="text-[10px] font-mono text-rose-700 font-bold mb-1">❌ Broken Code:</div>
+                          <pre className="p-3 rounded-xl bg-rose-50/70 border border-rose-200 text-rose-950 font-mono text-xs overflow-x-auto leading-relaxed">
                             {b.brokenCode}
                           </pre>
                         </div>
 
                         {/* Fixed Code */}
                         <div>
-                          <div className="text-[10px] font-mono text-emerald-400 font-bold mb-1">✅ Fixed Solution:</div>
-                          <pre className="p-2.5 rounded bg-emerald-950/20 border border-emerald-500/30 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
+                          <div className="text-[10px] font-mono text-emerald-700 font-bold mb-1">✅ Fixed Solution:</div>
+                          <pre className="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 text-emerald-950 font-mono text-xs overflow-x-auto leading-relaxed">
                             {b.fixedCode}
                           </pre>
                         </div>
@@ -720,42 +732,42 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
             ═══════════════════════════════════════════════════ */}
             {activeTab === 'projects' && (
               <div className="space-y-4">
-                <div className="pb-3 border-b border-white/[0.06]">
-                  <h3 className="text-base font-bold text-white flex items-center gap-2">
-                    <Hammer className="w-4 h-4 text-amber-400" />
+                <div className="pb-3 border-b border-slate-200">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <Hammer className="w-4 h-4 text-amber-600" />
                     <span>Project Lab — All 15 Progressive Real-World Builds</span>
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-500 mt-1">
                     Multi-step hands-on software projects spanning calculators, games, databases, and web tools.
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   {filteredProjects.map((p, idx) => (
-                    <div key={p.id || idx} className="p-4 rounded-xl bg-black/40 border border-white/[0.08] space-y-3">
+                    <div key={p.id || idx} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-amber-400">
+                        <span className="text-xs font-mono font-bold text-amber-700">
                           Project #{idx + 1} · {p.difficulty || 'beginner'}
                         </span>
-                        <span className="text-[10px] font-mono text-slate-400">
+                        <span className="text-[10px] font-mono text-slate-500">
                           {p.steps?.length || 0} Progressive Steps
                         </span>
                       </div>
 
-                      <h4 className="text-sm font-bold text-white">{p.title}</h4>
-                      <p className="text-xs text-slate-300">{p.description}</p>
+                      <h4 className="text-sm font-bold text-slate-900">{p.title}</h4>
+                      <p className="text-xs text-slate-600">{p.description}</p>
 
                       {/* Project Steps */}
                       {p.steps && (
-                        <div className="space-y-2 mt-2 pt-2 border-t border-white/[0.05]">
+                        <div className="space-y-2 mt-2 pt-2 border-t border-slate-100">
                           {p.steps.map((s, sIdx) => (
-                            <div key={sIdx} className="p-2.5 rounded-lg bg-white/[0.02] border border-white/[0.04] space-y-1.5">
-                              <div className="text-xs font-bold text-slate-200">
+                            <div key={sIdx} className="p-3 rounded-xl bg-slate-50/80 border border-slate-200 space-y-1.5">
+                              <div className="text-xs font-bold text-slate-800">
                                 Step {s.stepNumber || sIdx + 1}: {s.title}
                               </div>
-                              <div className="text-xs text-slate-400">{s.description}</div>
+                              <div className="text-xs text-slate-600">{s.description}</div>
                               {s.solution && (
-                                <pre className="p-2 rounded bg-[#070911] border border-white/[0.05] text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
+                                <pre className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
                                   {s.solution}
                                 </pre>
                               )}
@@ -774,118 +786,118 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
             ═══════════════════════════════════════════════════ */}
             {activeTab === 'diagrams' && (
               <div className="space-y-6">
-                <div className="pb-3 border-b border-white/[0.06]">
-                  <h3 className="text-base font-bold text-white flex items-center gap-2">
-                    <Cpu className="w-4 h-4 text-sky-400" />
+                <div className="pb-3 border-b border-slate-200">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <Cpu className="w-4 h-4 text-sky-600" />
                     <span>Visual Architecture & Mental Models</span>
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-500 mt-1">
                     Clear physical diagrams showing how computers execute logic, manage memory, and branch decisions.
                   </p>
                 </div>
 
                 {/* Diagram 1: Memory Model */}
-                <div className="p-5 rounded-xl border border-white/[0.08] bg-black/40 space-y-3">
+                <div className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="text-xs font-bold font-mono text-sky-400 uppercase">
+                    <div className="text-xs font-bold font-mono text-sky-700 uppercase">
                       Diagram 1: The Computer RAM Memory Model
                     </div>
                     <span className="text-[10px] font-mono text-slate-500">Variables & Addresses</span>
                   </div>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-slate-600">
                     Variables are labelled memory containers allocated in physical RAM. Each holds a typed value and memory address.
                   </p>
 
-                  <div className="p-4 rounded-xl bg-[#060810] border border-white/10 flex justify-center">
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex justify-center">
                     <svg viewBox="0 0 680 140" className="w-full max-w-2xl h-auto font-mono text-xs">
                       <g transform="translate(20, 15)">
-                        <rect width="180" height="110" rx="10" fill="#090E1E" stroke="#00E5FF" strokeWidth="1.5" />
-                        <rect width="180" height="26" rx="10" fill="rgba(0,229,255,0.15)" />
-                        <text x="90" y="18" fill="#00E5FF" textAnchor="middle" fontWeight="bold" fontSize="10">hero_hp</text>
-                        <text x="90" y="65" fill="#FFFFFF" textAnchor="middle" fontWeight="bold" fontSize="24">100</text>
-                        <text x="90" y="88" fill="#94A3B8" textAnchor="middle" fontSize="10">Type: Integer</text>
-                        <text x="90" y="104" fill="#64748B" textAnchor="middle" fontSize="9">Addr: 0x7FFE201A</text>
+                        <rect width="180" height="110" rx="10" fill="#FFFFFF" stroke="#0284C7" strokeWidth="1.5" />
+                        <rect width="180" height="26" rx="10" fill="rgba(2,132,199,0.1)" />
+                        <text x="90" y="18" fill="#0284C7" textAnchor="middle" fontWeight="bold" fontSize="10">hero_hp</text>
+                        <text x="90" y="65" fill="#0F172A" textAnchor="middle" fontWeight="bold" fontSize="24">100</text>
+                        <text x="90" y="88" fill="#475569" textAnchor="middle" fontSize="10">Type: Integer</text>
+                        <text x="90" y="104" fill="#94A3B8" textAnchor="middle" fontSize="9">Addr: 0x7FFE201A</text>
                       </g>
-                      <path d="M 215 70 L 245 70" stroke="#475569" strokeWidth="2" strokeDasharray="3 3" />
+                      <path d="M 215 70 L 245 70" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="3 3" />
                       <g transform="translate(255, 15)">
-                        <rect width="180" height="110" rx="10" fill="#1C1427" stroke="#A855F7" strokeWidth="1.5" />
-                        <rect width="180" height="26" rx="10" fill="rgba(168,85,247,0.15)" />
-                        <text x="90" y="18" fill="#A855F7" textAnchor="middle" fontWeight="bold" fontSize="10">player_name</text>
-                        <text x="90" y="65" fill="#FFFFFF" textAnchor="middle" fontWeight="bold" fontSize="20">"Alex"</text>
-                        <text x="90" y="88" fill="#94A3B8" textAnchor="middle" fontSize="10">Type: String</text>
-                        <text x="90" y="104" fill="#64748B" textAnchor="middle" fontSize="9">Addr: 0x7FFE203B</text>
+                        <rect width="180" height="110" rx="10" fill="#FFFFFF" stroke="#7C3AED" strokeWidth="1.5" />
+                        <rect width="180" height="26" rx="10" fill="rgba(124,58,237,0.1)" />
+                        <text x="90" y="18" fill="#7C3AED" textAnchor="middle" fontWeight="bold" fontSize="10">player_name</text>
+                        <text x="90" y="65" fill="#0F172A" textAnchor="middle" fontWeight="bold" fontSize="20">"Alex"</text>
+                        <text x="90" y="88" fill="#475569" textAnchor="middle" fontSize="10">Type: String</text>
+                        <text x="90" y="104" fill="#94A3B8" textAnchor="middle" fontSize="9">Addr: 0x7FFE203B</text>
                       </g>
-                      <path d="M 450 70 L 480 70" stroke="#475569" strokeWidth="2" strokeDasharray="3 3" />
+                      <path d="M 450 70 L 480 70" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="3 3" />
                       <g transform="translate(490, 15)">
-                        <rect width="170" height="110" rx="10" fill="#0A1D1A" stroke="#22D3A6" strokeWidth="1.5" />
-                        <rect width="170" height="26" rx="10" fill="rgba(34,211,166,0.15)" />
-                        <text x="85" y="18" fill="#22D3A6" textAnchor="middle" fontWeight="bold" fontSize="10">is_active</text>
-                        <text x="85" y="65" fill="#FFFFFF" textAnchor="middle" fontWeight="bold" fontSize="22">True</text>
-                        <text x="85" y="88" fill="#94A3B8" textAnchor="middle" fontSize="10">Type: Boolean</text>
-                        <text x="85" y="104" fill="#64748B" textAnchor="middle" fontSize="9">Addr: 0x7FFE204C</text>
+                        <rect width="170" height="110" rx="10" fill="#FFFFFF" stroke="#059669" strokeWidth="1.5" />
+                        <rect width="170" height="26" rx="10" fill="rgba(5,150,105,0.1)" />
+                        <text x="85" y="18" fill="#059669" textAnchor="middle" fontWeight="bold" fontSize="10">is_active</text>
+                        <text x="85" y="65" fill="#0F172A" textAnchor="middle" fontWeight="bold" fontSize="22">True</text>
+                        <text x="85" y="88" fill="#475569" textAnchor="middle" fontSize="10">Type: Boolean</text>
+                        <text x="85" y="104" fill="#94A3B8" textAnchor="middle" fontSize="9">Addr: 0x7FFE204C</text>
                       </g>
                     </svg>
                   </div>
                 </div>
 
                 {/* Diagram 2: Control Flow */}
-                <div className="p-5 rounded-xl border border-white/[0.08] bg-black/40 space-y-3">
-                  <div className="text-xs font-bold font-mono text-amber-400 uppercase">
+                <div className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs space-y-3">
+                  <div className="text-xs font-bold font-mono text-amber-700 uppercase">
                     Diagram 2: Control Flow Decision Tree (If / Else Branching)
                   </div>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-slate-600">
                     The CPU tests a boolean condition. When true, the left branch executes; when false, the right branch executes.
                   </p>
 
-                  <div className="p-4 rounded-xl bg-[#060810] border border-white/10 flex justify-center">
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex justify-center">
                     <svg viewBox="0 0 540 180" className="w-full max-w-xl h-auto font-mono text-xs">
                       <rect x="210" y="10" width="120" height="30" rx="6" fill="#0284C7" />
                       <text x="270" y="29" fill="#FFFFFF" textAnchor="middle" fontWeight="bold" fontSize="10">Start</text>
-                      <line x1="270" y1="40" x2="270" y2="60" stroke="#64748B" strokeWidth="2" />
-                      <polygon points="270,60 350,90 270,120 190,90" fill="#1E293B" stroke="#F59E0B" strokeWidth="1.5" />
-                      <text x="270" y="93" fill="#F59E0B" textAnchor="middle" fontWeight="bold" fontSize="10">Score &gt;= 50 ?</text>
-                      <line x1="190" y1="90" x2="100" y2="90" stroke="#22D3A6" strokeWidth="2" />
-                      <text x="145" y="82" fill="#22D3A6" fontSize="10" fontWeight="bold">TRUE</text>
-                      <rect x="30" y="75" width="70" height="30" rx="6" fill="#065F46" />
-                      <text x="65" y="94" fill="#A7F3D0" textAnchor="middle" fontWeight="bold" fontSize="10">Pass</text>
-                      <line x1="350" y1="90" x2="440" y2="90" stroke="#EF4444" strokeWidth="2" />
-                      <text x="395" y="82" fill="#EF4444" fontSize="10" fontWeight="bold">FALSE</text>
-                      <rect x="440" y="75" width="70" height="30" rx="6" fill="#991B1B" />
-                      <text x="475" y="94" fill="#FECACA" textAnchor="middle" fontWeight="bold" fontSize="10">Retry</text>
-                      <line x1="65" y1="105" x2="65" y2="150" stroke="#64748B" strokeWidth="1.5" />
-                      <line x1="475" y1="105" x2="475" y2="150" stroke="#64748B" strokeWidth="1.5" />
-                      <line x1="65" y1="150" x2="475" y2="150" stroke="#64748B" strokeWidth="1.5" />
-                      <rect x="210" y="135" width="120" height="30" rx="6" fill="#0F172A" stroke="#334155" strokeWidth="1.5" />
-                      <text x="270" y="154" fill="#94A3B8" textAnchor="middle" fontSize="10">Continue</text>
+                      <line x1="270" y1="40" x2="270" y2="60" stroke="#94A3B8" strokeWidth="2" />
+                      <polygon points="270,60 350,90 270,120 190,90" fill="#FFFFFF" stroke="#D97706" strokeWidth="1.5" />
+                      <text x="270" y="93" fill="#D97706" textAnchor="middle" fontWeight="bold" fontSize="10">Score &gt;= 50 ?</text>
+                      <line x1="190" y1="90" x2="100" y2="90" stroke="#059669" strokeWidth="2" />
+                      <text x="145" y="82" fill="#059669" fontSize="10" fontWeight="bold">TRUE</text>
+                      <rect x="30" y="75" width="70" height="30" rx="6" fill="#059669" />
+                      <text x="65" y="94" fill="#FFFFFF" textAnchor="middle" fontWeight="bold" fontSize="10">Pass</text>
+                      <line x1="350" y1="90" x2="440" y2="90" stroke="#DC2626" strokeWidth="2" />
+                      <text x="395" y="82" fill="#DC2626" fontSize="10" fontWeight="bold">FALSE</text>
+                      <rect x="440" y="75" width="70" height="30" rx="6" fill="#DC2626" />
+                      <text x="475" y="94" fill="#FFFFFF" textAnchor="middle" fontWeight="bold" fontSize="10">Retry</text>
+                      <line x1="65" y1="105" x2="65" y2="150" stroke="#94A3B8" strokeWidth="1.5" />
+                      <line x1="475" y1="105" x2="475" y2="150" stroke="#94A3B8" strokeWidth="1.5" />
+                      <line x1="65" y1="150" x2="475" y2="150" stroke="#94A3B8" strokeWidth="1.5" />
+                      <rect x="210" y="135" width="120" height="30" rx="6" fill="#F1F5F9" stroke="#CBD5E1" strokeWidth="1.5" />
+                      <text x="270" y="154" fill="#475569" textAnchor="middle" fontSize="10">Continue</text>
                     </svg>
                   </div>
                 </div>
 
                 {/* Diagram 3: Loop Repetition Cycle */}
-                <div className="p-5 rounded-xl border border-white/[0.08] bg-black/40 space-y-3">
-                  <div className="text-xs font-bold font-mono text-emerald-400 uppercase">
+                <div className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs space-y-3">
+                  <div className="text-xs font-bold font-mono text-emerald-700 uppercase">
                     Diagram 3: Loop Repetition Mechanics (Iteration Cycle)
                   </div>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-slate-600">
                     A loop cycles through initialization, test check, execution body, and step increment until the condition evaluates false.
                   </p>
 
-                  <div className="p-4 rounded-xl bg-[#060810] border border-white/10 flex justify-center">
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex justify-center">
                     <svg viewBox="0 0 540 140" className="w-full max-w-xl h-auto font-mono text-xs">
                       <rect x="20" y="55" width="80" height="30" rx="6" fill="#0284C7" />
                       <text x="60" y="74" fill="#FFFFFF" textAnchor="middle" fontSize="10">i = 0</text>
-                      <line x1="100" y1="70" x2="140" y2="70" stroke="#64748B" strokeWidth="2" />
-                      <polygon points="190,45 240,70 190,95 140,70" fill="#1E293B" stroke="#F59E0B" strokeWidth="1.5" />
-                      <text x="190" y="73" fill="#F59E0B" textAnchor="middle" fontSize="9">i &lt; 5 ?</text>
-                      <line x1="240" y1="70" x2="280" y2="70" stroke="#22D3A6" strokeWidth="2" />
-                      <text x="260" y="62" fill="#22D3A6" fontSize="9" fontWeight="bold">YES</text>
-                      <rect x="280" y="55" width="110" height="30" rx="6" fill="#065F46" />
-                      <text x="335" y="74" fill="#A7F3D0" textAnchor="middle" fontSize="10">print(i); i++</text>
-                      <path d="M 390 70 Q 430 70 430 25 Q 430 10 260 10 Q 190 10 190 45" stroke="#22D3A6" strokeWidth="1.5" fill="none" strokeDasharray="3 3" />
-                      <line x1="190" y1="95" x2="190" y2="120" stroke="#EF4444" strokeWidth="2" />
-                      <text x="205" y="112" fill="#EF4444" fontSize="9" fontWeight="bold">NO</text>
-                      <rect x="150" y="120" width="80" height="20" rx="4" fill="#1E293B" />
-                      <text x="190" y="134" fill="#94A3B8" textAnchor="middle" fontSize="9">Exit Loop</text>
+                      <line x1="100" y1="70" x2="140" y2="70" stroke="#94A3B8" strokeWidth="2" />
+                      <polygon points="190,45 240,70 190,95 140,70" fill="#FFFFFF" stroke="#D97706" strokeWidth="1.5" />
+                      <text x="190" y="73" fill="#D97706" textAnchor="middle" fontSize="9">i &lt; 5 ?</text>
+                      <line x1="240" y1="70" x2="280" y2="70" stroke="#059669" strokeWidth="2" />
+                      <text x="260" y="62" fill="#059669" fontSize="9" fontWeight="bold">YES</text>
+                      <rect x="280" y="55" width="110" height="30" rx="6" fill="#059669" />
+                      <text x="335" y="74" fill="#FFFFFF" textAnchor="middle" fontSize="10">print(i); i++</text>
+                      <path d="M 390 70 Q 430 70 430 25 Q 430 10 260 10 Q 190 10 190 45" stroke="#059669" strokeWidth="1.5" fill="none" strokeDasharray="3 3" />
+                      <line x1="190" y1="95" x2="190" y2="120" stroke="#DC2626" strokeWidth="2" />
+                      <text x="205" y="112" fill="#DC2626" fontSize="9" fontWeight="bold">NO</text>
+                      <rect x="150" y="120" width="80" height="20" rx="4" fill="#F1F5F9" stroke="#CBD5E1" />
+                      <text x="190" y="134" fill="#475569" textAnchor="middle" fontSize="9">Exit Loop</text>
                     </svg>
                   </div>
                 </div>
@@ -897,33 +909,33 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
             ═══════════════════════════════════════════════════ */}
             {activeTab === 'pitfalls' && (
               <div className="space-y-6">
-                <div className="pb-3 border-b border-white/[0.06]">
-                  <h3 className="text-base font-bold text-white flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-400" />
+                <div className="pb-3 border-b border-slate-200">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-amber-600" />
                     <span>{langDetails.name} — Common Mistakes & Top 1% Interview Concepts</span>
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-500 mt-1">
                     Gotchas, memory traps, and senior architectural interview answers that separate novices from top engineers.
                   </p>
                 </div>
 
                 {/* Common Pitfalls */}
                 <div className="space-y-3">
-                  <div className="text-xs font-mono uppercase tracking-widest text-rose-400 font-bold">
+                  <div className="text-xs font-mono uppercase tracking-widest text-rose-700 font-bold">
                     Common Bugs & Pitfalls
                   </div>
                   {langDetails.commonPitfalls?.map((p, idx) => (
-                    <div key={idx} className="p-4 rounded-xl bg-black/40 border border-rose-500/20 space-y-2">
-                      <div className="text-xs font-bold text-rose-300">
+                    <div key={idx} className="p-4 rounded-2xl bg-white border border-rose-200 shadow-xs space-y-2">
+                      <div className="text-xs font-bold text-rose-800">
                         #{idx + 1} {p.title || p}
                       </div>
                       {p.problem && (
-                        <div className="text-xs text-slate-300 bg-rose-950/20 p-2.5 rounded font-mono">
+                        <div className="text-xs text-rose-950 bg-rose-50 p-2.5 rounded-xl font-mono border border-rose-100">
                           ❌ Problem: {p.problem}
                         </div>
                       )}
                       {p.solution && (
-                        <div className="text-xs text-emerald-300 bg-emerald-950/20 p-2.5 rounded font-mono">
+                        <div className="text-xs text-emerald-950 bg-emerald-50 p-2.5 rounded-xl font-mono border border-emerald-100">
                           ✅ Safe Solution: {p.solution}
                         </div>
                       )}
@@ -933,18 +945,18 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
 
                 {/* Senior Interview Questions & Answers */}
                 {langDetails.curatedQuestions?.length > 0 && (
-                  <div className="space-y-3 pt-4 border-t border-white/[0.06]">
-                    <div className="text-xs font-mono uppercase tracking-widest text-sky-400 font-bold">
+                  <div className="space-y-3 pt-4 border-t border-slate-200">
+                    <div className="text-xs font-mono uppercase tracking-widest text-sky-700 font-bold">
                       Top 1% Senior Interview Questions
                     </div>
                     {langDetails.curatedQuestions.map((q, idx) => (
-                      <div key={idx} className="p-4 rounded-xl bg-black/40 border border-white/[0.08] space-y-2">
-                        <div className="text-xs font-bold text-white flex items-start gap-2">
-                          <span className="text-sky-400 font-mono">Q{idx + 1}:</span>
+                      <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
+                        <div className="text-xs font-bold text-slate-900 flex items-start gap-2">
+                          <span className="text-sky-700 font-mono">Q{idx + 1}:</span>
                           <span>{q.q}</span>
                         </div>
-                        <div className="text-xs text-slate-300 leading-relaxed bg-white/[0.02] p-3 rounded-lg border border-white/[0.04]">
-                          <span className="text-emerald-400 font-bold font-mono block mb-1">Architecture Answer:</span>
+                        <div className="text-xs text-slate-700 leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                          <span className="text-emerald-700 font-bold font-mono block mb-1">Architecture Answer:</span>
                           {q.a}
                         </div>
                       </div>

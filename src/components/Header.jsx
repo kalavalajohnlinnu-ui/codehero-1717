@@ -140,15 +140,15 @@ export function Header({
               </div>
             </div>
 
-            {/* Notes / PDF — Always visible */}
+            {/* Notes / PDF — Always visible & prominent */}
             <button
               type="button"
               onClick={() => { soundService.playClick(); onOpenNotes?.(); }}
-              className="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-800 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-sky-100 hover:bg-sky-200 border border-sky-300 text-sky-900 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
               title="Notes & Handbook PDF"
             >
-              <BookOpen className="w-3.5 h-3.5 text-sky-600" />
-              <span className="hidden md:inline font-semibold">Notes</span>
+              <BookOpen className="w-3.5 h-3.5 text-sky-700" />
+              <span>Notes</span>
             </button>
 
             {/* Student account — Always visible */}
@@ -243,6 +243,14 @@ export function Header({
                     onClick={() => setShowMobileMenu(false)} 
                   />
                   <div className="absolute right-0 top-10 w-48 bg-white border border-slate-200 rounded-2xl shadow-xl z-50 p-1.5 space-y-1 animate-scale-bounce">
+                    <button
+                      type="button"
+                      onClick={() => { setShowMobileMenu(false); onOpenNotes?.(); }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-xs font-mono font-bold text-sky-800 bg-sky-50 hover:bg-sky-100 rounded-xl transition-all text-left active:scale-95 touch-manipulation cursor-pointer border border-sky-200"
+                    >
+                      <BookOpen className="w-4 h-4 text-sky-600" />
+                      <span>Digital Notes & PDF</span>
+                    </button>
                     <button
                       type="button"
                       onClick={() => { setShowMobileMenu(false); onOpenStudyPlan?.(); }}

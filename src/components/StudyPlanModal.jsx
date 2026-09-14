@@ -31,7 +31,8 @@ export function StudyPlanModal({
   isOpen,
   onClose,
   currentLanguageId = 'python',
-  studentName = 'Hero Student'
+  studentName = 'Hero Student',
+  onOpenNotes
 }) {
   const [targetDays, setTargetDays] = useState(30);
   const [dailyHours, setDailyHours] = useState(1);
@@ -275,6 +276,17 @@ export function StudyPlanModal({
           </div>
 
           <div className="flex items-center gap-2">
+            {onOpenNotes && (
+              <button
+                type="button"
+                onClick={() => { onClose(); onOpenNotes(); }}
+                className="px-3.5 py-1.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-xs font-mono text-sky-300 border border-sky-500/30 flex items-center gap-1.5 transition-all active:scale-[0.97] touch-manipulation cursor-pointer"
+                title="Open Complete Digital Notes"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Notes</span>
+              </button>
+            )}
             <button
               onClick={handleExportPDF}
               className="px-3.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-xs font-mono text-amber-300 border border-amber-500/30 flex items-center gap-1.5 transition-all active:scale-[0.97]"

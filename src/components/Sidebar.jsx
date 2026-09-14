@@ -43,7 +43,8 @@ export function Sidebar({
   isOpenMobile,
   onCloseMobile,
   onOpenModuleCheckpoint,
-  passedModuleExams = []
+  passedModuleExams = [],
+  onOpenNotes
 }) {
   const [searchTerm, setSearchTerm]             = useState('');
   const [collapsedModules, setCollapsedModules] = useState({});
@@ -232,6 +233,18 @@ export function Sidebar({
               </div>
             );
           })}
+        </div>
+
+        {/* Quick Notes Action */}
+        <div className="p-2.5 shrink-0 border-t border-slate-200 bg-slate-50/70">
+          <button
+            type="button"
+            onClick={() => { onOpenNotes?.(); onCloseMobile?.(); }}
+            className="w-full py-2 px-3 rounded-xl flex items-center justify-center gap-2 text-xs font-mono font-bold bg-sky-50 hover:bg-sky-100 border border-sky-300 text-sky-800 transition-all active:scale-95 touch-manipulation cursor-pointer shadow-2xs"
+          >
+            <BookOpen className="w-4 h-4 text-sky-600" />
+            <span>Digital Notes &amp; PDF</span>
+          </button>
         </div>
       </aside>
     </>
