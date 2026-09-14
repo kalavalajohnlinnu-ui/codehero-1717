@@ -61,15 +61,13 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
     };
   }, [isOverlayOpen]);
 
-  const handleLinkClick = (linkName: string) => {
+  const handleLinkClick = (_linkName: string) => {
     setIsOverlayOpen(false);
-    if (linkName === 'Home' || linkName === 'Collection' || linkName === 'Story' || linkName === 'Inquire') {
-      if (onEnter) onEnter();
-    }
+    if (onEnter) onEnter();
   };
 
   return (
-    <div className="bg-black min-h-screen text-white relative w-full select-none overflow-x-hidden">
+    <div className="bg-black min-h-[100dvh] text-white relative w-full select-none overflow-x-hidden">
       {/* ── NAVBAR (fixed) ─────────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
@@ -207,7 +205,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
       </div>
 
       {/* ── HERO (Full Viewport) ───────────────────────────────── */}
-      <section className="relative w-full h-screen overflow-hidden flex items-end justify-center">
+      <section className="relative w-full h-[100dvh] min-h-[100dvh] overflow-hidden flex items-end justify-center">
         {/* Background video wrapper */}
         <div
           className={`absolute inset-0 transition-all duration-[1400ms] ${
@@ -228,10 +226,10 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
         </div>
 
         {/* Foreground (bottom-centered) */}
-        <div className="relative z-10 text-center px-6 pb-16 md:pb-24 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 pb-8 sm:pb-14 md:pb-20 max-w-4xl mx-auto w-full">
           {/* H1 (Instrument Serif) */}
           <h1
-            className={`font-instrument text-[#FCD34D] drop-shadow-[0_2px_30px_rgba(252,211,77,0.45)] text-[2.5rem] leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl mb-5 md:mb-6 transition-all duration-900 ${
+            className={`font-instrument text-[#FCD34D] drop-shadow-[0_2px_30px_rgba(252,211,77,0.45)] text-3xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 sm:mb-5 md:mb-6 transition-all duration-900 leading-[1.1] sm:leading-[0.95] ${
               heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{
@@ -244,7 +242,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
 
           {/* Subcopy */}
           <p
-            className={`text-amber-100 text-base md:text-lg mb-6 md:mb-8 drop-shadow-sm font-medium max-w-xl mx-auto transition-all duration-900 leading-relaxed ${
+            className={`text-amber-100 text-xs sm:text-base md:text-lg mb-4 sm:mb-6 md:mb-8 drop-shadow-sm font-medium max-w-xl mx-auto transition-all duration-900 leading-relaxed px-2 ${
               heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{
@@ -257,7 +255,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
 
           {/* Supported Languages Ticker */}
           <div
-            className={`flex items-center justify-center flex-wrap gap-2 text-[10px] sm:text-[11px] font-mono tracking-widest text-amber-300/85 mb-8 transition-all duration-900 font-semibold ${
+            className={`flex items-center justify-center flex-wrap gap-1.5 sm:gap-2 text-[9px] sm:text-[11px] font-mono tracking-wider sm:tracking-widest text-amber-300/85 mb-5 sm:mb-8 transition-all duration-900 font-semibold ${
               heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{
@@ -279,14 +277,14 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
           </div>
 
           {/* CTA: Word meaning welcome */}
-          <div>
+          <div className="w-full flex justify-center">
             <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
                 if (onEnter) onEnter();
               }}
-              className={`inline-block px-9 py-4 bg-[#FCD34D] hover:bg-[#FACC15] text-slate-950 text-sm md:text-base font-bold rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-900 cursor-pointer shadow-xl shadow-amber-400/25 ${
+              className={`w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 bg-[#FCD34D] hover:bg-[#FACC15] text-slate-950 text-sm sm:text-base font-extrabold rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-900 cursor-pointer shadow-xl shadow-amber-400/25 touch-manipulation ${
                 heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{

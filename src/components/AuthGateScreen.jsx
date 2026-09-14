@@ -157,7 +157,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-x-hidden font-sans select-none flex items-center justify-center p-4 sm:p-6 md:p-8 lg:px-14 xl:px-20 py-8">
+    <div className="relative w-full min-h-[100dvh] bg-black overflow-x-hidden overflow-y-auto font-sans select-none flex items-center justify-center p-3 sm:p-6 md:p-8 lg:px-12 xl:px-20 py-6 sm:py-8">
       {/* ── 1. Full-Screen Raw Video Background ── */}
       <video
         className="fixed inset-0 w-full h-full object-cover pointer-events-none"
@@ -169,19 +169,19 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
       />
 
       {/* ── 2. Full-Width Split Layout (Anchored Left & Right, Maximum Contrast) ── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 py-4">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 py-2 sm:py-4">
 
-        {/* ── Left Column: Mission (Solid dark high-contrast panel) ── */}
-        <div className="w-full lg:w-[48%] xl:w-[46%] max-w-xl h-fit p-7 sm:p-9 rounded-3xl backdrop-blur-2xl bg-black/75 border border-white/20 shadow-2xl text-white">
+        {/* ── Left Column: Mission (Solid dark high-contrast panel, order-2 on mobile, order-1 on desktop) ── */}
+        <div className="w-full lg:w-[48%] xl:w-[46%] max-w-xl h-fit p-5 sm:p-7 md:p-9 rounded-3xl backdrop-blur-2xl bg-black/75 border border-white/20 shadow-2xl text-white order-2 lg:order-1">
           {/* Brand Header */}
-          <div className="flex items-center justify-between gap-3 mb-6">
+          <div className="flex items-center justify-between gap-3 mb-5 sm:mb-6">
             <div className="flex items-center gap-2.5">
-              <IngeniumLogoMark size={34} />
+              <IngeniumLogoMark size={32} />
               <div className="flex flex-col">
-                <span className="font-mono font-black text-sm tracking-[0.2em] text-white leading-tight">
+                <span className="font-mono font-black text-xs sm:text-sm tracking-[0.2em] text-white leading-tight">
                   INGENIUM 2.0
                 </span>
-                <span className="text-[9px] font-mono tracking-widest text-[#FCD34D] uppercase font-bold">
+                <span className="text-[8px] sm:text-[9px] font-mono tracking-widest text-[#FCD34D] uppercase font-bold">
                   ACADEMY PLATFORM
                 </span>
               </div>
@@ -191,7 +191,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
               <button
                 type="button"
                 onClick={onBackToIntro}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-white hover:text-[#FCD34D] bg-white/15 hover:bg-white/25 border border-white/20 transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-white hover:text-[#FCD34D] bg-white/15 hover:bg-white/25 border border-white/20 transition-all cursor-pointer touch-manipulation"
               >
                 <ArrowLeft size={13} />
                 <span>Intro</span>
@@ -200,10 +200,10 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
           </div>
 
           {/* Mission Eyebrow & Headline */}
-          <div className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#FCD34D] font-extrabold mb-2.5">
+          <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#FCD34D] font-extrabold mb-2">
             01 // YOUR MISSION
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-white leading-[1.15] tracking-tight mb-4 drop-shadow-md">
+          <h1 className="text-2xl sm:text-4xl lg:text-[40px] xl:text-[42px] font-black text-white leading-[1.15] tracking-tight mb-3 sm:mb-4 drop-shadow-md">
             Become the<br />
             <span className="text-[#FCD34D] drop-shadow-[0_0_20px_rgba(252,211,77,0.55)]">
               Top 10–15%
@@ -211,12 +211,12 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
             Software Engineer
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-100 leading-relaxed max-w-lg mb-6 font-medium drop-shadow-xs">
+          <p className="text-xs sm:text-base text-slate-100 leading-relaxed max-w-lg mb-5 sm:mb-6 font-medium drop-shadow-xs">
             631 structured lessons across 7 programming languages. Real coding tasks, diagnostic debugging cases, and a personalized study plan.
           </p>
 
           {/* 3 Stats Grid */}
-          <div className="grid grid-cols-3 gap-4 py-4 border-t border-b border-white/20 mb-5">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 py-3 sm:py-4 border-t border-b border-white/20 mb-4 sm:mb-5">
             <StatBadge value="631" label="Lessons" color="#38BDF8" />
             <StatBadge value="7" label="Languages" color="#FCD34D" />
             <StatBadge value="100%" label="Free" color="#34D399" />
@@ -224,14 +224,14 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
 
           {/* Languages Strip (High-contrast badges) */}
           <div>
-            <div className="text-[10px] font-mono uppercase tracking-widest text-[#FCD34D] mb-2.5 font-extrabold">
+            <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[#FCD34D] mb-2 font-extrabold">
               LANGUAGES YOU'LL MASTER
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {LANGUAGES_LIST.map(lang => (
                 <span
                   key={lang}
-                  className="px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-white/20 border border-white/30 text-white shadow-sm"
+                  className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold bg-white/20 border border-white/30 text-white shadow-sm"
                 >
                   {lang}
                 </span>
@@ -240,9 +240,9 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
           </div>
         </div>
 
-        {/* ── Right Column: The Account Creation Card (Ultra-Visible High-Contrast Typography) ── */}
-        <div className="w-full lg:w-[46%] xl:w-[44%] max-w-[430px] flex justify-center lg:justify-end shrink-0 h-fit">
-          <div className="w-full backdrop-blur-2xl bg-white/96 border-2 border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-2xl shadow-black/50 text-slate-950 transition-all">
+        {/* ── Right Column: The Account Creation Card (order-1 on mobile, order-2 on desktop) ── */}
+        <div className="w-full lg:w-[46%] xl:w-[44%] max-w-[430px] flex justify-center lg:justify-end shrink-0 h-fit order-1 lg:order-2">
+          <div className="w-full backdrop-blur-2xl bg-white/96 border-2 border-slate-200/90 rounded-3xl p-5 sm:p-7 shadow-2xl shadow-black/50 text-slate-950 transition-all">
 
             {/* Header */}
             <div className="mb-4">
@@ -327,7 +327,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Alex Rivera"
-                      className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
+                      className="w-full pl-9 pr-3.5 py-2.5 sm:py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-sm sm:text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
                     />
                   </div>
                 </div>
@@ -345,7 +345,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="student@example.com"
-                    className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
+                    className="w-full pl-9 pr-3.5 py-2.5 sm:py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-sm sm:text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
                   />
                 </div>
               </div>
@@ -362,12 +362,12 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Min 6 characters"
-                    className="w-full pl-9 pr-9 py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
+                    className="w-full pl-9 pr-9 py-2.5 sm:py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-sm sm:text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer touch-manipulation"
                   >
                     {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
                   </button>
@@ -387,7 +387,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Confirm password"
-                      className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
+                      className="w-full pl-9 pr-3.5 py-2.5 sm:py-2 rounded-xl bg-white border-2 border-slate-300 text-slate-950 text-sm sm:text-xs font-semibold placeholder-slate-400 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-all shadow-2xs"
                     />
                   </div>
                 </div>
@@ -405,7 +405,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
                         key={a.id}
                         type="button"
                         onClick={() => setAvatar(a.id)}
-                        className={`flex items-center gap-2 p-2 rounded-xl border-2 text-left transition-all cursor-pointer ${
+                        className={`flex items-center gap-2 p-2 rounded-xl border-2 text-left transition-all cursor-pointer touch-manipulation min-h-[44px] ${
                           avatar === a.id
                             ? 'bg-sky-50 border-sky-600 ring-2 ring-sky-600/20 shadow-sm'
                             : 'bg-slate-50 border-slate-200 hover:border-slate-400'
@@ -425,7 +425,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
               {/* Primary Action Button */}
               <button
                 type="submit"
-                className="w-full py-3 px-4 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 mt-1 cursor-pointer active:scale-[0.98]"
+                className="w-full py-3 px-4 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 mt-1 cursor-pointer active:scale-[0.98] touch-manipulation min-h-[46px]"
               >
                 <span>
                   {mode === 'signup' ? 'Create Account & Enter Academy →' : 'Sign In & Enter Academy →'}

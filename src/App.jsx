@@ -62,9 +62,23 @@ export default function App() {
   const [isGameModeSelectorOpen, setIsGameModeSelectorOpen] = useState(false);
   const [lessonsCompletedSession, setLessonsCompletedSession] = useState(0);
   
-  // Intro & Login Gate Sequence
-  const [showIntro, setShowIntro] = useState(true);
-  const [hasPassedLoginGate, setHasPassedLoginGate] = useState(false);
+  // Intro & Login Gate Sequence (Persists across page reloads, browser restarts, and updates)
+  const isStudentLoggedIn = useMemo(() => {
+    try {
+      const student = authService.getCurrentStudent();
+      const passed = localStorage.getItem('ingenium_has_passed_gate_v1') === 'true';
+      const loggedIn = !!(student && !student.isGuest && student.email);
+      if (loggedIn && !passed) {
+        try { localStorage.setItem('ingenium_has_passed_gate_v1', 'true'); } catch {}
+      }
+      return loggedIn;
+    } catch {
+      return false;
+    }
+  }, []);
+
+  const [showIntro, setShowIntro] = useState(() => !isStudentLoggedIn);
+  const [hasPassedLoginGate, setHasPassedLoginGate] = useState(() => isStudentLoggedIn);
 
   // Student Auth & Study Plan
   const [currentStudent, setCurrentStudent] = useState(() => authService.getCurrentStudent());
@@ -218,6 +232,15 @@ export default function App() {
 
   const handleStudentChanged = (newStudent) => {
     setCurrentStudent(newStudent);
+    if (newStudent && !newStudent.isGuest) {
+      try {
+        localStorage.setItem('ingenium_has_passed_gate_v1', 'true');
+      } catch {}
+    } else {
+      try {
+        localStorage.removeItem('ingenium_has_passed_gate_v1');
+      } catch {}
+    }
     // Reload state for this specific student profile
     const savedState = storageService.loadState();
     setTotalXP(savedState.totalXP || 0);
