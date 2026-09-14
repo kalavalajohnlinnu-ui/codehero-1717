@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Flower2 } from 'lucide-react';
+import { IngeniumLogoMark } from './IngeniumLogo';
 
 interface AurevonIntroProps {
   onEnter?: () => void;
@@ -17,10 +18,10 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
-  // Set document title to CodeHero Aurevon
+  // Set document title to Ingenium
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = 'Aurevon Academy — Master the Craft of Code';
+    document.title = 'Ingenium — Master the Craft of Code';
     return () => {
       document.title = prevTitle;
     };
@@ -84,7 +85,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               e.preventDefault();
               if (onEnter) onEnter();
             }}
-            className={`text-white text-xl md:text-2xl font-semibold tracking-tight z-50 transition-all flex items-center gap-2.5 ${
+            className={`text-white text-xl md:text-2xl font-semibold tracking-tight z-50 transition-all flex items-center gap-3 ${
               navMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
             style={{
@@ -93,10 +94,13 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               transitionDelay: navMounted ? '0ms' : '0ms'
             }}
           >
-            <span>Aurevon</span>
-            <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border border-white/20 text-white/70 font-normal hidden sm:inline-block">
-              Code Academy
-            </span>
+            <IngeniumLogoMark size={32} />
+            <div className="flex items-center gap-2">
+              <span className="font-mono tracking-[0.18em] font-black text-lg md:text-xl">INGENIUM</span>
+              <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border border-white/20 text-white/70 font-normal hidden sm:inline-block">
+                Academy
+              </span>
+            </div>
           </a>
 
           {/* Center — Desktop Only: Navigate Pill */}
@@ -248,7 +252,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               transitionDelay: heroMounted ? '600ms' : '0ms'
             }}
           >
-            Seven programming languages. 631 interactive quests. Step inside the premier academy for Python, JavaScript, C++, SQL, and systems mastery.
+            Seven programming languages. 631 interactive quests. Step inside the private academy of Ingenium and forge the craft of code.
           </p>
 
           {/* Supported Languages Ticker */}
@@ -290,7 +294,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
                 transitionDelay: heroMounted ? '800ms' : '0ms'
               }}
             >
-              Welcome Inside — Enter Academy →
+              Welcome Inside — Enter Ingenium →
             </a>
           </div>
         </div>

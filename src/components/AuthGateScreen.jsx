@@ -15,7 +15,7 @@ import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
 import { MascotAvatar } from './mascots/MascotAvatar';
 import { GoogleSignInButton } from './GoogleSignInButton';
-import { CodeHeroLogo } from './CodeHeroLogo';
+import { IngeniumLogo } from './IngeniumLogo';
 
 const AVATARS = [
   { id: 'dragon', name: 'Pythie Dragon', desc: 'Python & AI Guardian' },
@@ -161,13 +161,13 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
               onClick={onBackToIntro}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 bg-white border border-slate-200 hover:border-slate-300 rounded-full px-3.5 py-1.5 transition-all shadow-xs mb-8 cursor-pointer w-fit"
             >
-              ← Back to Aurevon
+              ← Back to Ingenium
             </button>
           )}
 
           {/* Logo */}
           <div className="mb-14">
-            <CodeHeroLogo size={42} subtitle="Academy Platform" />
+            <IngeniumLogo size={42} subtitle="The Academy of Code" />
           </div>
 
           {/* Hero headline */}
@@ -214,14 +214,14 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
 
           {/* Mobile logo & back button */}
           <div className="lg:hidden flex items-center justify-between gap-2.5 mb-6">
-            <CodeHeroLogo size={32} subtitle="" />
+            <IngeniumLogo size={32} subtitle="" />
             {onBackToIntro && (
               <button
                 type="button"
                 onClick={onBackToIntro}
                 className="text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full transition-colors cursor-pointer"
               >
-                ← Intro
+                ← Ingenium
               </button>
             )}
           </div>

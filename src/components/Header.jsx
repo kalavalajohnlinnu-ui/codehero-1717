@@ -24,7 +24,7 @@ import {
   Flower2
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
-import { CodeHeroLogo } from './CodeHeroLogo';
+import { IngeniumLogo } from './IngeniumLogo';
 import { soundService } from '../services/soundService';
 import { getLevelProgress } from '../services/gameEngine';
 import { progressionService, MODE_UNLOCK_CRITERIA } from '../services/progressionService';
@@ -85,7 +85,7 @@ export function Header({
           {/* Left: Brand + Language */}
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
             {/* Logo mark */}
-            <CodeHeroLogo size={32} />
+            <IngeniumLogo size={32} />
 
             <div className="w-[1px] h-5 bg-slate-200 hidden sm:block" />
 
@@ -133,15 +133,15 @@ export function Header({
               </div>
             </div>
 
-            {/* Aurevon Intro Button */}
+            {/* Ingenium Intro Button */}
             <button
               type="button"
               onClick={() => { soundService.playClick(); onOpenIntro?.(); }}
               className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-black text-white hover:bg-zinc-800 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
-              title="Aurevon Luxury Intro"
+              title="Ingenium Academy Intro"
             >
               <Flower2 className="w-3.5 h-3.5 text-white/90" />
-              <span className="hidden md:inline">Aurevon</span>
+              <span className="hidden md:inline">Ingenium</span>
             </button>
 
             {/* Notes / PDF — Always visible & prominent */}
