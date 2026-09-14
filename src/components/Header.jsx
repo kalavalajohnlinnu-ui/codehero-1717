@@ -20,7 +20,8 @@ import {
   User,
   ChevronDown,
   MoreHorizontal,
-  X
+  X,
+  Flower2
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { soundService } from '../services/soundService';
@@ -51,7 +52,8 @@ export function Header({
   onOpenStudentAuth,
   onOpenStudyPlan,
   isAdmin = false,
-  onOpenAdmin
+  onOpenAdmin,
+  onOpenIntro
 }) {
   const [isMuted, setIsMuted] = useState(soundService.isMuted());
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -141,6 +143,17 @@ export function Header({
                 <span className="text-xs font-mono font-bold text-amber-600">{streak}</span>
               </div>
             </div>
+
+            {/* Aurevon Intro Button */}
+            <button
+              type="button"
+              onClick={() => { soundService.playClick(); onOpenIntro?.(); }}
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-black text-white hover:bg-zinc-800 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
+              title="Aurevon Luxury Intro"
+            >
+              <Flower2 className="w-3.5 h-3.5 text-white/90" />
+              <span className="hidden md:inline">Aurevon</span>
+            </button>
 
             {/* Notes / PDF — Always visible & prominent */}
             <button

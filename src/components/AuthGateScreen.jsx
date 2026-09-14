@@ -36,7 +36,7 @@ function StatBadge({ value, label, color = '#0284C7' }) {
   );
 }
 
-export function AuthGateScreen({ onAuthenticated }) {
+export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   const [mode, setMode]                   = useState('signup');
   const [name, setName]                   = useState('');
   const [email, setEmail]                 = useState('');
@@ -153,6 +153,17 @@ export function AuthGateScreen({ onAuthenticated }) {
       {/* ── Left Hero Panel (Light Theme) ────────────────── */}
       <div className="hidden lg:flex flex-col justify-between w-[44%] shrink-0 relative overflow-hidden p-12 bg-slate-100/80 border-r border-slate-200">
         <div>
+          {/* Back to intro if available */}
+          {onBackToIntro && (
+            <button
+              type="button"
+              onClick={onBackToIntro}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 bg-white border border-slate-200 hover:border-slate-300 rounded-full px-3.5 py-1.5 transition-all shadow-xs mb-8 cursor-pointer w-fit"
+            >
+              ← Back to Aurevon
+            </button>
+          )}
+
           {/* Logo */}
           <div className="flex items-center gap-3 mb-14">
             <div className="w-10 h-10 rounded-xl bg-sky-100 border border-sky-300 flex items-center justify-center font-mono font-black text-sm text-sky-700 shadow-sm">
@@ -210,14 +221,25 @@ export function AuthGateScreen({ onAuthenticated }) {
       <div className="flex-1 flex items-center justify-center p-6 py-12 bg-[#F8FAFC]">
         <div className="w-full max-w-[440px] bg-white p-7 sm:p-9 rounded-3xl border border-slate-200 shadow-xl">
 
-          {/* Mobile logo */}
-          <div className="lg:hidden flex items-center gap-2.5 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-sky-100 border border-sky-300 flex items-center justify-center font-mono font-black text-sm text-sky-700">
-              CH
+          {/* Mobile logo & back button */}
+          <div className="lg:hidden flex items-center justify-between gap-2.5 mb-6">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-sky-100 border border-sky-300 flex items-center justify-center font-mono font-black text-sm text-sky-700">
+                CH
+              </div>
+              <span className="font-mono font-bold text-sm text-slate-900">
+                CODEHERO <span className="text-sky-600">2.0</span>
+              </span>
             </div>
-            <span className="font-mono font-bold text-sm text-slate-900">
-              CODEHERO <span className="text-sky-600">2.0</span>
-            </span>
+            {onBackToIntro && (
+              <button
+                type="button"
+                onClick={onBackToIntro}
+                className="text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full transition-colors cursor-pointer"
+              >
+                ← Intro
+              </button>
+            )}
           </div>
 
           {/* Heading */}

@@ -40,6 +40,7 @@ import { ModeLockedModal } from './components/ModeLockedModal';
 import { ModuleCheckpointModal } from './components/ModuleCheckpointModal';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { AdminPortalModal } from './components/AdminPortalModal';
+import { AurevonIntro } from './components/AurevonIntro';
 
 export default function App() {
   // 1. Language & State
@@ -61,6 +62,9 @@ export default function App() {
   const [isGameModeSelectorOpen, setIsGameModeSelectorOpen] = useState(false);
   const [lessonsCompletedSession, setLessonsCompletedSession] = useState(0);
   
+  // Intro Screen State
+  const [showIntro, setShowIntro] = useState(true);
+
   // Student Auth & Study Plan
   const [currentStudent, setCurrentStudent] = useState(() => authService.getCurrentStudent());
   const [isStudentAuthOpen, setIsStudentAuthOpen] = useState(false);
@@ -492,9 +496,19 @@ export default function App() {
     }
   };
 
+  // ── 0. INTRO LANDING: Aurevon Luxury Brand Landing (First Page Seen) ──
+  if (showIntro) {
+    return <AurevonIntro onEnter={() => setShowIntro(false)} />;
+  }
+
   // Mandatory Login Gate: Student must create account or log in to access the web app
   if (!currentStudent || currentStudent.isGuest) {
-    return <AuthGateScreen onAuthenticated={handleStudentChanged} />;
+    return (
+      <AuthGateScreen 
+        onAuthenticated={handleStudentChanged}
+        onBackToIntro={() => setShowIntro(true)}
+      />
+    );
   }
 
   return (
@@ -524,6 +538,7 @@ export default function App() {
         onOpenStudyPlan={() => setIsStudyPlanOpen(true)}
         isAdmin={isCurrentAdmin}
         onOpenAdmin={() => setIsAdminOpen(true)}
+        onOpenIntro={() => setShowIntro(true)}
       />
 
       {renderGameMode()}
