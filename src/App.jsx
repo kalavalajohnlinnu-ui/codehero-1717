@@ -37,6 +37,7 @@ import { DigitalNotesModal } from './components/DigitalNotesModal';
 import { CheckpointExamModal } from './components/CheckpointExamModal';
 import { ModeLockedModal } from './components/ModeLockedModal';
 import { ModuleCheckpointModal } from './components/ModuleCheckpointModal';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 export default function App() {
   // 1. Language & State
@@ -535,11 +536,15 @@ export default function App() {
         onClose={() => setIsRoadmapOpen(false)}
       />
 
-      <DigitalNotesModal
-        isOpen={isNotesOpen}
-        onClose={() => setIsNotesOpen(false)}
-        currentLanguageId={currentLanguageId}
-      />
+      <ErrorBoundary onReset={() => setIsNotesOpen(false)}>
+        {isNotesOpen && (
+          <DigitalNotesModal
+            isOpen={isNotesOpen}
+            onClose={() => setIsNotesOpen(false)}
+            currentLanguageId={currentLanguageId}
+          />
+        )}
+      </ErrorBoundary>
 
       <CheckpointExamModal
         isOpen={isExamOpen}

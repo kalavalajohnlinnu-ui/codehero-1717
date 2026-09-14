@@ -103,8 +103,6 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
     }
   }, [currentLanguageId]);
 
-  if (!isOpen) return null;
-
   const langDetails = getLanguageDetails(activeLangId);
   const langConfig  = LANGUAGES.find(l => l.id === activeLangId) || LANGUAGES[0];
 
@@ -367,6 +365,8 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
     { id: 'diagrams',   label: 'Visual Diagrams',      icon: Cpu,      count: 'Pics' },
     { id: 'pitfalls',   label: 'Pitfalls & Interview', icon: AlertTriangle, count: 'Gotchas' },
   ];
+
+  if (!isOpen) return null;
 
   return (
     <>
