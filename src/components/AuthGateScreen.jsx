@@ -15,6 +15,7 @@ import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
 import { MascotAvatar } from './mascots/MascotAvatar';
 import { GoogleSignInButton } from './GoogleSignInButton';
+import { CodeHeroLogo } from './CodeHeroLogo';
 
 const AVATARS = [
   { id: 'dragon', name: 'Pythie Dragon', desc: 'Python & AI Guardian' },
@@ -165,18 +166,8 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
           )}
 
           {/* Logo */}
-          <div className="flex items-center gap-3 mb-14">
-            <div className="w-10 h-10 rounded-xl bg-sky-100 border border-sky-300 flex items-center justify-center font-mono font-black text-sm text-sky-700 shadow-sm">
-              CH
-            </div>
-            <div>
-              <div className="font-mono font-bold text-sm tracking-tight text-slate-900">
-                CODEHERO <span className="text-sky-600">2.0</span>
-              </div>
-              <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-semibold">
-                Academy Platform
-              </div>
-            </div>
+          <div className="mb-14">
+            <CodeHeroLogo size={42} subtitle="Academy Platform" />
           </div>
 
           {/* Hero headline */}
@@ -223,14 +214,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
 
           {/* Mobile logo & back button */}
           <div className="lg:hidden flex items-center justify-between gap-2.5 mb-6">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-sky-100 border border-sky-300 flex items-center justify-center font-mono font-black text-sm text-sky-700">
-                CH
-              </div>
-              <span className="font-mono font-bold text-sm text-slate-900">
-                CODEHERO <span className="text-sky-600">2.0</span>
-              </span>
-            </div>
+            <CodeHeroLogo size={32} subtitle="" />
             {onBackToIntro && (
               <button
                 type="button"

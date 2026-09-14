@@ -24,6 +24,7 @@ import {
   Flower2
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
+import { CodeHeroLogo } from './CodeHeroLogo';
 import { soundService } from '../services/soundService';
 import { getLevelProgress } from '../services/gameEngine';
 import { progressionService, MODE_UNLOCK_CRITERIA } from '../services/progressionService';
@@ -84,19 +85,7 @@ export function Header({
           {/* Left: Brand + Language */}
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
             {/* Logo mark */}
-            <div className="flex items-center gap-2 shrink-0">
-              <div className="w-8 h-8 rounded-xl flex items-center justify-center font-mono font-black text-xs shrink-0 bg-sky-50 text-sky-600 border border-sky-200 shadow-2xs">
-                CH
-              </div>
-              <div className="hidden sm:block">
-                <div className="font-mono font-bold text-xs tracking-tight leading-none text-slate-900">
-                  CODEHERO<span className="text-sky-600">::2.0</span>
-                </div>
-                <div className="text-[9px] font-mono uppercase tracking-widest mt-0.5 text-slate-400 font-semibold">
-                  7 Languages
-                </div>
-              </div>
-            </div>
+            <CodeHeroLogo size={32} />
 
             <div className="w-[1px] h-5 bg-slate-200 hidden sm:block" />
 
