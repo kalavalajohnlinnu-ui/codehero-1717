@@ -11,7 +11,9 @@ import {
   ShieldCheck, 
   Sparkles, 
   Terminal,
-  Lock
+  Lock,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { CodeEditor } from './CodeEditor';
 import { runMultiLanguageCode, evaluateMultiLanguageLessonTests } from '../services/multiLangService';
@@ -103,10 +105,14 @@ export function CheckpointExamModal({
 
   if (!isOpen) return null;
 
+  const handleCloseModal = () => {
+    soundService.playClick();
+    onClose();
+  };
+
   const handleStartExam = () => {
     soundService.playSuccess();
     setExamStarted(true);
-    // Initialize starter code for each question
     const initialAnswers = {};
     questions.forEach((q, i) => {
       initialAnswers[i] = q.starter;
@@ -167,29 +173,29 @@ export function CheckpointExamModal({
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in"
-      onClick={onClose}
+      className="fixed inset-0 z-[80] flex items-center justify-center p-3 sm:p-6 bg-slate-900/50 backdrop-blur-sm animate-fade-in"
+      onClick={handleCloseModal}
     >
       <div 
-        className="relative w-full max-w-4xl max-h-[92vh] bg-[#0A0D15] border border-amber-500/30 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-200"
+        className="relative w-full max-w-4xl max-h-[92vh] bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-900"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="px-5 sm:px-8 py-4 border-b border-white/[0.08] flex items-center justify-between bg-[#0E121B] shrink-0">
+        {/* Header Strip */}
+        <div className="px-5 sm:px-8 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/80 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 shadow-xs">
               <Award className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base font-bold text-white tracking-tight">
+                <h2 className="text-base font-bold text-slate-900 tracking-tight">
                   Knowledge Test
                 </h2>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 font-bold uppercase">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200 font-bold uppercase">
                   Skill Test
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-mono mt-0.5">
+              <p className="text-xs text-slate-500 font-mono mt-0.5">
                 Pass mark: 80% · No hints during test · 15 minutes
               </p>
             </div>
@@ -199,21 +205,23 @@ export function CheckpointExamModal({
             {examStarted && !examSubmitted && (
               <div className={`flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 rounded-xl border ${
                 timeLeft < 180 
-                  ? 'bg-red-500/10 text-red-400 border-red-500/30 animate-pulse' 
-                  : 'bg-white/5 text-amber-300 border-white/10'
+                  ? 'bg-rose-50 text-rose-700 border-rose-200 animate-pulse' 
+                  : 'bg-white text-amber-700 border-amber-200'
               }`}>
                 <Clock className="w-3.5 h-3.5" />
                 <span>{formatTimer(timeLeft)}</span>
               </div>
             )}
 
+            {/* Instant 1-Click Large Close Button (44px touch target) */}
             <button
-              onClick={onClose}
-              className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 active:scale-95 text-slate-400 hover:text-white border border-white/10 flex items-center justify-center transition-all shadow-xs"
-              title="Close"
-              aria-label="Close"
+              type="button"
+              onClick={handleCloseModal}
+              className="w-11 h-11 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-90 text-slate-600 hover:text-slate-900 border border-slate-200 flex items-center justify-center transition-all shadow-xs cursor-pointer touch-manipulation"
+              title="Close Test"
+              aria-label="Close Test"
             >
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6 stroke-[2.5]" />
             </button>
           </div>
         </div>
@@ -222,33 +230,33 @@ export function CheckpointExamModal({
         <div className="flex-1 overflow-y-auto p-5 sm:p-8 space-y-6">
           {/* SCREEN 1: PRE-EXAM BRIEFING */}
           {!examStarted && (
-            <div className="max-w-2xl mx-auto text-center space-y-6 py-6 animate-fade-in">
-              <div className="w-16 h-16 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-3xl mx-auto shadow-xl shadow-amber-500/10">
+            <div className="max-w-2xl mx-auto text-center space-y-6 py-4 animate-fade-in">
+              <div className="w-16 h-16 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-3xl mx-auto shadow-md shadow-amber-500/10">
                 📜
               </div>
 
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                   Ready for the {currentLanguageId.toUpperCase()} Test?
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed max-w-lg mx-auto">
                   This test checks what you have learned so far on your own.
-                  During this test, <strong>hints are turned off</strong> so you can see how much you truly know!
+                  During this test, <strong className="text-slate-900">hints are turned off</strong> so you can see how much you truly know!
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-3 text-left">
-                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
-                  <div className="text-[10px] font-mono text-slate-500 uppercase">Questions</div>
-                  <div className="text-sm font-bold text-white mt-0.5">3 Coding Problems</div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                  <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Questions</div>
+                  <div className="text-sm font-bold text-slate-900 mt-0.5">3 Coding Problems</div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
-                  <div className="text-[10px] font-mono text-slate-500 uppercase">Time Limit</div>
-                  <div className="text-sm font-bold text-amber-400 mt-0.5">15 Minutes</div>
+                <div className="p-4 rounded-2xl bg-amber-50/60 border border-amber-200">
+                  <div className="text-[10px] font-mono text-amber-700 uppercase font-bold">Time Limit</div>
+                  <div className="text-sm font-bold text-amber-800 mt-0.5">15 Minutes</div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
-                  <div className="text-[10px] font-mono text-slate-500 uppercase">Score to Pass</div>
-                  <div className="text-sm font-bold text-emerald-400 mt-0.5">80% or Higher</div>
+                <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200">
+                  <div className="text-[10px] font-mono text-emerald-700 uppercase font-bold">Score to Pass</div>
+                  <div className="text-sm font-bold text-emerald-800 mt-0.5">80% or Higher</div>
                 </div>
               </div>
 
@@ -258,13 +266,14 @@ export function CheckpointExamModal({
                   value={studentName}
                   onChange={(e) => setStudentName(e.target.value)}
                   placeholder="Enter your name for Certificate"
-                  className="bg-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500 font-mono w-64 text-center"
+                  className="bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400 font-mono w-64 text-center shadow-2xs"
                 />
                 <button
+                  type="button"
                   onClick={handleStartExam}
-                  className="px-8 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold text-xs hover:opacity-90 transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2"
+                  className="w-full sm:w-auto px-8 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 active:scale-95 touch-manipulation cursor-pointer transition-all"
                 >
-                  <Play className="w-4 h-4 fill-slate-950" />
+                  <Play className="w-4 h-4 fill-white" />
                   <span>Start Test</span>
                 </button>
               </div>
@@ -275,7 +284,7 @@ export function CheckpointExamModal({
           {examStarted && !examSubmitted && (
             <div className="space-y-4 animate-fade-in flex flex-col h-full">
               {/* Question Navigation Tabs */}
-              <div className="flex items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
                 <div className="flex items-center gap-2">
                   {questions.map((q, idx) => {
                     const isAnswered = questionResults[idx] !== undefined;
@@ -283,19 +292,20 @@ export function CheckpointExamModal({
 
                     return (
                       <button
+                        type="button"
                         key={idx}
-                        onClick={() => setCurrentQuestionIndex(idx)}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all ${
+                        onClick={() => { soundService.playClick(); setCurrentQuestionIndex(idx); }}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer touch-manipulation ${
                           currentQuestionIndex === idx
-                            ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                            : 'bg-white/[0.02] text-slate-400 hover:text-white border border-white/[0.06]'
+                            ? 'bg-amber-100 text-amber-900 border border-amber-300 shadow-xs'
+                            : 'bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200'
                         }`}
                       >
                         <span>Q{idx + 1}</span>
                         {isAnswered && (
                           isCorrect 
-                            ? <CheckCircle2 className="w-3 h-3 text-emerald-400" /> 
-                            : <XCircle className="w-3 h-3 text-rose-400" />
+                            ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> 
+                            : <XCircle className="w-3.5 h-3.5 text-rose-500" />
                         )}
                       </button>
                     );
@@ -303,25 +313,26 @@ export function CheckpointExamModal({
                 </div>
 
                 <button
+                  type="button"
                   onClick={handleAutoSubmit}
-                  className="px-4 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold transition-all"
+                  className="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-mono font-bold transition-all shadow-sm active:scale-95 cursor-pointer touch-manipulation"
                 >
-                  Submit & Finish Test
+                  Submit &amp; Finish Test
                 </button>
               </div>
 
               {/* Current Question Challenge */}
-              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
-                <div className="text-xs font-mono font-bold text-amber-400">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                <div className="text-xs font-mono font-bold text-amber-700">
                   {currentQ.title}
                 </div>
-                <p className="text-xs text-slate-200 whitespace-pre-line leading-relaxed">
+                <p className="text-xs text-slate-700 whitespace-pre-line leading-relaxed font-sans">
                   {currentQ.prompt}
                 </p>
               </div>
 
               {/* Code Editor for Exam */}
-              <div className="h-64 sm:h-72 border border-white/10 rounded-2xl overflow-hidden">
+              <div className="h-64 sm:h-72 border border-slate-200 rounded-2xl overflow-hidden">
                 <CodeEditor
                   code={questionAnswers[currentQuestionIndex] || currentQ.starter}
                   onChange={handleCodeChange}
@@ -335,37 +346,39 @@ export function CheckpointExamModal({
               </div>
 
               {/* Status and Verification */}
-              <div className="flex items-center justify-between pt-2">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
                 <div className="text-xs font-mono">
                   {questionResults[currentQuestionIndex] === true && (
-                    <span className="text-emerald-400 font-bold flex items-center gap-1">
+                    <span className="text-emerald-600 font-bold flex items-center gap-1">
                       <CheckCircle2 className="w-4 h-4" />
-                      <span>Great job! All tests passed!</span>
+                      <span>Great job! All tests passed for this problem!</span>
                     </span>
                   )}
                   {questionResults[currentQuestionIndex] === false && (
-                    <span className="text-rose-400 font-bold flex items-center gap-1">
+                    <span className="text-rose-600 font-bold flex items-center gap-1">
                       <XCircle className="w-4 h-4" />
-                      <span>Not quite right. Review your logic and test again!</span>
+                      <span>Output mismatch. Review your logic and click Run &amp; Test again.</span>
                     </span>
                   )}
                   {questionResults[currentQuestionIndex] === undefined && (
-                    <span className="text-slate-500">Click "Run & Test Code" to check your answer.</span>
+                    <span className="text-slate-500">Click "Run &amp; Test" in the editor to evaluate your solution.</span>
                   )}
                 </div>
 
                 <div className="flex items-center gap-2">
                   <button
+                    type="button"
                     disabled={currentQuestionIndex === 0}
-                    onClick={() => setCurrentQuestionIndex(prev => prev - 1)}
-                    className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 disabled:opacity-30 text-xs font-mono"
+                    onClick={() => { soundService.playClick(); setCurrentQuestionIndex(prev => prev - 1); }}
+                    className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-xs font-mono font-bold text-slate-700 transition-all cursor-pointer touch-manipulation"
                   >
                     Previous
                   </button>
                   <button
+                    type="button"
                     disabled={currentQuestionIndex === questions.length - 1}
-                    onClick={() => setCurrentQuestionIndex(prev => prev + 1)}
-                    className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 disabled:opacity-30 text-xs font-mono"
+                    onClick={() => { soundService.playClick(); setCurrentQuestionIndex(prev => prev + 1); }}
+                    className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-xs font-mono font-bold text-slate-700 transition-all cursor-pointer touch-manipulation"
                   >
                     Next
                   </button>
@@ -377,16 +390,16 @@ export function CheckpointExamModal({
           {/* SCREEN 3: RESULTS & DIPLOMA CERTIFICATE */}
           {examSubmitted && (
             <div className="space-y-6 animate-fade-in py-4">
-              <div className="p-6 rounded-3xl bg-gradient-to-b from-black/60 to-black/90 border border-white/10 text-center space-y-4 relative overflow-hidden">
-                <div className="text-4xl">
+              <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 text-center space-y-4 relative overflow-hidden">
+                <div className="text-5xl">
                   {isPassed ? '🏆' : '📚'}
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900">
                     {isPassed ? 'Congratulations! You Passed the Test!' : 'Keep Practicing! Try Again Soon'}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1 font-mono">
+                  <p className="text-xs text-slate-500 mt-1 font-mono">
                     Score: {passedCount} of {questions.length} problems correct ({scorePercent}%)
                   </p>
                 </div>
@@ -395,41 +408,42 @@ export function CheckpointExamModal({
                 {isPassed && (
                   <div 
                     id="certificate-print"
-                    className="p-8 my-4 rounded-2xl bg-gradient-to-b from-[#121624] via-[#0c0f18] to-[#07090e] border-2 border-amber-500/40 shadow-2xl text-center space-y-4 max-w-xl mx-auto"
+                    className="p-8 my-4 rounded-2xl bg-white border-2 border-amber-400 shadow-xl text-center space-y-4 max-w-xl mx-auto"
                   >
-                    <div className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">
+                    <div className="text-xs font-mono uppercase tracking-widest text-amber-600 font-bold">
                       CERTIFICATE OF COMPLETION
                     </div>
 
-                    <div className="text-slate-400 text-xs italic">
+                    <div className="text-slate-500 text-xs italic">
                       This is awarded to
                     </div>
 
-                    <div className="text-2xl font-serif font-bold text-white tracking-wide border-b border-amber-500/20 pb-2">
+                    <div className="text-2xl font-serif font-bold text-slate-900 tracking-wide border-b border-amber-300 pb-2">
                       {studentName}
                     </div>
 
-                    <p className="text-xs text-slate-300 leading-relaxed max-w-md mx-auto">
+                    <p className="text-xs text-slate-600 leading-relaxed max-w-md mx-auto font-sans">
                       for successfully completing the coursework and passing the practical coding test in
                     </p>
 
-                    <div className="text-lg font-mono font-bold text-sky-400 uppercase">
+                    <div className="text-lg font-mono font-bold text-sky-600 uppercase">
                       {currentLanguageId} Programming
                     </div>
 
-                    <div className="pt-4 flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-white/[0.08]">
+                    <div className="pt-4 flex items-center justify-between text-[10px] font-mono text-slate-400 border-t border-slate-100">
                       <div>DATE: {new Date().toLocaleDateString()}</div>
-                      <div className="text-amber-400 font-bold">CODEHERO ACADEMY</div>
+                      <div className="text-amber-600 font-bold">CODEHERO ACADEMY</div>
                       <div>GRADE: {scorePercent}%</div>
                     </div>
                   </div>
                 )}
 
-                <div className="flex items-center justify-center gap-3 pt-2">
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                   {isPassed && (
                     <button
+                      type="button"
                       onClick={() => window.print()}
-                      className="px-5 py-2 rounded-xl bg-white text-slate-950 font-bold text-xs hover:bg-slate-200 transition-all shadow-md flex items-center gap-1.5"
+                      className="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs transition-all shadow-md flex items-center gap-1.5 cursor-pointer touch-manipulation active:scale-95"
                     >
                       <Printer className="w-3.5 h-3.5" />
                       <span>Download / Print Certificate</span>
@@ -437,10 +451,11 @@ export function CheckpointExamModal({
                   )}
 
                   <button
-                    onClick={onClose}
-                    className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all"
+                    type="button"
+                    onClick={handleCloseModal}
+                    className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all cursor-pointer touch-manipulation active:scale-95"
                   >
-                    Close & Continue Learning
+                    Close &amp; Continue Learning
                   </button>
                 </div>
               </div>

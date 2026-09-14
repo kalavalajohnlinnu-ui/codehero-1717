@@ -120,30 +120,31 @@ export function CodeEditor({
     <div className="flex flex-col h-full overflow-hidden bg-white border border-slate-200 rounded-2xl shadow-sm">
 
       {/* ── Top Bar ──────────────────────────────────── */}
-      <div className="flex items-center justify-between px-3.5 py-2 shrink-0 bg-slate-50 border-b border-slate-200">
-        <div className="flex items-center gap-2.5">
+      <div className="flex items-center justify-between px-2.5 sm:px-3.5 py-1.5 sm:py-2 shrink-0 bg-slate-50 border-b border-slate-200 gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink">
           {/* Traffic light dots */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
             <div className="w-2.5 h-2.5 rounded-full bg-rose-400" />
             <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
           </div>
-          <div className="w-[1px] h-3.5 bg-slate-200" />
+          <div className="hidden sm:block w-[1px] h-3.5 bg-slate-200 shrink-0" />
           {/* File name */}
-          <span className="text-xs font-mono font-bold text-slate-800">
+          <span className="text-xs font-mono font-bold text-slate-800 truncate min-w-0">
             {isHeroMode ? langMeta.heroFile : langMeta.proFile}
           </span>
           {/* Language badge */}
-          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">
+          <span className="hidden sm:inline-block text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200 shrink-0">
             {langMeta.badge}
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
           {/* Copy */}
           <button 
+            type="button"
             onClick={handleCopy}
-            className="p-1.5 rounded-md text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 transition-colors"
+            className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 active:scale-95 transition-all touch-manipulation cursor-pointer shrink-0"
             title="Copy Code"
           >
             {copied
@@ -154,8 +155,9 @@ export function CodeEditor({
           {/* Reset */}
           {onReset && (
             <button
+              type="button"
               onClick={() => { soundService.playClick(); onReset(); }}
-              className="flex items-center gap-1 px-2.5 py-1 text-xs rounded-md font-mono text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 transition-colors"
+              className="h-7 sm:h-8 px-2 sm:px-2.5 flex items-center justify-center gap-1 text-xs rounded-lg font-mono text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 active:scale-95 transition-all touch-manipulation cursor-pointer shrink-0"
               title="Reset to starter code"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -166,13 +168,14 @@ export function CodeEditor({
           {/* Run & Test CTA */}
           {onRun && (
             <button
+              type="button"
               onClick={() => { soundService.playClick(); onRun(); }}
               disabled={isRunning}
               className={`
-                flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all shadow-sm
+                h-8 px-2.5 sm:px-3.5 flex items-center gap-1 sm:gap-1.5 rounded-lg font-bold text-xs font-mono transition-all shadow-sm shrink-0 active:scale-95 touch-manipulation cursor-pointer
                 ${isRunning 
                   ? 'bg-amber-100 text-amber-800 border border-amber-300 cursor-wait' 
-                  : 'bg-sky-600 hover:bg-sky-700 active:scale-95 text-white shadow-sky-600/20'
+                  : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20'
                 }
               `}
               title="Run code (Ctrl+Enter)"
@@ -185,7 +188,8 @@ export function CodeEditor({
               ) : (
                 <>
                   <Play className="w-3.5 h-3.5 fill-current" />
-                  <span>Run & Test</span>
+                  <span className="inline sm:hidden">Run</span>
+                  <span className="hidden sm:inline">Run & Test</span>
                   <span className="hidden md:inline text-[9px] opacity-75 font-mono bg-black/15 px-1 py-0.5 rounded">
                     Ctrl+↵
                   </span>
@@ -216,7 +220,7 @@ export function CodeEditor({
             key={idx}
             type="button"
             onClick={() => insertTextAtCursor(item.val)}
-            className="px-2 py-0.5 rounded-md text-xs font-mono font-semibold shrink-0 transition-all bg-white border border-slate-200 text-slate-700 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 shadow-2xs"
+            className="px-2 py-0.5 rounded-md text-xs font-mono font-semibold shrink-0 transition-all bg-white border border-slate-200 text-slate-700 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 shadow-2xs active:scale-95 touch-manipulation cursor-pointer"
           >
             {item.label}
           </button>
