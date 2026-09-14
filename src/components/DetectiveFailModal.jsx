@@ -67,8 +67,14 @@ export function DetectiveFailModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md animate-fade-in">
-      <div className="bg-[#090C14] border border-red-500/30 rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-200">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fade-in"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-[#090C14] border border-red-500/30 rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-200"
+        onClick={e => e.stopPropagation()}
+      >
         {/* Diagnostic Header */}
         <div className="bg-gradient-to-r from-red-950/50 via-slate-900 to-[#090C14] p-4 sm:p-5 border-b border-red-500/20 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
@@ -92,9 +98,11 @@ export function DetectiveFailModal({
 
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+            className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 active:scale-95 text-slate-400 hover:text-white border border-white/10 flex items-center justify-center transition-all shadow-xs"
+            title="Close"
+            aria-label="Close"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 

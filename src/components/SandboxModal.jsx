@@ -158,8 +158,14 @@ export function SandboxModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="bg-slate-950 border border-slate-800 rounded-3xl w-full max-w-5xl h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-slate-950 border border-slate-800 rounded-3xl w-full max-w-5xl h-[90vh] flex flex-col shadow-2xl overflow-hidden"
+        onClick={e => e.stopPropagation()}
+      >
         {/* Top Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/80 shrink-0">
           <div className="flex items-center gap-2.5">
@@ -181,7 +187,7 @@ export function SandboxModal({
             <button
               onClick={handleRun}
               disabled={isRunning}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-emerald-400 hover:opacity-90 rounded-xl transition-all disabled:opacity-50 shadow-md shadow-amber-500/10"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-emerald-400 hover:opacity-90 rounded-xl transition-all disabled:opacity-50 shadow-md shadow-amber-500/10 active:scale-95"
             >
               {isRunning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5 fill-current" />}
               <span>{isRunning ? "Running..." : "Run Code"}</span>
@@ -189,7 +195,9 @@ export function SandboxModal({
 
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition-colors"
+              className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 hover:text-white border border-slate-700 flex items-center justify-center transition-all shadow-xs"
+              title="Close Sandbox"
+              aria-label="Close Sandbox"
             >
               <X className="w-5 h-5" />
             </button>

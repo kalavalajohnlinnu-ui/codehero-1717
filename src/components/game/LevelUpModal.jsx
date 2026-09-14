@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { X, Sparkles, Trophy } from 'lucide-react';
 import { soundService } from '../../services/soundService';
 
 export const LevelUpModal = ({ newLevel, levelName, onClose }) => {
@@ -6,7 +7,7 @@ export const LevelUpModal = ({ newLevel, levelName, onClose }) => {
     soundService.playFanfare();
     const timer = setTimeout(() => {
       onClose();
-    }, 4000);
+    }, 6000);
     return () => clearTimeout(timer);
   }, [onClose]);
 
@@ -77,33 +78,51 @@ export const LevelUpModal = ({ newLevel, levelName, onClose }) => {
           Level Up!
         </div>
         
-        <div className="bg-white border-2 border-amber-300 rounded-3xl p-8 max-w-lg mx-auto shadow-2xl">
-          <div className="text-slate-500 text-xl font-bold uppercase tracking-widest mb-2 font-sans">You have ascended to</div>
-          <div className="text-sky-600 text-5xl font-black mb-8 drop-shadow-sm font-sans">{levelName}</div>
+        <div 
+          className="bg-white border-2 border-amber-300 rounded-3xl p-6 sm:p-8 max-w-lg mx-auto shadow-2xl relative"
+          onClick={e => e.stopPropagation()}
+        >
+          {/* Prominent Cross / Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-sm z-10"
+            title="Close"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <div className="text-slate-500 text-sm sm:text-base font-bold uppercase tracking-widest mb-1 font-sans">You have ascended to</div>
+          <div className="text-sky-600 text-3xl sm:text-5xl font-black mb-4 drop-shadow-sm font-sans">{levelName}</div>
           
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 mb-6 font-bold text-sm font-sans">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 mb-5 font-bold text-sm font-sans">
             Level {newLevel} Achieved
           </div>
           
-          <div className="bg-white rounded-xl p-4 border border-slate-100 shadow-inner">
-            <h3 className="text-slate-700 font-bold mb-3 uppercase text-sm tracking-wider font-sans">Unlocks</h3>
-            <ul className="text-left space-y-3 font-sans">
-              <li className="flex items-center text-slate-700 bg-slate-50 border border-slate-100 p-2 rounded-lg">
+          <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 mb-5">
+            <h3 className="text-slate-700 font-bold mb-3 uppercase text-xs tracking-wider font-sans text-left">Unlocks</h3>
+            <ul className="text-left space-y-2.5 font-sans">
+              <li className="flex items-center text-slate-700 bg-white border border-slate-200 p-2.5 rounded-xl shadow-xs">
                 <span className="text-2xl mr-3">⚔️</span> 
-                <span className="font-medium">Algorithm Arena Difficulty +</span>
+                <span className="font-semibold text-xs sm:text-sm">Algorithm Arena Difficulty +</span>
               </li>
-              <li className="flex items-center text-slate-700 bg-slate-50 border border-slate-100 p-2 rounded-lg">
+              <li className="flex items-center text-slate-700 bg-white border border-slate-200 p-2.5 rounded-xl shadow-xs">
                 <span className="text-2xl mr-3">✨</span> 
-                <span className="font-medium">New Profile Badge Earned</span>
+                <span className="font-semibold text-xs sm:text-sm">New Profile Badge Earned</span>
               </li>
-              <li className="flex items-center text-slate-700 bg-slate-50 border border-slate-100 p-2 rounded-lg">
+              <li className="flex items-center text-slate-700 bg-white border border-slate-200 p-2.5 rounded-xl shadow-xs">
                 <span className="text-2xl mr-3">🏆</span> 
-                <span className="font-medium">+500 Bonus XP</span>
+                <span className="font-semibold text-xs sm:text-sm">+500 Bonus XP</span>
               </li>
             </ul>
           </div>
           
-          <p className="text-slate-400 text-sm mt-6 animate-pulse font-sans">Click anywhere to continue</p>
+          <button
+            onClick={onClose}
+            className="w-full py-3.5 px-6 bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 active:scale-[0.97] text-white font-bold rounded-xl text-base shadow-md shadow-sky-500/20 transition-all cursor-pointer touch-manipulation"
+          >
+            Claim Rank &amp; Continue
+          </button>
         </div>
       </div>
     </div>

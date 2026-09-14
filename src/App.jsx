@@ -40,10 +40,11 @@ import { ModuleCheckpointModal } from './components/ModuleCheckpointModal';
 
 export default function App() {
   // 1. Language & State
-  const [currentLanguageId, setCurrentLanguageId] = useState('python');
-  const [completedByLanguage, setCompletedByLanguage] = useState({});
-  const [totalXP, setTotalXP] = useState(0);
-  const [streak, setStreak] = useState(1);
+  const initialSavedState = useMemo(() => storageService.loadState(), []);
+  const [currentLanguageId, setCurrentLanguageId] = useState(() => initialSavedState.currentLanguageId || 'python');
+  const [completedByLanguage, setCompletedByLanguage] = useState(() => initialSavedState.completedByLanguage || {});
+  const [totalXP, setTotalXP] = useState(() => initialSavedState.totalXP || 0);
+  const [streak, setStreak] = useState(() => initialSavedState.streak || 1);
 
   // Mobile layout state
   const [mobileTab, setMobileTab] = useState('lesson'); // 'lesson' | 'editor' | 'output'
@@ -123,9 +124,15 @@ export default function App() {
     setCompletedByLanguage(savedState.completedByLanguage || {});
     setStreak(savedState.streak || 1);
 
-    // Check streak milestones
-    if (savedState.streak > 1 && [3, 7, 14, 30, 50, 100].includes(savedState.streak)) {
-        setStreakModalData({ days: savedState.streak, bonus: savedState.streak * 100 });
+    // Check streak milestones (only if not claimed yet)
+    let claimedMilestones = [];
+    try {
+      claimedMilestones = JSON.parse(localStorage.getItem('claimed_streak_milestones') || '[]');
+    } catch {
+      claimedMilestones = [];
+    }
+    if (savedState.streak > 1 && [3, 7, 14, 30, 50, 100].includes(savedState.streak) && !claimedMilestones.includes(savedState.streak)) {
+      setStreakModalData({ days: savedState.streak, bonus: savedState.streak * 100 });
     }
 
     const initialLangId = savedState.currentLanguageId || 'python';
@@ -610,7 +617,16 @@ export default function App() {
           streakDays={streakModalData.days} 
           bonusXP={streakModalData.bonus} 
           onClose={() => {
-            handleXPEarned(streakModalData.bonus);
+            try {
+              const currentClaimed = JSON.parse(localStorage.getItem('claimed_streak_milestones') || '[]');
+              if (!currentClaimed.includes(streakModalData.days)) {
+                currentClaimed.push(streakModalData.days);
+                localStorage.setItem('claimed_streak_milestones', JSON.stringify(currentClaimed));
+                handleXPEarned(streakModalData.bonus);
+              }
+            } catch {
+              handleXPEarned(streakModalData.bonus);
+            }
             setStreakModalData(null);
           }} 
         />

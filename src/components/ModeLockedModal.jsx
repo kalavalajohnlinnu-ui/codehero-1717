@@ -32,17 +32,22 @@ export function ModeLockedModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/40 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
       <div 
         className="bg-white border border-amber-300 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl flex flex-col text-slate-900 text-center relative overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Prominent Cross / Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors"
+          className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-xs"
+          title="Close"
+          aria-label="Close"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
         {/* Lock Icon */}

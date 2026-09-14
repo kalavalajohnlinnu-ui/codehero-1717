@@ -36,25 +36,33 @@ export function CheatsheetModal({
   }).filter(Boolean);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-      <div className="bg-slate-950 border border-slate-800 rounded-2xl w-full max-w-3xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-white border border-slate-200 rounded-3xl w-full max-w-3xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden"
+        onClick={e => e.stopPropagation()}
+      >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-slate-900/60">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 bg-slate-50/80">
           <div className="flex items-center gap-2.5">
-            <div className="p-1.5 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20">
+            <div className="p-1.5 rounded-xl bg-sky-100 text-sky-700 border border-sky-300">
               <BookOpen className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">{languageName} Quick Reference & Cheatsheet</h3>
-              <p className="text-[11px] text-slate-400">Instant syntax lookup and best practices</p>
+              <h3 className="text-sm font-bold text-slate-900">{languageName} Quick Reference &amp; Cheatsheet</h3>
+              <p className="text-[11px] text-slate-500 font-sans">Instant syntax lookup and best practices</p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-xs"
+            title="Close"
+            aria-label="Close"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 

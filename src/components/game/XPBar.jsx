@@ -17,9 +17,15 @@ function XPFloat({ amount, x, y, onDone }) {
 export function XPBar({ xp, streak, onProfileClick }) {
   const [floats, setFloats] = useState([]);
   const prevXP = useRef(xp);
+  const isInitialMount = useRef(true);
   const prog = getLevelProgress(xp);
 
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      prevXP.current = xp;
+      return;
+    }
     if (xp > prevXP.current) {
       const gained = xp - prevXP.current;
       const id = Date.now();

@@ -103,7 +103,10 @@ export function ModuleCheckpointModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fade-in"
+      onClick={onClose}
+    >
       <div 
         className="bg-[#0A0D15] border border-sky-500/30 rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl flex flex-col text-slate-200 relative overflow-hidden max-h-[90vh]"
         onClick={e => e.stopPropagation()}
@@ -131,9 +134,11 @@ export function ModuleCheckpointModal({
 
           <button
             onClick={onClose}
-            className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+            className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 active:scale-95 text-slate-400 hover:text-white border border-white/10 flex items-center justify-center transition-all shadow-xs"
+            title="Close"
+            aria-label="Close"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 

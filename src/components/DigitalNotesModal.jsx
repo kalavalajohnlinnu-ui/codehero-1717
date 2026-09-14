@@ -20,7 +20,8 @@ import {
   Hammer,
   Sparkles,
   Database,
-  ExternalLink
+  ExternalLink,
+  Download
 } from 'lucide-react';
 import { LANGUAGES } from '../data/languages/registry';
 import { getLanguageDetails } from '../data/languages/languageDetails';
@@ -99,8 +100,7 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
   const langDetails = getLanguageDetails(activeLangId);
   const langConfig  = LANGUAGES.find(l => l.id === activeLangId) || LANGUAGES[0];
 
-  const handlePrint = () => {
-    soundService.playSuccess();
+  const generateHandbookHTML = () => {
     const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     const curriculum = langConfig?.curriculum || [];
 
@@ -143,7 +143,7 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
       </div>
     `).join('');
 
-    const html = `<!DOCTYPE html>
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -205,26 +205,68 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
       <div class="stat"><div class="stat-num">${curriculum.reduce((a, m) => a + (m.lessons?.length || 0), 0)}</div><div class="stat-lbl">Lessons</div></div>
       <div class="stat"><div class="stat-num">Top 15%</div><div class="stat-lbl">Engineer Track</div></div>
     </div>
-    <div class="cover-note">Generated ${today} · CodeHero Academy · Save as PDF using Ctrl+P → Save as PDF</div>
+    <div class="cover-note">Generated ${today} · CodeHero Academy · Use Destination &gt; Save as PDF</div>
   </div>
 
   ${chaptersHTML}
 
   <div class="footer">CodeHero Academy 2.0 · Top 10–15% Engineer Foundation Track · Your Personal Handbook</div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() { window.print(); }, 800);
-    };
-  </script>
 </body>
 </html>`;
+  };
 
-    const win = window.open('', '_blank', 'width=960,height=700');
-    if (!win) { alert('Please allow pop-ups for this site to download the PDF.'); return; }
-    win.document.open();
-    win.document.write(html);
-    win.document.close();
+  const handlePrint = () => {
+    soundService.playSuccess();
+    const html = generateHandbookHTML();
+    
+    // In-page hidden iframe: NEVER blocked by popup blockers!
+    try {
+      const oldFrame = document.getElementById('notes-print-frame');
+      if (oldFrame) oldFrame.remove();
+      const iframe = document.createElement('iframe');
+      iframe.id = 'notes-print-frame';
+      iframe.style.position = 'fixed';
+      iframe.style.right = '0';
+      iframe.style.bottom = '0';
+      iframe.style.width = '0';
+      iframe.style.height = '0';
+      iframe.style.border = '0';
+      iframe.style.opacity = '0';
+      iframe.style.pointerEvents = 'none';
+      document.body.appendChild(iframe);
+
+      const frameDoc = iframe.contentWindow.document;
+      frameDoc.open();
+      frameDoc.write(html);
+      frameDoc.close();
+
+      setTimeout(() => {
+        try {
+          iframe.contentWindow.focus();
+          iframe.contentWindow.print();
+        } catch (e) {
+          handleDownloadHTML();
+        }
+      }, 400);
+    } catch (e) {
+      handleDownloadHTML();
+    }
+  };
+
+  const handleDownloadHTML = () => {
+    soundService.playSuccess();
+    const html = generateHandbookHTML();
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `CodeHero_${langDetails.name}_Complete_Notes.html`;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      a.remove();
+      URL.revokeObjectURL(url);
+    }, 200);
   };
 
   const handleCopyCode = (id, text) => {
@@ -322,7 +364,10 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
     <>
       <style>{PDF_PRINT_CSS}</style>
 
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 print:hidden bg-slate-900/40 backdrop-blur-sm">
+      <div 
+        className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 print:hidden bg-slate-900/40 backdrop-blur-sm"
+        onClick={onClose}
+      >
 
         <div className="w-full max-w-6xl flex flex-col overflow-hidden print:hidden bg-white text-slate-900 border border-slate-200 rounded-3xl shadow-2xl"
           style={{ height: '95vh' }}
@@ -363,20 +408,32 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
                 </select>
               </div>
 
-              {/* Print / Download Button */}
+              {/* Print / Save PDF Button */}
               <button
                 onClick={handlePrint}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-sm shadow-sky-600/20 active:scale-95"
-                title="Print or export as high-resolution PDF document">
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs font-mono transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-sm shadow-sky-600/20 active:scale-95"
+                title="Print or save as PDF">
                 <Printer className="w-3.5 h-3.5" />
-                <span>Export PDF</span>
+                <span>Save as PDF</span>
               </button>
 
-              {/* Close */}
+              {/* Download Notes HTML */}
+              <button
+                onClick={handleDownloadHTML}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs font-mono transition-all bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm shadow-emerald-600/20 active:scale-95"
+                title="Download complete offline handbook file">
+                <Download className="w-3.5 h-3.5" />
+                <span>Download Notes</span>
+              </button>
+
+              {/* Close Button */}
               <button
                 onClick={() => { soundService.playClick(); onClose(); }}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all">
-                <X className="w-4 h-4" />
+                className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-600 hover:text-slate-900 border border-slate-200 flex items-center justify-center transition-all shadow-xs"
+                title="Close Notes"
+                aria-label="Close Notes"
+              >
+                <X className="w-5 h-5" />
               </button>
             </div>
           </div>

@@ -16,7 +16,10 @@ export const GameModeSelector = ({ currentXP, onSelectMode, onClose }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm">
+    <div 
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm"
+      onClick={onClose}
+    >
       <style>{`
         @keyframes float {
           0% { transform: translateY(0px); }
@@ -28,7 +31,10 @@ export const GameModeSelector = ({ currentXP, onSelectMode, onClose }) => {
         }
       `}</style>
       
-      <div className="bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 md:p-8 w-full max-w-5xl max-h-[90vh] flex flex-col relative">
+      <div 
+        className="bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 md:p-8 w-full max-w-5xl max-h-[90vh] flex flex-col relative"
+        onClick={e => e.stopPropagation()}
+      >
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">

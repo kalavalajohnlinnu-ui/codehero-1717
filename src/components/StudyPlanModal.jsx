@@ -14,7 +14,8 @@ import {
   BookOpen,
   Layers,
   Award,
-  RefreshCw
+  RefreshCw,
+  Download
 } from 'lucide-react';
 import { 
   STUDY_PRESETS, 
@@ -64,10 +65,8 @@ export function StudyPlanModal({
     setActiveDayIndex(0);
   };
 
-  const handleExportPDF = () => {
-    if (!plan || !plan.days) return;
-    soundService.playSuccess();
-
+  const generatePlanHTML = () => {
+    if (!plan || !plan.days) return '';
     const langMeta2 = LANGUAGE_LESSON_COUNTS[currentLanguageId] || { name: 'Python', lessons: 87, modules: 25 };
     const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -96,7 +95,7 @@ export function StudyPlanModal({
       </div>
     `).join('');
 
-    const html = `<!DOCTYPE html>
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -108,7 +107,6 @@ export function StudyPlanModal({
     @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
     @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 
-    /* Cover Page */
     .cover { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 240px; text-align: center; padding: 30px; border-bottom: 3px solid #0284C7; margin-bottom: 28px; page-break-after: avoid; }
     .cover-badge { font-family: 'JetBrains Mono', monospace; font-size: 9pt; background: #EFF6FF; color: #1D4ED8; padding: 4px 12px; border-radius: 99px; border: 1px solid #BFDBFE; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
     .cover-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26pt; font-weight: 800; color: #0F172A; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 6px; }
@@ -118,7 +116,6 @@ export function StudyPlanModal({
     .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 16pt; font-weight: 700; color: #0284C7; }
     .stat-lbl { font-size: 8pt; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
 
-    /* Day Card */
     .day-card { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 18px; overflow: hidden; page-break-inside: avoid; break-inside: avoid; }
     .day-header { background: #F8FAFC; padding: 10px 14px; border-bottom: 1px solid #E2E8F0; }
     .day-num { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; font-weight: 700; color: #D97706; text-transform: uppercase; letter-spacing: 0.08em; }
@@ -135,7 +132,6 @@ export function StudyPlanModal({
     .task-box { background: #EFF6FF; border-left: 3px solid #0284C7; padding: 8px 10px; border-radius: 0 6px 6px 0; font-size: 9.5pt; color: #1E3A5F; font-weight: 500; }
     .how-box { background: #F8FAFC; border: 1px solid #E2E8F0; padding: 8px 10px; border-radius: 6px; font-size: 9.5pt; color: #334155; }
 
-    /* Footer */
     .footer { text-align: center; color: #CBD5E1; font-size: 8pt; font-family: 'JetBrains Mono', monospace; padding-top: 12px; border-top: 1px solid #F1F5F9; }
   </style>
 </head>
@@ -150,26 +146,71 @@ export function StudyPlanModal({
       <div class="stat"><div class="stat-num">${langMeta2.lessons}</div><div class="stat-lbl">Lessons</div></div>
       <div class="stat"><div class="stat-num">${langMeta2.modules}</div><div class="stat-lbl">Modules</div></div>
     </div>
-    <div style="margin-top:14px; font-size:8.5pt; color:#94A3B8;">Generated ${today} · CodeHero Academy</div>
+    <div style="margin-top:14px; font-size:8.5pt; color:#94A3B8;">Generated ${today} · CodeHero Academy · Destination &gt; Save as PDF</div>
   </div>
 
   ${daysHTML}
 
   <div class="footer">CodeHero Academy 2.0 · Top 10-15% Engineer Track · codehero-1717.github.io</div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() { window.print(); }, 600);
-    };
-  </script>
 </body>
 </html>`;
+  };
 
-    const win = window.open('', '_blank', 'width=900,height=700');
-    if (!win) { alert('Please allow pop-ups for this site to download the PDF.'); return; }
-    win.document.open();
-    win.document.write(html);
-    win.document.close();
+  const handleExportPDF = () => {
+    if (!plan || !plan.days) return;
+    soundService.playSuccess();
+    const html = generatePlanHTML();
+
+    // In-page hidden iframe: NEVER blocked by popup blockers!
+    try {
+      const oldFrame = document.getElementById('plan-print-frame');
+      if (oldFrame) oldFrame.remove();
+      const iframe = document.createElement('iframe');
+      iframe.id = 'plan-print-frame';
+      iframe.style.position = 'fixed';
+      iframe.style.right = '0';
+      iframe.style.bottom = '0';
+      iframe.style.width = '0';
+      iframe.style.height = '0';
+      iframe.style.border = '0';
+      iframe.style.opacity = '0';
+      iframe.style.pointerEvents = 'none';
+      document.body.appendChild(iframe);
+
+      const frameDoc = iframe.contentWindow.document;
+      frameDoc.open();
+      frameDoc.write(html);
+      frameDoc.close();
+
+      setTimeout(() => {
+        try {
+          iframe.contentWindow.focus();
+          iframe.contentWindow.print();
+        } catch (e) {
+          handleDownloadPlanHTML();
+        }
+      }, 400);
+    } catch (e) {
+      handleDownloadPlanHTML();
+    }
+  };
+
+  const handleDownloadPlanHTML = () => {
+    if (!plan || !plan.days) return;
+    soundService.playSuccess();
+    const html = generatePlanHTML();
+    const langMeta2 = LANGUAGE_LESSON_COUNTS[currentLanguageId] || { name: 'Python' };
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `CodeHero_${langMeta2.name}_Study_Plan_${plan.targetDays}Days.html`;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      a.remove();
+      URL.revokeObjectURL(url);
+    }, 200);
   };
 
   const handleToggleDay = (idx) => {
@@ -204,7 +245,10 @@ export function StudyPlanModal({
   const dailyLessonsNeeded = Math.max(1, Math.ceil(langMeta.lessons / netStudyDays));
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/90 backdrop-blur-md animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fade-in"
+      onClick={onClose}
+    >
       <div 
         className="bg-[#090C14] border border-amber-500/30 rounded-3xl max-w-5xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-200"
         onClick={e => e.stopPropagation()}
@@ -225,7 +269,7 @@ export function StudyPlanModal({
                 </span>
               </div>
               <h3 className="text-sm sm:text-base font-bold text-white mt-0.5">
-                Personalized Timetable: When, What & How to Learn
+                Personalized Timetable: When, What &amp; How to Learn
               </h3>
             </div>
           </div>
@@ -233,16 +277,27 @@ export function StudyPlanModal({
           <div className="flex items-center gap-2">
             <button
               onClick={handleExportPDF}
-              className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-amber-300 border border-amber-500/20 flex items-center gap-1.5 transition-all active:scale-[0.97]"
+              className="px-3.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-xs font-mono text-amber-300 border border-amber-500/30 flex items-center gap-1.5 transition-all active:scale-[0.97]"
+              title="Print or Save as PDF"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Download PDF</span>
+              <span className="hidden sm:inline">Save as PDF</span>
+            </button>
+            <button
+              onClick={handleDownloadPlanHTML}
+              className="px-3.5 py-1.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-xs font-mono text-sky-300 border border-sky-500/30 flex items-center gap-1.5 transition-all active:scale-[0.97]"
+              title="Download Timetable HTML file"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Download File</span>
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+              className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 active:scale-95 text-slate-400 hover:text-white border border-white/10 flex items-center justify-center transition-all"
+              title="Close"
+              aria-label="Close"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>

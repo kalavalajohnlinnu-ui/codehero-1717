@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { X, Zap, Clock } from 'lucide-react';
+import { soundService } from '../../services/soundService';
 
 export const BonusRoundPopup = ({ timeLimit = 60, multiplier = 3, onAccept, onSkip }) => {
   const [timeLeft, setTimeLeft] = useState(timeLimit);
@@ -20,69 +22,104 @@ export const BonusRoundPopup = ({ timeLimit = 60, multiplier = 3, onAccept, onSk
   }, [timeLeft, accepted, onSkip]);
 
   const handleAccept = () => {
+    soundService.playMagic();
     setAccepted(true);
-    onAccept(); // Parent handles showing the challenge
+    onAccept();
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-md">
-      <style>{`
-        @keyframes flash-border {
-          0%, 100% { border-color: #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
-          50% { border-color: #f59e0b; box-shadow: 0 0 40px rgba(245, 158, 11, 0.8); }
-        }
-        .bonus-box {
-          animation: flash-border 1s infinite alternate;
-        }
-        @keyframes heartbeat {
-          0% { transform: scale(1); }
-          15% { transform: scale(1.3); }
-          30% { transform: scale(1); }
-          45% { transform: scale(1.3); }
-          100% { transform: scale(1); }
-        }
-        .urgent-timer {
-          animation: heartbeat 1s infinite;
-          color: #ef4444;
-        }
-      `}</style>
-      
-      {!accepted ? (
-        <div className="bg-slate-900 border-4 rounded-2xl p-8 max-w-lg w-full text-center bonus-box relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-500 via-yellow-500 to-red-500"></div>
-          
-          <div className="text-6xl mb-4">⚡</div>
-          <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-yellow-400 mb-2 uppercase italic tracking-wider">
-            Bonus Round!
-          </h2>
-          
-          <p className="text-xl text-slate-200 mb-6 font-semibold">
-            Solve the next challenge in <span className="text-amber-400">{timeLimit} seconds</span> for <span className="text-amber-400 font-bold">{multiplier}x XP!</span>
-          </p>
-          
-          <div className="flex gap-4">
-            <button 
-              onClick={handleAccept}
-              className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-bold py-4 rounded-xl text-xl shadow-[0_0_15px_rgba(239,68,68,0.5)] transform hover:scale-105 transition-all"
-            >
-              ACCEPT
-            </button>
-            <button 
-              onClick={onSkip}
-              className="px-6 bg-slate-800 hover:bg-slate-700 text-slate-400 font-bold rounded-xl transition-colors"
-            >
-              Skip
-            </button>
+  const handleClose = () => {
+    soundService.playClick();
+    onSkip();
+  };
+
+  // When accepted, only render the floating non-blocking timer HUD at the top!
+  if (accepted) {
+    return (
+      <div className="fixed top-20 left-1/2 -translate-x-1/2 z-[60] pointer-events-auto animate-bounce-short">
+        <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border-2 border-amber-400 shadow-xl shadow-amber-500/20 text-slate-900">
+          <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 font-bold">
+            <Zap className="w-4 h-4 fill-amber-500" />
           </div>
-        </div>
-      ) : (
-        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-slate-900/90 border border-red-500/50 rounded-full px-8 py-3 flex items-center gap-4 shadow-[0_0_20px_rgba(239,68,68,0.3)] z-50">
-          <span className="text-red-500 font-bold animate-pulse">BONUS ROUND ACTIVE</span>
-          <div className={`text-3xl font-mono font-bold \${timeLeft <= 10 ? 'urgent-timer' : 'text-amber-400'}`}>
+          <div className="flex flex-col">
+            <span className="text-[10px] font-mono uppercase font-bold text-amber-700 tracking-wider">
+              {multiplier}× XP Bonus Active!
+            </span>
+            <span className="text-xs text-slate-500 font-sans">Solve the quest before time expires</span>
+          </div>
+          <div className={`font-mono font-black text-xl px-2.5 py-0.5 rounded-lg bg-amber-50 border border-amber-200 ${
+            timeLeft <= 10 ? 'text-red-600 animate-pulse bg-red-50 border-red-200' : 'text-amber-700'
+          }`}>
             00:{(timeLeft < 10 ? '0' : '') + timeLeft}
           </div>
+          <button
+            onClick={handleClose}
+            className="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-all ml-1 active:scale-95"
+            title="Cancel Bonus Round"
+            aria-label="Cancel Bonus Round"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
         </div>
-      )}
+      </div>
+    );
+  }
+
+  // Pre-accept invitation modal (Clean light theme)
+  return (
+    <div 
+      className="fixed inset-0 z-[75] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in"
+      onClick={handleClose}
+    >
+      <div 
+        className="bg-white border-2 border-amber-400 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center relative shadow-2xl overflow-hidden"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Top Accent Strip */}
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400" />
+
+        {/* Big accessible Cross / Close button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-sm"
+          title="Dismiss"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {/* Icon */}
+        <div className="w-16 h-16 rounded-2xl bg-amber-50 border-2 border-amber-200 text-amber-500 mx-auto flex items-center justify-center mb-4 shadow-lg shadow-amber-500/10">
+          <Zap className="w-8 h-8 fill-amber-400 text-amber-500 animate-bounce" />
+        </div>
+
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 mb-2 uppercase tracking-wide">
+          <Clock className="w-3.5 h-3.5" />
+          <span>Surprise Challenge!</span>
+        </div>
+
+        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2 tracking-tight">
+          ⚡ Bonus Speed Quest!
+        </h2>
+        
+        <p className="text-sm text-slate-600 mb-6 font-medium leading-relaxed">
+          Solve the next coding mission in <span className="font-bold text-amber-600">{timeLimit} seconds</span> to claim a massive <span className="font-bold text-amber-600">{multiplier}× XP Multiplier</span>!
+        </p>
+        
+        <div className="flex gap-3">
+          <button 
+            onClick={handleAccept}
+            className="flex-1 py-3.5 px-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-[0.97] text-white font-bold rounded-xl text-base shadow-md shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+          >
+            <span>Accept Quest!</span>
+          </button>
+          <button 
+            onClick={handleClose}
+            className="px-5 py-3.5 bg-slate-100 hover:bg-slate-200 active:scale-[0.97] text-slate-600 font-semibold rounded-xl text-sm transition-all"
+          >
+            Skip
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
