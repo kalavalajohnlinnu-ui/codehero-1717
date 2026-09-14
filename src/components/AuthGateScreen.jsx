@@ -9,57 +9,49 @@ import {
   Upload,
   Eye,
   EyeOff,
-  Shield
+  Shield,
+  X,
+  Sparkles,
+  LogIn
 } from 'lucide-react';
 import { authService } from '../services/authService';
 import { soundService } from '../services/soundService';
 import { MascotAvatar } from './mascots/MascotAvatar';
 import { GoogleSignInButton } from './GoogleSignInButton';
-import { IngeniumLogo } from './IngeniumLogo';
+import { IngeniumLogoMark } from './IngeniumLogo';
+import { VexHero } from './VexHero';
 
 const AVATARS = [
-  { id: 'dragon', name: 'Pythie Dragon', desc: 'Python & AI Guardian' },
-  { id: 'robot',  name: 'Cyber Sentinel', desc: 'Systems & Architecture' },
-  { id: 'cat',   name: 'Byte Fox',        desc: 'Fast Logic & Web Apps' },
-  { id: 'owl',   name: 'Wise Raven',      desc: 'Algorithms & Insight' }
+  { id: 'dragon', name: 'Pythie Dragon', desc: 'Python & AI' },
+  { id: 'robot',  name: 'Cyber Sentinel', desc: 'Systems' },
+  { id: 'cat',   name: 'Byte Fox',        desc: 'Logic' },
+  { id: 'owl',   name: 'Wise Raven',      desc: 'Algorithms' }
 ];
 
-function StatBadge({ value, label, color = '#0284C7' }) {
-  return (
-    <div className="flex flex-col gap-0.5">
-      <span className="font-mono font-bold text-xl leading-none" style={{ color }}>
-        {value}
-      </span>
-      <span className="text-[10px] uppercase tracking-widest font-mono text-slate-500 font-semibold">
-        {label}
-      </span>
-    </div>
-  );
-}
-
 export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
-  const [mode, setMode]                   = useState('signup');
-  const [name, setName]                   = useState('');
-  const [email, setEmail]                 = useState('');
-  const [password, setPassword]           = useState('');
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [mode, setMode]                     = useState('signup'); // 'signup' | 'login'
+  const [name, setName]                     = useState('');
+  const [email, setEmail]                   = useState('');
+  const [password, setPassword]             = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword]   = useState(false);
-  const [avatar, setAvatar]               = useState('dragon');
-  const [error, setError]                 = useState(null);
-  const [successMsg, setSuccessMsg]       = useState(null);
+  const [showPassword, setShowPassword]     = useState(false);
+  const [avatar, setAvatar]                 = useState('dragon');
+  const [error, setError]                   = useState(null);
+  const [successMsg, setSuccessMsg]         = useState(null);
+
+  const existingStudents = authService.getAllStudents().filter(s => !s.isGuest);
 
   const handleGoogleSuccess = (profile) => {
     try {
       const student = authService.loginWithGoogle(profile);
       soundService.playFanfare();
       setSuccessMsg(`Welcome, ${student.name}! Authenticated with Google.`);
-      setTimeout(() => onAuthenticated(student), 900);
+      setTimeout(() => onAuthenticated(student), 800);
     } catch (err) {
       setError('Google sign-in failed: ' + err.message);
     }
   };
-
-  const existingStudents = authService.getAllStudents().filter(s => !s.isGuest);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -77,8 +69,8 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
     try {
       const student = authService.registerStudent({ email, name, password, avatar });
       soundService.playFanfare();
-      setSuccessMsg(`Welcome to CodeHero Academy, ${student.name}! Loading your workspace…`);
-      setTimeout(() => onAuthenticated(student), 1000);
+      setSuccessMsg(`Welcome to Ingenium Academy, ${student.name}! Loading your workspace…`);
+      setTimeout(() => onAuthenticated(student), 900);
     } catch (err) {
       soundService.playFail();
       setError(err.message);
@@ -97,7 +89,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
       const student = authService.loginStudent({ email, password });
       soundService.playSuccess();
       setSuccessMsg(`Welcome back, ${student.name}! Restoring your progress…`);
-      setTimeout(() => onAuthenticated(student), 1000);
+      setTimeout(() => onAuthenticated(student), 900);
     } catch (err) {
       soundService.playFail();
       setError(err.message);
@@ -139,7 +131,7 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
         const restoredStudent = authService.importStudentBackup(backupData);
         soundService.playFanfare();
         setSuccessMsg(`Backup restored for ${restoredStudent.name}!`);
-        setTimeout(() => onAuthenticated(restoredStudent), 1200);
+        setTimeout(() => onAuthenticated(restoredStudent), 1000);
       } catch (err) {
         soundService.playFail();
         setError('Restore failed: ' + err.message);
@@ -149,331 +141,276 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex overflow-y-auto bg-[#F8FAFC] text-slate-900 font-sans">
-
-      {/* ── Left Hero Panel (Light Theme) ────────────────── */}
-      <div className="hidden lg:flex flex-col justify-between w-[44%] shrink-0 relative overflow-hidden p-12 bg-slate-100/80 border-r border-slate-200">
-        <div>
-          {/* Back to intro if available */}
-          {onBackToIntro && (
-            <button
-              type="button"
-              onClick={onBackToIntro}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 bg-white border border-slate-200 hover:border-slate-300 rounded-full px-3.5 py-1.5 transition-all shadow-xs mb-8 cursor-pointer w-fit"
-            >
-              ← Back to Ingenium
-            </button>
-          )}
-
-          {/* Logo */}
-          <div className="mb-14">
-            <IngeniumLogo size={42} subtitle="The Academy of Code" />
-          </div>
-
-          {/* Hero headline */}
-          <div className="text-[10px] font-mono uppercase tracking-widest mb-3 text-sky-600 font-bold"
-            style={{ letterSpacing: '0.18em' }}>
-            01 // YOUR MISSION
-          </div>
-          <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-4 font-display">
-            Become the<br />
-            <span className="text-sky-600">Top 10-15%</span><br />
-            Software Engineer
-          </h1>
-          <p className="text-sm leading-relaxed mb-10 text-slate-600 max-w-[380px]">
-            631 structured lessons across 7 programming languages. 
-            Real coding tasks, diagnostic debugging cases, and a personalized study plan.
-          </p>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-200">
-            <StatBadge value="631" label="Lessons" color="#0284C7" />
-            <StatBadge value="7" label="Languages" color="#059669" />
-            <StatBadge value="100%" label="Free" color="#D97706" />
-          </div>
+    <div className="relative w-full h-screen min-h-screen bg-black overflow-hidden font-sans">
+      {/* ── Main Hero Section Background (100% specification compliant) ── */}
+      <VexHero
+        onStartChat={() => setIsAuthModalOpen(true)}
+        onExplore={() => setIsAuthModalOpen(true)}
+      >
+        {/* Floating Quick Action Pill for Instant Student Access */}
+        <div className="absolute top-24 right-6 md:right-12 lg:right-16 z-20">
+          <button
+            type="button"
+            onClick={() => setIsAuthModalOpen(true)}
+            className="liquid-glass border border-white/20 text-white/90 hover:text-white px-4 py-2 rounded-full text-xs font-mono font-semibold tracking-wider uppercase flex items-center gap-2 transition-all hover:scale-105 shadow-xl cursor-pointer"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Student Portal</span>
+            <LogIn size={14} className="text-white/70" />
+          </button>
         </div>
 
-        {/* Bottom languages strip */}
-        <div className="pt-8 border-t border-slate-200">
-          <div className="text-[10px] font-mono uppercase tracking-widest mb-3 text-slate-400 font-bold">
-            Languages you'll master
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {['Python', 'JavaScript', 'HTML & CSS', 'SQL', 'Java', 'C & C++', 'Rust'].map(lang => (
-              <span key={lang} className="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-white border border-slate-200 text-slate-700 shadow-2xs">
-                {lang}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ── Right Form Panel (Light Theme) ───────────────── */}
-      <div className="flex-1 flex items-center justify-center p-6 py-12 bg-[#F8FAFC]">
-        <div className="w-full max-w-[440px] bg-white p-7 sm:p-9 rounded-3xl border border-slate-200 shadow-xl">
-
-          {/* Mobile logo & back button */}
-          <div className="lg:hidden flex items-center justify-between gap-2.5 mb-6">
-            <IngeniumLogo size={32} subtitle="" />
-            {onBackToIntro && (
+        {/* ── Liquid Glass Authentication Modal ── */}
+        {isAuthModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/65 backdrop-blur-md transition-all">
+            <div className="relative w-full max-w-[460px] max-h-[90vh] overflow-y-auto liquid-glass border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl text-white">
+              {/* Close button */}
               <button
                 type="button"
-                onClick={onBackToIntro}
-                className="text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full transition-colors cursor-pointer"
+                onClick={() => setIsAuthModalOpen(false)}
+                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                title="Close"
               >
-                ← Ingenium
+                <X size={18} />
               </button>
-            )}
-          </div>
 
-          {/* Heading */}
-          <div className="mb-6">
-            <div className="text-[10px] font-mono uppercase tracking-widest mb-1.5 text-sky-600 font-bold">
-              {mode === 'signup' ? '02 // CREATE ACCOUNT' : '02 // SIGN IN'}
-            </div>
-            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight font-display">
-              {mode === 'signup' ? 'Start your journey' : 'Continue your progress'}
-            </h2>
-            <p className="text-xs text-slate-500 mt-1">
-              {mode === 'signup'
-                ? 'Your password is compulsory and keeps your multi-language progress safe.'
-                : 'Log in with your email & compulsory password to access all courses.'}
-            </p>
-          </div>
-
-          {/* Prominent Google Sign-In Button */}
-          <div className="mb-5">
-            <GoogleSignInButton 
-              onSuccess={handleGoogleSuccess}
-              onAuthenticated={handleGoogleSuccess}
-              onError={(err) => setError('Google sign-in error: ' + err.message)}
-            />
-
-            <div className="flex items-center gap-3 my-4">
-              <div className="flex-1 h-[1px] bg-slate-200" />
-              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-semibold">
-                or use email &amp; password
-              </span>
-              <div className="flex-1 h-[1px] bg-slate-200" />
-            </div>
-          </div>
-
-          {/* Tab switcher */}
-          <div className="flex p-1 mb-5 rounded-xl gap-1 bg-slate-100 border border-slate-200">
-            {[
-              { id: 'signup', label: 'Create Account' },
-              { id: 'login',  label: 'Log In' }
-            ].map(t => (
-              <button key={t.id} type="button"
-                onClick={() => { setMode(t.id); setError(null); }}
-                className={`flex-1 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                  mode === t.id
-                    ? 'bg-white text-sky-700 shadow-sm border border-slate-200'
-                    : 'text-slate-500 hover:text-slate-800'
-                }`}>
-                {t.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Error / success */}
-          {error && (
-            <div className="mb-4 p-3 rounded-xl text-xs font-mono flex items-start gap-2 bg-rose-50 border border-rose-200 text-rose-700">
-              ⚠ {error}
-            </div>
-          )}
-          {successMsg && (
-            <div className="mb-4 p-3 rounded-xl text-xs font-mono flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700">
-              <CheckCircle2 className="w-4 h-4 shrink-0" />
-              {successMsg}
-            </div>
-          )}
-
-          {/* SIGN UP FORM */}
-          {mode === 'signup' && (
-            <form onSubmit={handleRegister} className="space-y-3.5">
-              <Field icon={<User className="w-4 h-4" />} label="Your Full Name">
-                <input type="text" required value={name} onChange={e => setName(e.target.value)}
-                  placeholder="e.g. Alex Rivera"
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500" />
-              </Field>
-
-              <Field icon={<Mail className="w-4 h-4" />} label="Email Address">
-                <input type="email" required value={email} onChange={e => setEmail(e.target.value)}
-                  placeholder="student@example.com"
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500" />
-              </Field>
-
-              <Field icon={<Lock className="w-4 h-4" />} label="Password (Compulsory, min 6 characters)">
-                <input 
-                  type={showPassword ? "text" : "password"} 
-                  required 
-                  minLength={6}
-                  value={password} 
-                  onChange={e => setPassword(e.target.value)}
-                  placeholder="Create your password"
-                  className="w-full pl-9 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500" 
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
-                  title={showPassword ? "Hide password" : "Show password"}
-                >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
-              </Field>
-
-              <Field icon={<Lock className="w-4 h-4" />} label="Confirm Password (Compulsory)">
-                <input 
-                  type={showPassword ? "text" : "password"} 
-                  required 
-                  minLength={6}
-                  value={confirmPassword} 
-                  onChange={e => setConfirmPassword(e.target.value)}
-                  placeholder="Re-enter password to confirm"
-                  className="w-full pl-9 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500" 
-                />
-              </Field>
-
-              {/* Avatar picker */}
-              <div>
-                <div className="text-[10px] font-mono uppercase tracking-widest mb-2 text-slate-500 font-semibold">
-                  Choose your coding companion
+              {/* Modal Header */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2.5 mb-2">
+                  <IngeniumLogoMark size={24} />
+                  <span className="text-[10px] font-mono tracking-[0.25em] text-gray-400 uppercase font-semibold">
+                    INGENIUM ACADEMY
+                  </span>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {AVATARS.map(opt => (
-                    <button key={opt.id} type="button" onClick={() => setAvatar(opt.id)}
-                      className={`p-2.5 rounded-xl flex items-center gap-2.5 text-left transition-all border cursor-pointer ${
-                        avatar === opt.id 
-                          ? 'bg-sky-50 border-sky-400 shadow-2xs' 
-                          : 'bg-slate-50 border-slate-200 hover:bg-slate-100'
-                      }`}>
-                      <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1 shrink-0">
-                        <MascotAvatar mascotType={opt.id} mood="happy" className="w-full h-full" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-slate-900">{opt.name}</div>
-                        <div className="text-[9px] font-mono text-slate-500">{opt.desc}</div>
-                      </div>
-                    </button>
-                  ))}
+                <h2 className="text-2xl font-bold tracking-tight text-white font-sans">
+                  {mode === 'signup' ? 'Create Student Account' : 'Welcome Back'}
+                </h2>
+                <p className="text-xs text-gray-300 mt-1">
+                  {mode === 'signup'
+                    ? 'Your private student workspace keeps your code and progress secure.'
+                    : 'Sign in with your registered email and compulsory password.'}
+                </p>
+              </div>
+
+              {/* Prominent Google Sign-In */}
+              <div className="mb-5">
+                <GoogleSignInButton 
+                  onSuccess={handleGoogleSuccess}
+                  onAuthenticated={handleGoogleSuccess}
+                  onError={(err) => setError('Google sign-in error: ' + err.message)}
+                />
+
+                <div className="flex items-center gap-3 my-4">
+                  <div className="flex-1 h-[1px] bg-white/15" />
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400 font-semibold">
+                    or email &amp; password
+                  </span>
+                  <div className="flex-1 h-[1px] bg-white/15" />
                 </div>
               </div>
 
-              <button type="submit"
-                className="w-full py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-md shadow-sky-600/20 font-mono mt-2 cursor-pointer active:scale-[0.98]"
-              >
-                <span>Create Account &amp; Enter Academy</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          )}
+              {/* Tab Switcher */}
+              <div className="flex p-1 mb-5 rounded-xl gap-1 bg-white/10 border border-white/15">
+                {[
+                  { id: 'signup', label: 'Create Account' },
+                  { id: 'login',  label: 'Sign In' }
+                ].map(t => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => { setMode(t.id); setError(null); }}
+                    className={`flex-1 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                      mode === t.id
+                        ? 'bg-white text-black shadow-md'
+                        : 'text-gray-300 hover:text-white'
+                    }`}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
 
-          {/* LOG IN FORM */}
-          {mode === 'login' && (
-            <form onSubmit={handleLogin} className="space-y-3.5">
-              <Field icon={<Mail className="w-4 h-4" />} label="Registered Email">
-                <input type="email" required value={email} onChange={e => setEmail(e.target.value)}
-                  placeholder="student@example.com"
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500" />
-              </Field>
+              {/* Alerts */}
+              {error && (
+                <div className="mb-4 p-3 rounded-xl bg-red-500/15 border border-red-500/30 text-red-200 text-xs flex items-start gap-2">
+                  <span className="font-bold text-red-400">Error:</span>
+                  <span>{error}</span>
+                </div>
+              )}
 
-              <Field icon={<Lock className="w-4 h-4" />} label="Password (Compulsory)">
-                <input 
-                  type={showPassword ? "text" : "password"} 
-                  required 
-                  value={password} 
-                  onChange={e => setPassword(e.target.value)}
-                  placeholder="Enter your account password"
-                  className="w-full pl-9 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500" 
-                />
+              {successMsg && (
+                <div className="mb-4 p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-200 text-xs flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                  <span>{successMsg}</span>
+                </div>
+              )}
+
+              {/* Form */}
+              <form onSubmit={mode === 'signup' ? handleRegister : handleLogin} className="space-y-4">
+                {mode === 'signup' && (
+                  <div>
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-gray-300 mb-1 font-semibold">
+                      Student Name
+                    </label>
+                    <div className="relative">
+                      <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input
+                        type="text"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="e.g. Alex Rivera"
+                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-white focus:bg-white/15 transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-gray-300 mb-1 font-semibold">
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="student@ingenium.org"
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-white focus:bg-white/15 transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-gray-300 mb-1 font-semibold">
+                    Password <span className="text-amber-400">* compulsory</span>
+                  </label>
+                  <div className="relative">
+                    <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Min 6 characters"
+                      className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-white focus:bg-white/15 transition-all"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                    >
+                      {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                    </button>
+                  </div>
+                </div>
+
+                {mode === 'signup' && (
+                  <div>
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-gray-300 mb-1 font-semibold">
+                      Confirm Password <span className="text-amber-400">*</span>
+                    </label>
+                    <div className="relative">
+                      <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        required
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder="Re-enter password"
+                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-white focus:bg-white/15 transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Avatar Selection for Sign Up */}
+                {mode === 'signup' && (
+                  <div>
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-gray-300 mb-2 font-semibold">
+                      Select Companion Avatar
+                    </label>
+                    <div className="grid grid-cols-4 gap-2">
+                      {AVATARS.map(a => (
+                        <button
+                          key={a.id}
+                          type="button"
+                          onClick={() => setAvatar(a.id)}
+                          className={`p-2 rounded-xl border flex flex-col items-center gap-1 transition-all cursor-pointer ${
+                            avatar === a.id
+                              ? 'bg-white/20 border-white text-white shadow-md'
+                              : 'bg-white/5 border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+                          }`}
+                        >
+                          <MascotAvatar mascotType={a.id} size={28} />
+                          <span className="text-[10px] font-mono truncate">{a.name.split(' ')[0]}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="w-full py-3 px-4 rounded-xl bg-white text-black font-semibold text-sm hover:bg-gray-100 transition-all flex items-center justify-center gap-2 shadow-lg mt-2 cursor-pointer"
+                >
+                  <span>{mode === 'signup' ? 'Create Account & Enter' : 'Sign In to Workspace'}</span>
+                  <ArrowRight size={16} />
+                </button>
+              </form>
+
+              {/* Quick Switch Existing Students */}
+              {existingStudents.length > 0 && (
+                <div className="mt-6 pt-5 border-t border-white/15">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-2 font-semibold">
+                    Switch Registered Account
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {existingStudents.map(s => (
+                      <button
+                        key={s.email}
+                        type="button"
+                        onClick={() => handleQuickSwitch(s.email)}
+                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-white/10 border border-white/15 hover:bg-white/20 text-gray-200 hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
+                      >
+                        <MascotAvatar mascotType={s.avatar || 'dragon'} size={14} />
+                        <span>{s.name || s.email}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Admin & Backup Options */}
+              <div className="mt-5 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-gray-400">
                 <button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
-                  title={showPassword ? "Hide password" : "Show password"}
+                  onClick={handleDemoAdminLogin}
+                  className="hover:text-white transition-colors flex items-center gap-1 font-mono text-[11px] cursor-pointer"
                 >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  <ShieldCheck size={13} className="text-amber-400" />
+                  <span>Instructor Demo</span>
                 </button>
-              </Field>
 
-              <button type="submit"
-                className="w-full py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-md shadow-sky-600/20 font-mono mt-2 cursor-pointer active:scale-[0.98]"
-              >
-                <span>Log In &amp; Load My Progress</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          )}
-
-          {/* Quick Admin Demo Button */}
-          <div className="mt-5 p-3 rounded-2xl bg-amber-50/70 border border-amber-200 flex items-center justify-between">
-            <div>
-              <div className="text-[11px] font-bold text-amber-900 flex items-center gap-1.5">
-                <span>👑 Quick Admin Access</span>
+                <label className="hover:text-white transition-colors flex items-center gap-1 font-mono text-[11px] cursor-pointer">
+                  <Upload size={13} />
+                  <span>Restore .json</span>
+                  <input
+                    type="file"
+                    accept=".json"
+                    onChange={handleFileRestore}
+                    className="hidden"
+                  />
+                </label>
               </div>
-              <div className="text-[10px] font-mono text-amber-700">kalavalajohnlinnu@gmail.com</div>
             </div>
-            <button
-              type="button"
-              onClick={handleDemoAdminLogin}
-              className="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-bold font-mono active:scale-95 transition-all shadow-xs cursor-pointer"
-            >
-              Sign In as Admin
-            </button>
           </div>
-
-          {/* Existing profiles */}
-          {existingStudents.length > 0 && (
-            <div className="mt-5 pt-4 border-t border-slate-200">
-              <div className="text-[10px] font-mono uppercase tracking-widest mb-2.5 text-slate-400 font-semibold">
-                Saved profiles on this device
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {existingStudents.map(s => {
-                  const isAdm = authService.isAdminEmail(s.email);
-                  return (
-                    <button key={s.email} type="button" onClick={() => handleQuickSwitch(s.email)}
-                      className="p-2.5 rounded-xl flex items-center gap-2.5 text-left transition-all bg-slate-50 hover:bg-slate-100 border border-slate-200 cursor-pointer">
-                      <div className="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1 shrink-0">
-                        <MascotAvatar mascotType={s.avatar || 'dragon'} mood="happy" className="w-full h-full" />
-                      </div>
-                      <div className="truncate flex-1">
-                        <div className="text-xs font-bold text-slate-900 truncate flex items-center gap-1">
-                          <span>{s.name}</span>
-                          {isAdm && (
-                            <span className="text-[9px] px-1 rounded bg-amber-100 text-amber-800 font-mono font-bold">
-                              👑
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-[10px] font-mono text-slate-500 truncate">{s.email}</div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
+        )}
+      </VexHero>
     </div>
   );
 }
 
-function Field({ icon, label, children }) {
-  return (
-    <div>
-      <div className="text-[10px] font-mono uppercase tracking-widest mb-1 text-slate-600 font-semibold">
-        {label}
-      </div>
-      <div className="relative">
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-          {icon}
-        </div>
-        {children}
-      </div>
-    </div>
-  );
-}
+export default AuthGateScreen;
