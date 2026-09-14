@@ -14,6 +14,7 @@ import { runMultiLanguageCode, evaluateMultiLanguageLessonTests } from './servic
 import { storageService } from './services/storageService';
 import { soundService } from './services/soundService';
 import { translatePythonError } from './services/errorTranslator';
+import { cloudSyncService } from './services/cloudSyncService';
 
 // Game Components
 import { getLevelProgress as getLevelInfo } from './services/gameEngine';
@@ -152,6 +153,7 @@ export default function App() {
     setCurrentCode(initialCode);
 
     setWasmStatus('Light Studio Engine Ready');
+    cloudSyncService.requestDurableStorage();
   }, []);
 
   const checkAchievements = useCallback((action, state) => {
@@ -305,6 +307,7 @@ export default function App() {
           
           const completionResult = storageService.markLessonComplete(currentLanguageId, currentLesson.id, 0); // We handle XP manually below
           setCompletedByLanguage(completionResult.completedByLanguage);
+          cloudSyncService.syncStudentToCloud(authService.getCurrentStudent(), storageService.loadState());
 
           if (completionResult.isNewCompletion) {
             handleXPEarned(25);
