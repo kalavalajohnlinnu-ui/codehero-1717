@@ -38,6 +38,7 @@ import { CheckpointExamModal } from './components/CheckpointExamModal';
 import { ModeLockedModal } from './components/ModeLockedModal';
 import { ModuleCheckpointModal } from './components/ModuleCheckpointModal';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { AdminPortalModal } from './components/AdminPortalModal';
 
 export default function App() {
   // 1. Language & State
@@ -63,6 +64,8 @@ export default function App() {
   const [currentStudent, setCurrentStudent] = useState(() => authService.getCurrentStudent());
   const [isStudentAuthOpen, setIsStudentAuthOpen] = useState(false);
   const [isStudyPlanOpen, setIsStudyPlanOpen] = useState(false);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const isCurrentAdmin = authService.isCurrentStudentAdmin();
   
   // Modals state
   const [levelUpData, setLevelUpData] = useState(null);
@@ -373,6 +376,8 @@ export default function App() {
               onOpenModuleCheckpoint={(mod) => setActiveCheckpointModule(mod)}
               passedModuleExams={passedModuleExams}
               onOpenNotes={() => setIsNotesOpen(true)}
+              isAdmin={isCurrentAdmin}
+              onOpenAdmin={() => setIsAdminOpen(true)}
             />
 
             <main className="flex-1 flex flex-col overflow-hidden bg-slate-50">
@@ -525,6 +530,8 @@ export default function App() {
         currentStudent={currentStudent}
         onOpenStudentAuth={() => setIsStudentAuthOpen(true)}
         onOpenStudyPlan={() => setIsStudyPlanOpen(true)}
+        isAdmin={isCurrentAdmin}
+        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       {renderGameMode()}
@@ -589,10 +596,21 @@ export default function App() {
         isOpen={isStudentAuthOpen}
         onClose={() => setIsStudentAuthOpen(false)}
         onStudentChanged={handleStudentChanged}
+        onOpenAdmin={() => setIsAdminOpen(true)}
         totalXP={totalXP}
         streak={streak}
         completedCount={completedLessonsInLang.length}
       />
+
+      {/* Instructor Admin Portal Modal */}
+      <ErrorBoundary onReset={() => setIsAdminOpen(false)}>
+        {isAdminOpen && (
+          <AdminPortalModal
+            isOpen={isAdminOpen}
+            onClose={() => setIsAdminOpen(false)}
+          />
+        )}
+      </ErrorBoundary>
 
       {/* Personalized Study Plan Timetable Modal */}
       <StudyPlanModal

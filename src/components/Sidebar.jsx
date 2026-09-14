@@ -44,7 +44,9 @@ export function Sidebar({
   onCloseMobile,
   onOpenModuleCheckpoint,
   passedModuleExams = [],
-  onOpenNotes
+  onOpenNotes,
+  isAdmin = false,
+  onOpenAdmin
 }) {
   const [searchTerm, setSearchTerm]             = useState('');
   const [collapsedModules, setCollapsedModules] = useState({});
@@ -235,8 +237,18 @@ export function Sidebar({
           })}
         </div>
 
-        {/* Quick Notes Action */}
-        <div className="p-2.5 shrink-0 border-t border-slate-200 bg-slate-50/70">
+        {/* Quick Actions Footer */}
+        <div className="p-2.5 shrink-0 border-t border-slate-200 bg-slate-50/70 space-y-1.5">
+          {isAdmin && (
+            <button
+              type="button"
+              onClick={() => { onOpenAdmin?.(); onCloseMobile?.(); }}
+              className="w-full py-2 px-3 rounded-xl flex items-center justify-center gap-2 text-xs font-mono font-bold bg-amber-100 hover:bg-amber-200 border border-amber-300 text-amber-900 transition-all active:scale-95 touch-manipulation cursor-pointer shadow-2xs"
+            >
+              <span>👑</span>
+              <span>Instructor Admin Portal</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => { onOpenNotes?.(); onCloseMobile?.(); }}

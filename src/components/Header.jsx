@@ -49,7 +49,9 @@ export function Header({
   onOpenModeLocked,
   currentStudent,
   onOpenStudentAuth,
-  onOpenStudyPlan
+  onOpenStudyPlan,
+  isAdmin = false,
+  onOpenAdmin
 }) {
   const [isMuted, setIsMuted] = useState(soundService.isMuted());
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -151,6 +153,19 @@ export function Header({
               <span>Notes</span>
             </button>
 
+            {/* Admin Portal — Visible to Admins */}
+            {isAdmin && (
+              <button
+                type="button"
+                onClick={() => { soundService.playClick(); onOpenAdmin?.(); }}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-amber-100 hover:bg-amber-200 border border-amber-300 text-amber-900 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0 animate-fade-in"
+                title="Open Instructor Admin Portal"
+              >
+                <span>👑</span>
+                <span className="hidden md:inline font-bold">Admin Portal</span>
+              </button>
+            )}
+
             {/* Student account — Always visible */}
             <button
               type="button"
@@ -243,13 +258,23 @@ export function Header({
                     onClick={() => setShowMobileMenu(false)} 
                   />
                   <div className="absolute right-0 top-10 w-48 bg-white border border-slate-200 rounded-2xl shadow-xl z-50 p-1.5 space-y-1 animate-scale-bounce">
+                    {isAdmin && (
+                      <button
+                        type="button"
+                        onClick={() => { setShowMobileMenu(false); soundService.playClick(); onOpenAdmin?.(); }}
+                        className="w-full flex items-center gap-2 px-3 py-2 text-xs font-mono font-bold text-amber-900 bg-amber-50 hover:bg-amber-100 rounded-xl transition-all text-left active:scale-95 touch-manipulation cursor-pointer border border-amber-200"
+                      >
+                        <span>👑</span>
+                        <span>Instructor Admin</span>
+                      </button>
+                    )}
                     <button
                       type="button"
                       onClick={() => { setShowMobileMenu(false); onOpenNotes?.(); }}
                       className="w-full flex items-center gap-2 px-3 py-2 text-xs font-mono font-bold text-sky-800 bg-sky-50 hover:bg-sky-100 rounded-xl transition-all text-left active:scale-95 touch-manipulation cursor-pointer border border-sky-200"
                     >
                       <BookOpen className="w-4 h-4 text-sky-600" />
-                      <span>Digital Notes & PDF</span>
+                      <span>Digital Notes &amp; PDF</span>
                     </button>
                     <button
                       type="button"
