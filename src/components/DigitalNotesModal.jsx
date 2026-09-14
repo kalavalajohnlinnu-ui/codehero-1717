@@ -251,11 +251,11 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
           iframe.contentWindow.focus();
           iframe.contentWindow.print();
         } catch (e) {
-          handleDownloadHTML();
+          console.warn('Print preview dismissed or unavailable:', e);
         }
       }, 400);
     } catch (e) {
-      handleDownloadHTML();
+      console.warn('Print frame initialization error:', e);
     }
   };
 

@@ -151,18 +151,7 @@ export default function App() {
     const initialCode = storageService.getLessonDraft(targetLessonId, targetLessonObj.starterCode);
     setCurrentCode(initialCode);
 
-    initPyodide((status) => {
-      setWasmStatus(status);
-    }).then((instance) => {
-      if (instance) {
-        setPyodide(instance);
-        setWasmStatus('WebAssembly Engine Ready');
-      } else {
-        setWasmStatus('Multi-Language Evaluator Ready');
-      }
-    }).catch(() => {
-      setWasmStatus('Client-Side Evaluator Ready');
-    });
+    setWasmStatus('Light Studio Engine Ready');
   }, []);
 
   const checkAchievements = useCallback((action, state) => {
@@ -295,7 +284,7 @@ export default function App() {
     }
     
     try {
-      const execResult = await runMultiLanguageCode(currentCode, currentLanguageId, pyodide);
+      const execResult = await runMultiLanguageCode(currentCode, currentLanguageId, pyodide, currentLesson);
       setOutputResult(execResult);
 
       if (execResult.error) {

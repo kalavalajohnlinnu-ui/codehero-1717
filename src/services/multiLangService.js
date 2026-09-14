@@ -1,12 +1,12 @@
 // Multi-Language Execution Service for CodeHero Universe
 import { runPythonCode } from './pyodideService';
 
-export async function runMultiLanguageCode(code, languageId, pyodideInstance) {
+export async function runMultiLanguageCode(code, languageId, pyodideInstance, currentLesson = null) {
   const startTime = performance.now();
 
   switch (languageId) {
     case 'python':
-      return await runPythonCode(code, pyodideInstance);
+      return await runPythonCode(code, pyodideInstance, currentLesson);
 
     case 'javascript':
     case 'typescript':

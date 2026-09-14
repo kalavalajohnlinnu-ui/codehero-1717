@@ -72,7 +72,7 @@ export function ModuleCheckpointModal({
   const handleRunCodeTest = async () => {
     setIsRunning(true);
     try {
-      const execResult = await runMultiLanguageCode(userCode, currentLanguageId, pyodideInstance);
+      const execResult = await runMultiLanguageCode(userCode, currentLanguageId, pyodideInstance, lastLesson);
       if (lastLesson.tests && lastLesson.tests.length > 0) {
         const evalResult = evaluateMultiLanguageLessonTests(execResult, lastLesson.tests, userCode, currentLanguageId);
         if (evalResult.allPassed) {

@@ -188,11 +188,11 @@ export function StudyPlanModal({
           iframe.contentWindow.focus();
           iframe.contentWindow.print();
         } catch (e) {
-          handleDownloadPlanHTML();
+          console.warn('Print preview dismissed or unavailable:', e);
         }
       }, 400);
     } catch (e) {
-      handleDownloadPlanHTML();
+      console.warn('Print frame initialization error:', e);
     }
   };
 

@@ -132,7 +132,7 @@ export function CheckpointExamModal({
     const codeToRun = questionAnswers[currentQuestionIndex] || currentQ.starter;
 
     try {
-      const execResult = await runMultiLanguageCode(codeToRun, currentLanguageId, pyodideInstance);
+      const execResult = await runMultiLanguageCode(codeToRun, currentLanguageId, pyodideInstance, currentQ);
       const evalResult = evaluateMultiLanguageLessonTests(execResult, currentQ.tests, codeToRun, currentLanguageId);
 
       setQuestionResults(prev => ({
