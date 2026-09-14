@@ -9,7 +9,7 @@ const EASING_ENTRANCE = 'cubic-bezier(0.16, 1, 0.3, 1)';
 const EASING_OVERLAY = 'cubic-bezier(0.76, 0, 0.24, 1)';
 const VIDEO_SRC = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4';
 
-const NAV_LINKS = ['Home', 'Story', 'Collection', 'Inquire'];
+const NAV_LINKS = ['The Academy', '7 Languages Track', 'Algorithm Arena', 'Student Sign In'];
 
 export function AurevonIntro({ onEnter }: AurevonIntroProps) {
   const [navMounted, setNavMounted] = useState(false);
@@ -17,10 +17,10 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
-  // Set document title to Aurevon
+  // Set document title to CodeHero Aurevon
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = 'Aurevon';
+    document.title = 'Aurevon Academy — Master the Craft of Code';
     return () => {
       document.title = prevTitle;
     };
@@ -84,7 +84,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               e.preventDefault();
               if (onEnter) onEnter();
             }}
-            className={`text-white text-xl md:text-2xl font-semibold tracking-tight z-50 transition-all ${
+            className={`text-white text-xl md:text-2xl font-semibold tracking-tight z-50 transition-all flex items-center gap-2.5 ${
               navMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
             style={{
@@ -93,7 +93,10 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               transitionDelay: navMounted ? '0ms' : '0ms'
             }}
           >
-            Aurevon
+            <span>Aurevon</span>
+            <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border border-white/20 text-white/70 font-normal hidden sm:inline-block">
+              Code Academy
+            </span>
           </a>
 
           {/* Center — Desktop Only: Navigate Pill */}
@@ -232,12 +235,12 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               transitionDelay: heroMounted ? '400ms' : '0ms'
             }}
           >
-            A carefully curated<br className="hidden sm:block" /> collection beyond compare
+            Master the craft of code<br className="hidden sm:block" /> beyond compare
           </h1>
 
           {/* Subcopy */}
           <p
-            className={`text-white/70 text-base md:text-lg mb-8 md:mb-10 max-w-md mx-auto transition-all duration-900 ${
+            className={`text-white/80 text-base md:text-lg mb-6 md:mb-8 max-w-xl mx-auto transition-all duration-900 leading-relaxed ${
               heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{
@@ -245,8 +248,31 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               transitionDelay: heroMounted ? '600ms' : '0ms'
             }}
           >
-            Reserve your place in our private gallery.
+            Seven programming languages. 631 interactive quests. Step inside the premier academy for Python, JavaScript, C++, SQL, and systems mastery.
           </p>
+
+          {/* Supported Languages Ticker */}
+          <div
+            className={`flex items-center justify-center flex-wrap gap-2 text-[10px] sm:text-[11px] font-mono tracking-widest text-white/60 mb-8 transition-all duration-900 ${
+              heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{
+              transitionTimingFunction: EASING_ENTRANCE,
+              transitionDelay: heroMounted ? '700ms' : '0ms'
+            }}
+          >
+            <span>PYTHON</span>
+            <span>·</span>
+            <span>JAVASCRIPT</span>
+            <span>·</span>
+            <span>C / C++</span>
+            <span>·</span>
+            <span>SQL</span>
+            <span>·</span>
+            <span>JAVA</span>
+            <span>·</span>
+            <span>RUST</span>
+          </div>
 
           {/* CTA: Word meaning welcome */}
           <div>
@@ -256,7 +282,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
                 e.preventDefault();
                 if (onEnter) onEnter();
               }}
-              className={`inline-block px-8 py-3.5 bg-white text-black text-sm md:text-base font-medium rounded-full hover:bg-white/90 transition-all duration-900 cursor-pointer ${
+              className={`inline-block px-9 py-4 bg-white text-black text-sm md:text-base font-semibold rounded-full hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-900 cursor-pointer shadow-xl shadow-white/10 ${
                 heroMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{
@@ -264,7 +290,7 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
                 transitionDelay: heroMounted ? '800ms' : '0ms'
               }}
             >
-              Welcome Inside
+              Welcome Inside — Enter Academy →
             </a>
           </div>
         </div>

@@ -62,8 +62,9 @@ export default function App() {
   const [isGameModeSelectorOpen, setIsGameModeSelectorOpen] = useState(false);
   const [lessonsCompletedSession, setLessonsCompletedSession] = useState(0);
   
-  // Intro Screen State
+  // Intro & Login Gate Sequence
   const [showIntro, setShowIntro] = useState(true);
+  const [hasPassedLoginGate, setHasPassedLoginGate] = useState(false);
 
   // Student Auth & Study Plan
   const [currentStudent, setCurrentStudent] = useState(() => authService.getCurrentStudent());
@@ -501,11 +502,14 @@ export default function App() {
     return <AurevonIntro onEnter={() => setShowIntro(false)} />;
   }
 
-  // Mandatory Login Gate: Student must create account or log in to access the web app
-  if (!currentStudent || currentStudent.isGuest) {
+  // Mandatory Login Gate: Always shown before classroom access
+  if (!hasPassedLoginGate || !currentStudent || currentStudent.isGuest) {
     return (
       <AuthGateScreen 
-        onAuthenticated={handleStudentChanged}
+        onAuthenticated={(student) => {
+          handleStudentChanged(student);
+          setHasPassedLoginGate(true);
+        }}
         onBackToIntro={() => setShowIntro(true)}
       />
     );
