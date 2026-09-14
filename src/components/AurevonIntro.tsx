@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Flower2 } from 'lucide-react';
 import { IngeniumLogoMark } from './IngeniumLogo';
 
 interface AurevonIntroProps {
@@ -7,16 +6,12 @@ interface AurevonIntroProps {
 }
 
 const EASING_ENTRANCE = 'cubic-bezier(0.16, 1, 0.3, 1)';
-const EASING_OVERLAY = 'cubic-bezier(0.76, 0, 0.24, 1)';
 const VIDEO_SRC = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4';
-
-const NAV_LINKS = ['The Academy', '7 Languages Track', 'Algorithm Arena', 'Student Sign In'];
 
 export function AurevonIntro({ onEnter }: AurevonIntroProps) {
   const [navMounted, setNavMounted] = useState(false);
   const [heroMounted, setHeroMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   // Set document title to Ingenium
   useEffect(() => {
@@ -48,23 +43,6 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Overflow hidden on body when overlay is open
-  useEffect(() => {
-    if (isOverlayOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOverlayOpen]);
-
-  const handleLinkClick = (_linkName: string) => {
-    setIsOverlayOpen(false);
-    if (onEnter) onEnter();
-  };
 
   return (
     <div className="bg-black min-h-[100dvh] text-white relative w-full select-none overflow-x-hidden">
@@ -101,11 +79,11 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
             </div>
           </a>
 
-          {/* Center — Desktop Only: Navigate Pill */}
+          {/* Right — Clean Minimal Sign In Action */}
           <button
             type="button"
-            onClick={() => setIsOverlayOpen(prev => !prev)}
-            className={`hidden md:flex px-5 py-2 rounded-full border border-[#FCD34D]/40 text-[#FCD34D] text-sm hover:bg-[#FCD34D]/10 items-center gap-2 transition-all cursor-pointer z-50 ${
+            onClick={() => { if (onEnter) onEnter(); }}
+            className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-[#FCD34D]/40 hover:border-[#FCD34D] text-[#FCD34D] hover:bg-[#FCD34D]/10 text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer touch-manipulation z-50 ${
               navMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
             style={{
@@ -114,95 +92,11 @@ export function AurevonIntro({ onEnter }: AurevonIntroProps) {
               transitionDelay: navMounted ? '200ms' : '0ms'
             }}
           >
-            {isOverlayOpen ? 'Close' : 'Navigate'}
-          </button>
-
-          {/* Right — Desktop Only: Flower2 icon */}
-          <div
-            className={`hidden md:flex transition-all z-50 ${
-              navMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-            }`}
-            style={{
-              transitionTimingFunction: EASING_ENTRANCE,
-              transitionDuration: '700ms',
-              transitionDelay: navMounted ? '400ms' : '0ms'
-            }}
-          >
-            <Flower2 className="w-7 h-7 text-[#FCD34D]" />
-          </div>
-
-          {/* Right — Mobile: Hamburger (md:hidden) */}
-          <button
-            type="button"
-            onClick={() => setIsOverlayOpen(prev => !prev)}
-            aria-label="Toggle menu"
-            className={`md:hidden w-8 h-8 flex flex-col items-center justify-center gap-1.5 cursor-pointer z-50 transition-all ${
-              navMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-            }`}
-            style={{
-              transitionTimingFunction: EASING_ENTRANCE,
-              transitionDuration: '700ms',
-              transitionDelay: navMounted ? '200ms' : '0ms'
-            }}
-          >
-            {/* Top Bar */}
-            <span
-              className={`w-6 h-[2px] bg-[#FCD34D] transition-transform ${
-                isOverlayOpen ? 'rotate-45 translate-y-[4px]' : ''
-              }`}
-              style={{
-                transitionTimingFunction: EASING_OVERLAY,
-                transitionDuration: '500ms'
-              }}
-            />
-            {/* Bottom Bar */}
-            <span
-              className={`w-6 h-[2px] bg-white transition-transform ${
-                isOverlayOpen ? '-rotate-45 -translate-y-[4px]' : ''
-              }`}
-              style={{
-                transitionTimingFunction: EASING_OVERLAY,
-                transitionDuration: '500ms'
-              }}
-            />
+            Sign In →
           </button>
 
         </div>
       </header>
-
-      {/* ── FULL-SCREEN OVERLAY MENU ────────────────────────────── */}
-      <div
-        className={`fixed inset-0 z-40 bg-black transition-all flex flex-col items-center justify-center ${
-          isOverlayOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
-        }`}
-        style={{
-          transitionTimingFunction: EASING_OVERLAY,
-          transitionDuration: '700ms'
-        }}
-      >
-        <nav className="flex flex-col items-center justify-center gap-8">
-          {NAV_LINKS.map((name, index) => (
-            <a
-              key={name}
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick(name);
-              }}
-              className={`text-[#FCD34D] font-instrument text-4xl md:text-6xl hover:opacity-75 transition-all cursor-pointer ${
-                isOverlayOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              }`}
-              style={{
-                transitionTimingFunction: EASING_OVERLAY,
-                transitionDuration: '600ms',
-                transitionDelay: isOverlayOpen ? `${150 + index * 80}ms` : '0ms'
-              }}
-            >
-              {name}
-            </a>
-          ))}
-        </nav>
-      </div>
 
       {/* ── HERO (Full Viewport) ───────────────────────────────── */}
       <section className="relative w-full h-[100dvh] min-h-[100dvh] overflow-hidden flex items-end justify-center">
