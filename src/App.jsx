@@ -399,6 +399,7 @@ export default function App() {
               onOpenNotes={() => setIsNotesOpen(true)}
               isAdmin={isCurrentAdmin}
               onOpenAdmin={() => setIsAdminOpen(true)}
+              onOpenExam={() => setIsExamOpen(true)}
             />
 
             <main className="flex-1 flex flex-col overflow-hidden bg-slate-50">
@@ -460,10 +461,6 @@ export default function App() {
                     onNextLesson={() => {
                       const currentIndex = allLessons.findIndex(l => l.id === currentLessonId);
                       if (currentIndex >= 0 && currentIndex < allLessons.length - 1) handleSelectLesson(allLessons[currentIndex + 1].id);
-                    }}
-                    onOpenCheckpoint={() => {
-                      const currentMod = activeCurriculum.find(m => m.lessons.some(l => l.id === currentLessonId));
-                      if (currentMod) setActiveCheckpointModule(currentMod);
                     }}
                     isComplete={completedLessonsInLang.includes(currentLessonId)}
                     isHeroMode={isHeroMode}

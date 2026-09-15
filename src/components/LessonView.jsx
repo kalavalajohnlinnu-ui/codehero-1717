@@ -854,27 +854,15 @@ export function LessonView({
       )}
 
       {/* ── Advance to Next Quest Button ────────────── */}
-      {isComplete && (
-        <div className="pt-3 border-t border-slate-200 flex items-center justify-between gap-3 flex-wrap">
-          {onOpenCheckpoint && (
-            <button
-              onClick={() => { soundService.playClick(); onOpenCheckpoint(); }}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition-all shadow-sm"
-            >
-              <Award className="w-3.5 h-3.5 text-amber-600" />
-              <span>Module Checkpoint</span>
-            </button>
-          )}
-
-          {onNextLesson && (
-            <button
-              onClick={() => { soundService.playClick(); onNextLesson(); }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-xs font-mono ml-auto transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-md shadow-sky-600/20 active:scale-95"
-            >
-              <span>Continue Next Quest</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          )}
+      {isComplete && onNextLesson && (
+        <div className="pt-3 border-t border-slate-200 flex items-center justify-end">
+          <button
+            onClick={() => { soundService.playClick(); onNextLesson(); }}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-xs font-mono ml-auto transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-md shadow-sky-600/20 active:scale-95"
+          >
+            <span>Continue Next Quest</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       )}
     </div>
