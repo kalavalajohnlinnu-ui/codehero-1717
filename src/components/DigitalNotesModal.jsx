@@ -378,7 +378,7 @@ export function DigitalNotesModal({ isOpen, onClose, currentLanguageId = 'python
         onClick={onClose}
       >
 
-        <div className="w-full max-w-6xl flex flex-col overflow-hidden print:hidden bg-white text-slate-900 border border-slate-200 rounded-3xl shadow-2xl"
+        <div className="w-full max-w-6xl flex flex-col overflow-hidden print:hidden bg-white text-slate-900 border border-slate-200 rounded-3xl shadow-2xl animate-cinematic-page"
           style={{ height: '95vh' }}
           onClick={e => e.stopPropagation()}>
 

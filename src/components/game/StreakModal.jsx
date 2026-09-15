@@ -13,7 +13,7 @@ export const StreakModal = ({ streakDays, bonusXP, onClose }) => {
       onClick={onClose}
     >
       <div 
-        className="bg-white border-2 border-amber-300 rounded-3xl p-8 max-w-md w-full text-center relative shadow-2xl overflow-hidden" 
+        className="bg-white border-2 border-amber-300 rounded-3xl p-8 max-w-md w-full text-center relative shadow-2xl overflow-hidden animate-cinematic-page" 
         onClick={e => e.stopPropagation()}
       >
         {/* Top Accent Strip */}

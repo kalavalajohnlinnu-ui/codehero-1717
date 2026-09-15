@@ -368,25 +368,43 @@ export default function App() {
   const renderGameMode = () => {
     switch (currentGameMode) {
       case 'arena':
-        return <AlgorithmArena currentLanguageId={currentLanguageId} xp={totalXP} combo={combo} onXPEarned={handleXPEarned} onComboChange={setCombo} />;
+        return (
+          <div key="arena" className="animate-cinematic-page flex-1 flex flex-col overflow-hidden">
+            <AlgorithmArena currentLanguageId={currentLanguageId} xp={totalXP} combo={combo} onXPEarned={handleXPEarned} onComboChange={setCombo} />
+          </div>
+        );
       case 'bugs':
-        return <BugDetective currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
+        return (
+          <div key="bugs" className="animate-cinematic-page flex-1 flex flex-col overflow-hidden">
+            <BugDetective currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />
+          </div>
+        );
       case 'speed':
-        return <SpeedChallenge currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
+        return (
+          <div key="speed" className="animate-cinematic-page flex-1 flex flex-col overflow-hidden">
+            <SpeedChallenge currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />
+          </div>
+        );
       case 'projects':
-        return <ProjectWorkshop currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />;
+        return (
+          <div key="projects" className="animate-cinematic-page flex-1 flex flex-col overflow-hidden">
+            <ProjectWorkshop currentLanguageId={currentLanguageId} onXPEarned={handleXPEarned} />
+          </div>
+        );
       case 'oracle':
         return (
-          <LanguageOracle 
-            currentLanguageId={currentLanguageId} 
-            onSelectLanguage={handleSelectLanguage}
-            onOpenRoadmap={() => setIsRoadmapOpen(true)}
-          />
+          <div key="oracle" className="animate-cinematic-page flex-1 flex flex-col overflow-hidden">
+            <LanguageOracle 
+              currentLanguageId={currentLanguageId} 
+              onSelectLanguage={handleSelectLanguage}
+              onOpenRoadmap={() => setIsRoadmapOpen(true)}
+            />
+          </div>
         );
       case 'lessons':
       default:
         return (
-          <div className="flex flex-1 overflow-hidden relative">
+          <div key="lessons" className="animate-cinematic-page flex flex-1 overflow-hidden relative">
             <Sidebar
               curriculum={activeCurriculum}
               currentLessonId={currentLessonId}
@@ -452,9 +470,10 @@ export default function App() {
                 {/* Lesson Instructions Pane: full height on mobile if mobileTab === 'lesson', or on desktop */}
                 <div className={`
                   ${mobileTab === 'lesson' ? 'flex' : 'hidden'} lg:flex
-                  w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-200 flex-col overflow-hidden h-full bg-white
+                  w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-200 flex-col overflow-hidden h-full bg-white animate-cinematic-up
                 `}>
                   <LessonView
+                    key={currentLessonId}
                     lesson={currentLesson}
                     onApplySolution={(c) => { setCurrentCode(c); setCombo(0); }}
                     onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
@@ -477,7 +496,7 @@ export default function App() {
                 {/* Editor & Console Workspace */}
                 <div className={`
                   ${mobileTab !== 'lesson' ? 'flex' : 'hidden'} lg:flex
-                  w-full lg:w-7/12 flex-col p-2 sm:p-4 gap-2 sm:gap-3 overflow-hidden h-full bg-[#F8FAFC]
+                  w-full lg:w-7/12 flex-col p-2 sm:p-4 gap-2 sm:gap-3 overflow-hidden h-full bg-[#F8FAFC] animate-cinematic-up delay-75
                 `}>
                   {/* Editor: full on mobile if mobileTab === 'editor', or on desktop */}
                   <div className={`

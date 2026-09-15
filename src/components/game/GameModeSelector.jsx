@@ -32,7 +32,7 @@ export const GameModeSelector = ({ currentXP, onSelectMode, onClose }) => {
       `}</style>
       
       <div 
-        className="bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 md:p-8 w-full max-w-5xl max-h-[90vh] flex flex-col relative"
+        className="bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 md:p-8 w-full max-w-5xl max-h-[90vh] flex flex-col relative animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-8">

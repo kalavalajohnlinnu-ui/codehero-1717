@@ -37,7 +37,7 @@ export function ModeLockedModal({
       onClick={onClose}
     >
       <div 
-        className="bg-white border border-amber-300 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl flex flex-col text-slate-900 text-center relative overflow-hidden"
+        className="bg-white border border-amber-300 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl flex flex-col text-slate-900 text-center relative overflow-hidden animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Prominent Cross / Close Button */}

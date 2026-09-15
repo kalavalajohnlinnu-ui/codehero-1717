@@ -138,7 +138,7 @@ export function GoogleSignInButton({ onSuccess, onAuthenticated, onError, text =
           onClick={() => setShowPromptModal(false)}
         >
           <div 
-            className="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-7 text-slate-900 space-y-4"
+            className="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-7 text-slate-900 space-y-4 animate-cinematic-page"
             onClick={e => e.stopPropagation()}
           >
             {/* Header */}

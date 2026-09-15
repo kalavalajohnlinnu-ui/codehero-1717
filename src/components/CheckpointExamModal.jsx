@@ -177,7 +177,7 @@ export function CheckpointExamModal({
       onClick={handleCloseModal}
     >
       <div 
-        className="relative w-full max-w-4xl max-h-[92vh] bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-900"
+        className="relative w-full max-w-4xl max-h-[92vh] bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-900 animate-cinematic-page"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Strip */}

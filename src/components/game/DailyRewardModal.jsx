@@ -45,12 +45,12 @@ export const DailyRewardModal = ({ onClaim, onClose }) => {
         }
       `}</style>
       
-      <div className="bg-slate-900 border border-slate-700 p-10 rounded-3xl max-w-md w-full text-center relative overflow-hidden shadow-2xl">
+      <div className="bg-white border-2 border-amber-300 p-8 sm:p-10 rounded-3xl max-w-md w-full text-center relative overflow-hidden shadow-2xl text-slate-900 animate-cinematic-page">
         {/* Decorative background */}
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-indigo-900/30 to-transparent pointer-events-none"></div>
         
-        <h2 className="text-3xl font-black text-white mb-2 relative z-10">Daily Login Bonus</h2>
-        <p className="text-slate-400 mb-8 relative z-10">You came back! Open your chest for a reward.</p>
+        <h2 className="text-3xl font-black text-slate-900 mb-2 relative z-10">Daily Login Bonus</h2>
+        <p className="text-slate-600 mb-8 relative z-10">You came back! Open your chest for a reward.</p>
         
         <div className="relative h-48 w-full flex items-center justify-center mb-6">
           {!opened ? (

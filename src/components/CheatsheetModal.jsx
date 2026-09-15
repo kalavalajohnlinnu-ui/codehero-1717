@@ -41,7 +41,7 @@ export function CheatsheetModal({
       onClick={onClose}
     >
       <div 
-        className="bg-white border border-slate-200 rounded-3xl w-full max-w-3xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden"
+        className="bg-white border border-slate-200 rounded-3xl w-full max-w-3xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}

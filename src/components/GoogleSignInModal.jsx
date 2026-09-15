@@ -108,7 +108,7 @@ export function GoogleSignInModal({ isOpen, onClose, onAuthenticated }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fade-in font-sans">
       <div 
-        className="bg-white text-slate-800 rounded-3xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 transition-all"
+        className="bg-white text-slate-800 rounded-3xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 transition-all animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Top Google Branding Header */}

@@ -27,7 +27,7 @@ export function Top1PercentRoadmapModal({ isOpen, onClose }) {
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#0A0D14] border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-200"
+        className="relative w-full max-w-4xl max-h-[90vh] bg-[#0A0D14] border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-200 animate-cinematic-page"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

@@ -72,7 +72,7 @@ export function DetectiveFailModal({
       onClick={onClose}
     >
       <div 
-        className="bg-[#090C14] border border-red-500/30 rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-200"
+        className="bg-[#090C14] border border-red-500/30 rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-200 animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Diagnostic Header */}

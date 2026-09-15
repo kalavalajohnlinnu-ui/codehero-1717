@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   User, 
   Mail, 
@@ -29,6 +29,7 @@ const LANGUAGES_LIST = [
 ];
 
 const VIDEO_URL = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4';
+const EASING_ENTRANCE = 'cubic-bezier(0.16, 1, 0.3, 1)';
 
 function StatBadge({ value, label, color = '#38BDF8' }) {
   return (
@@ -44,6 +45,7 @@ function StatBadge({ value, label, color = '#38BDF8' }) {
 }
 
 export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
+  const [mounted, setMounted]                   = useState(false);
   const [mode, setMode]                         = useState('signup'); // 'signup' | 'login'
   const [name, setName]                         = useState('');
   const [email, setEmail]                       = useState('');
@@ -53,6 +55,11 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   const [avatar, setAvatar]                     = useState('dragon');
   const [error, setError]                       = useState(null);
   const [successMsg, setSuccessMsg]             = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 60);
+    return () => clearTimeout(timer);
+  }, []);
 
   const existingStudents = authService.getAllStudents().filter(s => !s.isGuest);
   // Strictly ONE saved profile only
@@ -159,20 +166,35 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
   return (
     <div className="relative w-full min-h-[100dvh] bg-black overflow-x-hidden overflow-y-auto font-sans select-none flex items-center justify-center p-3 sm:p-6 md:p-8 lg:px-12 xl:px-20 py-6 sm:py-8">
       {/* ── 1. Full-Screen Raw Video Background ── */}
-      <video
-        className="fixed inset-0 w-full h-full object-cover pointer-events-none"
-        src={VIDEO_URL}
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+      <div 
+        className={`fixed inset-0 w-full h-full pointer-events-none transition-all duration-[1400ms] ${
+          mounted ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
+        }`}
+        style={{ transitionTimingFunction: EASING_ENTRANCE }}
+      >
+        <video
+          className="w-full h-full object-cover"
+          src={VIDEO_URL}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
 
       {/* ── 2. Full-Width Split Layout (Anchored Left & Right, Maximum Contrast) ── */}
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 py-2 sm:py-4">
 
         {/* ── Left Column: Mission (Solid dark high-contrast panel, order-2 on mobile, order-1 on desktop) ── */}
-        <div className="w-full lg:w-[48%] xl:w-[46%] max-w-xl h-fit p-5 sm:p-7 md:p-9 rounded-3xl backdrop-blur-2xl bg-black/75 border border-white/20 shadow-2xl text-white order-2 lg:order-1">
+        <div 
+          className={`w-full lg:w-[48%] xl:w-[46%] max-w-xl h-fit p-5 sm:p-7 md:p-9 rounded-3xl backdrop-blur-2xl bg-black/75 border border-white/20 shadow-2xl text-white order-2 lg:order-1 transition-all duration-900 ${
+            mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-[0.98]'
+          }`}
+          style={{
+            transitionTimingFunction: EASING_ENTRANCE,
+            transitionDelay: mounted ? '150ms' : '0ms'
+          }}
+        >
           {/* Brand Header */}
           <div className="flex items-center justify-between gap-3 mb-5 sm:mb-6">
             <div className="flex items-center gap-2.5">
@@ -241,7 +263,15 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
         </div>
 
         {/* ── Right Column: The Account Creation Card (order-1 on mobile, order-2 on desktop) ── */}
-        <div className="w-full lg:w-[46%] xl:w-[44%] max-w-[430px] flex justify-center lg:justify-end shrink-0 h-fit order-1 lg:order-2">
+        <div 
+          className={`w-full lg:w-[46%] xl:w-[44%] max-w-[430px] flex justify-center lg:justify-end shrink-0 h-fit order-1 lg:order-2 transition-all duration-900 ${
+            mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-[0.98]'
+          }`}
+          style={{
+            transitionTimingFunction: EASING_ENTRANCE,
+            transitionDelay: mounted ? '300ms' : '0ms'
+          }}
+        >
           <div className="w-full backdrop-blur-2xl bg-white/96 border-2 border-slate-200/90 rounded-3xl p-5 sm:p-7 shadow-2xl shadow-black/50 text-slate-950 transition-all">
 
             {/* Header */}

@@ -32,7 +32,7 @@ export function CelebrationModal({
       onClick={onClose}
     >
       <div 
-        className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl relative overflow-hidden"
+        className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl relative overflow-hidden animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Prominent Cross / Close Button */}

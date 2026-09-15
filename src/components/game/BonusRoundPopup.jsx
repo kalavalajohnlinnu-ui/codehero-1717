@@ -71,7 +71,7 @@ export const BonusRoundPopup = ({ timeLimit = 60, multiplier = 3, onAccept, onSk
       onClick={handleClose}
     >
       <div 
-        className="bg-white border-2 border-amber-400 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center relative shadow-2xl overflow-hidden"
+        className="bg-white border-2 border-amber-400 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center relative shadow-2xl overflow-hidden animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Top Accent Strip */}

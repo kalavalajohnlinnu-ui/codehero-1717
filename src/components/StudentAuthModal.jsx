@@ -183,7 +183,7 @@ export function StudentAuthModal({
       onClick={onClose}
     >
       <div 
-        className="bg-white border border-slate-200 rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-900"
+        className="bg-white border border-slate-200 rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-slate-900 animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Header (Light Studio) */}

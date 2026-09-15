@@ -163,7 +163,7 @@ export function SandboxModal({
       onClick={onClose}
     >
       <div 
-        className="bg-slate-950 border border-slate-800 rounded-3xl w-full max-w-5xl h-[90vh] flex flex-col shadow-2xl overflow-hidden"
+        className="bg-slate-950 border border-slate-800 rounded-3xl w-full max-w-5xl h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-cinematic-page"
         onClick={e => e.stopPropagation()}
       >
         {/* Top Header */}

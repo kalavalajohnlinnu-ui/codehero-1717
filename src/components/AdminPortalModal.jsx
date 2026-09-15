@@ -266,7 +266,7 @@ export function AdminPortalModal({ isOpen, onClose }) {
       onClick={onClose}
     >
       <div 
-        className="w-full max-w-6xl bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col print:border-none print:shadow-none print:rounded-none"
+        className="w-full max-w-6xl bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col print:border-none print:shadow-none print:rounded-none animate-cinematic-page"
         style={{ height: '94vh' }}
         onClick={e => e.stopPropagation()}
       >

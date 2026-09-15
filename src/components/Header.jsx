@@ -76,7 +76,7 @@ export function Header({
   ];
 
   return (
-    <header className="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 select-none shadow-xs">
+    <header className="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 select-none shadow-xs animate-cinematic-down">
 
       {/* ── TOP UTILITY STRIP ─────────────────────────── */}
       <div className="max-w-7xl mx-auto px-2.5 sm:px-5 border-b border-slate-100">
