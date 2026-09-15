@@ -54,12 +54,12 @@ export function OutputConsole({
   ];
 
   return (
-    <div className={`flex flex-col overflow-hidden bg-white border border-slate-200 rounded-2xl shadow-sm transition-all duration-300 ${
+    <div className={`flex flex-col overflow-hidden bg-[#0D121F] border border-white/10 rounded-2xl shadow-2xl transition-all duration-300 ${
       isExpanded ? 'h-[460px]' : 'h-64 sm:h-72'
     }`}>
 
       {/* ── Tab Bar ──────────────────────────────────── */}
-      <div className="flex items-center justify-between px-2.5 bg-slate-50 border-b border-slate-200 shrink-0 min-h-[38px]">
+      <div className="flex items-center justify-between px-2.5 bg-[#090D16] border-b border-white/10 shrink-0 min-h-[38px] text-white">
         <div className="flex items-center gap-1 overflow-x-auto py-1">
           {tabs.filter(t => t.condition).map(tab => {
             const Icon     = tab.icon;
@@ -70,10 +70,10 @@ export function OutputConsole({
                 key={tab.id}
                 onClick={() => { soundService.playClick(); setActiveTab(tab.id); }}
                 className={`
-                  flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap shrink-0
+                  flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap shrink-0 cursor-pointer
                   ${isActive 
-                    ? 'bg-white text-sky-700 border border-slate-200 shadow-2xs font-bold' 
-                    : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200/50'
+                    ? 'bg-white/15 text-white border border-white/20 shadow-sm font-bold' 
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
                   }
                 `}
               >
@@ -129,17 +129,17 @@ export function OutputConsole({
       </div>
 
       {/* ── Tab Content ──────────────────────────────── */}
-      <div className="flex-1 overflow-y-auto p-3.5 text-xs bg-white text-slate-800 font-sans">
+      <div className="flex-1 overflow-y-auto p-3.5 text-xs bg-[#0A0E18] text-slate-100 font-sans">
 
         {/* 1. Terminal Console */}
         {activeTab === 'terminal' && (
           <div className="h-full">
             {outputResult?.stdout ? (
-              <pre className="whitespace-pre-wrap leading-relaxed rounded-xl p-3.5 text-xs font-mono bg-slate-50 border border-slate-200 text-slate-900 shadow-2xs">
+              <pre className="whitespace-pre-wrap leading-relaxed rounded-xl p-3.5 text-xs font-mono bg-[#070A11] border border-white/10 text-emerald-400 shadow-inner selection:bg-emerald-500/20">
                 {outputResult.stdout}
               </pre>
             ) : outputResult?.error ? (
-              <pre className="whitespace-pre-wrap leading-relaxed rounded-xl p-3.5 text-xs font-mono bg-rose-50 border border-rose-200 text-rose-800">
+              <pre className="whitespace-pre-wrap leading-relaxed rounded-xl p-3.5 text-xs font-mono bg-rose-950/30 border border-rose-500/40 text-rose-300 shadow-inner">
                 {outputResult.error}
               </pre>
             ) : (
@@ -181,7 +181,21 @@ export function OutputConsole({
           <div className="space-y-3">
             {testResults?.results?.length > 0 ? (
               <>
-                <div className="flex items-center justify-between pb-2 border-b border-slate-200 text-xs font-medium">
+                {testResults.allPassed && (
+                  <div className="p-3.5 rounded-xl bg-gradient-to-r from-emerald-950/60 via-[#0B0F19] to-amber-950/40 border border-emerald-400/40 flex items-center justify-between gap-2 shadow-lg animate-fade-in">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-2xl">🏆</span>
+                      <div>
+                        <div className="text-xs font-black text-white font-mono">CONGRATULATIONS! ALL TESTS VERIFIED</div>
+                        <div className="text-[10px] text-emerald-300 font-mono font-medium">Concept fully conquered. Challenge solved with zero defects!</div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono font-black px-2.5 py-1 rounded-full bg-[#FCD34D] text-slate-950 shadow-sm shrink-0">
+                      +25 XP Awarded
+                    </span>
+                  </div>
+                )}
+                <div className="flex items-center justify-between pb-2 border-b border-white/10 text-xs font-medium">
                   <span className="text-slate-500 font-mono">Verification Checklist:</span>
                   <span className={`font-mono font-bold px-2 py-0.5 rounded-full ${
                     testResults.allPassed ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
@@ -196,8 +210,8 @@ export function OutputConsole({
                       key={idx}
                       className={`p-3 rounded-xl border text-xs flex items-start justify-between gap-3 ${
                         r.passed 
-                          ? 'bg-emerald-50/60 border-emerald-200 text-emerald-950' 
-                          : 'bg-rose-50/70 border-rose-200 text-rose-950'
+                          ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-300' 
+                          : 'bg-rose-950/20 border-rose-500/30 text-rose-300'
                       }`}
                     >
                       <div className="flex items-start gap-2.5 min-w-0">
@@ -207,7 +221,7 @@ export function OutputConsole({
                           <XCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
                         )}
                         <div className="min-w-0">
-                          <div className="font-bold text-slate-900">{r.description}</div>
+                          <div className="font-bold text-white">{r.description}</div>
                           {!r.passed && (
                             <div className="mt-1.5 text-[11px] font-mono bg-white p-2 rounded-lg border border-rose-200 text-rose-800">
                               {r.actual}

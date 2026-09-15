@@ -130,11 +130,11 @@ export function CodeEditor({
           </div>
           <div className="hidden sm:block w-[1px] h-3.5 bg-slate-200 shrink-0" />
           {/* File name */}
-          <span className="text-xs font-mono font-bold text-slate-800 truncate min-w-0">
+          <span className="text-xs font-mono font-bold text-white truncate min-w-0">
             {isHeroMode ? langMeta.heroFile : langMeta.proFile}
           </span>
           {/* Language badge */}
-          <span className="hidden sm:inline-block text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200 shrink-0">
+          <span className="hidden sm:inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-white/10 text-sky-400 border border-white/15 shrink-0">
             {langMeta.badge}
           </span>
         </div>
@@ -144,7 +144,7 @@ export function CodeEditor({
           <button 
             type="button"
             onClick={handleCopy}
-            className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 active:scale-95 transition-all touch-manipulation cursor-pointer shrink-0"
+            className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all touch-manipulation cursor-pointer shrink-0"
             title="Copy Code"
           >
             {copied
@@ -157,7 +157,7 @@ export function CodeEditor({
             <button
               type="button"
               onClick={() => { soundService.playClick(); onReset(); }}
-              className="h-7 sm:h-8 px-2 sm:px-2.5 flex items-center justify-center gap-1 text-xs rounded-lg font-mono text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 active:scale-95 transition-all touch-manipulation cursor-pointer shrink-0"
+              className="h-7 sm:h-8 px-2 sm:px-2.5 flex items-center justify-center gap-1 text-xs rounded-lg font-mono text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all touch-manipulation cursor-pointer shrink-0"
               title="Reset to starter code"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -175,7 +175,7 @@ export function CodeEditor({
                 h-8 px-2.5 sm:px-3.5 flex items-center gap-1 sm:gap-1.5 rounded-lg font-bold text-xs font-mono transition-all shadow-sm shrink-0 active:scale-95 touch-manipulation cursor-pointer
                 ${isRunning 
                   ? 'bg-amber-100 text-amber-800 border border-amber-300 cursor-wait' 
-                  : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20'
+                  : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black shadow-lg shadow-emerald-500/25'
                 }
               `}
               title="Run code (Ctrl+Enter)"
@@ -201,7 +201,7 @@ export function CodeEditor({
       </div>
 
       {/* ── Mobile shortcut keys ─────────────────────── */}
-      <div className="flex items-center gap-1.5 px-3 py-1.5 overflow-x-auto shrink-0 select-none bg-slate-50/50 border-b border-slate-200">
+      <div className="flex items-center gap-1.5 px-3 py-1.5 overflow-x-auto shrink-0 select-none bg-[#070A11] border-b border-white/10">
         <span className="text-[9px] font-mono uppercase tracking-widest text-slate-400 font-bold shrink-0 hidden sm:inline">
           Keys:
         </span>
@@ -220,7 +220,7 @@ export function CodeEditor({
             key={idx}
             type="button"
             onClick={() => insertTextAtCursor(item.val)}
-            className="px-2 py-0.5 rounded-md text-xs font-mono font-semibold shrink-0 transition-all bg-white border border-slate-200 text-slate-700 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 shadow-2xs active:scale-95 touch-manipulation cursor-pointer"
+            className="px-2 py-0.5 rounded-md text-xs font-mono font-semibold shrink-0 transition-all bg-white/5 border border-white/10 text-slate-300 hover:bg-white/15 hover:text-white shadow-2xs active:scale-95 touch-manipulation cursor-pointer"
           >
             {item.label}
           </button>
@@ -228,12 +228,12 @@ export function CodeEditor({
       </div>
 
       {/* ── Code surface (Clean Light IDE) ───────────── */}
-      <div className="relative flex-1 flex overflow-hidden font-mono bg-white">
+      <div className="relative flex-1 flex overflow-hidden font-mono bg-[#0A0E18]">
         {/* Line numbers */}
         <div
           ref={lineNumbersRef}
           aria-hidden="true"
-          className="select-none py-3 pl-2 pr-3 text-right overflow-hidden leading-[1.65] shrink-0 bg-slate-50/60 border-r border-slate-200 text-slate-400 text-xs w-11"
+          className="select-none py-3 pl-2 pr-3 text-right overflow-hidden leading-[1.65] shrink-0 bg-[#070A11] border-r border-white/10 text-slate-500 text-xs w-11"
         >
           {Array.from({ length: lineCount }).map((_, i) => (
             <div key={i} style={{ lineHeight: '1.65', height: '19.8px' }}>{i + 1}</div>
@@ -251,7 +251,7 @@ export function CodeEditor({
           autoCapitalize="off"
           autoComplete="off"
           autoCorrect="off"
-          className="code-editor-textarea flex-1 w-full h-full p-3 bg-transparent text-slate-900 placeholder-slate-400 resize-none focus:outline-none overflow-auto font-mono selection:bg-sky-100 text-xs sm:text-sm"
+          className="code-editor-textarea flex-1 w-full h-full p-3 bg-transparent text-slate-100 placeholder-slate-600 resize-none focus:outline-none overflow-auto font-mono selection:bg-sky-500/30 text-xs sm:text-sm"
           style={{
             lineHeight: '1.65',
           }}
@@ -260,7 +260,7 @@ export function CodeEditor({
       </div>
 
       {/* ── Status bar ───────────────────────────────── */}
-      <div className="px-3.5 py-1 flex items-center justify-between shrink-0 bg-slate-50 border-t border-slate-200 font-mono text-[11px] text-slate-500">
+      <div className="px-3.5 py-1 flex items-center justify-between shrink-0 bg-[#070A11] border-t border-white/10 font-mono text-[11px] text-slate-400">
         <div className="flex items-center gap-3">
           <span>Ln {lines.length}</span>
           <span>Col {actualCode.length}</span>

@@ -21,7 +21,6 @@ import {
   ChevronDown,
   MoreHorizontal,
   X,
-  Flower2
 } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { IngeniumLogo } from './IngeniumLogo';
@@ -76,10 +75,10 @@ export function Header({
   ];
 
   return (
-    <header className="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 select-none shadow-xs">
+    <header className="bg-[#090D16]/95 backdrop-blur-md border-b border-white/10 sticky top-0 z-40 select-none shadow-xl text-white">
 
       {/* ── TOP UTILITY STRIP ─────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-2.5 sm:px-5 border-b border-slate-100">
+      <div className="max-w-7xl mx-auto px-2.5 sm:px-5 border-b border-white/10">
         <div className="flex items-center justify-between gap-2 py-2 sm:py-2.5">
 
           {/* Left: Brand + Language */}
@@ -103,7 +102,7 @@ export function Header({
             <button
               type="button"
               onClick={() => { soundService.playClick(); onOpenRoadmap?.(); }}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg transition-all group bg-amber-50 hover:bg-amber-100/70 border border-amber-200/80 text-slate-700 active:scale-95 touch-manipulation cursor-pointer"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg transition-all group bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 active:scale-95 touch-manipulation cursor-pointer"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-[11px] font-mono font-semibold">
@@ -118,18 +117,18 @@ export function Header({
           {/* Right: XP, Student, Tools */}
           <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             {/* XP + Streak metric */}
-            <div className="flex items-center rounded-xl overflow-hidden border border-slate-200 bg-slate-50 shrink-0">
-              <div className="hidden md:flex flex-col gap-0 px-2.5 py-1 border-r border-slate-200">
+            <div className="flex items-center rounded-xl overflow-hidden border border-white/15 bg-white/5 shrink-0">
+              <div className="hidden md:flex flex-col gap-0 px-2.5 py-1 border-r border-white/10">
                 <span className="text-[9px] font-mono uppercase tracking-widest leading-none text-slate-400">
                   {prog.levelName}
                 </span>
-                <span className="text-xs font-mono font-bold leading-none mt-0.5 text-sky-600">
+                <span className="text-xs font-mono font-black leading-none mt-0.5 text-[#FCD34D]">
                   {totalXP.toLocaleString()} XP
                 </span>
               </div>
-              <div className="flex items-center gap-1 px-2 py-1 bg-amber-50/60">
+              <div className="flex items-center gap-1 px-2 py-1 bg-[#FCD34D]/15">
                 <span className="text-sm leading-none streak-fire">🔥</span>
-                <span className="text-xs font-mono font-bold text-amber-600">{streak}</span>
+                <span className="text-xs font-mono font-black text-[#FCD34D]">{streak}</span>
               </div>
             </div>
 
@@ -137,10 +136,10 @@ export function Header({
             <button
               type="button"
               onClick={() => { soundService.playClick(); onOpenIntro?.(); }}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-black text-white hover:bg-zinc-800 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-white/10 hover:bg-white/20 border border-white/10 text-white shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
               title="Ingenium Academy Intro"
             >
-              <Flower2 className="w-3.5 h-3.5 text-white/90" />
+              <Sparkles className="w-3.5 h-3.5 text-[#FCD34D]" />
               <span className="hidden md:inline">Ingenium</span>
             </button>
 
@@ -148,10 +147,10 @@ export function Header({
             <button
               type="button"
               onClick={() => { soundService.playClick(); onOpenNotes?.(); }}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-sky-100 hover:bg-sky-200 border border-sky-300 text-sky-900 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 text-sky-200 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
               title="Notes & Handbook PDF"
             >
-              <BookOpen className="w-3.5 h-3.5 text-sky-700" />
+              <BookOpen className="w-3.5 h-3.5 text-sky-300" />
               <span>Notes</span>
             </button>
 
@@ -172,10 +171,10 @@ export function Header({
             <button
               type="button"
               onClick={() => { soundService.playClick(); onOpenStudentAuth?.(); }}
-              className="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono font-medium bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
+              className="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 shadow-2xs active:scale-95 touch-manipulation cursor-pointer shrink-0"
               title="Student Profile"
             >
-              <User className="w-3.5 h-3.5 text-slate-600" />
+              <User className="w-3.5 h-3.5 text-slate-300" />
               <span className="max-w-[75px] truncate hidden lg:inline font-bold">
                 {currentStudent?.name || 'Student'}
               </span>
@@ -259,7 +258,7 @@ export function Header({
                     className="fixed inset-0 z-40" 
                     onClick={() => setShowMobileMenu(false)} 
                   />
-                  <div className="absolute right-0 top-10 w-48 bg-white border border-slate-200 rounded-2xl shadow-xl z-50 p-1.5 space-y-1 animate-scale-bounce">
+                  <div className="absolute right-0 top-10 w-48 bg-[#0D121F] border border-white/15 rounded-2xl shadow-2xl z-50 p-1.5 space-y-1 animate-scale-bounce text-slate-200">
                     {isAdmin && (
                       <button
                         type="button"
@@ -358,10 +357,10 @@ export function Header({
                 className={`
                   flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all shrink-0 cursor-pointer touch-manipulation active:scale-95
                   ${isActive 
-                    ? 'bg-sky-50 text-sky-700 border border-sky-300 font-bold shadow-2xs' 
+                    ? 'bg-gradient-to-r from-amber-400/20 to-sky-500/20 text-[#FCD34D] border border-amber-400/40 font-bold shadow-sm' 
                     : isUnlocked
-                      ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-transparent'
-                      : 'text-slate-400 hover:text-amber-700 hover:bg-amber-50/50 border border-transparent'
+                      ? 'text-slate-300 hover:text-white hover:bg-white/10 border border-transparent'
+                      : 'text-slate-500 hover:text-amber-400 hover:bg-white/5 border border-transparent'
                   }
                 `}
               >
@@ -371,10 +370,10 @@ export function Header({
                 <span className="whitespace-nowrap">{mode.label}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded font-bold ${
                   isActive 
-                    ? 'bg-sky-100 text-sky-800' 
+                    ? 'bg-[#FCD34D] text-slate-950 font-black' 
                     : !isUnlocked
-                      ? 'bg-amber-50 text-amber-700 border border-amber-200'
-                      : 'bg-slate-100 text-slate-500'
+                      ? 'bg-white/10 text-amber-400 border border-amber-400/30'
+                      : 'bg-white/10 text-slate-400'
                 }`}>
                   {!isUnlocked && criteria ? `${completedCount}/${criteria.requiredQuests}` : mode.count}
                 </span>
@@ -386,7 +385,7 @@ export function Header({
           <button
             type="button"
             onClick={() => { soundService.playClick(); onOpenRoadmap?.(); }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all shrink-0 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 shadow-2xs whitespace-nowrap active:scale-95 touch-manipulation cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all shrink-0 bg-[#FCD34D]/15 hover:bg-[#FCD34D]/25 text-[#FCD34D] border border-[#FCD34D]/30 shadow-sm whitespace-nowrap active:scale-95 touch-manipulation cursor-pointer"
           >
             <span>⭐</span>
             <span>1% Blueprint</span>

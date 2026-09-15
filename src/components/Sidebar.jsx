@@ -78,13 +78,13 @@ export function Sidebar({
 
       <aside className={`
         fixed lg:static top-0 bottom-0 left-0 z-50
-        w-72 flex flex-col h-full bg-white border-r border-slate-200
+        w-72 flex flex-col h-full bg-[#090D16] border-r border-white/10 text-slate-200 select-none
         transition-transform duration-300 ease-in-out
         ${isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
 
         {/* Header */}
-        <div className="p-3.5 shrink-0 border-b border-slate-100 bg-slate-50/50">
+        <div className="p-3.5 shrink-0 border-b border-white/10 bg-white/5">
           {/* Mobile close row */}
           <div className="flex items-center justify-between lg:hidden mb-3">
             <span className="text-[10px] font-mono uppercase tracking-widest font-bold text-slate-500">
@@ -106,13 +106,13 @@ export function Sidebar({
               placeholder="Search curriculum…"
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
-              className="w-full rounded-lg text-xs pl-9 pr-3 py-2 bg-white border border-slate-200 text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500 shadow-sm"
+              className="w-full rounded-xl text-xs pl-9 pr-3 py-2 bg-[#0D121F] border border-white/15 text-white placeholder-slate-500 font-mono focus:outline-none focus:border-[#FCD34D] shadow-sm"
             />
           </div>
         </div>
 
         {/* Scrollable module tree */}
-        <div className="flex-1 overflow-y-auto p-2 space-y-1 bg-white">
+        <div className="flex-1 overflow-y-auto p-2 space-y-1.5 bg-[#090D16]">
           {filteredCurriculum.map((module) => {
             const Icon = ICON_MAP[module.icon] || BookOpen;
             const isCollapsed    = !searchTerm && collapsedModules[module.id];
@@ -125,20 +125,20 @@ export function Sidebar({
             return (
               <div 
                 key={module.id} 
-                className="rounded-xl overflow-hidden border border-slate-200/80 bg-slate-50/40 hover:border-slate-300 transition-colors"
+                className="rounded-xl overflow-hidden border border-white/10 bg-white/5 hover:border-white/20 transition-colors"
               >
                 {/* Module header row */}
                 <button
                   onClick={() => toggleModule(module.id)}
                   className={`w-full flex items-center gap-2.5 p-2.5 text-left transition-all group ${
-                    isAllCompleted ? 'bg-emerald-50/40' : 'hover:bg-slate-100/60'
+                    isAllCompleted ? 'bg-emerald-500/10' : 'hover:bg-white/5'
                   }`}
                 >
                   {/* Icon */}
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border ${
                     isAllCompleted 
-                      ? 'bg-emerald-100 border-emerald-300 text-emerald-700' 
-                      : 'bg-sky-50 border-sky-200 text-sky-600'
+                      ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-400' 
+                      : 'bg-white/10 border-white/15 text-sky-400'
                   }`}>
                     {isAllCompleted
                       ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
@@ -147,17 +147,17 @@ export function Sidebar({
 
                   {/* Title + progress */}
                   <div className="flex-1 min-w-0">
-                    <div className="text-[11px] font-bold truncate text-slate-800">
+                    <div className="text-[11px] font-bold truncate text-white">
                       {module.title}
                     </div>
                     <div className="flex items-center gap-2 mt-1">
                       {/* Mini progress bar */}
-                      <div className="flex-1 h-[3px] rounded-full bg-slate-200">
+                      <div className="flex-1 h-[3px] rounded-full bg-white/10">
                         <div 
                           className="h-full rounded-full transition-all duration-500"
                           style={{
                             width: `${pct}%`,
-                            background: isAllCompleted ? '#059669' : '#0284C7'
+                            background: isAllCompleted ? '#10B981' : '#FCD34D'
                           }} 
                         />
                       </div>
@@ -177,7 +177,7 @@ export function Sidebar({
 
                 {/* Lesson list */}
                 {!isCollapsed && (
-                  <div className="px-2 pb-2 pt-1 space-y-0.5 border-t border-slate-200/60 bg-white">
+                  <div className="px-2 pb-2 pt-1 space-y-1 border-t border-white/10 bg-black/20">
                     {(module.lessons || []).map(lesson => {
                       const isSelected = lesson.id === currentLessonId;
                       const isComplete = completedLessons.includes(lesson.id);
