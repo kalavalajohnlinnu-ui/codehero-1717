@@ -344,10 +344,11 @@ export default function App() {
               if (count % 5 === 0) setBonusRoundActive(true);
               return count;
             });
-            setTimeout(() => {
-              setIsCelebrationOpen(true);
-            }, 400);
           }
+          soundService.playSuccess();
+          setTimeout(() => {
+            setIsCelebrationOpen(true);
+          }, 300);
         } else {
           soundService.playFail();
           setPythieMood('detective');
@@ -471,6 +472,8 @@ export default function App() {
                     mascotName={activeLang.mascotName}
                     mascotType={activeLang.mascotType}
                     mascotTitle={activeLang.mascotTitle}
+                    languageId={currentLanguageId}
+                    onXPEarned={handleXPEarned}
                   />
                 </div>
 
