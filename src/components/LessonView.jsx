@@ -12,18 +12,10 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle2,
-  Award,
-  Code2,
-  Zap,
-  ShieldAlert,
-  Flame,
-  Play,
-  Layers,
-  BookOpen
+  Award
 } from 'lucide-react';
 import { PythieMascot } from './PythieMascot';
 import { soundService } from '../services/soundService';
-import { lessonPracticeService } from '../services/lessonPracticeService';
 
 export function LessonView({
   lesson,
@@ -37,52 +29,40 @@ export function LessonView({
   pythieSpeech,
   mascotName = 'Pythie',
   mascotType = 'dragon',
-  mascotTitle = 'Coding Companion',
-  currentLanguageId = 'python'
+  mascotTitle = 'Coding Companion'
 }) {
-  const [openHintIndex, setOpenHintIndex]       = useState(null);
-  const [copiedSolution, setCopiedSolution]     = useState(false);
-  const [activeExampleIndex, setActiveExampleIndex] = useState(0);
-  const [activeDrillIndex, setActiveDrillIndex]     = useState(0);
-  const [toastMessage, setToastMessage]         = useState(null);
+  const [openHintIndex, setOpenHintIndex]     = useState(null);
+  const [copiedSolution, setCopiedSolution]   = useState(false);
 
   if (!lesson) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center p-8 gap-3 text-slate-400 bg-[#0B0F19]">
+      <div className="flex-1 flex flex-col items-center justify-center p-8 gap-3 text-slate-400">
         <div className="text-4xl opacity-40">⚡</div>
-        <p className="text-xs font-mono text-center text-slate-400">
+        <p className="text-xs font-mono text-center">
           Select a quest from the curriculum map to begin learning.
         </p>
       </div>
     );
   }
 
-  // Load examples & 3-way practice drills for this lesson
-  const { examples, drills } = lessonPracticeService.getLessonExamplesAndDrills(lesson, currentLanguageId);
-
-  const showToast = (msg) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 2500);
-  };
-
   const toggleHint = (index) => {
     soundService.playClick();
     setOpenHintIndex(prev => prev === index ? null : index);
   };
 
-  const handleCopyCode = (text) => {
+  const handleCopySolution = (sol) => {
     soundService.playClick();
-    navigator.clipboard.writeText(text);
-    showToast('Copied to clipboard!');
+    navigator.clipboard.writeText(sol);
+    setCopiedSolution(true);
+    setTimeout(() => setCopiedSolution(false), 2000);
   };
 
-  const handleApplyToEditor = (code, sourceName) => {
+  const handleInsertSolution = (sol) => {
     soundService.playMagic();
-    onApplySolution(code);
-    showToast(`Loaded ${sourceName} into Editor! →`);
+    onApplySolution(sol);
   };
 
-  // ── Markdown renderer in peak dark studio ─────────────────────
+  // ── Markdown renderer in light mode ─────────────────────
   const renderMarkdown = (text) => {
     if (!text) return null;
     const lines = text.split('\n');
@@ -95,24 +75,16 @@ export function LessonView({
       if (line.startsWith('```')) {
         if (inCodeBlock) {
           elements.push(
-            <div key={`code-${idx}`} className="my-3 rounded-xl overflow-hidden border border-white/10 bg-[#070A11] shadow-inner">
-              <div className="flex items-center justify-between px-3 py-1.5 border-b border-white/10 bg-white/5">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                  {lang && <span className="text-[10px] font-mono text-slate-400 ml-2 font-semibold">{lang}</span>}
+            <div key={`code-${idx}`} className="my-3 rounded-xl overflow-hidden border border-slate-200 bg-slate-50 shadow-inner">
+              <div className="flex items-center gap-2 px-3 py-1.5 border-b border-slate-200 bg-slate-100/70">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-rose-400/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
                 </div>
-                <button
-                  type="button"
-                  onClick={() => handleCopyCode(codeBuffer.join('\n'))}
-                  className="text-[10px] font-mono text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer"
-                >
-                  <Copy size={11} />
-                  <span>Copy</span>
-                </button>
+                {lang && <span className="text-[10px] font-mono text-slate-500 font-semibold">{lang}</span>}
               </div>
-              <pre className="p-3.5 overflow-x-auto text-xs leading-relaxed font-mono text-[#38BDF8] selection:bg-sky-500/30">
+              <pre className="p-3.5 overflow-x-auto text-xs leading-relaxed font-mono text-slate-800">
                 {codeBuffer.join('\n')}
               </pre>
             </div>
@@ -131,27 +103,27 @@ export function LessonView({
 
       if (line.startsWith('### ')) {
         elements.push(
-          <h3 key={idx} className="text-sm font-black mt-4 mb-2 flex items-center gap-2 text-white font-display">
-            <span className="w-1.5 h-4 rounded-full bg-[#FCD34D] inline-block shrink-0" />
+          <h3 key={idx} className="text-sm font-bold mt-4 mb-2 flex items-center gap-2 text-slate-900">
+            <span className="w-1.5 h-4 rounded-full bg-sky-600 inline-block shrink-0" />
             {line.replace('### ', '')}
           </h3>
         );
       } else if (line.startsWith('#### ')) {
         elements.push(
-          <h4 key={idx} className="text-xs font-bold mt-3 mb-1.5 text-sky-400 font-mono uppercase tracking-wider">
+          <h4 key={idx} className="text-xs font-bold mt-3 mb-1.5 text-sky-700">
             {line.replace('#### ', '')}
           </h4>
         );
       } else if (line.startsWith('- ')) {
         elements.push(
-          <li key={idx} className="text-xs ml-4 mb-1.5 leading-relaxed flex items-start gap-2 text-slate-300 list-none">
-            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 bg-[#FCD34D] inline-block" />
+          <li key={idx} className="text-xs ml-4 mb-1.5 leading-relaxed flex items-start gap-2 text-slate-600 list-none">
+            <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 bg-sky-500 inline-block" />
             <span>{formatInline(line.replace('- ', ''))}</span>
           </li>
         );
       } else if (line.startsWith('> ')) {
         elements.push(
-          <blockquote key={idx} className="my-2.5 px-3.5 py-2.5 rounded-r-xl text-xs italic border-l-4 border-[#FCD34D] bg-[#FCD34D]/10 text-amber-200">
+          <blockquote key={idx} className="my-2.5 px-3.5 py-2.5 rounded-r-xl text-xs italic border-l-4 border-amber-500 bg-amber-50 text-amber-900">
             {formatInline(line.replace('> ', ''))}
           </blockquote>
         );
@@ -159,7 +131,7 @@ export function LessonView({
         elements.push(<div key={idx} className="h-1.5" />);
       } else {
         elements.push(
-          <p key={idx} className="text-xs leading-relaxed text-slate-300">
+          <p key={idx} className="text-xs leading-relaxed text-slate-700">
             {formatInline(line)}
           </p>
         );
@@ -174,41 +146,33 @@ export function LessonView({
     return parts.map((part, i) => {
       if (part.startsWith('`') && part.endsWith('`')) {
         return (
-          <code key={i} className="px-1.5 py-0.5 rounded text-[11px] font-mono font-bold bg-white/10 text-[#38BDF8] border border-white/10">
+          <code key={i} className="px-1.5 py-0.5 rounded text-[11px] font-mono font-semibold bg-sky-50 text-sky-800 border border-sky-200">
             {part.slice(1, -1)}
           </code>
         );
       }
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i} className="font-bold text-white">{part.slice(2, -2)}</strong>;
+        return <strong key={i} className="font-bold text-slate-900">{part.slice(2, -2)}</strong>;
       }
       return part;
     });
   };
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 lg:p-6 space-y-6 max-w-2xl mx-auto w-full bg-[#0B0F19] text-slate-100 select-none">
+    <div className="flex-1 overflow-y-auto p-4 lg:p-6 space-y-5 max-w-2xl mx-auto w-full bg-white text-slate-900">
 
-      {/* Floating Action Confirmation Toast */}
-      {toastMessage && (
-        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-xl bg-[#FCD34D] text-slate-950 font-mono font-black text-xs shadow-2xl flex items-center gap-2 animate-bounce">
-          <Sparkles size={14} />
-          <span>{toastMessage}</span>
-        </div>
-      )}
-
-      {/* Mobile curriculum sidebar button */}
-      <div className="flex items-center justify-between lg:hidden pb-3 border-b border-white/10">
+      {/* Mobile sidebar toggle */}
+      <div className="flex items-center justify-between lg:hidden pb-3 border-b border-slate-200">
         <button
           onClick={onOpenMobileSidebar}
-          className="flex items-center gap-1.5 text-xs rounded-lg px-3 py-1.5 font-mono bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all font-semibold"
+          className="flex items-center gap-1.5 text-xs rounded-lg px-3 py-1.5 font-mono bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 transition-all font-semibold"
         >
-          <Menu className="w-3.5 h-3.5 text-[#FCD34D]" />
-          <span>Curriculum Map</span>
+          <Menu className="w-3.5 h-3.5 text-sky-600" />
+          <span>Curriculum</span>
         </button>
       </div>
 
-      {/* Mascot companion in Hero Mode */}
+      {/* Mascot companion (Hero Mode) */}
       {isHeroMode && (
         <div className="pt-1">
           <PythieMascot
@@ -222,160 +186,68 @@ export function LessonView({
         </div>
       )}
 
-      {/* ── 01. Lesson Title & Meta Header ─────────────────────── */}
-      <div className="space-y-2">
-        <div className="flex items-center flex-wrap gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono font-extrabold uppercase tracking-wider bg-[#FCD34D]/15 text-[#FCD34D] border border-[#FCD34D]/30">
+      {/* ── Lesson title & meta ─────────────────────── */}
+      <div>
+        <div className="flex items-center flex-wrap gap-2 mb-2">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-sky-50 text-sky-700 border border-sky-200">
             <Tag className="w-2.5 h-2.5" />
             {lesson.badge}
           </span>
-          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-400 font-semibold">
-            <Clock className="w-3 h-3 text-slate-500" />
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-500 font-semibold">
+            <Clock className="w-3 h-3" />
             {lesson.duration}
           </span>
           {isComplete && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[10px] font-mono font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-sm animate-pulse">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-300">
               <CheckCircle2 className="w-3 h-3" />
-              Mastered
+              Completed
             </span>
           )}
         </div>
 
-        <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white font-display">
+        <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 font-display">
           {lesson.title}
         </h2>
       </div>
 
-      {/* ── 02. Concept Explanation Card ───────────────── */}
-      <div className="rounded-2xl p-4 sm:p-5 bg-[#111625] border border-white/10 shadow-xl space-y-2">
-        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#FCD34D] font-extrabold flex items-center gap-2">
-          <BookOpen size={12} />
-          <span>01 // CORE CONCEPT & ARCHITECTURE</span>
+      {/* ── Concept explanation card ───────────────── */}
+      <div className="rounded-2xl p-4 sm:p-5 bg-white border border-slate-200 shadow-sm space-y-1.5">
+        <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">
+          Lesson Concept
         </div>
-        <div className="pt-1">
-          {renderMarkdown(lesson.concept)}
-        </div>
+        {renderMarkdown(lesson.concept)}
       </div>
 
-      {/* ── 03. Multi-Angle Code Examples & Mental Models ── */}
-      {examples?.length > 0 && (
-        <div className="rounded-2xl p-4 sm:p-5 bg-[#111625] border border-white/10 shadow-xl space-y-3">
-          <div className="flex items-center justify-between">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-sky-400 font-extrabold flex items-center gap-2">
-              <Code2 size={13} />
-              <span>02 // CODE EXAMPLES & MENTAL MODELS</span>
-            </div>
-            <span className="text-[10px] font-mono text-slate-400">
-              {examples.length} Patterns
-            </span>
-          </div>
-
-          {/* Example Selector Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-black/40 border border-white/10 overflow-x-auto">
-            {examples.map((ex, idx) => (
-              <button
-                key={ex.id}
-                type="button"
-                onClick={() => { soundService.playClick(); setActiveExampleIndex(idx); }}
-                className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold transition-all whitespace-nowrap cursor-pointer ${
-                  activeExampleIndex === idx
-                    ? 'bg-white/15 text-white border border-white/20 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                {ex.category}
-              </button>
-            ))}
-          </div>
-
-          {/* Active Example Display */}
-          {examples[activeExampleIndex] && (
-            <div className="space-y-2.5 pt-1">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-bold text-white font-mono">
-                  {examples[activeExampleIndex].title}
-                </span>
-                <span className="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 font-extrabold">
-                  {examples[activeExampleIndex].badge}
-                </span>
-              </div>
-
-              <p className="text-xs text-slate-300 leading-relaxed">
-                {examples[activeExampleIndex].explanation}
-              </p>
-
-              {/* Code Snippet Box */}
-              <div className="rounded-xl overflow-hidden border border-white/10 bg-[#070A11] shadow-inner">
-                <div className="flex items-center justify-between px-3 py-1.5 border-b border-white/10 bg-white/5">
-                  <span className="text-[10px] font-mono text-slate-400 font-bold">
-                    Runnable Code Example
-                  </span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleCopyCode(examples[activeExampleIndex].code)}
-                      className="text-[10px] font-mono text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors"
-                    >
-                      <Copy size={11} />
-                      <span>Copy</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleApplyToEditor(examples[activeExampleIndex].code, examples[activeExampleIndex].category + ' Example')}
-                      className="text-[10px] font-mono text-[#FCD34D] hover:underline flex items-center gap-1 cursor-pointer font-bold transition-colors"
-                    >
-                      <Sparkles size={11} />
-                      <span>Try in Editor →</span>
-                    </button>
-                  </div>
-                </div>
-                <pre className="p-3.5 overflow-x-auto text-xs leading-relaxed font-mono text-[#38BDF8] selection:bg-sky-500/30">
-                  {examples[activeExampleIndex].code}
-                </pre>
-              </div>
-
-              {/* Pro Tip */}
-              {examples[activeExampleIndex].tip && (
-                <div className="p-2.5 rounded-xl bg-amber-400/10 border border-amber-400/20 text-[11px] text-amber-200 font-medium flex items-start gap-2">
-                  <Lightbulb size={14} className="text-[#FCD34D] shrink-0 mt-0.5" />
-                  <span>{examples[activeExampleIndex].tip}</span>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* ── 04. Mission / Coding Task Box ───────────── */}
-      <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-b from-sky-950/40 via-[#111625] to-[#111625] border-2 border-sky-500/40 shadow-xl relative overflow-hidden space-y-3">
-        <div className="flex items-center justify-between">
+      {/* ── Mission / Task challenge box ───────────── */}
+      <div className="rounded-2xl p-4 sm:p-5 bg-sky-50/70 border-2 border-sky-200 shadow-sm relative overflow-hidden">
+        <div className="flex items-center justify-between mb-2.5">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-sky-500/20 border border-sky-400/40 flex items-center justify-center">
-              <Target className="w-3.5 h-3.5 text-sky-400" />
+            <div className="w-6 h-6 rounded-md bg-sky-100 border border-sky-300 flex items-center justify-center">
+              <Target className="w-3.5 h-3.5 text-sky-700" />
             </div>
-            <span className="text-xs font-mono font-black text-white uppercase tracking-wider">
-              03 // YOUR CODING MISSION
+            <span className="text-xs font-mono font-bold text-sky-900 uppercase tracking-wider">
+              Your Coding Mission
             </span>
           </div>
-          <span className="text-[10px] font-mono font-extrabold px-2.5 py-0.5 rounded-full bg-[#FCD34D] text-slate-950 shadow-sm">
+          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">
             +25 XP
           </span>
         </div>
 
-        <p className="text-xs sm:text-sm leading-relaxed text-slate-200 whitespace-pre-line font-medium">
+        <p className="text-xs leading-relaxed text-slate-800 whitespace-pre-line font-medium">
           {lesson.task}
         </p>
 
-        {/* Goal Checklist */}
+        {/* Goal checklist */}
         {lesson.tests?.length > 0 && (
-          <div className="pt-2 border-t border-white/10 space-y-2">
-            <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold">
-              Verification Criteria
+          <div className="mt-3.5 pt-3 border-t border-sky-200">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold mb-1.5">
+              Goal Checklist
             </div>
             <ul className="space-y-1.5">
               {lesson.tests.map((t, idx) => (
-                <li key={idx} className="text-xs flex items-center gap-2 text-slate-300 font-mono">
-                  <span className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 text-[9px] font-bold bg-sky-500/20 text-sky-400 border border-sky-500/30">
+                <li key={idx} className="text-xs flex items-center gap-2 text-slate-700">
+                  <span className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 font-mono text-[9px] font-bold bg-sky-200 text-sky-800">
                     {idx + 1}
                   </span>
                   <span>{t.description}</span>
@@ -386,129 +258,61 @@ export function LessonView({
         )}
       </div>
 
-      {/* ── 05. Multi-Angle Mastery Practice Drills ("Practice in 3 Ways") ── */}
-      {drills?.length > 0 && (
-        <div className="rounded-2xl p-4 sm:p-5 bg-[#111625] border border-white/10 shadow-xl space-y-3.5">
-          <div className="flex items-center justify-between">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#FCD34D] font-extrabold flex items-center gap-2">
-              <Zap size={13} />
-              <span>04 // MASTERY DRILLS — PRACTICE IN 3 WAYS</span>
-            </div>
-            <span className="text-[10px] font-mono text-slate-400">
-              3 Variations
-            </span>
-          </div>
-
-          <p className="text-xs text-slate-300">
-            Cement your understanding across different angles. Click any drill below to load its challenge into your editor:
-          </p>
-
-          {/* Drill Selector Pills */}
-          <div className="grid grid-cols-3 gap-2">
-            {drills.map((drill, idx) => (
-              <button
-                key={drill.id}
-                type="button"
-                onClick={() => { soundService.playClick(); setActiveDrillIndex(idx); }}
-                className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer touch-manipulation ${
-                  activeDrillIndex === idx
-                    ? 'bg-white/10 border-[#FCD34D] shadow-md ring-1 ring-[#FCD34D]/30'
-                    : 'bg-white/5 border-white/10 hover:border-white/20'
-                }`}
-              >
-                <div className="text-[10px] font-mono font-black uppercase text-slate-400 truncate">
-                  {drill.type}
-                </div>
-                <div className="text-xs font-black text-white truncate mt-0.5">
-                  {drill.tag}
-                </div>
-              </button>
-            ))}
-          </div>
-
-          {/* Active Drill Card */}
-          {drills[activeDrillIndex] && (
-            <div className="p-4 rounded-xl bg-[#070A11] border border-white/10 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold font-mono text-white">
-                  {drills[activeDrillIndex].title}
-                </span>
-                <span className="text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-white/10 text-[#FCD34D] border border-white/10">
-                  {drills[activeDrillIndex].difficulty}
-                </span>
-              </div>
-
-              <p className="text-xs text-slate-300 leading-relaxed">
-                {drills[activeDrillIndex].goal}
-              </p>
-
-              {/* Action Button: Load into Editor */}
-              <button
-                type="button"
-                onClick={() => handleApplyToEditor(drills[activeDrillIndex].starterCode, drills[activeDrillIndex].title)}
-                className="w-full py-2.5 px-3 rounded-xl bg-[#FCD34D] hover:bg-[#FACC15] text-slate-950 font-black text-xs font-mono shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] transition-all touch-manipulation"
-              >
-                <Play size={13} className="fill-current" />
-                <span>Load Drill into Editor & Practice →</span>
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* ── 06. Progressive Clues & Hints ───────────────────────── */}
+      {/* ── Progressive hints ───────────────────────── */}
       {lesson.hints?.length > 0 && (
         <div className="space-y-2">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-amber-400 font-mono">
-            <Lightbulb className="w-4 h-4 text-amber-400" />
-            <span>05 // NEED A CLUE?</span>
+          <div className="flex items-center gap-1.5 text-xs font-bold text-amber-700 font-mono">
+            <Lightbulb className="w-4 h-4 text-amber-500" />
+            <span>Need a Clue?</span>
           </div>
 
           <div className="space-y-1.5">
             {lesson.hints.map((hint, index) => {
               const isOpen = openHintIndex === index;
               const isLastHint = index === lesson.hints.length - 1;
-              const hintLabels = ['Conceptual angle', 'Code structure hint', 'Official Solution'];
+              const hintLabels = ['What to think about', 'Code structure hint', 'Complete Solution'];
 
               return (
-                <div key={index} className="rounded-xl overflow-hidden border border-white/10 bg-[#111625]">
+                <div key={index} className="rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
                   <button
                     onClick={() => toggleHint(index)}
-                    className="w-full flex items-center justify-between p-3 text-left text-xs font-mono transition-colors hover:bg-white/5 cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 text-left text-xs font-mono transition-colors hover:bg-slate-100/70"
                   >
                     <span className="flex items-center gap-2.5">
-                      <span className="w-5 h-5 rounded-full flex items-center justify-center font-mono text-[10px] font-bold bg-[#FCD34D]/20 text-[#FCD34D] border border-[#FCD34D]/40">
+                      <span className="w-5 h-5 rounded-full flex items-center justify-center font-mono text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
                         {index + 1}
                       </span>
-                      <span className="font-bold text-slate-200">
+                      <span className="font-semibold text-slate-700">
                         Clue {index + 1}: {hintLabels[index] || 'Hint'}
                       </span>
                     </span>
                     {isOpen
-                      ? <ChevronDown className="w-4 h-4 text-[#FCD34D]" />
+                      ? <ChevronDown className="w-4 h-4 text-amber-600" />
                       : <ChevronRight className="w-4 h-4 text-slate-400" />}
                   </button>
 
                   {isOpen && (
-                    <div className="p-3.5 bg-[#070A11] border-t border-white/10 text-xs text-slate-300 leading-relaxed font-sans space-y-3">
+                    <div className="p-3.5 bg-white border-t border-slate-200 text-xs text-slate-700 leading-relaxed font-sans">
                       <p>{hint}</p>
 
                       {isLastHint && lesson.solution && (
-                        <div className="pt-2 border-t border-white/10 flex items-center gap-2 flex-wrap">
+                        <div className="mt-3 pt-3 border-t border-slate-200 flex items-center gap-2 flex-wrap">
                           <button
-                            onClick={() => handleApplyToEditor(lesson.solution, 'Official Solution')}
-                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold font-mono rounded-lg transition-all bg-[#FCD34D] hover:bg-[#FACC15] text-slate-950 shadow-sm cursor-pointer"
+                            onClick={() => handleInsertSolution(lesson.solution)}
+                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold font-mono rounded-lg transition-all bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 border border-amber-300 shadow-sm"
                           >
-                            <Sparkles className="w-3.5 h-3.5" />
+                            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                             <span>Apply to My Editor</span>
                           </button>
 
                           <button
-                            onClick={() => handleCopyCode(lesson.solution)}
-                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-lg transition-all bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 cursor-pointer"
+                            onClick={() => handleCopySolution(lesson.solution)}
+                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-lg transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
                           >
-                            <Copy className="w-3.5 h-3.5" />
-                            <span>Copy Solution</span>
+                            {copiedSolution
+                              ? <Check className="w-3.5 h-3.5 text-emerald-600" />
+                              : <Copy className="w-3.5 h-3.5" />}
+                            <span>{copiedSolution ? 'Copied!' : 'Copy Solution'}</span>
                           </button>
                         </div>
                       )}
@@ -521,44 +325,30 @@ export function LessonView({
         </div>
       )}
 
-      {/* ── 07. Quest Completed Victory Banner & Next Quest Action ────────────── */}
+      {/* ── Advance to Next Quest Button ────────────── */}
       {isComplete && (
-        <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-[#111625] to-amber-950/30 border-2 border-emerald-500/40 shadow-xl flex items-center justify-between gap-3 flex-wrap">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center">
-              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-            </div>
-            <div>
-              <div className="text-xs font-black text-white font-mono">QUEST COMPLETED!</div>
-              <div className="text-[10px] text-emerald-300 font-mono">Full XP & mastery recorded</div>
-            </div>
-          </div>
+        <div className="pt-3 border-t border-slate-200 flex items-center justify-between gap-3 flex-wrap">
+          {onOpenCheckpoint && (
+            <button
+              onClick={() => { soundService.playClick(); onOpenCheckpoint(); }}
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition-all shadow-sm"
+            >
+              <Award className="w-3.5 h-3.5 text-amber-600" />
+              <span>Module Checkpoint</span>
+            </button>
+          )}
 
-          <div className="flex items-center gap-2 ml-auto">
-            {onOpenCheckpoint && (
-              <button
-                onClick={() => { soundService.playClick(); onOpenCheckpoint(); }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-mono font-bold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all cursor-pointer"
-              >
-                <Award className="w-3.5 h-3.5 text-[#FCD34D]" />
-                <span>Checkpoint</span>
-              </button>
-            )}
-
-            {onNextLesson && (
-              <button
-                onClick={() => { soundService.playClick(); onNextLesson(); }}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-xs font-mono transition-all bg-[#FCD34D] hover:bg-[#FACC15] text-slate-950 shadow-lg shadow-amber-400/20 active:scale-95 cursor-pointer touch-manipulation"
-              >
-                <span>Continue Next Quest</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            )}
-          </div>
+          {onNextLesson && (
+            <button
+              onClick={() => { soundService.playClick(); onNextLesson(); }}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-xs font-mono ml-auto transition-all bg-sky-600 hover:bg-sky-700 text-white shadow-md shadow-sky-600/20 active:scale-95"
+            >
+              <span>Continue Next Quest</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       )}
     </div>
   );
 }
-
-export default LessonView;

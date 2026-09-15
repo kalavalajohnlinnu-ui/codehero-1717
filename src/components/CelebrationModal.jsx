@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { Sparkles, CheckCircle2, X, ArrowRight, Trophy, Flame, ShieldCheck } from 'lucide-react';
+import { Sparkles, CheckCircle2, X } from 'lucide-react';
 import { soundService } from '../services/soundService';
 
 export function CelebrationModal({
   isOpen,
   lessonTitle,
-  xpGained = 25,
+  xpGained,
   onNextLesson,
   onClose,
   nextLessonTitle,
@@ -14,49 +14,12 @@ export function CelebrationModal({
 }) {
   useEffect(() => {
     if (isOpen) {
-      soundService.playFanfare();
-      
-      // Multi-stage celebratory confetti explosion
-      const count = 200;
-      const defaults = {
-        origin: { y: 0.7 },
-        zIndex: 1000
-      };
-
-      function fire(particleRatio, opts) {
-        confetti({
-          ...defaults,
-          ...opts,
-          particleCount: Math.floor(count * particleRatio)
-        });
-      }
-
-      fire(0.25, {
-        spread: 26,
-        startVelocity: 55,
-        colors: ['#FCD34D', '#F59E0B', '#FFFFFF']
-      });
-      fire(0.2, {
-        spread: 60,
-        colors: ['#38BDF8', '#0284C7', '#FCD34D']
-      });
-      fire(0.35, {
-        spread: 100,
-        decay: 0.91,
-        scalar: 0.8,
-        colors: ['#10B981', '#34D399', '#FCD34D']
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 25,
-        decay: 0.92,
-        scalar: 1.2,
-        colors: ['#FCD34D', '#F43F5E', '#A855F7']
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 45,
-        colors: ['#FFFFFF', '#FCD34D', '#38BDF8']
+      soundService.playSuccess();
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#38bdf8', '#facc15', '#10b981', '#a855f7']
       });
     }
   }, [isOpen]);
@@ -65,85 +28,73 @@ export function CelebrationModal({
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-xl animate-fade-in select-none"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div 
-        className="bg-[#0B0F19]/98 border-2 border-amber-400/40 rounded-3xl p-6 sm:p-8 max-w-lg w-full text-center shadow-[0_0_60px_rgba(252,211,77,0.22)] relative overflow-hidden transition-all"
+        className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl relative overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
-        {/* Background radial ambient glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-b from-amber-500/20 via-sky-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-
-        {/* Close Button */}
+        {/* Prominent Cross / Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-slate-300 hover:text-white flex items-center justify-center transition-all cursor-pointer z-20"
-          title="Close celebration"
+          className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-sm z-10"
+          title="Close"
           aria-label="Close"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
-        {/* Golden Crest Emblem */}
-        <div className="relative mx-auto w-20 h-20 mb-4 flex items-center justify-center">
-          <div className="absolute inset-0 bg-[#FCD34D]/20 rounded-2xl rotate-6 blur-md animate-pulse" />
-          <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FCD34D] via-[#F59E0B] to-[#B45309] p-0.5 shadow-xl shadow-amber-500/30 flex items-center justify-center">
-            <div className="w-full h-full bg-[#0B0F19] rounded-[14px] flex items-center justify-center">
-              <Trophy className="w-8 h-8 text-[#FCD34D] animate-bounce" />
-            </div>
-          </div>
+        {/* Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-sky-100 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Checkmark Icon */}
+        <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-500 mx-auto flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/10">
+          <CheckCircle2 className="w-8 h-8 animate-bounce" />
         </div>
 
-        {/* Eyebrow & Title */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase tracking-[0.2em] bg-amber-400/15 text-[#FCD34D] border border-amber-400/30 mb-2.5">
-          <Sparkles className="w-3 h-3 text-[#FCD34D]" />
-          <span>QUEST CONQUERED</span>
+        {/* Title */}
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200 mb-2">
+          <CheckCircle2 className="w-3.5 h-3.5" />
+          <span>Challenge Mastered!</span>
         </div>
 
-        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight font-display mb-1.5">
+        <h3 className="text-xl font-bold font-sans text-slate-900 mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
           Outstanding Work!
         </h3>
-        <p className="text-xs sm:text-sm text-slate-300 mb-5 max-w-sm mx-auto font-medium">
-          You mastered: <span className="text-[#FCD34D] font-bold">{lessonTitle}</span>
+        <p className="text-xs text-slate-500 mb-6 font-sans">
+          You solved: <span className="text-slate-800 font-medium">{lessonTitle}</span>
         </p>
 
-        {/* Telemetry Reward Grid */}
-        <div className="grid grid-cols-3 gap-2 p-3.5 rounded-2xl bg-white/5 border border-white/10 mb-5 text-center">
-          <div>
-            <div className="text-[9px] font-mono uppercase tracking-widest text-slate-400 font-bold">XP AWARD</div>
-            <div className="text-base sm:text-lg font-mono font-black text-[#FCD34D] mt-0.5 flex items-center justify-center gap-1">
-              <Sparkles className="w-3.5 h-3.5" />
+        {/* Reward Card */}
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-6 flex items-center justify-around">
+          <div className="text-center">
+            <div className="text-[10px] uppercase font-mono tracking-wider text-slate-500">XP Award</div>
+            <div className="text-lg font-bold font-mono text-sky-500 flex items-center justify-center gap-1 mt-0.5">
+              <Sparkles className="w-4 h-4 text-sky-400 animate-pulse" />
               <span>+{xpGained || 25} XP</span>
             </div>
           </div>
-          <div className="border-x border-white/10 px-1">
-            <div className="text-[9px] font-mono uppercase tracking-widest text-slate-400 font-bold">TESTS</div>
-            <div className="text-base sm:text-lg font-mono font-black text-emerald-400 mt-0.5 flex items-center justify-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>100%</span>
-            </div>
-          </div>
-          <div>
-            <div className="text-[9px] font-mono uppercase tracking-widest text-slate-400 font-bold">STREAK</div>
-            <div className="text-base sm:text-lg font-mono font-black text-orange-400 mt-0.5 flex items-center justify-center gap-1">
-              <Flame className="w-3.5 h-3.5" />
-              <span>ACTIVE</span>
+          <div className="h-8 w-px bg-slate-200" />
+          <div className="text-center">
+            <div className="text-[10px] uppercase font-mono tracking-wider text-slate-500">Tests Verified</div>
+            <div className="text-lg font-bold font-mono text-emerald-600 mt-0.5">
+              100% Passed
             </div>
           </div>
         </div>
 
         {/* NEXT QUEST CLIFFHANGER */}
-        <div className="rounded-2xl p-4 bg-gradient-to-b from-white/10 to-white/5 border border-white/15 text-left relative overflow-hidden mb-4 shadow-xl">
-          <div className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-[#FCD34D] mb-1 flex items-center gap-1.5">
-            <span>🔮</span>
-            <span>NEXT UPCOMING CHALLENGE</span>
-          </div>
-          <p className="text-sm font-black text-white mb-1">
-            {nextLessonTitle || "The Next Frontier"}
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 text-left relative overflow-hidden shadow-inner">
+          <div className="absolute top-0 right-0 p-2 opacity-10 text-4xl">🔮</div>
+          <h4 className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1 flex items-center gap-1.5 font-sans">
+            <span>🔮</span> Coming Up Next...
+          </h4>
+          <p className="text-sm font-bold text-slate-800 mb-1 font-sans">
+            {nextLessonTitle || "The Next Challenge"}
           </p>
-          <p className="text-xs text-slate-300 line-clamp-2 mb-3 leading-relaxed">
-            {nextLessonHook || "Continue forging your coding mastery. Ready for the next quest?"}
+          <p className="text-xs text-slate-600 italic mb-3 font-sans">
+            {nextLessonHook || "Are you ready to level up your skills?"}
           </p>
           
           <button
@@ -151,26 +102,22 @@ export function CelebrationModal({
               onClose();
               if (onNextLesson) onNextLesson();
             }}
-            className="w-full py-3 px-4 text-xs sm:text-sm font-black text-slate-950 bg-[#FCD34D] hover:bg-[#FACC15] active:scale-[0.98] rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-400/25 cursor-pointer touch-manipulation"
+            className="w-full py-2.5 px-4 text-sm font-bold text-white bg-sky-600 hover:bg-sky-500 active:scale-[0.97] rounded-xl transition-all flex items-center justify-center gap-2 shadow-md shadow-sky-500/20"
           >
-            <span>Continue to Next Quest</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>→ Continue Now</span>
           </button>
         </div>
 
-        {/* Action: Practice Drills / Review Code */}
+        {/* Actions */}
         <div>
           <button
             onClick={onClose}
-            className="w-full py-2.5 px-4 text-xs font-mono font-bold text-slate-300 hover:text-white bg-transparent hover:bg-white/5 border border-white/15 active:scale-[0.98] rounded-xl transition-colors cursor-pointer touch-manipulation"
+            className="w-full py-2.5 px-4 text-xs font-semibold text-slate-500 hover:text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 active:scale-[0.97] rounded-xl transition-colors"
           >
-            Explore Practice Variations & Review Code
+            Review Code
           </button>
         </div>
-
       </div>
     </div>
   );
 }
-
-export default CelebrationModal;

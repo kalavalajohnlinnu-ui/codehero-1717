@@ -344,14 +344,10 @@ export default function App() {
               if (count % 5 === 0) setBonusRoundActive(true);
               return count;
             });
-          } else {
-            handleXPEarned(5); // Practice bonus XP
+            setTimeout(() => {
+              setIsCelebrationOpen(true);
+            }, 400);
           }
-
-          soundService.playFanfare();
-          setTimeout(() => {
-            setIsCelebrationOpen(true);
-          }, 300);
         } else {
           soundService.playFail();
           setPythieMood('detective');
@@ -454,7 +450,7 @@ export default function App() {
                 {/* Lesson Instructions Pane: full height on mobile if mobileTab === 'lesson', or on desktop */}
                 <div className={`
                   ${mobileTab === 'lesson' ? 'flex' : 'hidden'} lg:flex
-                  w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-white/10 flex-col overflow-hidden h-full bg-[#0B0F19]
+                  w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-slate-200 flex-col overflow-hidden h-full bg-white
                 `}>
                   <LessonView
                     lesson={currentLesson}
@@ -475,14 +471,13 @@ export default function App() {
                     mascotName={activeLang.mascotName}
                     mascotType={activeLang.mascotType}
                     mascotTitle={activeLang.mascotTitle}
-                    currentLanguageId={currentLanguageId}
                   />
                 </div>
 
                 {/* Editor & Console Workspace */}
                 <div className={`
                   ${mobileTab !== 'lesson' ? 'flex' : 'hidden'} lg:flex
-                  w-full lg:w-7/12 flex-col p-2 sm:p-4 gap-2 sm:gap-3 overflow-hidden h-full bg-[#070A11]
+                  w-full lg:w-7/12 flex-col p-2 sm:p-4 gap-2 sm:gap-3 overflow-hidden h-full bg-[#F8FAFC]
                 `}>
                   {/* Editor: full on mobile if mobileTab === 'editor', or on desktop */}
                   <div className={`
@@ -544,7 +539,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden font-sans bg-[#070A11] text-slate-100">
+    <div className="flex flex-col h-screen overflow-hidden font-sans bg-[#F8FAFC] text-slate-900">
       <Header
         currentLanguageId={currentLanguageId}
         onSelectLanguage={handleSelectLanguage}
