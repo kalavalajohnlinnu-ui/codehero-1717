@@ -48,6 +48,9 @@ export function Header({
   onOpenRoadmap,
   onOpenNotes,
   onOpenExam,
+  onOpenTabletOneNote,
+  onInstallPWA,
+  isInstallable,
   onOpenModeLocked,
   currentStudent,
   onOpenStudentAuth,
@@ -183,6 +186,29 @@ export function Header({
 
             {/* Desktop tools (hidden on mobile) */}
             <div className="hidden sm:flex items-center gap-1.5">
+              {/* Tablet Exclusive OneNote Studio */}
+              <button
+                type="button"
+                onClick={() => { soundService.playClick(); onOpenTabletOneNote?.(); }}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 shadow-2xs active:scale-95 touch-manipulation cursor-pointer"
+                title="Open Tablet Exclusive OneNote Studio (Drawing Slate & Study Sticky Notes)"
+              >
+                <span>📱</span>
+                <span className="hidden md:inline">Tablet OneNote</span>
+              </button>
+
+              {/* Install App on Android Tablet */}
+              {isInstallable && (
+                <button
+                  type="button"
+                  onClick={() => { soundService.playClick(); onInstallPWA?.(); }}
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono font-bold bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 shadow-2xs active:scale-95 touch-manipulation cursor-pointer animate-pulse"
+                  title="Install Ingenium Tablet App Offline"
+                >
+                  <span>⚡</span>
+                  <span className="hidden md:inline">Install App</span>
+                </button>
+              )}
               {/* Study Plan */}
               <button
                 type="button"
@@ -268,6 +294,24 @@ export function Header({
                       >
                         <span>👑</span>
                         <span>Instructor Admin</span>
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => { setShowMobileMenu(false); soundService.playClick(); onOpenTabletOneNote?.(); }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-xs font-mono font-bold text-amber-900 bg-amber-50 hover:bg-amber-100 rounded-xl transition-all text-left active:scale-95 touch-manipulation cursor-pointer border border-amber-200"
+                    >
+                      <span>📱</span>
+                      <span>Tablet OneNote</span>
+                    </button>
+                    {isInstallable && (
+                      <button
+                        type="button"
+                        onClick={() => { setShowMobileMenu(false); soundService.playClick(); onInstallPWA?.(); }}
+                        className="w-full flex items-center gap-2 px-3 py-2 text-xs font-mono font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition-all text-left active:scale-95 touch-manipulation cursor-pointer border border-emerald-200 animate-pulse"
+                      >
+                        <span>⚡</span>
+                        <span>Install Tablet App</span>
                       </button>
                     )}
                     <button

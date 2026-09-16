@@ -41,6 +41,7 @@ import { ModuleCheckpointModal } from './components/ModuleCheckpointModal';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { AdminPortalModal } from './components/AdminPortalModal';
 import { AurevonIntro } from './components/AurevonIntro';
+import { TabletOneNoteModal } from './components/TabletOneNoteModal';
 import { GuidedMissionBar } from './components/GuidedMissionBar';
 
 export default function App() {
@@ -94,6 +95,31 @@ export default function App() {
   const [isRoadmapOpen, setIsRoadmapOpen] = useState(false);
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [isExamOpen, setIsExamOpen] = useState(false);
+  const [isTabletOneNoteOpen, setIsTabletOneNoteOpen] = useState(false);
+  const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
+
+  // Capture PWA install prompt on Android Tablet
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredInstallPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
+
+  const handleInstallPWA = () => {
+    if (!deferredInstallPrompt) {
+      alert("To install on your Android tablet:\n1. Tap the 3 dots (⋮) in Chrome, Brave, or Samsung Internet\n2. Tap 'Add to Home screen' or 'Install App'\n\nOnce installed, you can use Ingenium 100% offline without any internet!");
+      return;
+    }
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        setDeferredInstallPrompt(null);
+      }
+    });
+  };
   const [lockedModeInfo, setLockedModeInfo] = useState(null);
   const [activeCheckpointModule, setActiveCheckpointModule] = useState(null);
   const [passedModuleExams, setPassedModuleExams] = useState(() => {
@@ -609,6 +635,9 @@ export default function App() {
         onOpenRoadmap={() => setIsRoadmapOpen(true)}
         onOpenNotes={() => setIsNotesOpen(true)}
         onOpenExam={() => setIsExamOpen(true)}
+        onOpenTabletOneNote={() => setIsTabletOneNoteOpen(true)}
+        onInstallPWA={handleInstallPWA}
+        isInstallable={Boolean(deferredInstallPrompt)}
         onOpenModeLocked={(modeId) => setLockedModeInfo(modeId)}
         currentStudent={currentStudent}
         onOpenStudentAuth={() => setIsStudentAuthOpen(true)}
@@ -657,6 +686,14 @@ export default function App() {
           setCurrentGameMode(modeId);
           setLockedModeInfo(null);
         }}
+      />
+
+      <TabletOneNoteModal
+        isOpen={isTabletOneNoteOpen}
+        onClose={() => setIsTabletOneNoteOpen(false)}
+        currentLesson={currentLesson}
+        currentCode={currentCode}
+        currentLanguageId={currentLanguageId}
       />
 
       <ModuleCheckpointModal
