@@ -116,6 +116,28 @@ export function Sidebar({
               className="w-full rounded-lg text-xs pl-9 pr-3 py-2 bg-white border border-slate-200 text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-sky-500 shadow-sm"
             />
           </div>
+
+          {/* Duolingo / SoloLearn Style Step Path Progress */}
+          <div className="mt-3 p-2.5 rounded-xl bg-sky-50/70 border border-sky-200 space-y-1.5">
+            <div className="flex items-center justify-between text-[11px] font-bold">
+              <span className="text-sky-900 flex items-center gap-1">
+                <span>🎯</span>
+                <span>Learning Path</span>
+              </span>
+              <span className="font-mono text-sky-700">
+                {totalCompletedLessons} / {totalCourseLessons} Done
+              </span>
+            </div>
+            <div className="w-full h-2 rounded-full bg-sky-100 overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-500 rounded-full"
+                style={{ width: `${Math.max(5, (totalCompletedLessons / (totalCourseLessons || 1)) * 100)}%` }}
+              />
+            </div>
+            <div className="text-[10px] text-sky-800/80 font-medium">
+              👉 Follow lessons in order from Top to Bottom!
+            </div>
+          </div>
         </div>
 
         {/* Scrollable module tree */}
@@ -194,22 +216,49 @@ export function Sidebar({
                           key={lesson.id}
                           onClick={() => { onSelectLesson(lesson.id); onCloseMobile?.(); }}
                           className={`
-                            w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-left transition-all text-xs font-mono
+                            w-full flex items-center gap-2 px-2.5 py-2 rounded-xl text-left transition-all text-xs font-mono
                             ${isSelected 
-                              ? 'bg-sky-50 text-sky-900 border border-sky-300 font-bold shadow-sm' 
+                              ? 'bg-sky-50 text-sky-950 border-2 border-sky-400 font-extrabold shadow-sm ring-2 ring-sky-300/30' 
+                              : isComplete
+                              ? 'bg-emerald-50/40 text-emerald-900 hover:bg-emerald-50 border border-emerald-200/60'
                               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 border border-transparent'
                             }
                           `}
                         >
                           <div className="shrink-0">
-                            {isComplete
-                              ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                              : <Circle className="w-3.5 h-3.5 text-slate-300" />}
+                            {isComplete ? (
+                              <div className="w-4 h-4 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center">
+                                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                              </div>
+                            ) : isSelected ? (
+                              <div className="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[9px] font-black animate-pulse">
+                                ▶
+                              </div>
+                            ) : (
+                              <Circle className="w-3.5 h-3.5 text-slate-300" />
+                            )}
                           </div>
-                          <span className="truncate text-[11px]">{lesson.title}</span>
-                          <span className="shrink-0 ml-auto text-[9px] text-slate-400 font-mono">
-                            {lesson.duration}
-                          </span>
+                          
+                          <div className="min-w-0 flex-1">
+                            <div className="truncate text-[11px] leading-tight">{lesson.title}</div>
+                            {isSelected && (
+                              <span className="inline-block mt-0.5 text-[9px] font-bold text-sky-700 bg-sky-100 px-1.5 py-0.2 rounded font-sans uppercase">
+                                👉 DO THIS NOW
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="shrink-0 text-right">
+                            {isComplete ? (
+                              <span className="text-[9px] font-bold text-emerald-700 font-sans">
+                                Done ✓
+                              </span>
+                            ) : (
+                              <span className="text-[9px] text-slate-400 font-mono">
+                                {lesson.duration}
+                              </span>
+                            )}
+                          </div>
                         </button>
                       );
                     })}

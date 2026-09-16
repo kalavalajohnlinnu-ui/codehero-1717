@@ -50,7 +50,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-1',
             title: `Core Pattern // ${title}`,
-            badge: '01 // CANONICAL PATTERN',
+            badge: '01 // SIMPLE PATTERN',
             category: 'Foundation',
             explanation: 'Notice how Python emphasizes clean readability. The structure is direct and minimal, letting logic stay clear.',
             code: cleanStarter || `# Standard Python Pattern for ${title}\ndef process_data(items):\n    return [item.strip() for item in items if item]\n\nprint(process_data(["Python", "  AI  ", "CodeHero"]))`,
@@ -59,7 +59,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-2',
             title: 'Real-World Application // Production Flow',
-            badge: '02 // APPLIED ENGINEERING',
+            badge: '02 // REAL-LIFE USAGE',
             category: 'Practical',
             explanation: 'Here is how professional engineers apply this exact principle in web backends, APIs, and data services.',
             code: cleanSolution || `# Production Application Flow\ndef authenticate_request(user_token, active_sessions):\n    if not user_token:\n        return {"status": 401, "message": "Missing credentials"}\n    is_valid = user_token in active_sessions\n    return {"status": 200 if is_valid else 403, "authorized": is_valid}\n\nprint(authenticate_request("tok_991", {"tok_991": "dev_user"}))`,
@@ -68,7 +68,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-3',
             title: 'Pro Gotcha // Common Pitfalls & Guard Rails',
-            badge: '03 // DEFENSIVE BEST PRACTICE',
+            badge: '03 // COMMON MISTAKE & FIX',
             category: 'Gotcha',
             explanation: 'Watch out for boundary values like NoneType, empty collections, or accidental variable shadowing.',
             code: `# Common Bug vs Pro Defensive Fix\n# ❌ RISKY: Assuming input is never empty or None\n# def format_name(val): return val.upper()\n\n# ✅ DEFENSIVE: Explicit guard clauses\ndef safe_format_name(val):\n    if val is None or not isinstance(val, str):\n        return "Anonymous User"\n    return val.strip().title()\n\nprint(safe_format_name(None))\nprint(safe_format_name("  ada lovelace  "))`,
@@ -81,7 +81,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-1',
             title: `Modern ES6+ Pattern // ${title}`,
-            badge: '01 // CANONICAL PATTERN',
+            badge: '01 // SIMPLE PATTERN',
             category: 'Foundation',
             explanation: 'Modern JavaScript uses const/let, arrow functions, and immutability for clean, predictable state.',
             code: cleanStarter || `// ES6+ Standard Idiom\nconst filterPositive = (numbers = []) => {\n  return numbers.filter(n => n > 0).map(n => n * 2);\n};\n\nconsole.log(filterPositive([1, -2, 3, -4, 5]));`,
@@ -90,7 +90,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-2',
             title: 'Real-World Application // Web Component Flow',
-            badge: '02 // APPLIED ENGINEERING',
+            badge: '02 // REAL-LIFE USAGE',
             category: 'Practical',
             explanation: 'Handling user actions or API payloads safely using optional chaining and nullish coalescing.',
             code: `// Safe Object Access in Web Apps\nfunction renderUserProfile(user) {\n  const name = user?.profile?.displayName ?? 'Anonymous Guest';\n  const isVerified = Boolean(user?.metadata?.emailVerified);\n  return { name, badge: isVerified ? 'Verified Pro' : 'Explorer' };\n}\n\nconsole.log(renderUserProfile({ profile: { displayName: 'Grace Hopper' } }));`,
@@ -99,7 +99,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-3',
             title: 'Pro Gotcha // Strict Equality & Coercion',
-            badge: '03 // DEFENSIVE BEST PRACTICE',
+            badge: '03 // COMMON MISTAKE & FIX',
             category: 'Gotcha',
             explanation: 'Loose equality (==) causes subtle bugs with falsy values. Always use strict equality (===).',
             code: `// Strict vs Loose Equality\n// ❌ 0 == "" is TRUE in JavaScript (surprising coercion!)\n// ❌ null == undefined is TRUE\n\n// ✅ Always use === for exact type & value match\nconst value = 0;\nconsole.log(value === ""); // false (safe!)\nconsole.log(value === 0);  // true`,
@@ -112,7 +112,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-1',
             title: `Standard SQL Idiom // ${title}`,
-            badge: '01 // CANONICAL PATTERN',
+            badge: '01 // SIMPLE PATTERN',
             category: 'Foundation',
             explanation: 'SQL queries express what data you want rather than how to iterate through it.',
             code: cleanStarter || `SELECT id, username, email, created_at\nFROM users\nWHERE is_active = TRUE\nORDER BY created_at DESC\nLIMIT 10;`,
@@ -121,7 +121,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-2',
             title: 'Real-World Application // Aggregate Analytics',
-            badge: '02 // APPLIED ENGINEERING',
+            badge: '02 // REAL-LIFE USAGE',
             category: 'Practical',
             explanation: 'Grouping and aggregating transactions to generate dashboard metrics.',
             code: `SELECT \n  department_id,\n  COUNT(*) AS total_employees,\n  ROUND(AVG(salary), 2) AS average_salary,\n  MAX(salary) AS highest_salary\nFROM employees\nGROUP BY department_id\nHAVING COUNT(*) >= 5;`,
@@ -130,7 +130,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-3',
             title: 'Pro Gotcha // NULL Comparisons',
-            badge: '03 // DEFENSIVE BEST PRACTICE',
+            badge: '03 // COMMON MISTAKE & FIX',
             category: 'Gotcha',
             explanation: 'In SQL, NULL = NULL is NEVER true! You must always use IS NULL or IS NOT NULL.',
             code: `-- ❌ WRONG: Returns 0 rows because NULL = NULL evaluates to UNKNOWN\n-- SELECT * FROM orders WHERE shipped_at = NULL;\n\n-- ✅ CORRECT: Use IS NULL or COALESCE\nSELECT id, customer_id, COALESCE(shipped_at, 'PENDING') AS ship_status\nFROM orders\nWHERE shipped_at IS NULL;`,
@@ -143,7 +143,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-1',
             title: `Standard Syntax Pattern // ${title}`,
-            badge: '01 // CANONICAL PATTERN',
+            badge: '01 // SIMPLE PATTERN',
             category: 'Foundation',
             explanation: 'Idiomatic code structure following the language standard and compiler conventions.',
             code: cleanStarter || `// Foundation pattern for ${title}\n// Follow clear types and memory safety conventions`,
@@ -152,7 +152,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-2',
             title: 'Real-World Application // Production Logic',
-            badge: '02 // APPLIED ENGINEERING',
+            badge: '02 // REAL-LIFE USAGE',
             category: 'Practical',
             explanation: 'Structuring business rules with predictable input validation and error handling.',
             code: cleanSolution || cleanStarter,
@@ -161,7 +161,7 @@ export const lessonPracticeService = {
           {
             id: 'ex-3',
             title: 'Pro Gotcha // Resource Safety & Boundaries',
-            badge: '03 // DEFENSIVE BEST PRACTICE',
+            badge: '03 // COMMON MISTAKE & FIX',
             category: 'Gotcha',
             explanation: 'Ensure array boundaries, memory allocation, and type conversions are strictly verified.',
             code: `// Defensive boundary checks\n// Always check length/bounds before indexing into arrays or buffers`,
@@ -173,10 +173,10 @@ export const lessonPracticeService = {
 
   /**
    * Generates 4 distinct confirmed problem models:
-   * Model 1: Predict the Output (Quiz)
-   * Model 2: Bug Detective (Fix the Bug)
-   * Model 3: Syntax Builder (Fill in the Blank)
-   * Model 4: Applied Variation Challenge (Variant Coding Task)
+   * 1️⃣ Guess the Output (What will print?) (Quiz)
+   * 2️⃣ Spot the Mistake (Bug Detective) (Fix the Bug)
+   * 3️⃣ Fill in the Blank (Missing Piece) (Fill in the Blank)
+   * 4️⃣ Mini Coding Challenge (Variant Coding Task)
    */
   _generateConfirmedModels(lesson, lang, title, task, starter, solution, lessonId) {
     const isPython = lang === 'python';
@@ -194,7 +194,7 @@ export const lessonPracticeService = {
       quizModel = {
         id: `${lessonId}-m1-quiz`,
         modelType: 'quiz',
-        title: 'Model 1: Predict the Output',
+        title: '1️⃣ Guess the Output (What will print?)',
         badge: 'Mental Model / Output Prediction',
         icon: '🔮',
         question: 'What will be printed to the console when this code runs?',
@@ -212,14 +212,14 @@ export const lessonPracticeService = {
           'greeting'
         ],
         correctIndex: 1,
-        explanation: 'String interpolation dynamically evaluates the expression inside the braces and replaces it with the value "CodeHero".',
+        explanation: "The computer replaces {greeting} with the actual word stored inside the greeting box: 'CodeHero'!",
         xpReward: 15
       };
     } else if (title.toLowerCase().includes('comment') || title.toLowerCase().includes('readab')) {
       quizModel = {
         id: `${lessonId}-m1-quiz`,
         modelType: 'quiz',
-        title: 'Model 1: Predict the Output',
+        title: '1️⃣ Guess the Output (What will print?)',
         badge: 'Mental Model / Comments',
         icon: '🔮',
         question: 'What is printed to the console when the program executes?',
@@ -233,14 +233,14 @@ export const lessonPracticeService = {
           'SyntaxError: Comments not allowed'
         ],
         correctIndex: 1,
-        explanation: 'The interpreter completely ignores commented lines. Only "Line Beta" executes and prints.',
+        explanation: 'The computer completely ignores notes starting with #. Only real code runs and prints. Only "Line Beta" executes and prints.',
         xpReward: 15
       };
     } else if (title.toLowerCase().includes('variable') || title.toLowerCase().includes('type')) {
       quizModel = {
         id: `${lessonId}-m1-quiz`,
         modelType: 'quiz',
-        title: 'Model 1: Predict the Output',
+        title: '1️⃣ Guess the Output (What will print?)',
         badge: 'Mental Model / Variables',
         icon: '🔮',
         question: 'What is the final value printed by this sequence?',
@@ -261,7 +261,7 @@ export const lessonPracticeService = {
       quizModel = {
         id: `${lessonId}-m1-quiz`,
         modelType: 'quiz',
-        title: 'Model 1: Predict the Output',
+        title: '1️⃣ Guess the Output (What will print?)',
         badge: 'Mental Model / Loop Count',
         icon: '🔮',
         question: 'How many times will the message inside the loop print?',
@@ -282,7 +282,7 @@ export const lessonPracticeService = {
       quizModel = {
         id: `${lessonId}-m1-quiz`,
         modelType: 'quiz',
-        title: 'Model 1: Predict the Output',
+        title: '1️⃣ Guess the Output (What will print?)',
         badge: 'Mental Model / Concept Check',
         icon: '🔮',
         question: `Based on the lesson concept for "${title}", what will this snippet produce?`,
@@ -307,10 +307,10 @@ export const lessonPracticeService = {
       bugModel = {
         id: `${lessonId}-m2-bug`,
         modelType: 'bug',
-        title: 'Model 2: Bug Detective',
+        title: '2️⃣ Spot the Mistake (Bug Detective)',
         badge: 'Debug / Find & Fix the Bug',
         icon: '🐛',
-        question: 'A junior developer wrote this code, but it crashes with a SyntaxError! Identify the bug and select the correct fix.',
+        question: 'A student wrote this code, but there is a small typo mistake! Which option fixes the code correctly?',
         brokenSnippet: isPython
           ? 'print("Hello, World!\\n# Missing closing quote'
           : 'console.log("Hello, World!;\\n// Missing closing quote',
@@ -328,7 +328,7 @@ export const lessonPracticeService = {
       bugModel = {
         id: `${lessonId}-m2-bug`,
         modelType: 'bug',
-        title: 'Model 2: Bug Detective',
+        title: '2️⃣ Spot the Mistake (Bug Detective)',
         badge: 'Debug / Accidental Commenting',
         icon: '🐛',
         question: 'The application runs with no errors, but outputs nothing at all! What is causing this bug?',
@@ -349,7 +349,7 @@ export const lessonPracticeService = {
       bugModel = {
         id: `${lessonId}-m2-bug`,
         modelType: 'bug',
-        title: 'Model 2: Bug Detective',
+        title: '2️⃣ Spot the Mistake (Bug Detective)',
         badge: 'Debug / Spot the Logic Flaw',
         icon: '🐛',
         question: `There is a subtle bug in this implementation for "${title}". Identify the exact fix to make it pass.`,
@@ -376,7 +376,7 @@ export const lessonPracticeService = {
       fillModel = {
         id: `${lessonId}-m3-fill`,
         modelType: 'fill',
-        title: 'Model 3: Syntax Builder',
+        title: '3️⃣ Fill in the Blank (Missing Piece)',
         badge: 'Syntax / Fill in the Blank',
         icon: '🧩',
         question: 'Choose the correct keyword to fill in the blank to print the greeting to the screen.',
@@ -397,7 +397,7 @@ export const lessonPracticeService = {
       fillModel = {
         id: `${lessonId}-m3-fill`,
         modelType: 'fill',
-        title: 'Model 3: Syntax Builder',
+        title: '3️⃣ Fill in the Blank (Missing Piece)',
         badge: 'Syntax / Fill in the Blank',
         icon: '🧩',
         question: 'What symbol fills in the blank to make this line a single-line comment?',
@@ -418,7 +418,7 @@ export const lessonPracticeService = {
       fillModel = {
         id: `${lessonId}-m3-fill`,
         modelType: 'fill',
-        title: 'Model 3: Syntax Builder',
+        title: '3️⃣ Fill in the Blank (Missing Piece)',
         badge: 'Syntax / Fill in the Blank',
         icon: '🧩',
         question: 'Complete the statement by choosing the missing keyword.',

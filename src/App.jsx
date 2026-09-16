@@ -41,6 +41,7 @@ import { ModuleCheckpointModal } from './components/ModuleCheckpointModal';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { AdminPortalModal } from './components/AdminPortalModal';
 import { AurevonIntro } from './components/AurevonIntro';
+import { GuidedMissionBar } from './components/GuidedMissionBar';
 
 export default function App() {
   // 1. Language & State
@@ -421,6 +422,19 @@ export default function App() {
             />
 
             <main className="flex-1 flex flex-col overflow-hidden bg-slate-50">
+              {/* Duolingo / SoloLearn Systematic Mission & Navigation Bar */}
+              <GuidedMissionBar
+                currentLesson={currentLesson}
+                currentLanguageId={currentLanguageId}
+                allLessons={allLessons}
+                completedLessons={completedLessonsInLang}
+                testResults={testResults}
+                isRunning={isRunning}
+                onSelectLesson={handleSelectLesson}
+                onRunCode={handleRunCode}
+                isHeroMode={isHeroMode}
+              />
+
               {/* Mobile View Switcher Tab Strip (Visible on mobile/phone screens < 1024px) */}
               <div className="lg:hidden flex items-center justify-around border-b border-slate-200 bg-white p-1.5 shrink-0 select-none">
                 <button
