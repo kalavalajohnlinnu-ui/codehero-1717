@@ -223,18 +223,17 @@ export function AuthGateScreen({ onAuthenticated, onBackToIntro }) {
 
           {/* Mission Eyebrow & Headline */}
           <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#FCD34D] font-extrabold mb-2">
-            01 // YOUR MISSION
+            SHAPING TOMORROW'S FUTURE // VISION & ACTION
           </div>
           <h1 className="text-2xl sm:text-4xl lg:text-[40px] xl:text-[42px] font-black text-white leading-[1.15] tracking-tight mb-3 sm:mb-4 drop-shadow-md">
-            Become the<br />
+            Shaping tomorrow's future<br />
             <span className="text-[#FCD34D] drop-shadow-[0_0_20px_rgba(252,211,77,0.55)]">
-              Top 10–15%
-            </span><br />
-            Software Engineer
+              with vision and action.
+            </span>
           </h1>
 
           <p className="text-xs sm:text-base text-slate-100 leading-relaxed max-w-lg mb-5 sm:mb-6 font-medium drop-shadow-xs">
-            631 structured lessons across 7 programming languages. Real coding tasks, diagnostic debugging cases, and a personalized study plan.
+            Become the Top 10–15% Software Engineer. 631 structured quests across 7 programming languages. Real coding tasks, simple beginner English, and step-by-step mastery.
           </p>
 
           {/* 3 Stats Grid */}
