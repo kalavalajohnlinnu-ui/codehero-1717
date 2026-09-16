@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   ChevronDown, 
   ChevronRight, 
@@ -57,6 +57,25 @@ export function Sidebar({
   const totalCourseLessons = allLessonsInCurriculum.length;
   const totalCompletedLessons = allLessonsInCurriculum.filter(l => completedLessons.includes(l.id)).length;
   const isCourseComplete = totalCompletedLessons === totalCourseLessons && totalCourseLessons > 0;
+
+  // Duolingo Sequential Unlock: Quest 1 is unlocked, Quest 2 unlocks only after Quest 1 is done!
+  const unlockedLessonIds = useMemo(() => {
+    const set = new Set();
+    if (!allLessonsInCurriculum.length) return set;
+    set.add(allLessonsInCurriculum[0].id); // First lesson always unlocked
+    for (let i = 0; i < allLessonsInCurriculum.length; i++) {
+      const l = allLessonsInCurriculum[i];
+      if (completedLessons.includes(l.id)) {
+        set.add(l.id);
+        if (i + 1 < allLessonsInCurriculum.length) {
+          set.add(allLessonsInCurriculum[i + 1].id);
+        }
+      }
+    }
+    return set;
+  }, [allLessonsInCurriculum, completedLessons]);
+
+  const [lockedToast, setLockedToast] = useState(null);
 
   const toggleModule = (modId) =>
     setCollapsedModules(prev => ({ ...prev, [modId]: !prev[modId] }));
@@ -211,57 +230,87 @@ export function Sidebar({
                       const isSelected = lesson.id === currentLessonId;
                       const isComplete = completedLessons.includes(lesson.id);
 
-                      return (
-                        <button
-                          key={lesson.id}
-                          onClick={() => { onSelectLesson(lesson.id); onCloseMobile?.(); }}
-                          className={`
-                            w-full flex items-center gap-2 px-2.5 py-2 rounded-xl text-left transition-all text-xs font-mono
-                            ${isSelected 
-                              ? 'bg-sky-50 text-sky-950 border-2 border-sky-400 font-extrabold shadow-sm ring-2 ring-sky-300/30' 
-                              : isComplete
-                              ? 'bg-emerald-50/40 text-emerald-900 hover:bg-emerald-50 border border-emerald-200/60'
-                              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 border border-transparent'
-                            }
-                          `}
-                        >
-                          <div className="shrink-0">
-                            {isComplete ? (
-                              <div className="w-4 h-4 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center">
-                                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                              </div>
-                            ) : isSelected ? (
-                              <div className="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[9px] font-black animate-pulse">
-                                ▶
-                              </div>
-                            ) : (
-                              <Circle className="w-3.5 h-3.5 text-slate-300" />
-                            )}
-                          </div>
-                          
-                          <div className="min-w-0 flex-1">
-                            <div className="truncate text-[11px] leading-tight">{lesson.title}</div>
-                            {isSelected && (
-                              <span className="inline-block mt-0.5 text-[9px] font-bold text-sky-700 bg-sky-100 px-1.5 py-0.2 rounded font-sans uppercase">
-                                👉 DO THIS NOW
-                              </span>
-                            )}
-                          </div>
+                      const isUnlocked = isAdmin || unlockedLessonIds.has(lesson.id);
+                      const lessonIndex = allLessonsInCurriculum.findIndex(l => l.id === lesson.id);
+                      const prevLesson = lessonIndex > 0 ? allLessonsInCurriculum[lessonIndex - 1] : null;
 
-                          <div className="shrink-0 text-right">
-                            {isComplete ? (
-                              <span className="text-[9px] font-bold text-emerald-700 font-sans">
-                                Done ✓
-                              </span>
-                            ) : (
-                              <span className="text-[9px] text-slate-400 font-mono">
-                                {lesson.duration}
-                              </span>
-                            )}
-                          </div>
-                        </button>
-                      );
-                    })}
+                      const handleClick = () => {
+                        if (!isUnlocked) {
+                          setLockedToast(`🔒 Complete "${prevLesson?.title || 'previous quest'}" first to unlock this quest!`);
+                          setTimeout(() => setLockedToast(null), 3500);
+                          return;
+                        }
+                        onSelectLesson(lesson.id);
+                        onCloseMobile?.();
+                      };
+
+                      return (
+                            <button
+                              key={lesson.id}
+                              onClick={handleClick}
+                              disabled={!isUnlocked}
+                              title={!isUnlocked ? `Complete ${prevLesson?.title || 'previous quest'} first to unlock!` : lesson.title}
+                              className={`
+                                w-full flex items-center gap-2 px-2.5 py-2 rounded-xl text-left transition-all text-xs font-mono relative
+                                ${!isUnlocked
+                                  ? 'opacity-60 bg-slate-50 text-slate-400 cursor-not-allowed border border-slate-100'
+                                  : isSelected 
+                                  ? 'bg-sky-50 text-sky-950 border-2 border-sky-400 font-extrabold shadow-sm ring-2 ring-sky-300/30' 
+                                  : isComplete
+                                  ? 'bg-emerald-50/40 text-emerald-900 hover:bg-emerald-50 border border-emerald-200/60'
+                                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100/70 border border-transparent'
+                                }
+                              `}
+                            >
+                              <div className="shrink-0">
+                                {!isUnlocked ? (
+                                  <div className="w-4 h-4 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-500">
+                                    🔒
+                                  </div>
+                                ) : isComplete ? (
+                                  <div className="w-4 h-4 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center">
+                                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                                  </div>
+                                ) : isSelected ? (
+                                  <div className="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[9px] font-black animate-pulse">
+                                    ▶
+                                  </div>
+                                ) : (
+                                  <div className="w-4 h-4 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-[8px] font-bold text-amber-800">
+                                    {lessonIndex + 1}
+                                  </div>
+                                )}
+                              </div>
+                              
+                              <div className="min-w-0 flex-1">
+                                <div className="truncate text-[11px] leading-tight">{lesson.title}</div>
+                                {!isUnlocked ? (
+                                  <span className="inline-block mt-0.5 text-[8.5px] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.2 rounded font-sans uppercase">
+                                    🔒 Locked (Do #{lessonIndex} first)
+                                  </span>
+                                ) : isSelected ? (
+                                  <span className="inline-block mt-0.5 text-[9px] font-bold text-sky-700 bg-sky-100 px-1.5 py-0.2 rounded font-sans uppercase">
+                                    👉 DO THIS NOW
+                                  </span>
+                                ) : null}
+                              </div>
+
+                              <div className="shrink-0 text-right">
+                                {!isUnlocked ? (
+                                  <span className="text-[10px]">🔒</span>
+                                ) : isComplete ? (
+                                  <span className="text-[9px] font-bold text-emerald-700 font-sans">
+                                    Done ✓
+                                  </span>
+                                ) : (
+                                  <span className="text-[9px] text-slate-400 font-mono">
+                                    {lesson.duration}
+                                  </span>
+                                )}
+                              </div>
+                              </button>
+                            );
+                          })}
 
                     {/* Module checkpoint test button - locked at the last until all module lessons are completed */}
                     {isAllCompleted ? (
@@ -374,6 +423,13 @@ export function Sidebar({
             <span>Digital Notes &amp; PDF</span>
           </button>
         </div>
+        {/* Locked Toast Notification */}
+        {lockedToast && (
+          <div className="m-2.5 p-2.5 bg-amber-500 text-white rounded-xl text-xs font-sans font-bold shadow-lg flex items-center gap-2 animate-bounce">
+            <span>🔒</span>
+            <span className="flex-1 text-[11px]">{lockedToast}</span>
+          </div>
+        )}
       </aside>
     </>
   );

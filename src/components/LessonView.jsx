@@ -165,6 +165,14 @@ export function LessonView({
       if (!state.isCorrect && onXPEarned) {
         onXPEarned(model.xpReward || 15);
       }
+
+      // If next task exists, automatically switch to it after 800ms so Task 2 appears!
+      const currentIdx = practiceData.models.findIndex(m => m.id === model.id);
+      if (currentIdx >= 0 && currentIdx < practiceData.models.length - 1) {
+        setTimeout(() => {
+          setActiveModelIndex(currentIdx + 1);
+        }, 900);
+      }
     } else {
       soundService.playFail();
     }
@@ -623,33 +631,50 @@ export function LessonView({
             </div>
           </div>
 
-          {/* Model Selection Tabs */}
+          {/* Model Selection Tabs - Sequential Unlock */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {practiceData.models.map((model, mIdx) => {
               const isConfirmed = modelStates[model.id]?.isCorrect;
               const isActive = activeModelIndex === mIdx;
+              const prevModel = mIdx > 0 ? practiceData.models[mIdx - 1] : null;
+              const isUnlocked = mIdx === 0 || (prevModel && modelStates[prevModel.id]?.isCorrect);
 
               return (
                 <button
                   key={model.id}
-                  onClick={() => { soundService.playClick(); setActiveModelIndex(mIdx); }}
+                  onClick={() => { 
+                    if (!isUnlocked) {
+                      soundService.playFail();
+                      return;
+                    }
+                    soundService.playClick(); 
+                    setActiveModelIndex(mIdx); 
+                  }}
+                  disabled={!isUnlocked}
+                  title={!isUnlocked ? `Complete Question ${mIdx} first to unlock Question ${mIdx + 1}!` : model.title}
                   className={`p-2.5 rounded-xl text-left border transition-all active:scale-[0.97] flex flex-col justify-between gap-1.5 ${
-                    isActive 
+                    !isUnlocked
+                      ? 'opacity-40 bg-slate-100/70 border-slate-200 text-slate-400 cursor-not-allowed'
+                      : isActive 
                       ? 'bg-sky-50/80 border-sky-300 text-sky-900 shadow-sm' 
                       : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-base">{model.icon}</span>
-                    {isConfirmed && (
+                    <span className="text-base">{!isUnlocked ? '🔒' : model.icon}</span>
+                    {isConfirmed ? (
                       <span className="w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[9px]">
                         ✓
                       </span>
-                    )}
+                    ) : !isUnlocked ? (
+                      <span className="text-[9px] font-sans text-slate-400 font-bold">
+                        Locked
+                      </span>
+                    ) : null}
                   </div>
                   <div>
                     <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
-                      Model {mIdx + 1}
+                      Task {mIdx + 1}
                     </div>
                     <div className="text-xs font-bold truncate">
                       {model.modelType === 'quiz' ? 'Output Quiz' : 

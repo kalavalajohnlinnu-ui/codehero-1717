@@ -109,6 +109,23 @@ export default function App() {
   const activeCurriculum = activeLang.curriculum;
   const allLessons = useMemo(() => activeCurriculum.flatMap(m => m.lessons), [activeCurriculum]);
 
+  // Duolingo Sequential Unlock: Quest 1 is unlocked, Quest 2 unlocks only after Quest 1 is done
+  const unlockedLessonIds = useMemo(() => {
+    const set = new Set();
+    if (!allLessons.length) return set;
+    set.add(allLessons[0].id); // First lesson always unlocked
+    for (let i = 0; i < allLessons.length; i++) {
+      const l = allLessons[i];
+      if ((completedByLanguage[currentLanguageId] || []).includes(l.id)) {
+        set.add(l.id);
+        if (i + 1 < allLessons.length) {
+          set.add(allLessons[i + 1].id);
+        }
+      }
+    }
+    return set;
+  }, [allLessons, completedByLanguage, currentLanguageId]);
+
   // Current Lesson State
   const [currentLessonId, setCurrentLessonId] = useState('lesson-1');
   const currentLesson = useMemo(() => {
