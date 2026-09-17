@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Solid architectural geometry: Capital header, Base plinth, and chevron-sculpted shaft -->
+  <path d="M22 18h56v8H22z" fill="currentColor" />
+  <path d="M22 74h56v8H22z" fill="currentColor" />
+  <!-- Central Column with precision code-chevron sculpted waist -->
+  <path d="M36 26h28v12l-14 12 14 12v12H36V62l14-12-14-12V26z" fill="currentColor" />
+  <!-- Lateral precision chevrons < > -->
+  <path d="M26 40l-10 10 10 10" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M74 40l10 10-10 10" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

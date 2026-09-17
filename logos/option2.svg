@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Minimalist Hexagonal Shield Contour -->
+  <path d="M50 12L84 31v38L50 88 16 69V31L50 12z" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+  <!-- Center Monolith: Pure geometric 'I' with code chevron aperture -->
+  <path d="M50 24v20M50 56v20" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+  <!-- Center Diamond Aperture (The spark of genius) -->
+  <path d="M50 44l6 6-6 6-6-6 6-6z" fill="currentColor" />
+  <path d="M34 44l-6 6 6 6M66 44l6 6-6 6" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

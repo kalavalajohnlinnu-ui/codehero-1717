@@ -1,0 +1,21 @@
+{
+  "name": "Ingenium Tablet Edition — Master Code Offline",
+  "short_name": "Ingenium Tablet",
+  "description": "Learn 7 programming languages 100% offline on your Android tablet with interactive coding quests and exclusive OneNote study slate.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#F8FAFC",
+  "theme_color": "#0284C7",
+  "categories": ["education", "developer tools"],
+  "icons": [
+    {
+      "src": "./logos/ingenium-mark.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./logos/ingenium-mark.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingenium — Master the Craft of Code</title>
+    <!-- Google Fonts: Inter, Instrument Serif, Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Identity Services for Google Login -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Android Tablet PWA & Offline Support -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Ingenium Tablet" />
+    <meta name="theme-color" content="#0284C7" />
+    <link rel="apple-touch-icon" href="./logos/ingenium-mark.svg" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').then((reg) => {
+            console.log('[PWA] Service Worker registered for offline tablet use:', reg.scope);
+          }).catch((err) => {
+            console.warn('[PWA] Service Worker registration failed:', err);
+          });
+        });
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/index-C2DJ5FV_.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DUUrDjcc.css">
+  </head>
+  <body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-sky-500/20 selection:text-sky-900 min-h-screen overflow-x-hidden">
+    <div id="root"></div>
+  </body>
+</html>
